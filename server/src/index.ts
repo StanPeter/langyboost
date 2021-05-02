@@ -1,6 +1,6 @@
 import "reflect-metadata";
-// import { createConnection } from "typeorm";
 import express from "express";
+import dotenv from 'dotenv';
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./resolvers/UserResolver";
@@ -10,6 +10,9 @@ import { User } from "entity/User";
 (async () => {
     //define express server
     const app = express();
+
+    //loads from .env file
+    dotenv.config();
 
     //a random route, just to try out
     app.get("/users", async (_req, res) => {

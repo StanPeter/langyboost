@@ -6,11 +6,13 @@ import {
     ObjectType,
     Query,
     Resolver,
+    UseMiddleware,
 } from "type-graphql";
 import { hash, compare } from "bcryptjs";
 import { User } from "entity/User";
-import { sign } from "jsonwebtoken";
 import { ContextType } from "ts/ContextType";
+import { createAccessToken, createRefreshToken } from "utils/auth";
+import { isAuth } from "middleware/isAuth";
 
 @ObjectType()
 class LoginResponse {
@@ -20,8 +22,11 @@ class LoginResponse {
 
 @Resolver()
 export class UserResolver {
+    @UseMiddleware(isAuth)
     @Query(() => [User])
-    getUsers() {
+    getUsers(@Ctx() { payload }: ContextType) {
+        console.log(payload, "payload");
+
         return User.find();
     }
 
@@ -42,19 +47,11 @@ export class UserResolver {
 
         //set refreshing token -> name, token, opts
         //we want to return a bit different secret code -> 'gkrergeqqe'
-        res.cookie(
-            "jid",
-            sign({ userId: user.id }, "gkrergeqqe", {
-                expiresIn: "1d",
-            }),
-            { httpOnly: true }
-        );
+        res.cookie("jid", createRefreshToken(user), { httpOnly: true });
 
         //if all went ok, returns a new token
         return {
-            accessToken: sign({ userId: user.id }, "asgasgeqtqwtg", {
-                expiresIn: "30m",
-            }),
+            accessToken: createAccessToken(user),
         };
     }
 
