@@ -5,10 +5,26 @@ import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./resolvers/UserResolver";
 import { createConnection } from "typeorm";
+import { User } from "entity/User";
 
 (async () => {
     //define express server
     const app = express();
+
+    //a random route, just to try out
+    app.get("/users", async (_req, res) => {
+        const users = await User.find();
+
+        res.json(users);
+    });
+
+    //a second random route, just to try out
+    app.get("/users/:id", async (req, res) => {
+        const user = await User.findOne({ where: { id: req.params.id } });
+
+        if (!user) res.send("User not found");
+        else res.json(user);
+    });
 
     //connection for typeorm using ormconfig.json and its entities
     await createConnection();
@@ -18,6 +34,7 @@ import { createConnection } from "typeorm";
         schema: await buildSchema({
             resolvers: [UserResolver],
         }),
+        context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
     });
 
     //connect express server with apollo
