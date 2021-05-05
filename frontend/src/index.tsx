@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import App from "App";
+import Routes from "components/Routes";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 
@@ -12,7 +12,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <App />
+        <Routes />
     </ApolloProvider>,
     document.getElementById("root")
 );
