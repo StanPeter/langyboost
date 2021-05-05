@@ -1,26 +1,19 @@
-// import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useHelloQuery } from "generated/graphql";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { data, loading } = useHelloQuery();
+
+    if (loading || !data) return <p>It's all just loading</p>;
+
+    console.log(data, loading);
+
+    return (
+        <div className="">
+            {data.tryingOut.map((el, idx: number) => (
+                <p key={idx}>hello, your data goes here: {el.email}</p>
+            ))}
+        </div>
+    );
 }
 
 export default App;

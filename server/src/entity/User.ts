@@ -15,4 +15,7 @@ export class User extends BaseEntity {
 
     @Column("text") //don't wanna expose this inside Field
     password: string;
+
+    @Column("int", { default: 0 }) //used for revoking the user's tokens
+    tokenVersion: number;
 }

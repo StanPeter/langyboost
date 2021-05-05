@@ -1,15 +1,25 @@
 import "reflect-metadata";
 import express from "express";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./resolvers/UserResolver";
 import { createConnection } from "typeorm";
 import { User } from "entity/User";
+import cookieParser from "cookie-parser";
+import {
+    createAccessToken,
+    createRefreshToken,
+    sendRefreshToken,
+} from "utils/auth";
+import { verify } from "jsonwebtoken";
 
 (async () => {
     //define express server
     const app = express();
+
+    //use cookie parser to get later cookies from req. in an object
+    app.use(cookieParser());
 
     //loads from .env file
     dotenv.config();
@@ -27,6 +37,39 @@ import { User } from "entity/User";
 
         if (!user) res.send("User not found");
         else res.json(user);
+    });
+
+    //refresh_token route to improve security and do this outside /graphql route
+    app.post("/refresh_token", async (req, res) => {
+        //get refresh token and validate
+        const refreshToken = req.cookies.jid;
+
+        if (!refreshToken) return res.send({ ok: false, accessToken: "" });
+
+        let payload: any;
+        try {
+            //it will automatically throw an error if verify(whether token is valid and not expired) fails
+            payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
+        } catch (error) {
+            console.log(error, "error");
+            return res.send({ ok: false, accessToken: "" });
+        }
+
+        //payload has property userId
+        const user = await User.findOne({ id: payload.userId });
+
+        if (!user) {
+            console.log("User not found");
+            return res.send({ ok: false, accessToken: "" });
+        }
+
+        if (user.tokenVersion !== payload.tokenVersion) {
+            console.log("Token version invalid");
+            return res.send({ ok: false, accessToken: "" });
+        }
+
+        sendRefreshToken(res, createRefreshToken(user));
+        return res.send({ ok: true, accessToken: createAccessToken(user) });
     });
 
     //connection for typeorm using ormconfig.json and its entities

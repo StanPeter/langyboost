@@ -2,6 +2,7 @@ import {
     Arg,
     Ctx,
     Field,
+    Int,
     Mutation,
     ObjectType,
     Query,
@@ -11,8 +12,13 @@ import {
 import { hash, compare } from "bcryptjs";
 import { User } from "entity/User";
 import { ContextType } from "ts/ContextType";
-import { createAccessToken, createRefreshToken } from "utils/auth";
+import {
+    createAccessToken,
+    createRefreshToken,
+    sendRefreshToken,
+} from "utils/auth";
 import { isAuth } from "middleware/isAuth";
+import { getConnection } from "typeorm";
 
 @ObjectType()
 class LoginResponse {
@@ -22,12 +28,26 @@ class LoginResponse {
 
 @Resolver()
 export class UserResolver {
+    @Query(() => [User])
+    tryingOut() {
+        return User.find();
+    }
+
     @UseMiddleware(isAuth)
     @Query(() => [User])
     getUsers(@Ctx() { payload }: ContextType) {
         console.log(payload, "payload");
 
         return User.find();
+    }
+
+    @Mutation(() => Boolean)
+    async revokeRefreshTokenForUser(@Arg("userId", () => Int) userId: number) {
+        await getConnection()
+            .getRepository(User)
+            .increment({ id: userId }, "tokenVersion", 1);
+
+        return true;
     }
 
     @Mutation(() => LoginResponse)
@@ -47,7 +67,7 @@ export class UserResolver {
 
         //set refreshing token -> name, token, opts
         //we want to return a bit different secret code -> 'gkrergeqqe'
-        res.cookie("jid", createRefreshToken(user), { httpOnly: true });
+        sendRefreshToken(res, createRefreshToken(user));
 
         //if all went ok, returns a new token
         return {
