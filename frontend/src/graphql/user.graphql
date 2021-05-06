@@ -1,0 +1,13 @@
+query Hello {
+    tryingOut {
+        id
+        email
+    }
+}
+
+mutation Register($email: String!, $password: String!) {
+  register(
+    email: $email,
+    password: $password
+  )
+}
