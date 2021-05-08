@@ -33,7 +33,7 @@ const Register: React.FC<RouteComponentProps> = ({ history }) => {
                     type="password"
                 />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit">Register</button>
         </form>
     );
 };
