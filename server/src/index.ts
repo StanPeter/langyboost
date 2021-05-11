@@ -7,6 +7,7 @@ import { UserResolver } from "./resolvers/UserResolver";
 import { createConnection } from "typeorm";
 import { User } from "entity/User";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import {
     createAccessToken,
     createRefreshToken,
@@ -17,6 +18,14 @@ import { verify } from "jsonwebtoken";
 (async () => {
     //define express server
     const app = express();
+
+    //set cors manually
+    app.use(
+        cors({
+            credentials: true,
+            origin: "http://localhost:3000",
+        })
+    );
 
     //use cookie parser to get later cookies from req. in an object
     app.use(cookieParser());
@@ -83,8 +92,8 @@ import { verify } from "jsonwebtoken";
         context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
     });
 
-    //connect express server with apollo
-    apolloServer.applyMiddleware({ app });
+    //connect express server with apollo, cors are set manually so set here to false
+    apolloServer.applyMiddleware({ app, cors: false });
 
     //run express server
     app.listen(4000, () => {
