@@ -19,11 +19,15 @@ import {
 } from "utils/auth";
 import { isAuth } from "middleware/isAuth";
 import { getConnection } from "typeorm";
+import { verify } from "jsonwebtoken";
 
 @ObjectType()
 class LoginResponse {
     @Field()
     accessToken: string;
+
+    @Field(() => User)
+    user: User;
 }
 
 @Resolver()
@@ -31,6 +35,27 @@ export class UserResolver {
     @Query(() => [User])
     tryingOut() {
         return User.find();
+    }
+
+    @Query(() => User, { nullable: true })
+    async getUser(@Ctx() context: ContextType) {
+        const authorization = context.req.headers["authorization"];
+
+        if (!authorization) return null;
+
+        try {
+            const token = authorization.split(" ")[1];
+            const payload: any = verify(
+                token,
+                process.env.ACCESS_TOKEN_SECRET!
+            );
+            const foundUser = await User.findOne({ id: payload.userId });
+
+            return foundUser;
+        } catch (error) {
+            console.log(error, "Unfortunately, there was an error");
+            return null;
+        }
     }
 
     @UseMiddleware(isAuth)
@@ -72,7 +97,17 @@ export class UserResolver {
         //if all went ok, returns a new token
         return {
             accessToken: createAccessToken(user),
+            user,
         };
+    }
+
+    @Mutation(() => Boolean)
+    async logout(
+        @Ctx() { res }: ContextType //destructuring context type to later set cookies
+    ) {
+        sendRefreshToken(res, "");
+
+        return true;
     }
 
     @Mutation(() => Boolean)

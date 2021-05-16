@@ -1,4 +1,8 @@
-import { useLoginMutation } from "generated/graphql";
+import {
+    GetUserDocument,
+    GetUserQuery,
+    useLoginMutation,
+} from "generated/graphql";
 import React, { FormEvent, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { setAccessToken } from "utils/getToken";
@@ -13,7 +17,19 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
     const onSubmitHandler = async (e: FormEvent) => {
         e.preventDefault();
 
-        const response = await login({ variables: { email, password } });
+        const response = await login({
+            variables: { email, password },
+            update: (store, { data }) => {
+                if (data) {
+                    store.writeQuery<GetUserQuery>({
+                        query: GetUserDocument,
+                        data: {
+                            getUser: data.login.user,
+                        },
+                    });
+                }
+            },
+        });
 
         if (response.data?.login) {
             const token = setAccessToken(response.data.login.accessToken);

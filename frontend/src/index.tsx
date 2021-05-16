@@ -11,6 +11,10 @@ import { getAccessToken, setAccessToken } from "utils/getToken";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
 import jwtDecode from "jwt-decode";
 import { onError } from "@apollo/client/link/error";
+// import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+// import thunk from "redux-thunk";
+// import trialReducer from "store/reducers/reducer";
+// import { Provider } from "react-redux";
 
 // http link with the correct BE api url and credentials (to get cookies)
 const httpLink = new HttpLink({
@@ -46,7 +50,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({});
 
 const client = new ApolloClient({
     // works as a concat of many links
