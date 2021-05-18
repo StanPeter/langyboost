@@ -90,8 +90,6 @@ export class UserResolver {
 
         if (!isValid) throw new Error("Invalid password, please try again");
 
-        //set refreshing token -> name, token, opts
-        //we want to return a bit different secret code -> 'gkrergeqqe'
         sendRefreshToken(res, createRefreshToken(user));
 
         //if all went ok, returns a new token

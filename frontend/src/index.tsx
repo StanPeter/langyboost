@@ -50,49 +50,47 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
+//refreshing login after access token expired
+const refreshLink = new TokenRefreshLink({
+    // name of the access token in our response
+    accessTokenField: "accessToken",
+    // if token not yet expired or user doesn't have a token (guest) true should be returned
+    isTokenValidOrUndefined: () => {
+        const token = getAccessToken();
+
+        if (!token) return true;
+
+        try {
+            const { exp }: { exp: number } = jwtDecode(token);
+
+            if (Date.now() >= exp * 1000) return false;
+            return true;
+        } catch {
+            return false;
+        }
+    },
+    //where to send the request
+    fetchAccessToken: () => {
+        return fetch("http://localhost:4000/refresh_token", {
+            method: "POST",
+            credentials: "include",
+        });
+    },
+    //callback after the request
+    handleFetch: (accessToken) => {
+        setAccessToken(accessToken);
+    },
+    handleError: (err) => {
+        console.warn("Your refresh token is invalid. Try to relogin");
+        console.error(err);
+    },
+});
+
 const cache = new InMemoryCache({});
 
 const client = new ApolloClient({
     // works as a concat of many links
-    link: ApolloLink.from([
-        new TokenRefreshLink({
-            // name of the access token in our response
-            accessTokenField: "accessToken",
-            // if token not yet expired or user doesn't have a token (guest) true should be returned
-            isTokenValidOrUndefined: () => {
-                const token = getAccessToken();
-
-                if (!token) return true;
-
-                try {
-                    const { exp }: { exp: number } = jwtDecode(token);
-
-                    if (Date.now() >= exp * 1000) return false;
-                    else return true;
-                } catch {
-                    return false;
-                }
-            },
-            //where to send the request
-            fetchAccessToken: () => {
-                return fetch("http://localhost:4000/refresh_token", {
-                    method: "POST",
-                    credentials: "include",
-                });
-            },
-            //callback after the request
-            handleFetch: (accessToken) => {
-                setAccessToken(accessToken);
-            },
-            handleError: (err) => {
-                console.warn("Your refresh token is invalid. Try to relogin");
-                console.error(err);
-            },
-        }),
-        errorLink,
-        authLink,
-        httpLink,
-    ]),
+    link: ApolloLink.from([refreshLink, errorLink, authLink, httpLink]),
     cache,
 });
 

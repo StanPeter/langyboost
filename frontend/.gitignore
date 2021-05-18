@@ -24,6 +24,5 @@ yarn-error.log*
 
 # environment variables
 /.env
-package-lock.json
 # gets created with npm run gen
 */generated

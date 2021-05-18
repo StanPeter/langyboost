@@ -25,5 +25,7 @@ export const createRefreshToken = (user: User) => {
 };
 
 export const sendRefreshToken = (res: Response, token: string) => {
+    //set refreshing token -> name, token, opts
+    //we want to return a bit different secret code -> 'gkrergeqqe'
     res.cookie("jid", token, { httpOnly: true, path: "/refresh_token" });
 };

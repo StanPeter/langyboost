@@ -19,9 +19,6 @@
   "dependencies": {
     "@apollo/client": "^3.3.16",
     "@apollo/react-hooks": "^4.0.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "apollo-link-token-refresh": "^0.3.2",
     "graphql": "^15.5.0",
     "jwt-decode": "^3.1.2",

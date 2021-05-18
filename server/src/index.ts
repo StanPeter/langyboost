@@ -72,6 +72,7 @@ import { verify } from "jsonwebtoken";
             return res.send({ ok: false, accessToken: "" });
         }
 
+        //in case the token has been revoked before
         if (user.tokenVersion !== payload.tokenVersion) {
             console.log("Token version invalid");
             return res.send({ ok: false, accessToken: "" });
