@@ -6,14 +6,6 @@ import {
 import React, { FormEvent, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { setAccessToken } from "utils/getToken";
-import {
-    Button,
-    FormControl,
-    FormHelperText,
-    Input,
-    InputLabel,
-} from "@material-ui/core";
-import Form from "components/Form";
 
 // interface LoginProps {}
 
@@ -66,19 +58,8 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                     type="password"
                 />
             </div>
-            <FormControl>
-                <InputLabel htmlFor="my-input">Email address</InputLabel>
-                <Input id="my-input" aria-describedby="my-helper-text" />
-                <FormHelperText id="my-helper-text">
-                    We'll never share your email.
-                </FormHelperText>
-            </FormControl>
-            <Button variant="contained" color="primary">
-                Primary
-            </Button>
             <button type="submit">Login</button>
             <div style={{marginBottom: '100px'}}></div>
-            <Form />
         </form>
     );
 };

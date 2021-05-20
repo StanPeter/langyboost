@@ -13,6 +13,14 @@ import {
     Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import {
+    GetUserDocument,
+    GetUserQuery,
+    useLoginMutation,
+} from "generated/graphql";
+import React, { FormEvent, useState } from "react";
+import { RouteComponentProps } from "react-router";
+import { setAccessToken } from "utils/getToken";
 
 function Copyright() {
     return (
@@ -47,8 +55,38 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Form = () => {
+const LoginForm: React.FC<RouteComponentProps> = ({ history }) => {
     const classes = useStyles();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [login] = useLoginMutation();
+
+    const onSubmitHandler = async (e: FormEvent) => {
+        e.preventDefault();
+
+        const response = await login({
+            variables: { email, password },
+            update: (store, { data }) => {
+                if (data) {
+                    store.writeQuery<GetUserQuery>({
+                        query: GetUserDocument,
+                        data: {
+                            getUser: data.login.user,
+                        },
+                    });
+                }
+            },
+        });
+
+        if (response.data?.login) {
+            const token = setAccessToken(response.data.login.accessToken);
+            console.log(token, "token");
+        }
+
+        console.log(response, "response");
+        history.push("/");
+    };
 
     return (
         <Container component="main" maxWidth="xs">
@@ -60,7 +98,11 @@ const Form = () => {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form
+                    onSubmit={onSubmitHandler}
+                    className={classes.form}
+                    noValidate
+                >
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -68,6 +110,8 @@ const Form = () => {
                         fullWidth
                         id="email"
                         label="Email Address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -79,6 +123,8 @@ const Form = () => {
                         fullWidth
                         name="password"
                         label="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         id="password"
                         autoComplete="current-password"
@@ -115,6 +161,6 @@ const Form = () => {
             </Box>
         </Container>
     );
-}
+};
 
-export default Form;
+export default LoginForm;
