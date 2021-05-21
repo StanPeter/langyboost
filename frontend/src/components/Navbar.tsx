@@ -11,6 +11,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
+import "styles/main.css";
 
 interface NavbarProps {}
 
@@ -53,8 +54,19 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography
+                        onClick={() => history.push("/")}
+                        variant="h6"
+                        className={classes.title.concat(" link")}
+                    >
                         Home page
+                    </Typography>
+                    <Typography
+                        onClick={() => history.push("/admin")}
+                        variant="h6"
+                        className={classes.title.concat(" link")}
+                    >
+                        Secret Admin
                     </Typography>
                     {data?.getUser && (
                         <Button

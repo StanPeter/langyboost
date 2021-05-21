@@ -26,8 +26,8 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+            <Link color="inherit" href="/">
+                Langyboost
             </Link>{" "}
             {new Date().getFullYear()}
             {"."}
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const LoginForm: React.FC<RouteComponentProps> = ({ history }) => {
+const Login: React.FC<RouteComponentProps> = ({ history }) => {
     const classes = useStyles();
 
     const [email, setEmail] = useState("");
@@ -144,12 +144,20 @@ const LoginForm: React.FC<RouteComponentProps> = ({ history }) => {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link
+                                onClick={() => alert("Not implemented")}
+                                href="#"
+                                variant="body2"
+                            >
                                 Forgot password?
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link
+                                onClick={() => history.push("/register")}
+                                href="#"
+                                variant="body2"
+                            >
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>
@@ -163,4 +171,4 @@ const LoginForm: React.FC<RouteComponentProps> = ({ history }) => {
     );
 };
 
-export default LoginForm;
+export default Login;
