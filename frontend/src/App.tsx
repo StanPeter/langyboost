@@ -1,6 +1,9 @@
+import Navbar from "components/Navbar";
 import Routes from "components/Routes";
 import React, { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { setAccessToken } from "utils/getToken";
+import "styles/main.css";
 
 interface AppProps {}
 
@@ -24,7 +27,16 @@ const App: React.FC<AppProps> = () => {
 
     if (loading) return <div>App is loading...</div>;
 
-    return <Routes />;
+    return (
+        <BrowserRouter>
+            <div>
+                <Navbar />
+                <div className="bodyWrapper">
+                    <Routes />
+                </div>
+            </div>
+        </BrowserRouter>
+    );
 };
 
 export default App;

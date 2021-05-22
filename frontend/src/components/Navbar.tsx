@@ -1,76 +1,33 @@
-import {
-    AppBar,
-    Button,
-    IconButton,
-    makeStyles,
-    Toolbar,
-    Typography,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
+import "styles/main.css";
 import { useHistory } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
-import "styles/main.css";
+import MenuIcon from "@material-ui/icons/Menu";
 
 interface NavbarProps {}
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
-
 const Navbar: React.FC<NavbarProps> = ({}) => {
-    const classes = useStyles();
     const history = useHistory();
 
     const { data, loading } = useGetUserQuery();
     const [logout, { client }] = useLogoutMutation();
 
-    let body;
-
-    if (loading) body = "its still loading";
-    else if (data?.getUser) body = "Logged in as: " + data.getUser.email;
-    else body = "there was an error";
-
-    console.log(body, "body");
-
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="menu"
-                    >
+        <nav className="navbar">
+            <div className="left">
+                <ul className="nav">
+                    <li className="logo">
                         <MenuIcon />
-                    </IconButton>
-                    <Typography
-                        onClick={() => history.push("/")}
-                        variant="h6"
-                        className={classes.title.concat(" link")}
-                    >
-                        Home page
-                    </Typography>
-                    <Typography
-                        onClick={() => history.push("/admin")}
-                        variant="h6"
-                        className={classes.title.concat(" link")}
-                    >
-                        Secret Admin
-                    </Typography>
+                    </li>
+                    <li onClick={() => history.push("/")}>Home page</li>
+                    <li onClick={() => history.push("/admin")}>Admin secret</li>
+                </ul>
+            </div>
+            <div className="right">
+                <ul className="nav">
                     {data?.getUser && (
-                        <Button
-                            color="inherit"
+                        <li
                             onClick={async () => {
                                 await logout();
                                 setAccessToken("");
@@ -78,19 +35,20 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                             }}
                         >
                             Logout
-                        </Button>
+                        </li>
                     )}
                     {!data?.getUser && !loading && (
-                        <Button
-                            color="inherit"
-                            onClick={() => history.push("/login")}
+                        <li
+                            onClick={() => {
+                                history.push("/login");
+                            }}
                         >
                             Login
-                        </Button>
+                        </li>
                     )}
-                </Toolbar>
-            </AppBar>
-        </div>
+                </ul>
+            </div>
+        </nav>
     );
 };
 
