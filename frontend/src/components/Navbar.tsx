@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "styles/main.css";
 import { useHistory } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
-// import MenuIcon from "@material-ui/icons/Menu";
+import "styles/nav.scss";
 
 interface NavbarProps {}
 
