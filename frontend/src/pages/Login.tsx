@@ -138,6 +138,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        style={{ backgroundColor: "#5d97b3" }}
                         className={classes.submit}
                     >
                         Sign In

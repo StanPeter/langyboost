@@ -150,6 +150,7 @@ const Register: React.FC<RegisterProps> = ({}) => {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        style={{ backgroundColor: "#5d97b3" }}
                         className={classes.submit}
                     >
                         Sign Up
