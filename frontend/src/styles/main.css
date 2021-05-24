@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+/* disable anoining pop up errors created by create-react-scripts */
+iframe {
+    display: none;
+}
+
 body {
     font-size: 16px !important;
     font-weight: 400;

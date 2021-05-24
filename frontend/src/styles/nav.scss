@@ -1,8 +1,10 @@
+$bgcolor: #5d97b3;
+
 /* navbar */
 .navbar {
     margin-bottom: 8rem;
     height: 4rem;
-    background-color: #5d97b3;
+    background-color: $bgcolor;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +42,7 @@
     /* navbar media */
     .navbar-links {
         /* position: fixed; */
-        background-color: #5d97b3;
+        background-color: $bgcolor;
         height: 32vh;
         width: 100%;
         flex-direction: column;

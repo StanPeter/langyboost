@@ -80,11 +80,9 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
         });
 
         if (response.data?.login) {
-            const token = setAccessToken(response.data.login.accessToken);
-            console.log(token, "token");
+            setAccessToken(response.data.login.accessToken);
         }
 
-        console.log(response, "response");
         history.push("/");
     };
 

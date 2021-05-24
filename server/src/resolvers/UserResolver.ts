@@ -20,6 +20,7 @@ import {
 import { isAuth } from "middleware/isAuth";
 import { getConnection } from "typeorm";
 import { verify } from "jsonwebtoken";
+import { ApolloError } from "apollo-server-errors";
 
 @ObjectType()
 class LoginResponse {
@@ -84,11 +85,11 @@ export class UserResolver {
         //just TS returning type, its a generic
         const user = await User.findOne({ where: { email } });
 
-        if (!user) throw new Error("Unfortunately the user was not found");
+        if (!user) throw new ApolloError("Unfortunately the user was not found");
 
         const isValid = await compare(password, user.password);
 
-        if (!isValid) throw new Error("Invalid password, please try again");
+        if (!isValid) throw new ApolloError("Invalid password, please try again");
 
         sendRefreshToken(res, createRefreshToken(user));
 
