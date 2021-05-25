@@ -11,7 +11,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
-import "styles/main.css";
+import "styles/main.scss";
 
 interface NavbarProps {}
 

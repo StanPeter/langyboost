@@ -1,6 +1,5 @@
 import {
     Avatar,
-    Box,
     Button,
     Checkbox,
     Container,
@@ -16,18 +15,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { useRegisterMutation } from "generated/graphql";
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router";
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -168,9 +155,6 @@ const Register: React.FC<RegisterProps> = ({}) => {
                     </Grid>
                 </form>
             </div>
-            <Box mt={5}>
-                <Copyright />
-            </Box>
         </Container>
     );
 };

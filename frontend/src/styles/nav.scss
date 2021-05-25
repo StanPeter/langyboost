@@ -43,7 +43,8 @@ $bgcolor: #5d97b3;
     .navbar-links {
         /* position: fixed; */
         background-color: $bgcolor;
-        height: 32vh;
+        // height: 32vh;
+        height: 18rem;
         width: 100%;
         flex-direction: column;
         margin: 0;

@@ -1,6 +1,5 @@
 import {
     Avatar,
-    Box,
     Button,
     Checkbox,
     Container,
@@ -21,19 +20,6 @@ import {
 import React, { FormEvent, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { setAccessToken } from "utils/getToken";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="/">
-                Langyboost
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -163,9 +149,6 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                     </Grid>
                 </form>
             </div>
-            <Box mt={8}>
-                <Copyright />
-            </Box>
         </Container>
     );
 };

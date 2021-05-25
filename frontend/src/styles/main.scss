@@ -21,4 +21,14 @@ body {
 
 .bodyWrapper {
     margin: 6rem 2rem 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 756px) {
+    body {
+        font-size: 14px !important;
+        line-height: 1.2;
+    }
 }

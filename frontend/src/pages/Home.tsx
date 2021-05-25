@@ -1,3 +1,4 @@
+import Card from "components/Card";
 import { useHelloQuery } from "generated/graphql";
 import React from "react";
 
@@ -12,6 +13,7 @@ const Home: React.FC<HomeProps> = () => {
     return (
         <div className="">
             <h2>Welcome to out new home page</h2>
+            <Card />
             {data.tryingOut.map((el, idx: number) => (
                 <p key={idx}>hello, your data goes here: {el.email}</p>
             ))}

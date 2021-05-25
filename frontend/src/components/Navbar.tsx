@@ -62,6 +62,8 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                 <li
                     className={hide ? "hideNav" : ""}
                     onClick={() => {
+                        //if open then close hamburger
+                        if (navExpanded) hamburgerClickHandler();
                         history.push("/login");
                     }}
                 >
@@ -78,8 +80,22 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
         >
             <div className="logo">LOGO</div>
             <ul className="navbar-links left">
-                <li onClick={() => history.push("/")}>Home page</li>
-                <li onClick={() => history.push("/admin")}>Admin secret</li>
+                <li
+                    onClick={() => {
+                        if (navExpanded) hamburgerClickHandler();
+                        history.push("/");
+                    }}
+                >
+                    Home page
+                </li>
+                <li
+                    onClick={() => {
+                        if (navExpanded) hamburgerClickHandler();
+                        history.push("/admin");
+                    }}
+                >
+                    Admin secret
+                </li>
                 {authButtons(true)}
             </ul>
             <ul className="navbar-links right">{authButtons(false)}</ul>

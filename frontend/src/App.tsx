@@ -3,7 +3,7 @@ import Routes from "components/Routes";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { setAccessToken } from "utils/getToken";
-import "styles/main.css";
+import "styles/main.scss";
 
 interface AppProps {}
 
