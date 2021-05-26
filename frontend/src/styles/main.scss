@@ -20,10 +20,18 @@ body {
 }
 
 .bodyWrapper {
-    margin: 6rem 2rem 3rem 2rem;
     display: flex;
-    align-items: center;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
+}
+
+.contentWrapper {
+    width: 85%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 756px) {
@@ -32,3 +40,10 @@ body {
         line-height: 1.2;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .contentWrapper {
+        width: 93%;
+    }
+}
+

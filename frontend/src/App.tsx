@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { setAccessToken } from "utils/getToken";
 import "styles/main.scss";
+import Footer from "components/Footer";
 
 interface AppProps {}
 
@@ -34,6 +35,7 @@ const App: React.FC<AppProps> = () => {
                 <div className="bodyWrapper">
                     <Routes />
                 </div>
+                <Footer />
             </div>
         </BrowserRouter>
     );

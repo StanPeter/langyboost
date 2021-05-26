@@ -12,11 +12,11 @@
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease 0s;
-}
 
-.btn:hover {
-    background-color: #249ec4;
-    box-shadow: 0px 8px 12px rgba(100, 198, 223, 0.4);
-    color: #fff;
-    transform: translateY(-4px);
+    &:hover {
+        background-color: #249ec4;
+        box-shadow: 0px 8px 12px rgba(100, 198, 223, 0.4);
+        color: #fff;
+        transform: translateY(-4px);
+    }
 }
