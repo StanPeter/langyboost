@@ -15,6 +15,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { useRegisterMutation } from "generated/graphql";
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router";
+import "styles/main.scss";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -55,7 +56,11 @@ const Register: React.FC<RegisterProps> = ({}) => {
     const history = useHistory();
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container
+            className="custom-form-wrapper"
+            component="main"
+            maxWidth="xs"
+        >
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>

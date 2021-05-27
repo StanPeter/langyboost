@@ -30,7 +30,7 @@ const App: React.FC<AppProps> = () => {
 
     return (
         <BrowserRouter>
-            <div>
+            <div className="appWrapper">
                 <Navbar />
                 <div className="bodyWrapper">
                     <Routes />

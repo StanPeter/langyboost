@@ -20,13 +20,14 @@ import {
 import React, { FormEvent, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { setAccessToken } from "utils/getToken";
+import "styles/main.scss";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "center"
     },
     avatar: {
         margin: theme.spacing(1),
@@ -73,7 +74,11 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container
+            component="main"
+            className={"custom-form-wrapper"}
+            maxWidth="xs"
+        >
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>

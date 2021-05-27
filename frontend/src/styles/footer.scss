@@ -1,14 +1,14 @@
 .footer {
-    background-color: grey;
     height: 150px;
     width: 100%;
     color: white;
-    margin-top: 10rem;
     background-color: #002b38;
     padding: 20px 0;
     display: flex;
     flex-flow: column;
     align-items: center;
+    position: absolute;
+    bottom: 0;
 }
 
 .copyright {
