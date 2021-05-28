@@ -1,18 +1,18 @@
 import React, { useState, FormEvent } from "react";
-import { useRegisterMutation } from "generated/graphql";
+// import { useRegisterMutation } from "generated/graphql";
 import { RouteComponentProps } from "react-router";
 
 const Register: React.FC<RouteComponentProps> = ({ history }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [register] = useRegisterMutation();
+    // const [register] = useRegisterMutation();
 
     const onSubmitHandler = async (e: FormEvent) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-        const response = await register({ variables: { email, password } });
-        console.log(response, "response");
-        history.push("/");
+        // const response = await register({ variables: { email, password } });
+        // console.log(response, "response");
+        // history.push("/");
     };
 
     return (

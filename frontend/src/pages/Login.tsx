@@ -21,13 +21,14 @@ import React, { FormEvent, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { setAccessToken } from "utils/getToken";
 import "styles/main.scss";
+import { validate } from "pages/Register";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
     },
     avatar: {
         margin: theme.spacing(1),
@@ -47,10 +48,15 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [shouldValidate, setShouldValidate] = useState(false);
+
     const [login] = useLoginMutation();
 
     const onSubmitHandler = async (e: FormEvent) => {
         e.preventDefault();
+        setShouldValidate(true);
+
+        if (!email || !password) return;
 
         const response = await login({
             variables: { email, password },
@@ -100,6 +106,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                         id="email"
                         label="Email Address"
                         value={email}
+                        style={validate(email, shouldValidate)}
                         onChange={(e) => setEmail(e.target.value)}
                         name="email"
                         autoComplete="email"
@@ -113,6 +120,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                         name="password"
                         label="Password"
                         value={password}
+                        style={validate(password, shouldValidate)}
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         id="password"

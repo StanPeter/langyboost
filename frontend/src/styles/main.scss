@@ -61,13 +61,17 @@ body {
     // }
 }
 
-@media screen and (max-width: 450px) {
-    .contentWrapper {
-        width: 93%;
-    }
+@media screen and (max-width: 550px) {
+    // .contentWrapper {
+    //     width: 93%;
+    // }
 
     .custom-form-wrapper {
         max-width: unset !important;
         width: unset !important;
+    }
+
+    .bodyWrapper  {
+        width: 100%;
     }
 }

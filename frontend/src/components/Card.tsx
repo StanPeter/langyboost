@@ -12,7 +12,6 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ card }) => {
-    console.log(card, "card");
     const [hideTranslation, setHidetranslation] = useState(true);
 
     const knownHandler = () => {};

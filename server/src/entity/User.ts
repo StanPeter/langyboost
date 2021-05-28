@@ -13,6 +13,18 @@ export class User extends BaseEntity {
     @Column("text")
     email: string;
 
+    @Field()
+    @Column("text", { nullable: true })
+    firstName: string;
+
+    @Field()
+    @Column("text", { nullable: true })
+    lastName: string;
+
+    @Field(() => Boolean)
+    @Column("bool", { default: false, nullable: true })
+    receivePromo: boolean;
+
     @Column("text") //don't wanna expose this inside Field
     password: string;
 

@@ -85,11 +85,13 @@ export class UserResolver {
         //just TS returning type, its a generic
         const user = await User.findOne({ where: { email } });
 
-        if (!user) throw new ApolloError("Unfortunately the user was not found");
+        if (!user)
+            throw new ApolloError("Unfortunately the user was not found");
 
         const isValid = await compare(password, user.password);
 
-        if (!isValid) throw new ApolloError("Invalid password, please try again");
+        if (!isValid)
+            throw new ApolloError("Invalid password, please try again");
 
         sendRefreshToken(res, createRefreshToken(user));
 
@@ -112,14 +114,25 @@ export class UserResolver {
     @Mutation(() => Boolean)
     async register(
         @Arg("email") email: string,
-        @Arg("password") password: string
+        @Arg("password") password: string,
+        @Arg("firstName") firstName: string,
+        @Arg("lastName") lastName: string,
+        @Arg("receivePromo", () => Boolean) receivePromo: boolean
     ) {
+        const existingUser = await User.find({ where: { email: email } });
+
+        if (existingUser.length > 0)
+            throw new ApolloError("The user already exists");
+
         const hashedPass = await hash(password, 10);
 
         try {
             await User.insert({
                 email,
                 password: hashedPass,
+                firstName,
+                lastName,
+                receivePromo,
             });
         } catch (error) {
             console.log("Upps, there was an error" + error);

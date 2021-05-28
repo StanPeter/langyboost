@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
             <ul className="social-network social-circle">
                 <li>
                     <a
-                        href=""
+                        href="/"
                         className="icoLinkedin rotate-center"
                         title="Linkedin"
                     >
@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
                 </li>
                 <li>
                     <a
-                        href=""
+                        href="/"
                         className="icoTwitter rotate-center"
                         title="Twitter"
                     >
@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
                 </li>
                 <li>
                     <a
-                        href=""
+                        href="/"
                         className="icoGithub rotate-center"
                         title="Github"
                     >
@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
                 </li>
                 <li>
                     <a
-                        href=""
+                        href="/"
                         className="icoFacebook rotate-center"
                         title="Facebook"
                     >
@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({}) => {
                 </li>
                 <li>
                     <a
-                        href=""
+                        href="/"
                         className="icoInstagram rotate-center"
                         title="Instagram"
                     >

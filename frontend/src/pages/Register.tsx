@@ -12,10 +12,16 @@ import {
     Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { useRegisterMutation } from "generated/graphql";
+import {
+    GetUserDocument,
+    GetUserQuery,
+    useLoginMutation,
+    useRegisterMutation,
+} from "generated/graphql";
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router";
 import "styles/main.scss";
+import { setAccessToken } from "utils/getToken";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -37,19 +43,57 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+export const validate = (inputName: string, shouldValidate: Boolean) => {
+    if (shouldValidate && !inputName) {
+        return {
+            backgroundColor: "#e0a8a8",
+        };
+    }
+
+    return {};
+};
+
 interface RegisterProps {}
 
 const Register: React.FC<RegisterProps> = ({}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [receivePromo, setReceivePromo] = useState(false);
+    const [shouldValidate, setShouldValidate] = useState(false);
     const [register] = useRegisterMutation();
+    const [login] = useLoginMutation();
 
     const onSubmitHandler = async (e: FormEvent) => {
         e.preventDefault();
+        setShouldValidate(true);
 
-        const response = await register({ variables: { email, password } });
+        if (!email || !password || !firstName || !lastName) return;
+
+        const response = await register({
+            variables: { email, password, firstName, lastName, receivePromo },
+        });
         console.log(response, "response");
-        alert("Note that name and surname and check not implemented yet");
+
+        const responseLogin = await login({
+            variables: { email, password },
+            update: (store, { data }) => {
+                if (data) {
+                    store.writeQuery<GetUserQuery>({
+                        query: GetUserDocument,
+                        data: {
+                            getUser: data.login.user,
+                        },
+                    });
+                }
+            },
+        });
+
+        if (responseLogin.data?.login) {
+            setAccessToken(responseLogin.data.login.accessToken);
+        }
+
         history.push("/");
     };
     const classes = useStyles();
@@ -77,10 +121,13 @@ const Register: React.FC<RegisterProps> = ({}) => {
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
-                                autoComplete="fname"
+                                autoComplete="given-name"
                                 name="firstName"
                                 variant="outlined"
                                 required
+                                onChange={(e) => setFirstName(e.target.value)}
+                                value={firstName}
+                                style={validate(firstName, shouldValidate)}
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
@@ -91,11 +138,14 @@ const Register: React.FC<RegisterProps> = ({}) => {
                             <TextField
                                 variant="outlined"
                                 required
+                                onChange={(e) => setLastName(e.target.value)}
+                                value={lastName}
+                                style={validate(lastName, shouldValidate)}
                                 fullWidth
                                 id="lastName"
                                 label="Last Name"
                                 name="lastName"
-                                autoComplete="lname"
+                                autoComplete="family-name"
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -106,6 +156,7 @@ const Register: React.FC<RegisterProps> = ({}) => {
                                 id="email"
                                 label="Email Address"
                                 value={email}
+                                style={validate(email, shouldValidate)}
                                 onChange={(e) => setEmail(e.target.value)}
                                 name="email"
                                 autoComplete="email"
@@ -119,6 +170,7 @@ const Register: React.FC<RegisterProps> = ({}) => {
                                 name="password"
                                 label="Password"
                                 value={password}
+                                style={validate(password, shouldValidate)}
                                 onChange={(e) => setPassword(e.target.value)}
                                 type="password"
                                 id="password"
@@ -129,8 +181,12 @@ const Register: React.FC<RegisterProps> = ({}) => {
                             <FormControlLabel
                                 control={
                                     <Checkbox
-                                        value="allowExtraEmails"
+                                        value={receivePromo}
+                                        name="receivePromo"
                                         color="primary"
+                                        onChange={(e) => {
+                                            setReceivePromo(!receivePromo);
+                                        }}
                                     />
                                 }
                                 label="I want to receive inspiration, marketing promotions and updates via email."
