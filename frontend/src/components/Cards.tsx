@@ -1,6 +1,5 @@
 import React, { } from "react";
-// import Button from "components/Button";
-import "styles/card.scss";
+import "styles/singleCard.scss";
 import Card from "components/SingleCard";
 
 interface CardsProps {}

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Open+Sans+Condensed:wght@300&family=Source+Code+Pro&family=Stint+Ultra+Condensed&display=swap");
+
+//set the main color scheme
+$color-scheme: 1;
+
+// $color1: #5d97b3;
+$color2: #002b38;
+$main: green;
+
+@if $color-scheme == 1 {
+    //color scheme 1 - light blue
+    $main: #5d97b3;
+    $color2: #002b38;
+    $color3: #ffffff;
+    $color4: #2b4d74;
+    $color5: #62aa97;
+} @else if $color-scheme == 2 {
+    //color scheme 2 - light green
+    $main-color: #62aa97; /* main color */
+    $color2: #94bb9c; /* brightest color */
+    $color3: #ffffff; /* font-color */
+    $color4: #033c2d; /* darkest color */
+    $color5: #62aa97;
+}
+
+//colors for the app
+
+$red: #a1484c;
+
+//font

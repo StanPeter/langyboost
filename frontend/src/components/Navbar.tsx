@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
-import "styles/nav.scss";
+import "styles/navbar.scss";
 
 interface NavbarProps {}
 

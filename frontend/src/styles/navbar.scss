@@ -1,10 +1,10 @@
-$bgcolor: #5d97b3;
+@use './vars' as var;
 
 /* navbar */
 .navbar {
     margin-bottom: 6rem;
     height: 4rem;
-    background-color: $bgcolor;
+    background-color: var.$main;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +42,7 @@ $bgcolor: #5d97b3;
     /* navbar media */
     .navbar-links {
         /* position: fixed; */
-        background-color: $bgcolor;
+        background-color: var.$color2;
         // height: 32vh;
         height: 18rem;
         width: 100%;
