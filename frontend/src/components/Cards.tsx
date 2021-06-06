@@ -1,7 +1,7 @@
 import React, { } from "react";
 // import Button from "components/Button";
 import "styles/card.scss";
-import Card from "components/Card";
+import Card from "components/SingleCard";
 
 interface CardsProps {}
 

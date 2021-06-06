@@ -11,7 +11,7 @@ interface CardProps {
     card: Card;
 }
 
-const Card: React.FC<CardProps> = ({ card }) => {
+const SingleCard: React.FC<CardProps> = ({ card }) => {
     const [hideTranslation, setHidetranslation] = useState(true);
 
     const knownHandler = () => {};
@@ -49,4 +49,4 @@ const Card: React.FC<CardProps> = ({ card }) => {
     );
 };
 
-export default Card;
+export default SingleCard;

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Open+Sans+Condensed:wght@300&family=Source+Code+Pro&family=Stint+Ultra+Condensed&display=swap");
+
 /* global */
 * {
     margin: 0;
@@ -19,7 +21,8 @@ body {
     line-height: 1.43;
     letter-spacing: 0.01071em;
     background-color: #fafafa;
-    font-family: serif !important;
+    // font-family: 'Barlow Condensed', sans-serif;
+    font-family: "Source Code Pro", monospace;
 }
 
 .appWrapper {
@@ -71,7 +74,7 @@ body {
         width: unset !important;
     }
 
-    .bodyWrapper  {
+    .bodyWrapper {
         width: 100%;
     }
 }
