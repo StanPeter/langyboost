@@ -3,7 +3,8 @@ import Routes from "components/Routes";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { setAccessToken } from "utils/getToken";
-import "styles/main.scss";
+// import "styles/main.scss";
+import "styles/style.scss";
 import Footer from "components/Footer";
 
 interface AppProps {}
@@ -33,6 +34,13 @@ const App: React.FC<AppProps> = () => {
             <div className="appWrapper">
                 <Navbar />
                 <div className="bodyWrapper">
+                    <div className="pallete-wrapper">
+                        <div>main-color</div>
+                        <div>brightest-color</div>
+                        <div>font-color</div>
+                        <div>darkest-color</div>
+                        <div>middle-color</div>
+                    </div>
                     <Routes />
                 </div>
                 <Footer />

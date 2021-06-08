@@ -1,26 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Open+Sans+Condensed:wght@300&family=Source+Code+Pro&family=Stint+Ultra+Condensed&display=swap");
 
 //set the main color scheme
-$color-scheme: 1;
+$color-scheme: 0;
 
-// $color1: #5d97b3;
-$color2: #002b38;
-$main: green;
+$background-color: #e7f1f0;
+
+//schema 0 - light blue (default)
+$main-color: #5d97b3; //navbar etc.
+$brightest-color: #62aa97;
+$font-color: #ffffff;
+$darkest-color: #002b38; //footer
+$middle-color: #2b4d74;
 
 @if $color-scheme == 1 {
-    //color scheme 1 - light blue
-    $main: #5d97b3;
-    $color2: #002b38;
-    $color3: #ffffff;
-    $color4: #2b4d74;
-    $color5: #62aa97;
+    //schema 1 - light purple
+    $main-color: #4d6fbb;
+    $brightest-color: #60bfb9;
+    $font-color: #ffffff;
+    $darkest-color: #596786;
+    $middle-color: #c3aa8c;
 } @else if $color-scheme == 2 {
-    //color scheme 2 - light green
-    $main-color: #62aa97; /* main color */
-    $color2: #94bb9c; /* brightest color */
-    $color3: #ffffff; /* font-color */
-    $color4: #033c2d; /* darkest color */
-    $color5: #62aa97;
+    //schema 2 - light orange
+    $main-color: #bd752b; /* main color */
+    $brightest-color: #f1d76f; /* brightest color */
+    $font-color: #ffffff; /* font-color */
+    $darkest-color: #421f07; /* darkest color */
+    $middle-color: #7f6334; /* middle color */
 }
 
 //colors for the app

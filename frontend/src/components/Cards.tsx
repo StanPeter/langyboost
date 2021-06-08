@@ -1,5 +1,4 @@
-import React, { } from "react";
-import "styles/singleCard.scss";
+import React from "react";
 import Card from "components/SingleCard";
 
 interface CardsProps {}

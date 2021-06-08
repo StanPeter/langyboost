@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "components/Button";
-import "styles/singleCard.scss";
 
 interface Card {
     text: string;

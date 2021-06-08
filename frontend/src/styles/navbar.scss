@@ -4,11 +4,11 @@
 .navbar {
     margin-bottom: 6rem;
     height: 4rem;
-    background-color: var.$main;
+    background-color: var.$main-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: var.$font-color;
     font-size: 1.2rem;
     position: relative;
 }
@@ -42,7 +42,7 @@
     /* navbar media */
     .navbar-links {
         /* position: fixed; */
-        background-color: var.$color2;
+        background-color: var.$main-color;
         // height: 32vh;
         height: 18rem;
         width: 100%;
@@ -105,7 +105,7 @@
     /* hamburger media */
     .line {
         width: 2rem;
-        background-color: white;
+        background-color: var.$font-color;
         height: 0.2rem;
         margin: 5px;
     }

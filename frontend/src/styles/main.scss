@@ -1,3 +1,4 @@
+@use './vars' as var;
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Open+Sans+Condensed:wght@300&family=Source+Code+Pro&family=Stint+Ultra+Condensed&display=swap");
 
 /* global */
@@ -20,7 +21,7 @@ body {
     font-weight: 400;
     line-height: 1.43;
     letter-spacing: 0.01071em;
-    background-color: #fafafa;
+    background-color: var.$background-color;
     // font-family: 'Barlow Condensed', sans-serif;
     font-family: "Source Code Pro", monospace;
 }

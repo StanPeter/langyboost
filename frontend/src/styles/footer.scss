@@ -1,8 +1,10 @@
+@use './vars' as var;
+
 .footer {
     height: 150px;
     width: 100%;
     color: white;
-    background-color: #002b38;
+    background-color: var.$darkest-color;
     padding: 20px 0;
     display: flex;
     flex-flow: column;
@@ -29,7 +31,7 @@
 }
 
 .social-circle a {
-    background-color: #04191b;
+    background-color: var.$darkest-color;
 }
 
 .social-circle li a {
