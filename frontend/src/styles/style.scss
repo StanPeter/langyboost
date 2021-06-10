@@ -1,6 +1,8 @@
 @use './vars' as var;
 @use './navbar';
-@use './singleCard';
+@use './cards';
 @use './main';
 @use './button';
 @use './footer';
+@use './spinner';
+@use './pallette';

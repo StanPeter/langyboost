@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "components/Button";
+import { GrFormCheckmark, GrFormClose } from "react-icons/gr";
 
 interface Card {
     text: string;
@@ -24,27 +25,41 @@ const SingleCard: React.FC<CardProps> = ({ card }) => {
     // };
 
     return (
-        <div className="full-card">
-            <div className="card">
-                <div className="card-phrase phrase">
-                    <p>{card.text}</p>
-                </div>
-                <hr className="separator" />
-                <div
-                    className={[
-                        "card-phrase",
-                        "translation",
-                        hideTranslation ? "" : "show",
-                    ].join(" ")}
-                >
-                    <p>{card.translation}</p>
-                </div>
+        <div className="card">
+            <div className="card-phrase">
+                <h2>{card.text}</h2>
             </div>
+            <hr className="separator" />
             <div className="card-controls">
-                <Button onClick={knownHandler} text={"known"} />
-                <Button onClick={unKnownHandler} text={"unknown"} />
+                <i className="card-control-icon-true">
+                    <GrFormCheckmark />
+                </i>
+                <i className="card-control-icon-false">
+                    <GrFormClose />
+                </i>
             </div>
         </div>
+        // <div className="full-card">
+        //     <div className="card">
+        //         <div className="card-phrase phrase">
+        //             <p>{card.text}</p>
+        //         </div>
+        //         <hr className="separator" />
+        //         <div
+        //             className={[
+        //                 "card-phrase",
+        //                 "translation",
+        //                 hideTranslation ? "" : "show",
+        //             ].join(" ")}
+        //         >
+        //             <p>{card.translation}</p>
+        //         </div>
+        //     </div>
+        //     <div className="card-controls">
+        //         <Button onClick={knownHandler} text={"known"} />
+        //         <Button onClick={unKnownHandler} text={"unknown"} />
+        //     </div>
+        // </div>
     );
 };
 

@@ -16,18 +16,18 @@ const mockData = [
         text: "Esta frase no es tan buena",
         translation: "Esta frase no es tan buena",
     },
-    {
-        text: "no es tan buena cómo la última",
-        translation: " is not as good as the last one",
-    },
-    {
-        text: "Esta frase no es tan buena",
-        translation: "Esta frase no es tan buena",
-    },
-    {
-        text: "no es tan buena cómo la última",
-        translation: " is not as good as the last one",
-    },
+    // {
+    //     text: "no es tan buena cómo la última",
+    //     translation: " is not as good as the last one",
+    // },
+    // {
+    //     text: "Esta frase no es tan buena",
+    //     translation: "Esta frase no es tan buena",
+    // },
+    // {
+    //     text: "no es tan buena cómo la última",
+    //     translation: " is not as good as the last one",
+    // },
     // {
     //     text: "no es tan buena cómo la última",
     //     translation: " is not as good as the last one",

@@ -6,6 +6,7 @@ import { setAccessToken } from "utils/getToken";
 // import "styles/main.scss";
 import "styles/style.scss";
 import Footer from "components/Footer";
+import Spinner from "components/Spinner";
 
 interface AppProps {}
 
@@ -23,11 +24,13 @@ const App: React.FC<AppProps> = () => {
                 setAccessToken(accessToken);
             }
 
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         });
     }, []);
 
-    if (loading) return <div>App is loading...</div>;
+    if (loading) return <Spinner />;
 
     return (
         <BrowserRouter>

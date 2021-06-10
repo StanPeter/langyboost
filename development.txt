@@ -1,0 +1,28 @@
+FE --------------------------------------------
+
+create an error boundary
+
+make responsive
+
+try in more browsers
+
+Card component
+
+Modal component
+
+add language support
+
+add themes
+
+add a Spinner / Loader
+
+finish CSS structure
+
+
+BE --------------------------------------------
+
+clean up
+
+create a table for phrases
+
+a possibility for a superuser
