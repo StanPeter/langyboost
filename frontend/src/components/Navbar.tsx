@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
+import { CgCrown } from "react-icons/cg";
+import { BiLogIn } from "react-icons/bi";
+import { FiSettings } from "react-icons/fi";
+import { ImFire } from "react-icons/im";
 
 interface NavbarProps {}
 
@@ -66,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                         history.push("/login");
                     }}
                 >
-                    Login
+                    <BiLogIn className="login-icon" />
                 </li>
             );
         return null;
@@ -77,7 +81,10 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             className="navbar"
             style={{ marginBottom: navExpanded ? "20rem" : undefined }}
         >
-            <div className="logo">LOGO</div>
+            <div className="logo">
+                <CgCrown />
+                Langyboost
+            </div>
             <ul className="navbar-links left">
                 <li
                     onClick={() => {
@@ -85,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                         history.push("/");
                     }}
                 >
-                    Home page
+                    Courses
                 </li>
                 <li
                     onClick={() => {
@@ -93,11 +100,43 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
                         history.push("/admin");
                     }}
                 >
-                    Admin secret
+                    Articles
                 </li>
+                <li>Resources</li>
                 {authButtons(true)}
             </ul>
-            <ul className="navbar-links right">{authButtons(false)}</ul>
+            <ul className="navbar-links right">
+                <li >
+                    <p>2</p>
+                    <ImFire className="fire-icon" />
+                </li>
+                <li>
+                    <p>5</p>
+                    <img
+                        className="profile-icon"
+                        alt="sweden"
+                        height="30"
+                        width="30"
+                        src="https://static.posters.cz/image/750/placky-odznaky/flag-sweden-i2430.jpg"
+                    />
+                </li>
+                <li>
+                    <p className="profile-name">Jill</p>
+                    <img
+                        className="profile-icon"
+                        alt="girl"
+                        height="30"
+                        width="30"
+                        src="https://i.pinimg.com/originals/f4/89/fb/f489fb6beea688dfdc6bb2181b04f12a.jpg"
+                    />
+                </li>
+                <hr style={{ height: "30px" }} />
+                <li >
+                    <FiSettings className="settings-icon"/>
+                </li>
+                <hr style={{ height: "30px" }} />
+                {authButtons(false)}
+            </ul>
             <div className="hamburger" onClick={hamburgerClickHandler}>
                 <div className="line"></div>
                 <div className="line"></div>

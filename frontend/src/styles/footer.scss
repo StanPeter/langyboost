@@ -1,22 +1,23 @@
 @use './vars' as var;
 
 .footer {
-    height: 150px;
+    height: 100px;
     width: 100%;
     color: white;
-    background-color: var.$darkest-color;
+    background-color: #4e5196;
     padding: 20px 0;
     display: flex;
     flex-flow: column;
     align-items: center;
     position: absolute;
     bottom: 0;
+    border-radius: 200px 200px 0 0;
 }
 
 .copyright {
-    margin: 1.5rem 0;
+    margin: 0.5rem 0;
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .social-network {
@@ -25,13 +26,13 @@
     margin: auto;
 
     li {
-        display: inline;
-        margin: 0 10px;
+        display: inline-flex;
+        margin: 0 1rem;
     }
 }
 
 .social-circle a {
-    background-color: var.$darkest-color;
+    background-color: #E3E3E3;;
 }
 
 .social-circle li a {
@@ -42,14 +43,14 @@
     -webkit-border-radius: 50%;
     border-radius: 50%;
     text-align: center;
-    width: 60px;
-    height: 60px;
-    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
 }
 
 .social-circle li i {
     margin: 0;
-    line-height: 60px;
+    line-height: 48px;
     text-align: center;
 }
 
@@ -102,7 +103,7 @@
 .icoGithub:hover i,
 .icoInstagram:hover i,
 .icoLinkedin:hover i {
-    color: #fff;
+    color: #E3E4FF;
 }
 
 .social-circle li a:hover i {
@@ -118,12 +119,12 @@
 }
 
 .social-circle i {
-    color: #249ec4;
+    color: #1E0094;
+    transition: all 0.8s;
     -webkit-transition: all 0.8s;
     -moz-transition: all 0.8s;
     -o-transition: all 0.8s;
     -ms-transition: all 0.8s;
-    transition: all 0.8s;
 }
 
 @media screen and (max-width: 500px) {

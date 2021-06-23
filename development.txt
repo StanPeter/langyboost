@@ -6,7 +6,7 @@ make responsive
 
 try in more browsers
 
-Card component
+WORKING ON Card component
 
 Modal component
 
@@ -14,9 +14,9 @@ add language support
 
 add themes
 
-add a Spinner / Loader
+DONE add a Spinner / Loader
 
-finish CSS structure
+WORKING ON finish CSS structure
 
 
 BE --------------------------------------------
@@ -26,3 +26,13 @@ clean up
 create a table for phrases
 
 a possibility for a superuser
+
+
+
+IDEAS -----------------------------------------
+
+create points for users based on their learning progress
+
+create a url with history of learning (and phrases)
+
+more pictures in there

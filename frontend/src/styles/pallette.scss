@@ -11,16 +11,16 @@
         background-color: var.$main-color;
     }
     & div:nth-child(2) {
-        background-color: var.$brightest-color;
+        background-color: var.$light-shades;
     }
     & div:nth-child(3) {
-        background-color: var.$font-color;
+        background-color: var.$light-accent;
     }
     & div:nth-child(4) {
-        background-color: var.$darkest-color;
+        background-color: var.$dark-shades;
     }
     & div:last-child {
-        background-color: var.$middle-color;
+        background-color: var.$dark-accent;
     }
 
     & div {

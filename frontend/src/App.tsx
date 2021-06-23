@@ -30,7 +30,7 @@ const App: React.FC<AppProps> = () => {
         });
     }, []);
 
-    if (loading) return <Spinner />;
+    // if (loading) return <Spinner />;
 
     return (
         <BrowserRouter>
@@ -39,10 +39,10 @@ const App: React.FC<AppProps> = () => {
                 <div className="bodyWrapper">
                     <div className="pallete-wrapper">
                         <div>main-color</div>
-                        <div>brightest-color</div>
-                        <div>font-color</div>
-                        <div>darkest-color</div>
-                        <div>middle-color</div>
+                        <div>light-shades</div>
+                        <div>light-accent</div>
+                        <div>dark-shades</div>
+                        <div>dark-accent</div>
                     </div>
                     <Routes />
                 </div>

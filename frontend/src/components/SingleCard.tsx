@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "components/Button";
 import { GrFormCheckmark, GrFormClose } from "react-icons/gr";
+import { GiBananaBunch, GiBanana } from "react-icons/gi";
 
 interface Card {
     text: string;
@@ -32,10 +33,10 @@ const SingleCard: React.FC<CardProps> = ({ card }) => {
             <hr className="separator" />
             <div className="card-controls">
                 <i className="card-control-icon-true">
-                    <GrFormCheckmark />
+                    <GiBananaBunch />
                 </i>
                 <i className="card-control-icon-false">
-                    <GrFormClose />
+                    <GiBanana />
                 </i>
             </div>
         </div>
