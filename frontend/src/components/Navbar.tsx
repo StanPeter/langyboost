@@ -5,7 +5,7 @@ import { setAccessToken } from "utils/getToken";
 import { CgCrown } from "react-icons/cg";
 import { BiLogIn } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
-import { ImFire } from "react-icons/im";
+import { AiOutlineFire } from "react-icons/ai";
 
 interface NavbarProps {}
 
@@ -108,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             <ul className="navbar-links right">
                 <li >
                     <p>2</p>
-                    <ImFire className="fire-icon" />
+                    <AiOutlineFire className="fire-icon" />
                 </li>
                 <li>
                     <p>5</p>

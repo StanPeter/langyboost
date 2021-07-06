@@ -37,13 +37,13 @@ const App: React.FC<AppProps> = () => {
             <div className="appWrapper">
                 <Navbar />
                 <div className="bodyWrapper">
-                    <div className="pallete-wrapper">
+                    {/* <div className="pallete-wrapper">
                         <div>main-color</div>
                         <div>light-shades</div>
                         <div>light-accent</div>
                         <div>dark-shades</div>
                         <div>dark-accent</div>
-                    </div>
+                    </div> */}
                     <Routes />
                 </div>
                 <Footer />

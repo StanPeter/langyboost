@@ -5,7 +5,7 @@ interface CardsProps {}
 
 const mockData = [
     {
-        text: "Esta frase no es tan buena",
+        text: "Death is just the beginning",
         translation: "Esta frase no es tan buena",
     },
     {
@@ -16,10 +16,10 @@ const mockData = [
         text: "Esta frase no es tan buena",
         translation: "Esta frase no es tan buena",
     },
-    // {
-    //     text: "no es tan buena cómo la última",
-    //     translation: " is not as good as the last one",
-    // },
+    {
+        text: "no es tan buena cómo la última",
+        translation: " is not as good as the last one",
+    },
     // {
     //     text: "Esta frase no es tan buena",
     //     translation: "Esta frase no es tan buena",
@@ -63,11 +63,12 @@ const Cards: React.FC<CardsProps> = ({}) => {
 
     return (
         <div className="card-wrapper">
+            <Card card={mockData} />
             {/* <Button onClick={nextHandler} text={"next"} /> */}
 
-            {mockData.map((card, idx: number) => (
+            {/* {mockData.map((card, idx: number) => (
                 <Card card={card} key={idx} />
-            ))}
+            ))} */}
         </div>
     );
 };
