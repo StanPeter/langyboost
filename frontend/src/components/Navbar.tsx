@@ -15,7 +15,7 @@ const toggler = (links: NodeListOf<Element>, nameOfClass: string) => {
     });
 };
 
-const Navbar: React.FC<NavbarProps> = ({}) => {
+const Navbar: React.FC<NavbarProps> = () => {
     const history = useHistory();
 
     const [navExpanded, setNavExpanded] = useState(false);

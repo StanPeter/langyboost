@@ -1,4 +1,4 @@
-import Cards from "components/Cards";
+import PhraseCards from "components/PhraseCards";
 import { useHelloQuery } from "generated/graphql";
 import React from "react";
 import "styles/main.scss";
@@ -11,15 +11,7 @@ const Home: React.FC<HomeProps> = () => {
 
     if (!data || loading) return <div>seems to be loading</div>;
 
-    return (
-        <>
-            <h2>Phrase generator</h2>
-            <Cards />
-            {/* {data.tryingOut.map((el, idx: number) => (
-                <p key={idx}>hello, your data goes here: {el.email}</p>
-            ))} */}
-        </>
-    );
+    return <PhraseCards />;
 };
 
 export default Home;

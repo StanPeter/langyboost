@@ -55,7 +55,7 @@ export const validate = (inputName: string, shouldValidate: Boolean) => {
 
 interface RegisterProps {}
 
-const Register: React.FC<RegisterProps> = ({}) => {
+const Register: React.FC<RegisterProps> = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
