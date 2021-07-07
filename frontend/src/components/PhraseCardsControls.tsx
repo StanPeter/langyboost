@@ -4,6 +4,7 @@ import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 interface PhraseCardsControlsProps {
     setHidetranslation: Function;
     setAnimationChangeCard: Function;
+    noMorePhrases: Boolean;
 }
 
 type IconName = "thumbsDown" | "thumbsUp";
@@ -12,6 +13,7 @@ type IconAction = "show" | "hide";
 const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
     setHidetranslation,
     setAnimationChangeCard,
+    noMorePhrases,
 }) => {
     const [hideContinue, setHideContinue] = useState(true);
     const [hideThumpsDown, setHideThumpsDown] = useState(true);
@@ -39,11 +41,9 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
         _e: React.MouseEvent<HTMLElement>,
         iconName: IconName
     ) => {
-        if (iconName === "thumbsUp") {
-            setAnimationChangeCard(true);
-        } else if (iconName === "thumbsDown") {
+        if (iconName === "thumbsUp") setAnimationChangeCard(true);
+        else if (iconName === "thumbsDown") {
             setHideContinue(false);
-
             setHidetranslation(false);
         }
     };
@@ -56,9 +56,18 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
         setAnimationChangeCard(true);
     };
 
+    const cardControlContinueClasses = (): string => {
+        const out = ["card-control-continue"];
+
+        if (animationContinue || noMorePhrases) out.push("max-width");
+        if (noMorePhrases) out.push("disabled");
+
+        return out.join(" ");
+    };
+
     return (
         <div className="card-controls">
-            {hideContinue ? (
+            {hideContinue && !noMorePhrases ? (
                 <i
                     className="card-control-thumbsDown"
                     onMouseLeave={(e) => showHideIcon(e, "thumbsDown", "hide")}
@@ -68,7 +77,7 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
                     {hideThumpsDown ? <FiThumbsDown /> : <p>Failure?</p>}
                 </i>
             ) : null}
-            {hideContinue ? (
+            {hideContinue && !noMorePhrases ? (
                 <i
                     className="card-control-thumbsUp"
                     onMouseLeave={(e) => showHideIcon(e, "thumbsUp", "hide")}
@@ -78,15 +87,15 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
                     {hideThumpsUp ? <FiThumbsUp /> : <p>Got it!</p>}
                 </i>
             ) : null}
-            {!hideContinue ? (
+            {!hideContinue || noMorePhrases ? (
                 <i
-                    className={`card-control-continue ${
-                        animationContinue ? "max-width" : ""
-                    }`}
+                    className={cardControlContinueClasses()}
                     onMouseOver={() => setAnimationContinue(true)}
-                    onClick={onContinueClickHandler}
+                    onClick={!noMorePhrases ? onContinueClickHandler : undefined}
                 >
-                    <p>Continue</p>
+                    <p>
+                        {!noMorePhrases ? "Continue" : "All phrases learned!"}
+                    </p>
                 </i>
             ) : null}
         </div>

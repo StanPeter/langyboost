@@ -113,13 +113,13 @@
 .card-control-thumbsUp {
     @extend .card-control-icon;
 
-    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .card-control-thumbsDown {
     @extend .card-control-icon;
 
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .card-control-continue {
@@ -132,8 +132,12 @@
     &.max-width {
         width: 100%;
     }
-}
 
+    &.disabled {
+        background-color: #cbc9cc;
+        cursor: not-allowed;
+    }
+}
 
 .separator {
     border: 0.3px solid #2a4d69;

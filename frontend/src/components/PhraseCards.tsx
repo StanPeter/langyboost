@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import PhraseCardsControls from 'components/PhraseCardsControls'
+import React, { useEffect, useState } from "react";
+import PhraseCardsControls from "components/PhraseCardsControls";
 
 interface PhraseCard {
     text: string;
@@ -27,22 +27,19 @@ const mockData = [
         text: "no es tan buena cómo la última",
         translation: " is not as good as the last one",
     },
-    // {
-    //     text: "Esta frase no es tan buena",
-    //     translation: "Esta frase no es tan buena",
-    // },
-    // {
-    //     text: "no es tan buena cómo la última",
-    //     translation: " is not as good as the last one",
-    // },
 ];
 
-const PhraseCards: React.FC<PhraseCardsProps> = ({ card }) => {
+const PhraseCards: React.FC<PhraseCardsProps> = () => {
     const [hideTranslation, setHidetranslation] = useState(true);
     const [animationChangeCard, setAnimationChangeCard] = useState(false);
     const [cardIndex, setCardIndex] = useState(0);
+    const [noMorePhrases, setNoMorePhrases] = useState(false);
 
-    // const noMorePhrases: boolean = cardIndex >= mockData.length;
+    useEffect(() => {
+        if (cardIndex >= mockData.length) {
+            setNoMorePhrases(true);
+        }
+    }, [cardIndex]);
 
     return (
         <div className="card-wrapper">
@@ -68,6 +65,7 @@ const PhraseCards: React.FC<PhraseCardsProps> = ({ card }) => {
                 <PhraseCardsControls
                     setHidetranslation={setHidetranslation}
                     setAnimationChangeCard={setAnimationChangeCard}
+                    noMorePhrases={noMorePhrases}
                 />
             </div>
         </div>
