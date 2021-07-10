@@ -43,8 +43,12 @@ const PhraseCards: React.FC<PhraseCardsProps> = () => {
 
     return (
         <div className="card-wrapper">
-            <div className="third-card"></div>
-            <div className="second-card"></div>
+            {cardIndex + 2 <= mockData.length ? (
+                <div className="third-card"></div>
+            ) : null}
+            {cardIndex + 1 <= mockData.length ? (
+                <div className="second-card"></div>
+            ) : null}
             <div
                 className={`card ${
                     animationChangeCard ? "animation-change-card" : ""
