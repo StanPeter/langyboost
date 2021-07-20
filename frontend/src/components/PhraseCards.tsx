@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PhraseCardsControls from "components/PhraseCardsControls";
+import { useGetPhrasesQuery } from "generated/graphql";
+import Spinner from "./Spinner";
 
 interface PhraseCard {
     text: string;
@@ -35,18 +37,26 @@ const PhraseCards: React.FC<PhraseCardsProps> = () => {
     const [cardIndex, setCardIndex] = useState(0);
     const [noMorePhrases, setNoMorePhrases] = useState(false);
 
-    useEffect(() => {
-        if (cardIndex >= mockData.length) {
-            setNoMorePhrases(true);
-        }
-    }, [cardIndex]);
+    const { data, error, loading } = useGetPhrasesQuery({});
+
+    // useEffect(() => {
+    //     if (cardIndex >= data.getPhrases.length) {
+    //         setNoMorePhrases(true);
+    //     }
+    // }, [cardIndex]);
+
+    if (!data || error) return null;
+    if (loading) return <Spinner />;
+
+    if (cardIndex >= data.getPhrases.length && !noMorePhrases)
+        setNoMorePhrases(true);
 
     return (
         <div className="card-wrapper">
-            {cardIndex + 2 <= mockData.length ? (
+            {cardIndex + 2 <= data.getPhrases.length ? (
                 <div className="third-card"></div>
             ) : null}
-            {cardIndex + 1 <= mockData.length ? (
+            {cardIndex + 1 <= data.getPhrases.length ? (
                 <div className="second-card"></div>
             ) : null}
             <div
@@ -59,10 +69,11 @@ const PhraseCards: React.FC<PhraseCardsProps> = () => {
                 }}
             >
                 <div className="card-phrase">
-                    <h2>{mockData[cardIndex]?.text || "No more phrases"}</h2>
-                    {!hideTranslation ? (
-                        <p>{mockData[cardIndex]?.translation}</p>
-                    ) : null}
+                    <h2>
+                        {data.getPhrases[cardIndex]?.phrase ||
+                            "No more phrases"}
+                    </h2>
+                    {!hideTranslation ? <p>Not implemented</p> : null}
                 </div>
 
                 <hr className="separator" />

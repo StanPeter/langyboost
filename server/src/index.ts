@@ -14,6 +14,7 @@ import {
     sendRefreshToken,
 } from "utils/auth";
 import { verify } from "jsonwebtoken";
+import { PhrasesResolver } from "resolvers/PhrasesResolver";
 
 (async () => {
     //define express server
@@ -88,7 +89,7 @@ import { verify } from "jsonwebtoken";
     //define apolloserver for graphql
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [UserResolver],
+            resolvers: [UserResolver, PhrasesResolver],
         }),
         context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
     });
