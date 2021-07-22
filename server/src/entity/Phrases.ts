@@ -23,4 +23,7 @@ export class Phrases extends BaseEntity {
     @Field(() => String)
     @Column("date", { default: new Date() })
     practisedAt: Date;
+
+    @Field(() => String)
+    translation: string
 }
