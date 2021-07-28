@@ -47,6 +47,8 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
 
     const authButtons = (hide: boolean) => {
+        console.log(data, 'data');
+
         if (data?.getUser)
             return (
                 <li
@@ -70,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         history.push("/login");
                     }}
                 >
-                    <BiLogIn className="login-icon" />
+                    <BiLogIn className="login-icon link" />
                 </li>
             );
         return null;
@@ -91,6 +93,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         if (navExpanded) hamburgerClickHandler();
                         history.push("/");
                     }}
+                    className="link"
                 >
                     Courses
                 </li>
@@ -99,16 +102,17 @@ const Navbar: React.FC<NavbarProps> = () => {
                         if (navExpanded) hamburgerClickHandler();
                         history.push("/admin");
                     }}
+                    className="link"
                 >
                     Articles
                 </li>
-                <li>Resources</li>
+                <li className="link">Resources</li>
                 {authButtons(true)}
             </ul>
             <ul className="navbar-links right">
                 <li >
                     <p>2</p>
-                    <AiOutlineFire className="fire-icon" />
+                    <AiOutlineFire className="fire-icon link" />
                 </li>
                 <li>
                     <p>5</p>
@@ -132,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </li>
                 <hr style={{ height: "30px" }} />
                 <li >
-                    <FiSettings className="settings-icon"/>
+                    <FiSettings className="settings-icon link"/>
                 </li>
                 <hr style={{ height: "30px" }} />
                 {authButtons(false)}

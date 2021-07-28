@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = () => {
                     </a>
                 </li>
             </ul>
-            <p className="copyright">Copyright 1999-2021 by Refsnes Data. All Rights Reserved.</p>
+            <p className="copyright"><span className="link">Copyright</span> 1999-2021 by Refsnes Data. All Rights Reserved.</p>
         </footer>
     );
 };

@@ -19,7 +19,6 @@ import {
 } from "utils/auth";
 import { isAuth } from "middleware/isAuth";
 import { getConnection } from "typeorm";
-import { verify } from "jsonwebtoken";
 import { ApolloError } from "apollo-server-errors";
 
 @ObjectType()
@@ -38,18 +37,10 @@ export class UserResolver {
         return User.find();
     }
 
+    @UseMiddleware(isAuth)
     @Query(() => User, { nullable: true })
-    async getUser(@Ctx() context: ContextType) {
-        const authorization = context.req.headers["authorization"];
-
-        if (!authorization) return null;
-
+    async getUser(@Ctx() { payload }: any) {
         try {
-            const token = authorization.split(" ")[1];
-            const payload: any = verify(
-                token,
-                process.env.ACCESS_TOKEN_SECRET!
-            );
             const foundUser = await User.findOne({ id: payload.userId });
 
             return foundUser;

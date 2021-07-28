@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PhraseCardsControls from "components/PhraseCardsControls";
 import { useGetPhrasesQuery } from "generated/graphql";
 import Spinner from "./Spinner";
@@ -11,25 +11,6 @@ interface PhraseCard {
 interface PhraseCardsProps {
     card?: PhraseCard[];
 }
-
-const mockData = [
-    {
-        text: "Death is just the beginning",
-        translation: "Esta frase no es tan buena",
-    },
-    {
-        text: "no es tan buena cómo la última",
-        translation: " is not as good as the last",
-    },
-    {
-        text: "Esta frase no es tan buena",
-        translation: "Esta frase no es tan buena",
-    },
-    {
-        text: "no es tan buena cómo la última",
-        translation: " is not as good as the last one",
-    },
-];
 
 const PhraseCards: React.FC<PhraseCardsProps> = () => {
     const [hideTranslation, setHidetranslation] = useState(true);
