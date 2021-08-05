@@ -12,8 +12,18 @@ export class PhrasesResolver {
 
         // Imports the Google Cloud client library.
         // const { Storage } = require("@google-cloud/storage");
+        const now = new Date().getTime();
 
-        return Phrases.find();
+        let phrases = await Phrases.find();
+
+        phrases = phrases.filter((phrase) => {
+            const practisedTime = new Date(phrase.practisedAt).getTime();
+
+            if ((now - practisedTime) / 86400000 > phrase.streak) return true;
+            return false;
+        });
+
+        return phrases;
 
         /*
         const startAt = new Date();
