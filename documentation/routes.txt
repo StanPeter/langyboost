@@ -1,0 +1,39 @@
+Ribbon / Navigation bar:
+
+index           -> homePage
+destinations    -> list of all destinations(europe)
+
+
+
+
+Authentication:
+
+MODAL   - login with google?
+signIn          
+signOut
+lostPassword
+
+
+
+User:
+
+user            -> user page with his information (+ credits)
+history         -> user history of flights
+
+
+
+Other routes:
+
+search          -> search for flights
+policy          
+about           -> typical about stuff
+destination     -> Detail of a destination
+
+
+
+
+Non route stuff / info:
+
+rooms           -> api to booking.com
+blog            -> link to my blog travelling site
+Currency + Lang logic same as inside icis + manage through redux state?
