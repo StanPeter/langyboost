@@ -1,0 +1,80 @@
+{
+	users: {
+		ID
+		name
+		surname
+		email
+		password
+		sex
+		birthday
+		phone number
+		address
+		nationality
+		membership
+		membership until
+		payment number
+		payment type	
+		paymentName
+		paymentValidTill
+		paymentSecretCode
+		isSuperuser
+		profileImage
+		userProgress: {
+			ID,
+			targetLang
+			sourceLang
+			level
+		},
+		usersPhrases: {
+			ID
+			phrase
+			translation
+			targetLang
+			sourceLang
+			level
+			pronunciation?
+			frequencyLevel
+			lastPracticedAt
+		}
+	},
+	phrases: {
+		ID
+		phrase
+		translation
+		targetLang
+		sourceLang
+		level
+		pronunciation?
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
