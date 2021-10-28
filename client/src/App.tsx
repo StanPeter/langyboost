@@ -11,36 +11,37 @@ import Spinner from "components/Spinner";
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetch("http://localhost:4000/refresh_token", {
-            method: "POST",
-            credentials: "include",
-        }).then(async (data) => {
-            const { accessToken } = await data.json();
+    // useEffect(() => {
+    //     fetch("http://localhost:4000/refresh_token", {
+    //         method: "POST",
+    //         credentials: "include",
+    //     }).then(async (data) => {
+    //         const { accessToken } = await data.json();
 
-            if (accessToken) {
-                setAccessToken(accessToken);
-            }
+    //         if (accessToken) {
+    //             setAccessToken(accessToken);
+    //         }
 
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000);
-        });
-    }, []);
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 1000);
+    //     });
+    // }, []);
 
-    if (loading) return <Spinner />;
+    // if (loading) return <Spinner />;
 
     return (
         <BrowserRouter>
-            <div className="appWrapper">
+            {/* <div className="appWrapper">
                 <Navbar />
                 <div className="bodyWrapper">
                     <Routes />
                 </div>
                 <Footer />
-            </div>
+            </div> */}
+            <Routes />
         </BrowserRouter>
     );
 };

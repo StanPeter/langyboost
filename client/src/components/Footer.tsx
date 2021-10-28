@@ -6,10 +6,15 @@ import {
     FaLinkedinIn,
     FaTwitter,
 } from "react-icons/fa";
+import { useHistory } from "react-router";
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
+    const history = useHistory();
+
+    if (history.location.pathname === "/") return null;
+
     return (
         <footer className="footer">
             <ul className="social-network social-circle">
@@ -69,7 +74,10 @@ const Footer: React.FC<FooterProps> = () => {
                     </a>
                 </li>
             </ul>
-            <p className="copyright"><span className="link">Copyright</span> 1999-2021 by Refsnes Data. All Rights Reserved.</p>
+            <p className="copyright">
+                <span className="link">Copyright</span> 1999-2021 by Refsnes
+                Data. All Rights Reserved.
+            </p>
         </footer>
     );
 };

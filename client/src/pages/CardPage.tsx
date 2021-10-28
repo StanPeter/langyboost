@@ -3,7 +3,7 @@ import React from "react";
 interface CardPageProps {}
 
 const CardPage: React.FC<CardPageProps> = ({}) => {
-    return <div>{}</div>;
+    return <div>{'CardPage'}</div>;
 };
 
 export default CardPage;

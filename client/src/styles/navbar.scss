@@ -2,16 +2,16 @@
 
 /* navbar */
 .navbar {
-    margin: 1rem auto 6rem auto;
+    margin: 2rem auto 6rem auto;
     height: 3rem;
-    background-color: #4B86B4;
+    background-color: var.$main-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #dde5e6;
+    color: var.$light-shades;
     font-size: 1.2rem;
     position: relative;
-    border-radius: 40px;
+    border-radius: 4rem;
     width: 92%;
 }
 
@@ -66,25 +66,20 @@
 
 .profile-icon {
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    width: 2rem;
+    height: 2rem;
 }
 
 .profile-name {
     font-size: 1rem !important;
 }
 
-.fire-icon {
-    color: #bb6f41;
-    font-size: 1.5rem;
-}
-
 .logo {
     margin: 0 3rem 0 1rem;
     z-index: 2;
     padding: 0.6rem;
-    border: 1px solid white;
-    background-color: white;
+    border: 1px solid var.$light-shades;
+    background-color: var.$light-shades;
     border-radius: 100%;
     color: #2A4D69;
     height: 35px;

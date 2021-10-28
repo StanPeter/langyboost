@@ -1,9 +1,9 @@
 import React from "react";
 
-interface PeronalSettingsPageProps {}
+interface PersonalSettingsPageProps {}
 
-const PeronalSettingsPage: React.FC<PeronalSettingsPageProps> = ({}) => {
-    return <div>{}</div>;
+const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({}) => {
+    return <div>{'PersonalSettingsPage'}</div>;
 };
 
-export default PeronalSettingsPage;
+export default PersonalSettingsPage;

@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
 
     const authButtons = (hide: boolean) => {
-        console.log(data, 'data');
+        console.log(data, "data");
 
         if (data?.getUser)
             return (
@@ -78,12 +78,14 @@ const Navbar: React.FC<NavbarProps> = () => {
         return null;
     };
 
+    if (history.location.pathname === "/") return null;
+
     return (
         <nav
             className="navbar"
             style={{ marginBottom: navExpanded ? "20rem" : undefined }}
         >
-            <div className="logo">
+            <div className="logo" onClick={() => history.push("/")}>
                 <CgCrown />
                 Langyboost
             </div>
@@ -91,7 +93,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <li
                     onClick={() => {
                         if (navExpanded) hamburgerClickHandler();
-                        history.push("/");
+                        history.push("/courses");
                     }}
                     className="link"
                 >
@@ -100,26 +102,36 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <li
                     onClick={() => {
                         if (navExpanded) hamburgerClickHandler();
-                        history.push("/admin");
+                        history.push("/articles");
                     }}
                     className="link"
                 >
                     Articles
                 </li>
-                <li className="link">Resources</li>
+                <li onClick={() => history.push("/resources")} className="link">
+                    Resources
+                </li>
                 {authButtons(true)}
             </ul>
             <ul className="navbar-links right">
-                <li >
+                <li>
                     <p>2</p>
-                    <AiOutlineFire className="fire-icon link" />
+                    <img
+                        className="fire-icon"
+                        alt="fireIcon"
+                        height="30"
+                        onClick={() => history.push("/cards/enDu")}
+                        width="30"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/FireIcon.svg/1501px-FireIcon.svg.png"
+                    />
                 </li>
                 <li>
                     <p>5</p>
                     <img
                         className="profile-icon"
-                        alt="sweden"
+                        alt="swedenIcon"
                         height="30"
+                        onClick={() => history.push("/course/8")}
                         width="30"
                         src="https://static.posters.cz/image/750/placky-odznaky/flag-sweden-i2430.jpg"
                     />
@@ -131,12 +143,16 @@ const Navbar: React.FC<NavbarProps> = () => {
                         alt="girl"
                         height="30"
                         width="30"
-                        src="https://i.pinimg.com/originals/f4/89/fb/f489fb6beea688dfdc6bb2181b04f12a.jpg"
+                        onClick={() => history.push("/settings")}
+                        src="https://i.pinimg.com/originals/fb/b9/63/fbb963ea21a040904d5331af46c70f5e.jpg"
                     />
                 </li>
                 <hr style={{ height: "30px" }} />
-                <li >
-                    <FiSettings className="settings-icon link"/>
+                <li>
+                    <FiSettings
+                        onClick={() => history.push("/settings")}
+                        className="settings-icon link"
+                    />
                 </li>
                 <hr style={{ height: "30px" }} />
                 {authButtons(false)}

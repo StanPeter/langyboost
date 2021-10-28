@@ -3,8 +3,8 @@
 .footer {
     height: 100px;
     width: 100%;
-    color: white;
-    background-color: #4b86b4;
+    color: var.$light-shades;
+    background-color: var.$main-color;
     padding: 20px 0;
     display: flex;
     flex-flow: column;
@@ -63,7 +63,7 @@
         background-color: #33ccff;
     }
     a.icoGithub:hover {
-        background-color: #141313;
+        background-color: #161b22;
     }
     a.icoLinkedin:hover {
         background-color: #007bb7;

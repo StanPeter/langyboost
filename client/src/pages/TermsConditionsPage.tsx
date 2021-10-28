@@ -3,7 +3,7 @@ import React from "react";
 interface TermsConditionsPageProps {}
 
 const TermsConditionsPage: React.FC<TermsConditionsPageProps> = ({}) => {
-    return <div>{}</div>;
+    return <div>{'TermsConditionsPage'}</div>;
 };
 
 export default TermsConditionsPage;
