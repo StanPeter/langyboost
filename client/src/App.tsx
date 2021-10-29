@@ -1,12 +1,12 @@
-import Navbar from "components/Navbar";
+// import Navbar from "components/Navbar";
 import Routes from "components/Routes";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { setAccessToken } from "utils/getToken";
+// import { setAccessToken } from "utils/getToken";
 // import "styles/main.scss";
 import "styles/style.scss";
-import Footer from "components/Footer";
-import Spinner from "components/Spinner";
+// import Footer from "components/Footer";
+// import Spinner from "components/Spinner";
 
 interface AppProps {}
 

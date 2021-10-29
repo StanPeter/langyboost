@@ -1,4 +1,4 @@
-import Home from "pages/Home";
+// import Home from "pages/Home";
 import Register from "pages/Register";
 import React from "react";
 import { Route, Switch } from "react-router-dom";

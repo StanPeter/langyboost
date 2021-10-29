@@ -9,12 +9,65 @@
 // }
 
 .landing-page {
+    position: relative;
+    height: 100vh;
     width: 100%;
-    height: 100%;
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // width: 100%;
+    // height: 100%;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // background-image: url("https://previews.123rf.com/images/dizanna/dizanna1606/dizanna160600147/57526755-thank-you-word-cloud-concept-background-in-many-languages.jpg");
+
+    // background-image: url("https://previews.123rf.com/images/dizanna/dizanna1606/dizanna160600147/57526755-thank-you-word-cloud-concept-background-in-many-languages.jpg");
+    // background-color: rgba(0, 0, 0, 0.5) !important;
+    // background-blend-mode: lighten;
+}
+
+.landing-page {
+    // width: 200px;
+    // height: 200px;
+    // display: block;
+    // position: relative;
+}
+
+.landing-page::after {
+    content: "";
+    background-image: url("https://previews.123rf.com/images/dizanna/dizanna1606/dizanna160600147/57526755-thank-you-word-cloud-concept-background-in-many-languages.jpg");
+    opacity: 0.6;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
+
+// .landing-page::before {
+//     content: "";
+//     background-image: url("https://previews.123rf.com/images/dizanna/dizanna1606/dizanna160600147/57526755-thank-you-word-cloud-concept-background-in-many-languages.jpg");
+//     background-size: cover;
+//     position: absolute;
+//     top: 0px;
+//     right: 0px;
+//     bottom: 0px;
+//     left: 0px;
+//     opacity: 0.45;
+// }
+
+// .landing-page::before {
+//     content: "";
+//     position: absolute;
+//     top: 0px;
+//     right: 0px;
+//     bottom: 0px;
+//     left: 0px;
+//     background-color: rgba(0,0,0,0.55);
+// }
 
 .sign-form {
     // width: 40%;
@@ -60,8 +113,8 @@
     width: 603px;
     height: 159px;
     align-items: center;
-    background-color: var.$main-color;
-    color: var.$light-shades;
+    background-color: #41b3a3;
+    color: #fafbff;
     border-radius: 25px 25px 0 0;
 
     & p {

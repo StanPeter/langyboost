@@ -1,9 +1,5 @@
-import Footer from "components/Footer";
-import Navbar from "components/Navbar";
 import React, {
-    FocusEventHandler,
     FormEvent,
-    FormEventHandler,
     useEffect,
     useState,
 } from "react";

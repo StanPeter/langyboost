@@ -5,7 +5,6 @@ import { setAccessToken } from "utils/getToken";
 import { CgCrown } from "react-icons/cg";
 import { BiLogIn } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
-import { AiOutlineFire } from "react-icons/ai";
 
 interface NavbarProps {}
 
