@@ -24,8 +24,6 @@ const AuthPage: React.FC<AuthPageProps> = ({}) => {
         }, 1000);
     }, []);
 
-    const style = {};
-
     const buttonStyleLeft = {
         borderTopLeftRadius: "25px",
     };

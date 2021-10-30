@@ -13,6 +13,7 @@ export const particleConfig = {
         shape: {
             type: "images",
             image: [
+                //for some reason takes the root directory instead of src -> created public/images folder
                 {
                     src: "/images/q.png",
                 },
