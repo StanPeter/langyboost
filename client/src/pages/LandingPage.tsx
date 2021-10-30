@@ -2,8 +2,8 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import "styles/landingPage.scss";
 import ParticleBackground from "components/ParticleBackground";
+import { useHistory } from "react-router";
 
 interface LandingPageProps {}
 
@@ -11,6 +11,8 @@ const LandingPage: React.FC<LandingPageProps> = ({}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+
+    const history = useHistory();
 
     useEffect(() => {
         console.log("effected");
@@ -24,6 +26,8 @@ const LandingPage: React.FC<LandingPageProps> = ({}) => {
 
     const onClickHandler = () => {
         console.log("clicked");
+
+        history.push("/courses");
     };
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {

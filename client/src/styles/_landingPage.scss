@@ -6,7 +6,7 @@
 //     transition: background-color 5000s ease-in-out 0s;
 // }
 
-@import "./_variables.scss";
+// @import "./_variables.scss";
 
 $si: 100%;
 
@@ -87,7 +87,7 @@ $si: 100%;
     z-index: 1;
     margin: 4.5rem auto 0 auto;
     width: 605px;
-    height: 610px;
+    // height: 610px;
     background: #fafbff;
     border: 2px solid #85cdca;
     // box-sizing: border-box;
@@ -195,6 +195,7 @@ $si: 100%;
 .form-icons {
     display: flex;
     justify-content: center;
+    margin-bottom: 1.8rem;
 }
 
 .form-icon {

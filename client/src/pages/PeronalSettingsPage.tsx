@@ -1,9 +1,19 @@
 import React from "react";
+import Footer from "components/Footer";
+import Navbar from "components/Navbar";
 
-interface PersonalSettingsPageProps {}
+interface PeronalSettingsPageProps {}
 
-const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({}) => {
-    return <div>{'PersonalSettingsPage'}</div>;
+const PeronalSettingsPage: React.FC<PeronalSettingsPageProps> = ({}) => {
+    return (
+        <div className="appWrapper">
+            <Navbar />
+            <div className="bodyWrapper">
+                <div className="PeronalSettingsPage">PeronalSettingsPage</div>
+            </div>
+            <Footer />
+        </div>
+    );
 };
 
-export default PersonalSettingsPage;
+export default PeronalSettingsPage;

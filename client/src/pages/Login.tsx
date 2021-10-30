@@ -20,7 +20,6 @@ import {
 import React, { FormEvent, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { setAccessToken } from "utils/getToken";
-import "styles/main.scss";
 import { validate } from "pages/Register";
 
 const useStyles = makeStyles((theme) => ({

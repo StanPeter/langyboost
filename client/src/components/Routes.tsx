@@ -13,6 +13,7 @@ import CourseDetailPage from "pages/CourseDetailPage";
 import ArticleDetailPage from "pages/ArticleDetailPage";
 import CardPage from "pages/CardPage";
 import AuthPage from "pages/AuthPage";
+import TermsConditionsPage from "pages/TermsConditionsPage";
 
 interface RoutesProps {}
 
@@ -32,6 +33,7 @@ const Routes: React.FC<RoutesProps> = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/admin" component={AdminHome} />
             <Route exact path="/auth" component={AuthPage} />
+            <Route exact path="/termsConditions" component={TermsConditionsPage} />
         </Switch>
     );
 };

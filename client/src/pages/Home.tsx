@@ -1,7 +1,6 @@
 import PhraseCards from "components/PhraseCards";
 import { useHelloQuery } from "generated/graphql";
 import React from "react";
-import "styles/main.scss";
 
 interface HomeProps {}
 

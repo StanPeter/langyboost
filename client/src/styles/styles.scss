@@ -9,7 +9,10 @@
 // @use "./pallette";
 // @use "./landingPage";
 
+//all names must be underscored, otherwise there would be duplication of all styles
+
 @import "./variables";
+
 @import "./global";
 @import "./navbar";
 @import "./phraseCards";

@@ -75,8 +75,13 @@ const Footer: React.FC<FooterProps> = () => {
                 </li>
             </ul>
             <p className="copyright">
-                <span className="link">Copyright</span> 1999-2021 by Refsnes
-                Data. All Rights Reserved.
+                <span
+                    className="link"
+                    onClick={() => history.push("/termsConditions")}
+                >
+                    Copyright
+                </span>{" "}
+                1999-2021 by Refsnes Data. All Rights Reserved.
             </p>
         </footer>
     );

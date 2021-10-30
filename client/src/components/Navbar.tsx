@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     onClick={() => {
                         //if open then close hamburger
                         if (navExpanded) hamburgerClickHandler();
-                        history.push("/login");
+                        history.push("/auth");
                     }}
                 >
                     <BiLogIn className="login-icon link" />

@@ -20,7 +20,6 @@ import {
 } from "generated/graphql";
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router";
-import "styles/main.scss";
 import { setAccessToken } from "utils/getToken";
 
 const useStyles = makeStyles((theme) => ({
