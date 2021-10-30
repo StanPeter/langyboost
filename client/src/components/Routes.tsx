@@ -12,6 +12,7 @@ import PersonalSettingsPage from "pages/PeronalSettingsPage";
 import CourseDetailPage from "pages/CourseDetailPage";
 import ArticleDetailPage from "pages/ArticleDetailPage";
 import CardPage from "pages/CardPage";
+import AuthPage from "pages/AuthPage";
 
 interface RoutesProps {}
 
@@ -30,6 +31,7 @@ const Routes: React.FC<RoutesProps> = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/admin" component={AdminHome} />
+            <Route exact path="/auth" component={AuthPage} />
         </Switch>
     );
 };

@@ -1,4 +1,3 @@
-@use './vars' as var;
 @import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
 
 //PhraseCards.tsx
@@ -23,7 +22,7 @@
     border: 1px solid #2a4d69;
     border-bottom-width: 3px;
     border-left-width: 3px;
-    box-shadow: 0px 5px 5px rgb(0 0 0 / 25%);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     z-index: 3;
     background: linear-gradient(30deg, #e7eff6 4%, #bee3ff 120%);

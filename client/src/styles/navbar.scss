@@ -1,14 +1,12 @@
-@use './vars' as var;
-
 /* navbar */
 .navbar {
     margin: 2rem auto 6rem auto;
     height: 3rem;
-    background-color: var.$main-color;
+    background-color: $main-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var.$light-shades;
+    color: $light-shades;
     font-size: 1.2rem;
     position: relative;
     border-radius: 4rem;
@@ -78,10 +76,10 @@
     margin: 0 3rem 0 1rem;
     z-index: 2;
     padding: 0.6rem;
-    border: 1px solid var.$light-shades;
-    background-color: var.$light-shades;
+    border: 1px solid $light-shades;
+    background-color: $light-shades;
     border-radius: 100%;
-    color: #2A4D69;
+    color: #2a4d69;
     height: 35px;
     display: flex;
     width: 170px;
@@ -93,7 +91,6 @@
     // left: 0%;
 
     &:hover {
-
     }
 }
 
@@ -106,7 +103,7 @@
     /* navbar media */
     .navbar-links {
         /* position: fixed; */
-        background-color: var.$main-color;
+        background-color: $main-color;
         // height: 32vh;
         height: 18rem;
         width: 100%;
@@ -169,7 +166,7 @@
     /* hamburger media */
     .line {
         width: 2rem;
-        background-color: var.$light-shades;
+        background-color: $light-shades;
         height: 0.2rem;
         margin: 5px;
     }

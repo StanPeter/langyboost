@@ -1,11 +1,9 @@
-import React, {
-    FormEvent,
-    useEffect,
-    useState,
-} from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
+import "styles/landingPage.scss";
+import ParticleBackground from "components/ParticleBackground";
 
 interface LandingPageProps {}
 
@@ -36,6 +34,7 @@ const LandingPage: React.FC<LandingPageProps> = ({}) => {
 
     return (
         <div className="landing-page">
+            <ParticleBackground />
             <div className="sign-form">
                 <div className="slider">
                     <FiArrowLeft className="slider-arrow" />

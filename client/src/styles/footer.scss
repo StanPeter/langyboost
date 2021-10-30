@@ -1,10 +1,8 @@
-@use './vars' as var;
-
 .footer {
     height: 100px;
     width: 100%;
-    color: var.$light-shades;
-    background-color: var.$main-color;
+    color: $light-shades;
+    background-color: $main-color;
     padding: 20px 0;
     display: flex;
     flex-flow: column;
