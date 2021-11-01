@@ -85,6 +85,20 @@ body {
     font-weight: 900;
 }
 
+.header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 40px;
+    /* or 143% */
+
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #203a4f;
+}
+
 @media screen and (max-width: 756px) {
     html {
         font-size: 14px !important;

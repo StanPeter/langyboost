@@ -24,6 +24,7 @@
     "apollo-link-token-refresh": "^0.3.2",
     "graphql": "^15.7.2",
     "jwt-decode": "^3.1.2",
+    "material-ui-flags": "^1.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",

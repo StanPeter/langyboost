@@ -20,7 +20,7 @@ const CardPage: React.FC<CardPageProps> = ({}) => {
     const [hideTranslation, setHidetranslation] = useState(true);
     const [animationChangeCard, setAnimationChangeCard] = useState(false);
     const [cardIndex, setCardIndex] = useState(0);
-    const [noMorePhrases, setNoMorePhrases] = useState(false);
+    // const [noMorePhrases, setNoMorePhrases] = useState(false);
 
     // const { data, error } = useGetPhrasesQuery({});
 
@@ -68,7 +68,8 @@ const CardPage: React.FC<CardPageProps> = ({}) => {
                         <PhraseCardsControls
                             setHidetranslation={setHidetranslation}
                             setAnimationChangeCard={setAnimationChangeCard}
-                            noMorePhrases={noMorePhrases}
+                            // noMorePhrases={noMorePhrases}
+                            noMorePhrases={false}
                         />
                     </div>
                     {/* 
