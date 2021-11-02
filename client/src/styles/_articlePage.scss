@@ -1,0 +1,80 @@
+.custom-multiselect {
+    &::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}
+
+.custom-multiselect-dropdown {
+    display: flex;
+    flex-direction: column;
+    float: right;
+
+    & li {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin: 0 1rem;
+
+        width: 180px;
+        float: right;
+        margin-right: 1rem;
+    }
+
+    & p {
+        padding: 5px;
+    }
+
+    & img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+.custom-multiselect-value {
+    display: flex;
+    align-content: center;
+    justify-content: end;
+
+    & label {
+        // margin-right: 2rem;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 40px;
+        /* or 200% */
+
+        text-align: center;
+        letter-spacing: 0.05em;
+
+        color: #203a4f;
+
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.multiselect-value {
+    display: flex;
+    width: 180px;
+    height: 35px;
+
+    background: #daffe9;
+    border: 2px solid #85cdca;
+    border-radius: 5px;
+
+    margin: 1rem;
+
+    & img {
+        width: 30px;
+        height: 26px;
+    }
+
+    & div {
+        padding: 5px 6px;
+    }
+}
