@@ -28,27 +28,56 @@ const Multiselect: React.FC<MultiselectProps> = ({ data }) => {
         ]);
     }, []);
 
+    const addItemHandler = (itemVal: string) => {
+        const typeOfVal = itemVal.slice(0, 3);
+        const realVal = itemVal.slice(3);
+
+        if (realVal in multiselectVal) return;
+
+        setMultiselectVal([
+            ...multiselectVal,
+            {
+                isImg: typeOfVal === "img",
+                val: realVal,
+            },
+        ]);
+    };
+
+    const deleteItemHandler = (itemVal: string) => {
+        setMultiselectVal(multiselectVal.filter((val) => val.val !== itemVal));
+    };
+
     return (
         <div className="custom-multiselect">
             <div className="custom-multiselect-value">
                 <label htmlFor="">Filter by language</label>
                 <div className="multiselect-value">
-                    {multiselectVal.map((el) => (
-                        <div onClick={(d) => console.log(d.target)}>
+                    {multiselectVal.map((el, i) => (
+                        <div
+                            key={i}
+                            id={el.val}
+                            onClick={(e) =>
+                                deleteItemHandler(e.currentTarget.id)
+                            }
+                        >
                             {el.isImg ? <img src={el.val} alt="" /> : el.val}
                         </div>
                     ))}
                 </div>
             </div>
             <div className="custom-multiselect-dropdown">
-                {data.map((el) => {
+                {data.map((el, i) => {
                     if (!el.text && !el.imgSrc) {
                         console.log("No parameter for multiselect was passed!");
                         return null;
                     }
 
                     return (
-                        <li onClick={(d) => console.log(d.target)}>
+                        <li
+                            id={el.imgSrc ? "img" + el.imgSrc : "txt" + el.text}
+                            key={i}
+                            onClick={(d) => addItemHandler(d.currentTarget.id)}
+                        >
                             {el.imgSrc ? <img src={el.imgSrc} alt="" /> : null}
                             {el.text ? <p>{el.text}</p> : null}
                         </li>
