@@ -103,6 +103,12 @@
 
         animation: scaleZ 300ms ease-in-out forwards;
         transform-origin: top center;
+
+        border: 1px solid #85cdca;
+        // border-top-color: rgb(133, 205, 202);
+        // border-top-style: solid;
+        // border-top-width: 1px;
+        border-top: unset !important;
         // @for $i from 1 through 5 {
         //     &:nth-child(#{$i}) {
         //         // transform-origin: top center;

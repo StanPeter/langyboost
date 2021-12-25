@@ -1,6 +1,7 @@
 import Footer from "components/Footer";
 import Navbar from "components/Navbar";
 import PhraseCardsControls from "components/PhraseCardsControls";
+import Tooltip from "components/Tooltip";
 import React, { useState } from "react";
 // import { useGetPhrasesQuery } from "generated/graphql";
 // import Spinner from "./Spinner";
@@ -39,13 +40,12 @@ const CardPage: React.FC<CardPageProps> = ({}) => {
     return (
         <div className="appWrapper">
             <Navbar />
-
             <div className="bodyWrapper">
-                <div className="CardPage">
-                    {/* <div className="header">
-                        <h2>Card 7 of 50</h2>
-                    </div> */}
-
+                <div className="card-page">
+                    <div style={{ display: "flex" }}>
+                        <h2 className="header">Card 7 of 50</h2>
+                        <Tooltip />
+                    </div>
                     <div
                         className={`card ${
                             animationChangeCard ? "animation-change-card" : ""

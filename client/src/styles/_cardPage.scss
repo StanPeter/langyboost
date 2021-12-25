@@ -9,6 +9,12 @@
     position: relative;
 }
 
+.card-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .card {
     grid-template-rows: 20px 50px 1fr 50px;
     transition: all 0.1s;

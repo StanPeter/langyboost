@@ -31,8 +31,8 @@ $si: 100%;
 }
 
 // .canvas {
-    // width: 1px;
-    // height: 1px;
+// width: 1px;
+// height: 1px;
 // }
 
 .particles {
@@ -149,6 +149,22 @@ $si: 100%;
     width: 2.5rem;
     height: 2.5rem;
     // box-sizing: border-box;
+}
+
+/* later on optimaze, delete switcher class and improve , also move it into general */
+.btn-custom {
+    width: 50%;
+    height: 58px;
+    // background: #41b3a3;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 0.07em;
+    color: #fafbff;
+    border: 1px solid #85cdca;
 }
 
 .switcher {
