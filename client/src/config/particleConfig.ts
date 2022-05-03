@@ -1,4 +1,4 @@
-export const particleConfig = {
+export const particleConfig: object = {
     particles: {
         number: {
             value: 60,
@@ -99,19 +99,6 @@ export const particleConfig = {
                     src: "/images/c.png",
                 },
             ],
-            // type: "circle",
-            // stroke: {
-            //     width: 0,
-            //     color: "#000000",
-            // },
-            // polygon: {
-            //     nb_sides: 5,
-            // },
-            // image: {
-            //     src: "img/github.svg",
-            //     width: 100,
-            //     height: 100,
-            // },
         },
         opacity: {
             value: 0.6,
@@ -180,7 +167,6 @@ export const particleConfig = {
                 size: 20,
                 duration: 1.5,
                 opacity: 0.990734199007641,
-                speed: 3,
             },
             repulse: {
                 distance: 150,

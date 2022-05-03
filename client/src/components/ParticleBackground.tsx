@@ -1,46 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Particles from "react-particles-js";
+import React from "react";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 import { particleConfig } from "config/particleConfig";
 
 interface ParticleBackgroundProps {}
 
 const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
-    const [name, setName] = useState("");
+    const particlesInit = async (main: any) => {
+        console.log(main, " initializing");
 
-    useEffect(() => {
-        //for some reason needs to get reloaded -> which can be done by changing class e.g.
-        setTimeout(() => {
-            setName(" ");
-        }, 1000);
-    });
+        // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+        // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+        // starting from v2 you can add only the features you need reducing the bundle size
+        await loadFull(main);
+    };
 
-    // const param = {
-    //     particles: {
-    //         shape: {
-    //             type: "images",
-    //             image: [
-    //                 {
-    //                     src: "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
-    //                     height: 20,
-    //                     width: 20,
-    //                 },
-    //                 {
-    //                     src: "https://www.imagetheatre.cz/wp-content/uploads/bestofimage43.jpg",
-    //                     height: 20,
-    //                     width: 20,
-    //                 },
-    //             ],
-    //         },
-    //     },
-    // };
+    const particlesLoaded = async (container: any) => {
+        console.log(container, " Particle loaded");
+    };
 
     return (
         <Particles
+            id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options={particleConfig}
             className="particles"
-            //@ts-ignore
-            canvasClassName={name}
-            //@ts-ignore
-            params={particleConfig}
         />
     );
 };
