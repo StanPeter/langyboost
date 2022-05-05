@@ -1,0 +1,109 @@
+.coursesPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coursesSelect {
+    // -webkit-appearance: none;
+    outline: none;
+    background-color: #daffe9;
+    border: 2px solid #85cdca;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 180px;
+    height: 35px;
+    font-size: 20px;
+    text-align: left;
+    margin: 1rem;
+    padding-left: 12px;
+
+    & option {
+        // outline: none;
+        // appearance: none;
+        // -moz-appearance: none;
+        // -webkit-appearance: none;
+
+        background-color: #daffe9;
+        border: 2px solid #85cdca !important;
+    }
+}
+
+.coursesFilter {
+    display: flex;
+    // flex-direction: row;
+    align-items: center;
+    justify-content: end;
+}
+
+.coursesSelectThird {
+    z-index: 1;
+}
+
+.coursesSeparator {
+    width: 755.01px;
+    // height: 0px;
+    margin: 2rem 0;
+
+    border: 1px solid #85cdca;
+}
+
+.coursesBtn {
+    position: absolute;
+
+    & button {
+        background: #41b3a3;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        font-family: Roboto;
+        font-size: 16px;
+        line-height: 40px;
+        /* or 250% */
+        width: 177px;
+        height: 31px;
+        border: none;
+
+        letter-spacing: 0.1em;
+
+        color: #fafbff;
+
+        position: relative;
+        left: 200px;
+        top: 1px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.coursesFilters {
+    margin-top: 5rem;
+
+    & label {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 40px;
+        /* or 200% */
+
+        text-align: center;
+        letter-spacing: 0.05em;
+
+        color: #203a4f;
+
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@supports (-moz-appearance: none) {
+    select {
+        // -moz-appearance: none !important;
+        // background: transparent
+        //     url("data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==")
+        //     right center no-repeat !important;
+        // background-position: calc(100% - 5px) center !important;
+    }
+}

@@ -7,7 +7,7 @@ import {
     HttpLink,
     InMemoryCache,
 } from "@apollo/client";
-import App from "App";
+import App from "components/App";
 import { getAccessToken, setAccessToken } from "utils/getToken";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
 import jwtDecode from "jwt-decode";

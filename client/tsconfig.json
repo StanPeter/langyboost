@@ -29,7 +29,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "checkJs": false,
+    "checkJs": true,
   },
   "exclude": [
     "node_modules",

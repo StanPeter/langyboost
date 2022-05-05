@@ -1,19 +1,19 @@
 // import Home from "pages/Home";
-import Register from "pages/Register";
+import Register from "components/pages/AuthPage/Register";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import AdminHome from "pages/AdminHome";
-import Login from "pages/Login";
-import LandingPage from "pages/LandingPage";
-import CoursesPage from "pages/CoursesPage";
-import ArticlesPage from "pages/ArticlesPage";
-import ResourcesPage from "pages/ResourcesPage";
-import PersonalSettingsPage from "pages/PeronalSettingsPage";
-import CourseDetailPage from "pages/CourseDetailPage";
-import ArticleDetailPage from "pages/ArticleDetailPage";
-import CardPage from "pages/CardPage";
-import AuthPage from "pages/AuthPage";
-import TermsConditionsPage from "pages/TermsConditionsPage";
+import AdminHome from "components/pages/AdminHome/AdminHome";
+import Login from "components/pages/AuthPage/Login";
+import LandingPage from "components/pages/LandingPage/LandingPage";
+import CoursesPage from "components/pages/CoursesPage/CoursesPage";
+import ArticlesPage from "components/pages/ArticlesPage/ArticlesPage";
+import ResourcesPage from "components/pages/ResourcesPage/ResourcesPage";
+import PersonalSettingsPage from "components/pages/PeronalSettingsPage/PeronalSettingsPage";
+import CourseDetailPage from "components/pages/CourseDetailPage/CourseDetailPage";
+import ArticleDetailPage from "components/pages/ArticleDetailPage/ArticleDetailPage";
+import CardPage from "components/pages/CardPage/CardPage";
+import AuthPage from "components/pages/AuthPage/AuthPage";
+import TermsConditionsPage from "components/pages/TermsConditionsPage/TermsConditionsPage";
 
 interface RoutesProps {}
 

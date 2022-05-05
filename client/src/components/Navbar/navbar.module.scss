@@ -1,0 +1,184 @@
+@use "styles/style.scss" as var;
+
+/* navbar */
+.navbar {
+    margin: 2rem auto 6rem auto;
+    height: 3rem;
+    background-color: var.$main-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var.$light-shades;
+    font-size: 1.2rem;
+    position: relative;
+    border-radius: 4rem;
+    width: 92%;
+}
+
+.navbarLinks {
+    list-style: none;
+    margin: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    // width: 50%;
+
+    &.left {
+        justify-content: flex-start;
+        width: 50%;
+    }
+
+    &.right {
+        justify-content: flex-end;
+        width: 50%;
+
+        & li {
+            display: flex;
+            align-items: center;
+        }
+        & li:nth-child(2) {
+            padding: 0;
+        }
+        & li > p {
+            padding: 5px;
+            font-size: 1.2rem;
+        }
+    }
+
+    &.right li {
+        padding: 0 1.5rem;
+    }
+}
+
+.navbarLinks li {
+    padding: 0 1rem;
+    font-size: 1rem;
+}
+
+.loginIcon {
+    font-size: 1.7rem;
+}
+
+.settingsIcon {
+    font-size: 1.5rem;
+}
+
+.profileIcon {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.profileName {
+    font-size: 1rem !important;
+}
+
+.logo {
+    margin: 0 3rem 0 1rem;
+    z-index: 2;
+    padding: 0.6rem;
+    border: 1px solid var.$light-shades;
+    background-color: var.$light-shades;
+    border-radius: 100%;
+    color: #2a4d69;
+    height: 35px;
+    display: flex;
+    width: 170px;
+    min-width: 170px;
+    align-items: center;
+    transition: 0.3 ease-in;
+    // position: absolute;
+    // top: 33%;
+    // left: 0%;
+
+    &:hover {
+    }
+}
+
+.hideNav,
+.hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    /* navbar media */
+    .navbarLinks {
+        /* position: fixed; */
+        background-color: var.$main-color;
+        // height: 32vh;
+        height: 18rem;
+        width: 100%;
+        flex-direction: column;
+        margin: 0;
+        clip-path: circle(100px at 92% -34%);
+        -webkit-clip-path: circle(100px at 92% -34%);
+        transition: all 1.2s ease-out;
+        /* pointer-events: none; */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-top: 18rem;
+    }
+
+    .navbarLinks li {
+        opacity: 0;
+        padding: 2rem;
+        font-size: 1.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbarLinks.right {
+        display: none;
+    }
+
+    .hideNav {
+        display: block;
+    }
+
+    /* animations & transitions */
+    .navbarLinks.open {
+        clip-path: circle(1500px at 90% -10%);
+        -webkit-clip-path: circle(1500px at 90% -10%);
+        /* pointer-events: all; */
+    }
+
+    .navLinkTransition:nth-child(1) {
+        transition: all 0.5s ease 0.2s;
+    }
+
+    .navLinkTransition:nth-child(2) {
+        transition: all 0.5s ease 0.4s;
+    }
+
+    .navLinkTransition:nth-child(3) {
+        transition: all 0.5s ease 0.6s;
+    }
+
+    .navbarLinks li.fade {
+        opacity: 0.7;
+    }
+
+    .navbarLinks li.fade:hover {
+        opacity: 1;
+    }
+
+    /* hamburger media */
+    .line {
+        width: 2rem;
+        background-color: var.$light-shades;
+        height: 0.2rem;
+        margin: 5px;
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 25%;
+        cursor: pointer;
+        z-index: 2;
+    }
+}
