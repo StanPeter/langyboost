@@ -2,11 +2,15 @@ import Footer from "components/Footer/Footer";
 import Navbar from "components/Navbar/Navbar";
 import React from "react";
 import styles from './cousesPage.module.scss'
-import globalStyles from "styles/style.scss";
+import globalStyles from "styles/style.module.scss";
 
 interface CoursesPageProps {}
 
 const CoursesPage: React.FC<CoursesPageProps> = ({}) => {
+    console.log(globalStyles.appWrapper, ' app wrapper');
+    console.log(globalStyles, ' app wrapper');
+    console.log(styles.coursesFilter, ' app wrapper 3333');
+
     return (
         <div className={globalStyles.appWrapper}>
             <Navbar />

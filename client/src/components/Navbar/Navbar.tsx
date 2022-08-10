@@ -6,7 +6,7 @@ import { CgCrown } from "react-icons/cg";
 import { BiLogIn } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import styles from "./navbar.module.scss";
-import globalStyles from "styles/style.scss";
+import globalStyles from "styles/style.module.scss";
 
 interface NavbarProps {}
 

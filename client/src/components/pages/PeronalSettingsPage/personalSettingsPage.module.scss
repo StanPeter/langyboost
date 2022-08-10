@@ -36,6 +36,26 @@
     display: flex;
     width: 100%;
     margin-bottom: 5rem;
+
+    & button {
+        background-color: rgb(65, 179, 163);
+        color: rgb(250, 251, 255);
+        width: 50%;
+        height: 3rem;
+        margin: 0;
+        padding: 0;
+        text-transform: none;
+    }
+
+    & button:first-of-type {
+        background: #41b3a3;
+        border-radius: 25px 0px 0px 0px;
+    }
+
+    & button:last-of-type {
+        background: #fbfbfb;
+        border-radius: 0px 25px 0px 0px;
+    }
 }
 
 .settingsImage {

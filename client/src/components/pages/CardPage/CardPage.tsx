@@ -4,7 +4,7 @@ import PhraseCardsControls from "components/global/PhraseCardsControls/PhraseCar
 import Tooltip from "components/ui/Tooltip/Tooltip";
 import React, { useState } from "react";
 import styles from "./cardPage.module.scss";
-import globalStyles from "styles/style.scss";
+import globalStyles from "styles/style.module.scss";
 // import { useGetPhrasesQuery } from "generated/graphql";
 // import Spinner from "./Spinner";
 

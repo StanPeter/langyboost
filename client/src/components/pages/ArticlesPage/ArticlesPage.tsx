@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "components/Footer/Footer";
 import Navbar from "components/Navbar/Navbar";
 import Multiselect from "components/ui/Multiselect/Multiselect";
-import globalStyles from "styles/style.scss";
+import globalStyles from "styles/style.module.scss";
 import styles from "./articlesPage.module.scss";
 
 interface ArticlesPageProps {}

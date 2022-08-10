@@ -93,14 +93,14 @@ body {
 
 .bodyWrapper {
     display: flex;
-    background-color: red;
+    // background-color: red;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     padding-bottom: 15rem;
     margin-top: 7%;
-    // width: 80%;
-    // margin: 6% auto 0;
+    width: 80%;
+    margin: 6% auto 0;
 }
 
 .contentWrapper {

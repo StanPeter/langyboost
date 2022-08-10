@@ -4,7 +4,7 @@ import Navbar from "components/Navbar/Navbar";
 import Button from "components/ui/Button/Button";
 import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";
-import globalStyles from "styles/style.scss";
+import globalStyles from "styles/style.module.scss";
 
 interface PeronalSettingsPageProps {}
 

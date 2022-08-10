@@ -15,88 +15,88 @@ export const particleConfig: object = {
             image: [
                 //for some reason takes the root directory instead of src -> created public/images folder
                 {
-                    src: "/images/q.png",
+                    src: "/images/particles/q.png",
                 },
                 {
-                    src: "/images/w.png",
+                    src: "/images/particles/w.png",
                 },
                 {
-                    src: "/images/e.png",
+                    src: "/images/particles/e.png",
                 },
                 {
-                    src: "/images/r.png",
+                    src: "/images/particles/r.png",
                 },
                 {
-                    src: "/images/t.png",
+                    src: "/images/particles/t.png",
                 },
                 {
-                    src: "/images/y.png",
+                    src: "/images/particles/y.png",
                 },
                 {
-                    src: "/images/u.png",
+                    src: "/images/particles/u.png",
                 },
                 {
-                    src: "/images/i.png",
+                    src: "/images/particles/i.png",
                 },
                 {
-                    src: "/images/o.png",
+                    src: "/images/particles/o.png",
                 },
                 {
-                    src: "/images/p.png",
+                    src: "/images/particles/p.png",
                 },
                 {
-                    src: "/images/a.png",
+                    src: "/images/particles/a.png",
                 },
                 {
-                    src: "/images/s.png",
+                    src: "/images/particles/s.png",
                 },
                 {
-                    src: "/images/d.png",
+                    src: "/images/particles/d.png",
                 },
                 {
-                    src: "/images/f.png",
+                    src: "/images/particles/f.png",
                 },
                 {
-                    src: "/images/g.png",
+                    src: "/images/particles/g.png",
                 },
                 {
-                    src: "/images/h.png",
+                    src: "/images/particles/h.png",
                 },
                 {
-                    src: "/images/j.png",
+                    src: "/images/particles/j.png",
                 },
                 {
-                    src: "/images/k.png",
+                    src: "/images/particles/k.png",
                 },
                 {
-                    src: "/images/l.png",
+                    src: "/images/particles/l.png",
                 },
                 {
-                    src: "/images/z.png",
+                    src: "/images/particles/z.png",
                 },
                 {
-                    src: "/images/x.png",
+                    src: "/images/particles/x.png",
                 },
                 {
-                    src: "/images/c.png",
+                    src: "/images/particles/c.png",
                 },
                 {
-                    src: "/images/v.png",
+                    src: "/images/particles/v.png",
                 },
                 {
-                    src: "/images/b.png",
+                    src: "/images/particles/b.png",
                 },
                 {
-                    src: "/images/n.png",
+                    src: "/images/particles/n.png",
                 },
                 {
-                    src: "/images/m.png",
+                    src: "/images/particles/m.png",
                 },
                 {
-                    src: "/images/c.png",
+                    src: "/images/particles/c.png",
                 },
                 {
-                    src: "/images/c.png",
+                    src: "/images/particles/c.png",
                 },
             ],
         },

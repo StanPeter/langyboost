@@ -1,10 +1,29 @@
-# Getting Started with Create React App
+# Created by the author - development stuff
+
+## to automatically generate types from scss run - 
+npx typed-scss-modules src --watch
+
+## to generate types for graphql 
+npm run gen 
+-> graphql-codegen --config codegen.yml 
+-> searches in http://localhost:4000/graphql so BE needs to be running on that address
+
+
+
+
+
+
+
+
+
+
+# ####################################################################################
+
+# Getting Started with Create React App - Created automatically
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `yarn start`
 

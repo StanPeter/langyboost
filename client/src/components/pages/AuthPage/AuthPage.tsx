@@ -4,7 +4,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { useHistory } from "react-router";
-import globalStyles from "styles/style.scss";
+import globalStyles from "styles/style.module.scss";
 import landingPageStyles from "components/pages/LandingPage/landingPage.module.scss";
 
 interface AuthPageProps {}
