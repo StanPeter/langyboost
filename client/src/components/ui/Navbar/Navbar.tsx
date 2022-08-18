@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
 
     const authButtons = (hide: boolean) => {
-        console.log(data, "data");
+        // console.log(data, "data");
 
         if (data?.getUser)
             return (

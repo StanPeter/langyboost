@@ -8,7 +8,7 @@ import LandingPage from "components/pages/LandingPage/LandingPage";
 import CoursesPage from "components/pages/CoursesPage/CoursesPage";
 import ArticlesPage from "components/pages/ArticlesPage/ArticlesPage";
 import ResourcesPage from "components/pages/ResourcesPage/ResourcesPage";
-import PersonalSettingsPage from "components/pages/PeronalSettingsPage/PeronalSettingsPage";
+import PersonalSettingsPage from "components/pages/PersonalSettingsPage/PersonalSettingsPage";
 import CourseDetailPage from "components/pages/CourseDetailPage/CourseDetailPage";
 import ArticleDetailPage from "components/pages/ArticleDetailPage/ArticleDetailPage";
 import CardPage from "components/pages/CardPage/CardPage";

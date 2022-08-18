@@ -1,5 +1,5 @@
-import Footer from "components/Footer/Footer";
-import Navbar from "components/Navbar/Navbar";
+import Footer from "components/ui/Footer/Footer";
+import Navbar from "components/ui/Navbar/Navbar";
 import React, { FormEvent, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";

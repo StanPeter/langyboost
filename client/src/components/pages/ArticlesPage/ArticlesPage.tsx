@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "components/Footer/Footer";
-import Navbar from "components/Navbar/Navbar";
+import Footer from "components/ui/Footer/Footer";
+import Navbar from "components/ui/Navbar/Navbar";
 import Multiselect from "components/ui/Multiselect/Multiselect";
 import globalStyles from "styles/style.module.scss";
 import styles from "./articlesPage.module.scss";
@@ -29,14 +29,10 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({}) => {
                 <div className={styles.coursesPage}>
                     <h2 className={globalStyles.header}>Articles</h2>
                     <div className={styles.coursesFilters}>
-                        <Multiselect data={data} />
+                        <Multiselect type="filter" data={data} title="Filter by language" />
                         <div className={styles.coursesFilter}>
                             <label htmlFor="">Sort by</label>
-                            <select
-                                name="sourceLanguage"
-                                id=""
-                                className={styles.coursesSelect}
-                            >
+                            <select name="sourceLanguage" id="" className={styles.coursesSelect}>
                                 <option value="en">Newest</option>
                                 <option value="ge">Most popular</option>
                                 <option value="ge">Most viewed</option>

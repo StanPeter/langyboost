@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const validate = (inputName: string, shouldValidate: Boolean) => {
+export const validate = (inputName: string, shouldValidate: boolean) => {
     if (shouldValidate && !inputName) {
         return {
             backgroundColor: "#e0a8a8",

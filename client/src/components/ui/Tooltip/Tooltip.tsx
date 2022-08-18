@@ -3,7 +3,7 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 interface TooltipInterface {}
 
-const Tooltip: React.FC<TooltipInterface> = ({}) => {
+const Tooltip: React.FC<TooltipInterface> = () => {
     return (
         <div className="tooltip">
             <p className="">

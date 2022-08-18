@@ -4,7 +4,7 @@ import { FiThumbsUp, FiThumbsDown } from "react-icons/fi";
 interface PhraseCardsControlsProps {
     setHidetranslation: Function;
     setAnimationChangeCard: Function;
-    noMorePhrases: Boolean;
+    noMorePhrases: boolean;
 }
 
 type IconName = "thumbsDown" | "thumbsUp";

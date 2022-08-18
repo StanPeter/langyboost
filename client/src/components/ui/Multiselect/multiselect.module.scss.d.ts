@@ -1,4 +1,6 @@
 export const dropdownAnimate: string;
+export const filterType: string;
+export const formType: string;
 export const multiselect: string;
 export const multiselectDropdown: string;
 export const multiselectDropdownIcon: string;

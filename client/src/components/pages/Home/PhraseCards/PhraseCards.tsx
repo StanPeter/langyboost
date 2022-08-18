@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PhraseCardsControls from "components/global/PhraseCardsControls/PhraseCardsControls";
+import PhraseCardsControls from "components/others/PhraseCardsControls/PhraseCardsControls";
 import { useGetPhrasesQuery } from "generated/graphql";
 import Spinner from "components/ui/Spinner/Spinner";
 

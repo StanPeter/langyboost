@@ -2,13 +2,13 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import ParticleBackground from "components/ParticleBackground/ParticleBackground";
+import ParticleBackground from "components/others/ParticleBackground/ParticleBackground";
 import { useHistory } from "react-router";
 import styles from "./landingPage.module.scss";
 
 interface LandingPageProps {}
 
-const LandingPage: React.FC<LandingPageProps> = ({}) => {
+const LandingPage: React.FC<LandingPageProps> = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");

@@ -9,7 +9,7 @@
 .multiselectWrapper {
     display: flex;
     align-content: center;
-    justify-content: end;
+    justify-content: flex-end;
 
     & label {
         // margin-right: 2rem;
@@ -28,6 +28,21 @@
 
         display: flex;
         justify-content: center;
+
+        &.formType {
+            border: 1px solid #85cdca;
+            border-radius: 5px 0 0 5px;
+            height: 44px;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        &.filterType {
+            border: none;
+        }
     }
 }
 
@@ -126,15 +141,27 @@
 
 .multiselectInput {
     display: flex;
-    width: 180px;
-    height: 35px;
-
-    background: #daffe9;
-    border: 2px solid #85cdca;
-    border-radius: 5px;
-
-    margin: 1rem 1rem 0;
     justify-content: space-between;
+
+    &.filterType {
+        background: #daffe9;
+        border: 2px solid #85cdca;
+        border-radius: 5px;
+        margin: 1rem 1rem 0;
+        width: 180px;
+        height: 35px;
+    }
+
+    &.formType {
+        margin: 0;
+        border: 1px solid #85cdca;
+        border-radius: 0 5px 5px 0;
+        border-left-width: 0;
+        height: 44px;
+        width: 540px;
+        background: none;
+        text-align: center;
+    }
 
     & img {
         width: 30px;

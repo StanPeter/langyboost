@@ -1,6 +1,6 @@
-import Footer from "components/Footer/Footer";
-import Navbar from "components/Navbar/Navbar";
-import PhraseCardsControls from "components/global/PhraseCardsControls/PhraseCardsControls";
+import Footer from "components/ui/Footer/Footer";
+import Navbar from "components/ui/Navbar/Navbar";
+import PhraseCardsControls from "components/others/PhraseCardsControls/PhraseCardsControls";
 import Tooltip from "components/ui/Tooltip/Tooltip";
 import React, { useState } from "react";
 import styles from "./cardPage.module.scss";
@@ -19,7 +19,7 @@ import globalStyles from "styles/style.module.scss";
 
 interface CardPageProps {}
 
-const CardPage: React.FC<CardPageProps> = ({}) => {
+const CardPage: React.FC<CardPageProps> = () => {
     const [hideTranslation, setHidetranslation] = useState(true);
     const [animationChangeCard, setAnimationChangeCard] = useState(false);
     const [cardIndex, setCardIndex] = useState(0);
