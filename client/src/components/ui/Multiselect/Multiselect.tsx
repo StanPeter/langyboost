@@ -16,9 +16,10 @@ interface MultiselectProps {
     title: string;
     data: MultiselectItem[];
     type: "filter" | "form"; //whether is used inside a filter or a form
+    styleInput?: object;
 }
 
-const Multiselect: React.FC<MultiselectProps> = ({ data, title, type }) => {
+const Multiselect: React.FC<MultiselectProps> = ({ data, title, type, styleInput }) => {
     const [multiselectVal, setMultiselectVal] = useState([] as MultiselectValue[]);
     const [hideDropdown, setHideDropdown] = useState(true);
 
@@ -60,7 +61,7 @@ const Multiselect: React.FC<MultiselectProps> = ({ data, title, type }) => {
     return (
         <div className={styles.multiselect}>
             <div className={styles.multiselectWrapper}>
-                <label className={addTypeClass("")} htmlFor="">
+                <label style={styleInput} className={addTypeClass("")} htmlFor="">
                     {title}
                 </label>
                 <div className={addTypeClass(styles.multiselectInput)}>

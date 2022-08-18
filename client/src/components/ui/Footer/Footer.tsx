@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = () => {
                 <li>
                     <a
                         href="/"
-                        className={`${styles.rotateCenter} ${styles.icoLinkedin}`}
+                        className={`${styles.rotateCenterHover} ${styles.icoLinkedin}`}
                         title="Linkedin"
                     >
                         <i className="">
@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = () => {
                 <li>
                     <a
                         href="/"
-                        className={`${styles.rotateCenter} ${styles.icoTwitter}`}
+                        className={`${styles.rotateCenterHover} ${styles.icoTwitter}`}
                         title="Twitter"
                     >
                         <i className="">
@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = () => {
                 <li>
                     <a
                         href="/"
-                        className={`${styles.rotateCenter} ${styles.icoGithub}`}
+                        className={`${styles.rotateCenterHover} ${styles.icoGithub}`}
                         title="Github"
                     >
                         <i className="">
@@ -55,7 +55,7 @@ const Footer: React.FC<FooterProps> = () => {
                 <li>
                     <a
                         href="/"
-                        className={`${styles.rotateCenter} ${styles.icoFacebook}`}
+                        className={`${styles.rotateCenterHover} ${styles.icoFacebook}`}
                         title="Facebook"
                     >
                         <i className="">
@@ -66,7 +66,7 @@ const Footer: React.FC<FooterProps> = () => {
                 <li>
                     <a
                         href="/"
-                        className={`${styles.rotateCenter} ${styles.icoInstagram}`}
+                        className={`${styles.rotateCenterHover} ${styles.icoInstagram}`}
                         title="Instagram"
                     >
                         <i className="">

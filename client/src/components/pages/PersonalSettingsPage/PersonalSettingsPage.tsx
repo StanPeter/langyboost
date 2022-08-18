@@ -83,7 +83,11 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                     />
                     <Input name="Password" type="text" />
                     <Input name="New password" type="text" />
-                    <Input name="Repeat password" type="text" />
+                    <Input
+                        name="Repeat new password"
+                        styleInput={{ fontSize: "12px" }}
+                        type="text"
+                    />
                     <Input name="Bank details" type="text" />
                     <button>Save changes</button>
                 </form>

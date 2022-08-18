@@ -1,4 +1,6 @@
 .multiselect {
+    width: 100%;
+
     &::after {
         clear: both;
         content: "";

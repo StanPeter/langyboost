@@ -10,6 +10,7 @@ interface InputProps {
     typeOfMultiselect?: "filter" | "form";
     onClick?: () => void;
     valueOfButton?: string;
+    styleInput?: object;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,6 +20,7 @@ const Input: React.FC<InputProps> = ({
     typeOfMultiselect = "form",
     onClick = () => console.log("no on clicked was passed!"),
     valueOfButton = " ",
+    styleInput,
 }) => {
     switch (type) {
         case "date":
@@ -27,7 +29,9 @@ const Input: React.FC<InputProps> = ({
             return (
                 <div className={styles.formItem}>
                     <div className={styles.formLabel}>
-                        <label htmlFor="sex">{name}</label>
+                        <label style={styleInput} htmlFor={name}>
+                            {name}
+                        </label>
                     </div>
                     <input
                         className={styles.formInput}
@@ -39,7 +43,12 @@ const Input: React.FC<InputProps> = ({
         case "multiselect":
             return (
                 <div className={styles.formItem}>
-                    <Multiselect title={name} type={typeOfMultiselect} data={dataOfMultiselect} />
+                    <Multiselect
+                        styleInput={styleInput}
+                        title={name}
+                        type={typeOfMultiselect}
+                        data={dataOfMultiselect}
+                    />
                 </div>
             );
         case "buttonSelect":
@@ -50,6 +59,7 @@ const Input: React.FC<InputProps> = ({
                         type="button"
                         value={valueOfButton}
                         title={name}
+                        styleInput={styleInput}
                     />
                 </div>
             );

@@ -9,6 +9,9 @@
 }
 
 .modal {
+    max-height: 95vh;
+    // overflow: overlay;
+    // width: 70%;
     z-index: 20;
     width: 605px;
     // height: 900px;
@@ -36,3 +39,21 @@
         cursor: pointer;
     }
 }
+
+// @media screen and (min-width: 1850px) {
+//     .modal {
+//         width: 35%
+//     }
+// }
+
+// @media screen and (min-width: 1450px) {
+//     .modal {
+//         width: 45%;
+//     }
+// }
+
+// @media screen and (min-width: 1150px) {
+//     .modal {
+//         width: 55%;
+//     }
+// }

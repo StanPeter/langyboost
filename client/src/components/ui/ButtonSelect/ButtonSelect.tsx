@@ -8,9 +8,10 @@ interface ButtonSelectProps {
     type: "button" | "image";
     value: string; //title for the button or the image src name
     onClick?: Function;
+    styleInput?: object;
 }
 
-const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick }) => {
+const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick, styleInput }) => {
     const finalValue =
         type === "button" ? (
             <Button
@@ -28,6 +29,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick
                     textTransform: "inherit",
                     justifyContent: "center",
                     margin: 0,
+                    ...styleInput,
                 }}
                 text={value}
                 onClick={(e: FormEvent) => {
