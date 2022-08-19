@@ -38,6 +38,16 @@
 
 .section {
     animation: slide-top 0.4s ease-in-out reverse;
+    transition: opacity 1s 0s ease;
+    opacity: 0;
+    visibility: hidden;
+    height: 1px;
+
+    &.activeSection {
+        opacity: 1;
+        visibility: unset;
+        height: auto;
+    }
 }
 
 /* Add Animation */
@@ -79,6 +89,10 @@
         letter-spacing: 0.1em;
 
         color: #203a4f;
+
+        &:not(:first-child):hover {
+            cursor: pointer;
+        }
     }
 }
 

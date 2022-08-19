@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Footer from "components/ui/Footer/Footer";
-import Navbar from "components/ui/Navbar/Navbar";
+import Footer from "components/layouts/Footer/Footer";
+import Navbar from "components/layouts/Navbar/Navbar";
 import Button from "components/ui/Button/Button";
 import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";

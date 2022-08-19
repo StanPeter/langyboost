@@ -1,3 +1,4 @@
+export const activeSection: string;
 export const cardChosen: string;
 export const cards: string;
 export const cardWrapper: string;

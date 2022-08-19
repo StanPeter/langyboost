@@ -1,5 +1,5 @@
-import Footer from "components/ui/Footer/Footer";
-import Navbar from "components/ui/Navbar/Navbar";
+import Footer from "components/layouts/Footer/Footer";
+import Navbar from "components/layouts/Navbar/Navbar";
 import PhraseCardsControls from "components/others/PhraseCardsControls/PhraseCardsControls";
 import Tooltip from "components/ui/Tooltip/Tooltip";
 import React, { useState } from "react";

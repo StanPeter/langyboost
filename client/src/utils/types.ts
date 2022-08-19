@@ -1,0 +1,1 @@
+export type SettingsSection = "membership" | "subscription" | "paymendMethod" | "paymentDetails";

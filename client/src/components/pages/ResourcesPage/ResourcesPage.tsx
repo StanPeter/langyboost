@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "components/ui/Footer/Footer";
-import Navbar from "components/ui/Navbar/Navbar";
+import Footer from "components/layouts/Footer/Footer";
+import Navbar from "components/layouts/Navbar/Navbar";
 import globalStyles from "styles/style.module.scss";
 
 interface ResourcesPageProps {}
