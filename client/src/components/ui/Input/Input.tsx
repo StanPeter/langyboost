@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 import { MultiselectItem } from "utils/interfaces";
 import { InputTypes } from "utils/types";
 import ButtonSelect from "../ButtonSelect/ButtonSelect";
@@ -14,6 +14,7 @@ interface InputProps {
     valueOfButton?: string;
     styleInput?: object;
     value?: any;
+    onChange?: (d: any) => SetStateAction<any>;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -25,6 +26,7 @@ const Input: React.FC<InputProps> = ({
     valueOfButton = " ",
     styleInput,
     value,
+    onChange,
 }) => {
     switch (type) {
         case "date":
@@ -55,6 +57,7 @@ const Input: React.FC<InputProps> = ({
                         type={type}
                         data={dataOfMultiselect}
                         value={value}
+                        onChange={onChange}
                     />
                 </div>
             );

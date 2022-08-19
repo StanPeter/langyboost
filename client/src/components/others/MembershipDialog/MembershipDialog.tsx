@@ -4,7 +4,7 @@ import styles from "./membershipDialog.module.scss";
 import Button from "components/ui/Button/Button";
 import Input from "components/ui/Input/Input";
 import MembershipSection from "./MembershipSection/MembershipSection";
-import { MembershipState, SettingsSection } from "utils/types";
+import { MembershipState, SettingsSection, SubscriptionState } from "utils/types";
 import americanExpress from "images/americanExpress.png";
 import visa from "images/visa.png";
 import paypal from "images/paypal.png";
@@ -32,10 +32,10 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
     /* HOOKS */
     const [showedSection, setShowedSection] = useState<SettingsSection>("membership");
     const [membership, setMembership] = useState<MembershipState | null>(null);
-    // const [subscription, setSubscription] = useState<SubscriptionState>({
-    //     period: null,
-    //     repeatPayment: false,
-    // });
+    const [subscription, setSubscription] = useState<SubscriptionState>({
+        period: null,
+        repeatPayment: "no",
+    });
     // const [activeSectionStyle, setActiveSectionStyle] = useState<React.CSSProperties>({});
 
     // Handles animation, opacity 1 to show the section, else opacity to zero and after the transition plays, display zero
@@ -94,6 +94,8 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         { text: "Monthly", value: "monthly" },
                         { text: "Yearly", value: "early" },
                     ]}
+                    onChange={(d) => setSubscription({ ...subscription, period: d })}
+                    value={[subscription.period]}
                 />
                 <Input
                     name="Repeat payment"
@@ -104,6 +106,8 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         { text: "Yes", value: "yes" },
                         { text: "No", value: "no" },
                     ]}
+                    onChange={(d) => setSubscription({ ...subscription, repeatPayment: d || "no" })}
+                    value={[subscription.repeatPayment]}
                 />
             </section>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { MultiselectItem } from "utils/interfaces";
 import styles from "./select.module.scss";
@@ -10,26 +10,50 @@ interface MultiselectProps {
     useCase: "filter" | "form"; //whether is used inside a filter or a form
     type: "multiselect" | "singleselect";
     styleInput?: object;
+    onChange: (d: any) => SetStateAction<any>;
 }
 
-const Select: React.FC<MultiselectProps> = ({ data, title, useCase, styleInput, value, type }) => {
+const Select: React.FC<MultiselectProps> = ({
+    data,
+    title,
+    useCase,
+    styleInput,
+    value,
+    type,
+    onChange,
+}) => {
     /* HOOKS */
     const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
     const [hideDropdown, setHideDropdown] = useState(true);
 
     /* set initial value */
     useEffect(() => {
-        setMultiselectValue(value);
+        if (value) setMultiselectValue(value);
     }, [value]);
 
     /* HANDLERS */
     const addItemHandler = (itemVal: string) => {
         if (multiselectValue.includes(itemVal)) return;
-        setMultiselectValue([...multiselectValue, itemVal]);
+
+        if (type === "multiselect") {
+            const newValue = [...multiselectValue, itemVal];
+            setMultiselectValue(newValue);
+            onChange(newValue);
+        } else {
+            setMultiselectValue([itemVal]);
+            onChange(itemVal);
+        }
     };
 
     const deleteItemHandler = (itemVal: string) => {
-        setMultiselectValue(multiselectValue.filter((value) => value !== itemVal));
+        if (type === "multiselect") {
+            const newValue = multiselectValue.filter((value) => value !== itemVal);
+            setMultiselectValue(newValue);
+            onChange(newValue);
+        } else {
+            setMultiselectValue([]);
+            onChange(null);
+        }
     };
 
     /* ADDING STYLES */
