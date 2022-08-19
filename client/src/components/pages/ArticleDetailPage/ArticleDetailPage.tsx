@@ -5,7 +5,7 @@ import globalStyles from "styles/style.module.scss";
 
 interface ArticleDetailPageProps {}
 
-const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({}) => {
+const ArticleDetailPage: React.FC<ArticleDetailPageProps> = () => {
     return (
         <div className={globalStyles.appWrapper}>
             <Navbar />

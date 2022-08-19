@@ -1,69 +1,4 @@
-.header {
-    width: 603px;
-    height: 159px;
-
-    background: #41b3a3;
-    border-radius: 25px 25px 0px 0px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    & h2 {
-        width: 535px;
-        height: 101px;
-        /* or 167% */
-
-        color: #fafbff !important;
-    }
-}
-
-.separator {
-    width: 419px;
-    border: 1px solid #85cdca;
-    margin: 2.5rem 0;
-}
-
-.pickedMembership {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    letter-spacing: 0.1em;
-    color: #85cdca;
-    text-shadow: -1px 0 #203a4f, 0 1px #203a4f, 1px 0 #203a4f, 0 -1px #203a4f;
-    border: 1px solid #85cdca;
-    border-radius: 50%;
-    padding: 8px;
-}
-
-.section {
-    animation: slide-top 0.4s ease-in-out reverse;
-    transition: opacity 1s 0s ease;
-    opacity: 0;
-    visibility: hidden;
-    height: 1px;
-
-    &.activeSection {
-        opacity: 1;
-        visibility: unset;
-        height: auto;
-    }
-}
-
-/* Add Animation */
-@keyframes slide-top {
-    0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-        opacity: 0.8;
-    }
-    100% {
-        -webkit-transform: translateY(-100px);
-        opacity: 1;
-        transform: translateY(-100px);
-    }
-}
-
+/* GLOBAL */
 .dialog {
     width: 100%;
     height: 100%;
@@ -96,12 +31,161 @@
     }
 }
 
-.cards {
+.separator {
+    width: 419px;
+    border: 1px solid #85cdca;
+    margin: 2.5rem 0;
+}
+
+.section {
+    transition: opacity 700ms 0s ease-in-out;
+
+    &.activeSection {
+        font-size: 1rem;
+        opacity: 1;
+        animation: slideTop 0.4s ease-in-out reverse;
+    }
+}
+
+/* HEADER */
+.header {
+    width: 603px;
+    height: 159px;
+
+    background: #41b3a3;
+    border-radius: 25px 25px 0px 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & h2 {
+        width: 535px;
+        height: 101px;
+        color: #fafbff !important;
+    }
+}
+
+/* MEMBERSHIP SECTION */
+.pickedMembership {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    letter-spacing: 0.1em;
+    color: #85cdca;
+    text-shadow: -1px 0 #203a4f, 0 1px #203a4f, 1px 0 #203a4f, 0 -1px #203a4f;
+    border: 1px solid #85cdca;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.cardsWrapper {
+    @extend .section;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
 }
 
+.cardWrapper {
+    border: 1px solid #85cdca;
+    border-radius: 15px;
+    position: relative;
+    margin: 1rem;
+
+    &::after {
+        content: "";
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+        border-radius: 15px;
+    }
+
+    &:nth-child(1)::after {
+        background-image: url("../../../images/peon.png");
+    }
+
+    &:nth-of-type(2)::after {
+        background-image: url("../../../images/king.png");
+    }
+
+    & h1 {
+        font-style: normal;
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 40px;
+
+        text-align: center;
+        letter-spacing: 0.1em;
+
+        color: #85cdca;
+        text-shadow: -2px 0 #203a4f, 0 2px #203a4f, 2px 0 #203a4f, 0 -2px #203a4f;
+    }
+
+    & p {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 40px;
+
+        text-align: right;
+        letter-spacing: 0.05em;
+
+        color: #203a4f;
+    }
+
+    & hr {
+        width: 272px;
+        border: 1px solid #85cdca;
+        margin: 1rem 0;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .privilegesContainer {
+        margin: 0.5rem;
+    }
+
+    .privilegesWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &.cardChosen {
+        border: 10px solid rgba(133, 205, 202, 0.7);
+    }
+}
+
+/* SUBSCRIPTION OPTIONS SECTION */
+
+/* PAYMENT METHODS SECTION */
+.paymentMethodsWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+
+    & img {
+        margin: .5rem;
+        height: 4rem;
+        width: 6.5rem;
+    }
+}
+
+/* PAYMENT DETAILS SECTION */
 .paymentCardDetails {
     border: 1px solid #85cdca;
     border-radius: 5px;
@@ -148,95 +232,16 @@
     width: 100%;
 }
 
-.cardWrapper {
-    // display: flex;
-    // flex-flow: row;
-
-    border: 1px solid #85cdca;
-    border-radius: 15px;
-
-    position: relative;
-
-    margin: 1rem;
-
-    &::after {
-        content: "";
-        background-repeat: no-repeat;
-        background-size: cover;
-        opacity: 0.4;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        position: absolute;
-        z-index: -1;
-        border-radius: 15px;
+/* ANIMATIONS */
+@keyframes slideTop {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 0.8;
     }
-
-    &:nth-child(1)::after {
-        background-image: url("../../../images/peon.png");
-    }
-
-    &:nth-of-type(2)::after {
-        background-image: url("../../../images/king.png");
-    }
-
-    & h1 {
-        font-style: normal;
-        font-weight: 900;
-        font-size: 30px;
-        line-height: 40px;
-        /* or 167% */
-
-        text-align: center;
-        letter-spacing: 0.1em;
-
-        color: #85cdca;
-        text-shadow: -2px 0 #203a4f, 0 2px #203a4f, 2px 0 #203a4f, 0 -2px #203a4f;
-    }
-
-    & p {
-        font-style: italic;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 40px;
-        /* or 250% */
-
-        text-align: right;
-        letter-spacing: 0.05em;
-
-        color: #203a4f;
-    }
-
-    & hr {
-        width: 272px;
-        border: 1px solid #85cdca;
-        margin: 1rem 0;
-    }
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    .privilegesContainer {
-        margin: 0.5rem;
-
-        // display: flex;
-        // flex-flow: column;
-    }
-
-    .privilegesWrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        & img {
-            width: 20px;
-            height: 20px;
-        }
-    }
-
-    &.cardChosen {
-        border: 10px solid rgba(133, 205, 202, 0.7);
+    100% {
+        -webkit-transform: translateY(-100px);
+        opacity: 1;
+        transform: translateY(-100px);
     }
 }

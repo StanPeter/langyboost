@@ -55,18 +55,21 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                 <form className={styles.settingsForm} action="">
                     <Input
                         name="Sound effects"
-                        type="multiselect"
+                        type="singleselect"
                         typeOfMultiselect="form"
-                        dataOfMultiselect={[{ text: "Turned off" }, { text: "Turned on" }]}
+                        dataOfMultiselect={[
+                            { text: "Turned off", value: "off" },
+                            { text: "Turned on", value: "on" },
+                        ]}
                     />
                     <Input
                         name="Theme"
-                        type="multiselect"
+                        type="singleselect"
                         typeOfMultiselect="form"
                         dataOfMultiselect={[
-                            { text: "Lingo(default)" },
-                            { text: "Dark" },
-                            { text: "Halloween" },
+                            { text: "Lingo(default)", value: "lingo" },
+                            { text: "Dark", value: "dark" },
+                            { text: "Halloween", value: "halloween" },
                         ]}
                     />
                     <Input
@@ -77,9 +80,13 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                     />
                     <Input
                         name="Language"
-                        type="multiselect"
+                        type="singleselect"
                         typeOfMultiselect="form"
-                        dataOfMultiselect={[{ text: "en" }, { text: "ge" }, { text: "es" }]}
+                        dataOfMultiselect={[
+                            { text: "en", value: "en" },
+                            { text: "ge", value: "ge" },
+                            { text: "es", value: "es" },
+                        ]}
                     />
                     <Input name="Password" type="text" />
                     <Input name="New password" type="text" />

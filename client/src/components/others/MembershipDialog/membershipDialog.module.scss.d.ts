@@ -1,6 +1,6 @@
 export const activeSection: string;
 export const cardChosen: string;
-export const cards: string;
+export const cardsWrapper: string;
 export const cardWrapper: string;
 export const dialog: string;
 export const flexAlign: string;
@@ -8,6 +8,7 @@ export const header: string;
 export const paymentCardDetails: string;
 export const paymentCardSeparator: string;
 export const paymentCardWrapper: string;
+export const paymentMethodsWrapper: string;
 export const pickedMembership: string;
 export const privilegesContainer: string;
 export const privilegesWrapper: string;

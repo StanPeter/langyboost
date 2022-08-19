@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "components/layouts/Footer/Footer";
 import Navbar from "components/layouts/Navbar/Navbar";
-import Multiselect from "components/ui/Multiselect/Multiselect";
+import Select from "components/ui/Select/Select";
 import globalStyles from "styles/style.module.scss";
 import styles from "./articlesPage.module.scss";
 
@@ -11,17 +11,20 @@ const data = [
     {
         text: "German",
         imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png",
+        value: "german",
     },
     {
         text: "Armenian",
         imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e6-1f1e9.png",
+        value: "armenian",
     },
     {
         text: "aloha",
+        value: "aloha",
     },
 ];
 
-const ArticlesPage: React.FC<ArticlesPageProps> = ({}) => {
+const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     return (
         <div className={globalStyles.appWrapper}>
             <Navbar />
@@ -29,7 +32,13 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({}) => {
                 <div className={styles.coursesPage}>
                     <h2 className={globalStyles.header}>Articles</h2>
                     <div className={styles.coursesFilters}>
-                        <Multiselect type="filter" data={data} title="Filter by language" />
+                        <Select
+                            type="multiselect"
+                            useCase="filter"
+                            data={data}
+                            title="Filter by language"
+                            value={["german"]}
+                        />
                         <div className={styles.coursesFilter}>
                             <label htmlFor="">Sort by</label>
                             <select name="sourceLanguage" id="" className={styles.coursesSelect}>

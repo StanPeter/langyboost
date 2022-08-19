@@ -9,7 +9,7 @@ import landingPageStyles from "components/pages/LandingPage/landingPage.module.s
 
 interface AuthPageProps {}
 
-const AuthPage: React.FC<AuthPageProps> = ({}) => {
+const AuthPage: React.FC<AuthPageProps> = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");

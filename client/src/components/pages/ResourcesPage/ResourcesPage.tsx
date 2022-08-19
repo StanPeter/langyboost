@@ -5,7 +5,7 @@ import globalStyles from "styles/style.module.scss";
 
 interface ResourcesPageProps {}
 
-const ResourcesPage: React.FC<ResourcesPageProps> = ({}) => {
+const ResourcesPage: React.FC<ResourcesPageProps> = () => {
     return (
         <div className={globalStyles.appWrapper}>
             <Navbar />

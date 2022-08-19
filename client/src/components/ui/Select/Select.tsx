@@ -1,62 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import styles from "./multiselect.module.scss";
-
-interface MultiselectValue {
-    isImg: boolean;
-    val: string;
-}
-
-export interface MultiselectItem {
-    imgSrc?: string;
-    text?: string;
-}
+import { MultiselectItem } from "utils/interfaces";
+import styles from "./select.module.scss";
 
 interface MultiselectProps {
     title: string;
     data: MultiselectItem[];
-    type: "filter" | "form"; //whether is used inside a filter or a form
+    value: string[];
+    useCase: "filter" | "form"; //whether is used inside a filter or a form
+    type: "multiselect" | "singleselect";
     styleInput?: object;
 }
 
-const Multiselect: React.FC<MultiselectProps> = ({ data, title, type, styleInput }) => {
-    const [multiselectVal, setMultiselectVal] = useState([] as MultiselectValue[]);
+const Select: React.FC<MultiselectProps> = ({ data, title, useCase, styleInput, value, type }) => {
+    /* HOOKS */
+    const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
     const [hideDropdown, setHideDropdown] = useState(true);
 
+    /* set initial value */
     useEffect(() => {
-        setMultiselectVal([
-            // {
-            //     isImg: true,
-            //     val: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png",
-            // },
-        ]);
-    }, []);
+        setMultiselectValue(value);
+    }, [value]);
 
+    /* HANDLERS */
     const addItemHandler = (itemVal: string) => {
-        const typeOfVal = itemVal.slice(0, 3);
-        const realVal = itemVal.slice(3);
-        const valsOfMultiselect = Object.values(multiselectVal).map((d) => d.val);
-
-        if (valsOfMultiselect.includes(realVal)) return;
-
-        setMultiselectVal([
-            ...multiselectVal,
-            {
-                isImg: typeOfVal === "img",
-                val: realVal,
-            },
-        ]);
+        if (multiselectValue.includes(itemVal)) return;
+        setMultiselectValue([...multiselectValue, itemVal]);
     };
 
     const deleteItemHandler = (itemVal: string) => {
-        setMultiselectVal(multiselectVal.filter((val) => val.val !== itemVal));
+        setMultiselectValue(multiselectValue.filter((value) => value !== itemVal));
     };
 
+    /* ADDING STYLES */
     let dropdownClasses = styles.multiselectDropdown;
     if (!hideDropdown) dropdownClasses = `${styles.multiselectDropdown} ${styles.dropdownAnimate}`;
 
     const addTypeClass = (inputClass: string) =>
-        `${inputClass} ${type === "form" ? styles.formType : styles.filterType}`;
+        `${inputClass} ${useCase === "form" ? styles.formType : styles.filterType}`;
 
     return (
         <div className={styles.multiselect}>
@@ -66,16 +47,18 @@ const Multiselect: React.FC<MultiselectProps> = ({ data, title, type, styleInput
                 </label>
                 <div className={addTypeClass(styles.multiselectInput)}>
                     <div className={styles.multiselectValueWrapper}>
-                        {multiselectVal.map((el, i) => (
-                            <div
-                                className={styles.multiselectValue}
-                                key={i}
-                                id={el.val}
-                                onClick={(e) => deleteItemHandler(e.currentTarget.id)}
-                            >
-                                {el.isImg ? <img src={el.val} alt="" /> : el.val}
-                            </div>
-                        ))}
+                        {data
+                            .filter((el) => multiselectValue.includes(el.value))
+                            .map((el, i) => (
+                                <div
+                                    className={styles.multiselectValue}
+                                    key={i}
+                                    id={el.value}
+                                    onClick={(e) => deleteItemHandler(e.currentTarget.id)}
+                                >
+                                    {el.imgSrc ? <img src={el.imgSrc} alt="" /> : el.text}
+                                </div>
+                            ))}
                     </div>
                     <div
                         className={styles.multiselectDropdownIcon}
@@ -99,7 +82,8 @@ const Multiselect: React.FC<MultiselectProps> = ({ data, title, type, styleInput
                         <div key={i}>
                             <li
                                 className={styles.multiselectDropdownItem}
-                                id={el.imgSrc ? "img" + el.imgSrc : "txt" + el.text}
+                                // id={el.imgSrc ? "img" + el.imgSrc : "txt" + el.text}
+                                id={el.value}
                                 onClick={(d) => addItemHandler(d.currentTarget.id)}
                             >
                                 <div>
@@ -115,4 +99,4 @@ const Multiselect: React.FC<MultiselectProps> = ({ data, title, type, styleInput
     );
 };
 
-export default Multiselect;
+export default Select;

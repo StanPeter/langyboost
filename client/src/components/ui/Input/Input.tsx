@@ -1,16 +1,19 @@
 import React from "react";
+import { MultiselectItem } from "utils/interfaces";
+import { InputTypes } from "utils/types";
 import ButtonSelect from "../ButtonSelect/ButtonSelect";
-import Multiselect, { MultiselectItem } from "../Multiselect/Multiselect";
+import Select from "../Select/Select";
 import styles from "./input.module.scss";
 
 interface InputProps {
     name: string;
-    type: "text" | "email" | "date" | "multiselect" | "buttonSelect";
+    type: InputTypes;
     dataOfMultiselect?: MultiselectItem[];
     typeOfMultiselect?: "filter" | "form";
     onClick?: () => void;
     valueOfButton?: string;
     styleInput?: object;
+    value?: any;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,6 +24,7 @@ const Input: React.FC<InputProps> = ({
     onClick = () => console.log("no on clicked was passed!"),
     valueOfButton = " ",
     styleInput,
+    value,
 }) => {
     switch (type) {
         case "date":
@@ -41,13 +45,16 @@ const Input: React.FC<InputProps> = ({
                 </div>
             );
         case "multiselect":
+        case "singleselect":
             return (
                 <div className={styles.formItem}>
-                    <Multiselect
+                    <Select
                         styleInput={styleInput}
                         title={name}
-                        type={typeOfMultiselect}
+                        useCase={typeOfMultiselect}
+                        type={type}
                         data={dataOfMultiselect}
+                        value={value}
                     />
                 </div>
             );

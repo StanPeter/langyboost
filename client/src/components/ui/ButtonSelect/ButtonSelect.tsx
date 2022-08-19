@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import styles from "./buttonSelect.module.scss";
-import multiselectStyles from "../Multiselect/multiselect.module.scss";
+import multiselectStyles from "../Select/select.module.scss";
 import Button from "../Button/Button";
 
 interface ButtonSelectProps {

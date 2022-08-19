@@ -6,7 +6,7 @@ import globalStyles from "styles/style.module.scss";
 
 interface CoursesPageProps {}
 
-const CoursesPage: React.FC<CoursesPageProps> = ({}) => {
+const CoursesPage: React.FC<CoursesPageProps> = () => {
     console.log(globalStyles.appWrapper, ' app wrapper');
     console.log(globalStyles, ' app wrapper');
     console.log(styles.coursesFilter, ' app wrapper 3333');
