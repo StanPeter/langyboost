@@ -38,6 +38,7 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
                             data={data}
                             title="Filter by language"
                             value={["german"]}
+                            onChange={() => {}}
                         />
                         <div className={styles.coursesFilter}>
                             <label htmlFor="">Sort by</label>

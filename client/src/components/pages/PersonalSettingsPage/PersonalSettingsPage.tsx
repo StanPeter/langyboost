@@ -44,7 +44,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                 <Input name="Phone number" type="text" />
                 <Input name="Address" type="text" />
                 <Input name="Nationality" type="text" />
-                <button>Save changes</button>
+                <Button text="Save changes" onClick={() => {}} active={true} type="big" />
             </form>
         </React.Fragment>
     );
@@ -96,10 +96,17 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                         type="text"
                     />
                     <Input name="Bank details" type="text" />
-                    <button>Save changes</button>
+                    <Button text="Save changes" onClick={() => {}} active={true} type="big" />
                 </form>
             </React.Fragment>
         );
+        
+    const menuBtnStyle = {
+        width: "50%",
+        height: "3rem",
+        margin: 0,
+        padding: 0,
+    };
 
     return (
         <div className={globalStyles.appWrapper}>
@@ -111,17 +118,22 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                         <div className={styles.settingsButtons}>
                             <Button
                                 text="My profile"
+                                active={mode === "profile"}
                                 style={{
+                                    ...menuBtnStyle,
                                     borderRadius: "25px 0px 0px 0px",
                                 }}
+                                type="fullLine"
                                 onClick={() => setMode("profile")}
                             />
                             <Button
                                 text="My Settings"
-                                active={false}
+                                active={mode === "settings"}
                                 style={{
+                                    ...menuBtnStyle,
                                     borderRadius: "0 25px 0px 0px",
                                 }}
+                                type="fullLine"
                                 onClick={() => setMode("settings")}
                             />
                         </div>

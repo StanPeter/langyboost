@@ -48,6 +48,11 @@ const Input: React.FC<InputProps> = ({
             );
         case "multiselect":
         case "singleselect":
+            if (!onChange)
+                onChange = () => {
+                    console.log("on change not declared");
+                };
+
             return (
                 <div className={styles.formItem}>
                     <Select

@@ -1,6 +1,5 @@
 // files with '_' at the beginning -> partials, are not compiled, there are only variables inside
 
-
 //set the main color scheme
 $color-scheme: 0;
 
@@ -69,6 +68,12 @@ body {
     // background-color: #e7f1f0;
     // font-family: 'Barlow Condensed', sans-serif;
     font-family: "Roboto", sans-serif;
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .appWrapper {
@@ -189,7 +194,6 @@ body {
         }
     }
 }
-
 
 @media screen and (max-width: 756px) {
     html {
