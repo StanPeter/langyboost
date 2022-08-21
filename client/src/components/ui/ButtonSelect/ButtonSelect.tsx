@@ -1,7 +1,7 @@
 import React, { FormEvent } from "react";
 import styles from "./buttonSelect.module.scss";
-import multiselectStyles from "../Select/select.module.scss";
 import Button from "../Button/Button";
+import inputStyles from "components/ui/Input/input.module.scss";
 
 interface ButtonSelectProps {
     title: string;
@@ -15,22 +15,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick
     const finalValue =
         type === "button" ? (
             <Button
-                style={{
-                    backgroundColor: "rgb(65, 179, 163)",
-                    color: "rgb(250, 251, 255)",
-                    fontSize: "16px",
-                    width: "145px",
-                    height: "28px",
-                    border: "1px solid #85CDCA",
-                    boxShadow: "0px 4px 4px rgb(0 0 0 / 25%)",
-                    borderRadius: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    textTransform: "inherit",
-                    justifyContent: "center",
-                    margin: 0,
-                    ...styleInput,
-                }}
+                type="small"
                 text={value}
                 onClick={(e: FormEvent) => {
                     e.preventDefault();
@@ -44,13 +29,11 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick
         );
 
     return (
-        <div className={`${multiselectStyles.multiselectWrapper}`}>
-            <label className={multiselectStyles.formType} htmlFor="">
+        <div className={`${styles.wrapper}`}>
+            <label className={inputStyles.formLabel} htmlFor="">
                 {title}
             </label>
-            <div
-                className={`${multiselectStyles.multiselectInput} ${multiselectStyles.formType} ${styles.valueWrapper}`}
-            >
+            <div className={`${styles.multiselectInput} ${styles.formType} ${styles.valueWrapper}`}>
                 {finalValue}
             </div>
         </div>

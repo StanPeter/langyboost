@@ -3,3 +3,42 @@
     justify-content: center;
     align-items: center;
 }
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.multiselectInput {
+    &.filterType {
+        background: #daffe9;
+        border: 2px solid #85cdca;
+        border-radius: 5px;
+        margin: 1rem 1rem 0;
+        width: 180px;
+        height: 35px;
+    }
+
+    &.formType {
+        margin: 0;
+        border: 1px solid #85cdca;
+        border-radius: 0 5px 5px 0;
+        border-left-width: 0;
+        height: 44px;
+        width: 78%;
+        min-width: 78%;
+        max-width: 78%;
+        background: none;
+        text-align: center;
+    }
+
+    & img {
+        width: 30px;
+        height: 26px;
+    }
+}

@@ -2,6 +2,7 @@ import React, { SetStateAction, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { MultiselectItem } from "utils/interfaces";
 import styles from "./select.module.scss";
+import inputStyles from "components/ui/Input/input.module.scss";
 
 interface MultiselectProps {
     title: string;
@@ -57,25 +58,33 @@ const Select: React.FC<MultiselectProps> = ({
     };
 
     /* ADDING STYLES */
-    let dropdownClasses = styles.multiselectDropdown;
-    if (!hideDropdown) dropdownClasses = `${styles.multiselectDropdown} ${styles.dropdownAnimate}`;
-
     const addTypeClass = (inputClass: string) =>
         `${inputClass} ${useCase === "form" ? styles.formType : styles.filterType}`;
 
     return (
-        <div className={styles.multiselect}>
-            <div className={styles.multiselectWrapper}>
-                <label style={styleInput} className={addTypeClass("")} htmlFor="">
+        <div className={styles.container}>
+            <div
+                className={styles.inputWrapper}
+                style={{ background: !hideDropdown ? "#daffe9" : undefined }}
+            >
+                <label
+                    style={styleInput}
+                    className={`${inputStyles.formLabel} ${addTypeClass("")}`}
+                    htmlFor=""
+                >
                     {title}
                 </label>
-                <div className={addTypeClass(styles.multiselectInput)}>
-                    <div className={styles.multiselectValueWrapper}>
+                <div
+                    onClick={() => setHideDropdown(!hideDropdown)}
+                    style={{ borderBottomRightRadius: !hideDropdown ? "0px" : undefined }}
+                    className={addTypeClass(styles.input)}
+                >
+                    <div className={styles.valueWrapper}>
                         {data
                             .filter((el) => multiselectValue.includes(el.value))
                             .map((el, i) => (
                                 <div
-                                    className={styles.multiselectValue}
+                                    className={styles.value}
                                     key={i}
                                     id={el.value}
                                     onClick={(e) => deleteItemHandler(e.currentTarget.id)}
@@ -85,7 +94,7 @@ const Select: React.FC<MultiselectProps> = ({
                             ))}
                     </div>
                     <div
-                        className={styles.multiselectDropdownIcon}
+                        className={styles.dropdownIcon}
                         onClick={() => setHideDropdown(!hideDropdown)}
                     >
                         <IoIosArrowDown />
@@ -93,8 +102,9 @@ const Select: React.FC<MultiselectProps> = ({
                 </div>
             </div>
             <div
-                className={dropdownClasses}
-                // style={{ display: hideDropdown ? "none" : "flex" }}
+                className={`${styles.dropdown} ${addTypeClass("")} ${
+                    !hideDropdown ? styles.dropdownOpen : ""
+                }`}
             >
                 {data.map((el, i) => {
                     if (!el.text && !el.imgSrc) {
@@ -103,13 +113,16 @@ const Select: React.FC<MultiselectProps> = ({
                     }
 
                     return (
-                        <div key={i}>
-                            <li
-                                className={styles.multiselectDropdownItem}
-                                // id={el.imgSrc ? "img" + el.imgSrc : "txt" + el.text}
-                                id={el.value}
-                                onClick={(d) => addItemHandler(d.currentTarget.id)}
-                            >
+                        <div
+                            key={i}
+                            onClick={(d) => {
+                                if (type === "singleselect") setHideDropdown(true);
+                                addItemHandler(d.currentTarget.id);
+                            }}
+                            className={styles.dropdownItemWrapper}
+                            id={el.value}
+                        >
+                            <li className={styles.dropdownItem}>
                                 <div>
                                     {el.imgSrc ? <img src={el.imgSrc} alt="" /> : null}
                                     {el.text ? <p>{el.text}</p> : null}

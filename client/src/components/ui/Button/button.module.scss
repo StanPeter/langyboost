@@ -1,6 +1,10 @@
 @use "styles/style.module.scss" as var;
 
 .button {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
     min-width: 5rem;
     padding: 0.5rem 1rem;
     margin: 0.5rem;
@@ -42,10 +46,6 @@
 
         box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
         border-radius: 15px;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
-        // margin: 0px;
     }
 
     &.big {

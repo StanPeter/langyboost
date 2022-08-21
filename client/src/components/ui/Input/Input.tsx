@@ -1,87 +1,46 @@
-import React, { SetStateAction } from "react";
-import { MultiselectItem } from "utils/interfaces";
-import { InputTypes } from "utils/types";
-import ButtonSelect from "../ButtonSelect/ButtonSelect";
-import Select from "../Select/Select";
+import React, { SetStateAction, useState } from "react";
 import styles from "./input.module.scss";
 
 interface InputProps {
     name: string;
-    type: InputTypes;
-    dataOfMultiselect?: MultiselectItem[];
-    typeOfMultiselect?: "filter" | "form";
     onClick?: () => void;
-    valueOfButton?: string;
     styleInput?: object;
     value?: any;
+    type: "text" | "date" | "email";
     onChange?: (d: any) => SetStateAction<any>;
+    placeholder?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-    name,
-    type,
-    dataOfMultiselect = [],
-    typeOfMultiselect = "form",
-    onClick = () => console.log("no on clicked was passed!"),
-    valueOfButton = " ",
-    styleInput,
-    value,
-    onChange,
-}) => {
-    switch (type) {
-        case "date":
-        case "email":
-        case "text":
-            return (
-                <div className={styles.formItem}>
-                    <div className={styles.formLabel}>
-                        <label style={styleInput} htmlFor={name}>
-                            {name}
-                        </label>
-                    </div>
-                    <input
-                        className={styles.formInput}
-                        type={type}
-                        name={name.replace(new RegExp(" ", "g"), "")}
-                    />
-                </div>
-            );
-        case "multiselect":
-        case "singleselect":
-            if (!onChange)
-                onChange = () => {
-                    console.log("on change not declared");
-                };
+const Input: React.FC<InputProps> = ({ name, styleInput, value, onChange, type, placeholder }) => {
+    const [focused, setFocused] = useState(false);
+    const onFocus = () => setFocused(true);
+    const onBlur = () => setFocused(false);
 
-            return (
-                <div className={styles.formItem}>
-                    <Select
-                        styleInput={styleInput}
-                        title={name}
-                        useCase={typeOfMultiselect}
-                        type={type}
-                        data={dataOfMultiselect}
-                        value={value}
-                        onChange={onChange}
-                    />
-                </div>
-            );
-        case "buttonSelect":
-            return (
-                <div className={styles.formItem}>
-                    <ButtonSelect
-                        onClick={() => onClick()}
-                        type="button"
-                        value={valueOfButton}
-                        title={name}
-                        styleInput={styleInput}
-                    />
-                </div>
-            );
-        default:
-            alert("No valid type was received");
-            return null;
-    }
+    return (
+        <React.Fragment>
+            <div
+                className={styles.formLabel}
+                style={{ background: focused ? "#daffe9" : undefined }}
+            >
+                <label style={styleInput} htmlFor={name}>
+                    {name}
+                </label>
+            </div>
+            <input
+                onFocus={onFocus}
+                placeholder={placeholder}
+                onBlur={onBlur}
+                className={styles.formInput}
+                type={type}
+                style={{ background: focused ? "#daffe9" : undefined }}
+                value={value}
+                onChange={(e) => {
+                    if (onChange) onChange(e.target.value);
+                }}
+                name={name.replace(new RegExp(" ", "g"), "")}
+            />
+        </React.Fragment>
+    );
 };
 
 export default Input;

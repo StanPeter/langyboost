@@ -2,7 +2,7 @@ import Dialog from "components/ui/Modal/Dialog";
 import React, { FormEvent, MouseEvent, useEffect, useState } from "react";
 import styles from "./membershipDialog.module.scss";
 import Button from "components/ui/Button/Button";
-import Input from "components/ui/Input/Input";
+import InputSwitcher from "components/ui/InputSwitcher";
 import {
     MembershipTypes,
     paymentMethodTypes,
@@ -254,7 +254,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         ) : null}
                     </h2>
                     <div className={`${styles.section}`} style={sectionStyles.subscription}>
-                        <Input
+                        <InputSwitcher
                             name="Period"
                             type="singleselect"
                             typeOfMultiselect="form"
@@ -265,7 +265,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                             onChange={(d) => setSubscription({ ...subscription, period: d })}
                             value={[subscription.period]}
                         />
-                        <Input
+                        <InputSwitcher
                             name="Repeat payment"
                             type="singleselect"
                             typeOfMultiselect="form"

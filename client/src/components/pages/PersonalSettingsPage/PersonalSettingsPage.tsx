@@ -6,7 +6,7 @@ import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";
 import globalStyles from "styles/style.module.scss";
 import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
-import Input from "components/ui/Input/Input";
+import InputSwitcher from "components/ui/InputSwitcher";
 
 interface PersonalSettingsPageProps {}
 
@@ -36,14 +36,14 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                 />
             </div>
             <form className={styles.settingsForm} action="">
-                <Input name="Sex" type="text" />
-                <Input name="First name" type="text" />
-                <Input name="Last name" type="text" />
-                <Input name="E-mail" type="email" />
-                <Input name="Birthdate" type="date" />
-                <Input name="Phone number" type="text" />
-                <Input name="Address" type="text" />
-                <Input name="Nationality" type="text" />
+                <InputSwitcher name="Sex" type="text" />
+                <InputSwitcher name="First name" type="text" />
+                <InputSwitcher name="Last name" type="text" />
+                <InputSwitcher name="E-mail" type="email" />
+                <InputSwitcher name="Birthdate" type="date" />
+                <InputSwitcher name="Phone number" type="text" />
+                <InputSwitcher name="Address" type="text" />
+                <InputSwitcher name="Nationality" type="text" />
                 <Button text="Save changes" onClick={() => {}} active={true} type="big" />
             </form>
         </React.Fragment>
@@ -53,7 +53,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
         renderedSection = (
             <React.Fragment>
                 <form className={styles.settingsForm} action="">
-                    <Input
+                    <InputSwitcher
                         name="Sound effects"
                         type="singleselect"
                         typeOfMultiselect="form"
@@ -62,7 +62,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                             { text: "Turned on", value: "on" },
                         ]}
                     />
-                    <Input
+                    <InputSwitcher
                         name="Theme"
                         type="singleselect"
                         typeOfMultiselect="form"
@@ -72,13 +72,13 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                             { text: "Halloween", value: "halloween" },
                         ]}
                     />
-                    <Input
+                    <InputSwitcher
                         name="Membership"
                         type="buttonSelect"
                         valueOfButton="Try now"
                         onClick={() => setShowModal(!showModal)}
                     />
-                    <Input
+                    <InputSwitcher
                         name="Language"
                         type="singleselect"
                         typeOfMultiselect="form"
@@ -88,14 +88,14 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                             { text: "es", value: "es" },
                         ]}
                     />
-                    <Input name="Password" type="text" />
-                    <Input name="New password" type="text" />
-                    <Input
+                    <InputSwitcher name="Password" type="text" />
+                    <InputSwitcher name="New password" type="text" />
+                    <InputSwitcher
                         name="Repeat new password"
                         styleInput={{ fontSize: "12px" }}
                         type="text"
                     />
-                    <Input name="Bank details" type="text" />
+                    <InputSwitcher name="Bank details" type="text" />
                     <Button text="Save changes" onClick={() => {}} active={true} type="big" />
                 </form>
             </React.Fragment>
