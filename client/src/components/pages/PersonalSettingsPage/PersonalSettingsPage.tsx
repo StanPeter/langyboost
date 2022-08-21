@@ -1,19 +1,26 @@
-import React, { useState } from "react";
-import Footer from "components/layouts/Footer/Footer";
-import Navbar from "components/layouts/Navbar/Navbar";
+import React, { useEffect, useState } from "react";
 import Button from "components/ui/Button/Button";
 import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";
 import globalStyles from "styles/style.module.scss";
 import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
 import InputSwitcher from "components/ui/InputSwitcher";
+import MainBody from "components/layouts/MainBody/MainBody";
 
-interface PersonalSettingsPageProps {}
+type ModeTypes = "profile" | "settings";
 
-const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
+interface PersonalSettingsPageProps {
+    routeMode?: ModeTypes;
+}
+
+const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }) => {
     const [opacityImg, setOpacityImg] = useState("0.8");
-    const [mode, setMode] = useState<"profile" | "settings">("profile");
+    const [mode, setMode] = useState<ModeTypes>("profile");
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        if (routeMode) setMode(routeMode);
+    }, [routeMode]);
 
     let renderedSection: JSX.Element = (
         <React.Fragment>
@@ -100,7 +107,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
                 </form>
             </React.Fragment>
         );
-        
+
     const menuBtnStyle = {
         width: "50%",
         height: "3rem",
@@ -109,43 +116,39 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = () => {
     };
 
     return (
-        <div className={globalStyles.appWrapper}>
-            <Navbar />
-            <div className={globalStyles.bodyWrapper}>
-                <div className={styles.personalSettingsPage}>
-                    <h2 className={globalStyles.header}>Personal Settings</h2>
-                    <div className={styles.settingsContainer}>
-                        <div className={styles.settingsButtons}>
-                            <Button
-                                text="My profile"
-                                active={mode === "profile"}
-                                style={{
-                                    ...menuBtnStyle,
-                                    borderRadius: "25px 0px 0px 0px",
-                                }}
-                                type="fullLine"
-                                onClick={() => setMode("profile")}
-                            />
-                            <Button
-                                text="My Settings"
-                                active={mode === "settings"}
-                                style={{
-                                    ...menuBtnStyle,
-                                    borderRadius: "0 25px 0px 0px",
-                                }}
-                                type="fullLine"
-                                onClick={() => setMode("settings")}
-                            />
-                        </div>
-                        {renderedSection}
+        <MainBody>
+            <div className={styles.personalSettingsPage}>
+                <h2 className={globalStyles.header}>Personal Settings</h2>
+                <div className={styles.settingsContainer}>
+                    <div className={styles.settingsButtons}>
+                        <Button
+                            text="My profile"
+                            active={mode === "profile"}
+                            style={{
+                                ...menuBtnStyle,
+                                borderRadius: "25px 0px 0px 0px",
+                            }}
+                            type="fullLine"
+                            onClick={() => setMode("profile")}
+                        />
+                        <Button
+                            text="My Settings"
+                            active={mode === "settings"}
+                            style={{
+                                ...menuBtnStyle,
+                                borderRadius: "0 25px 0px 0px",
+                            }}
+                            type="fullLine"
+                            onClick={() => setMode("settings")}
+                        />
                     </div>
+                    {renderedSection}
                 </div>
             </div>
-            <Footer />
             {showModal && mode === "settings" ? (
                 <MembershipDialog hideFunction={() => setShowModal(false)} />
             ) : null}
-        </div>
+        </MainBody>
     );
 };
 

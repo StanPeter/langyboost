@@ -1,0 +1,40 @@
+.appWrapper {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.appWrapper::after {
+    content: "";
+    background-image: url("../../../images/bgPicture.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.bodyWrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15rem;
+    width: 80%;
+    margin: 10% auto 0;
+
+    // position: absolute;
+    // top: 50%;
+    // left: 10%;
+    // transform: translate(0, -50%);
+}
+
+@media screen and (max-width: 550px) {
+    .bodyWrapper {
+        width: 100%;
+    }
+}

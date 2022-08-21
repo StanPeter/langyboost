@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
 import { CgCrown } from "react-icons/cg";
@@ -17,7 +17,7 @@ const toggler = (links: NodeListOf<Element>, nameOfClass: string) => {
 };
 
 const Navbar: React.FC<NavbarProps> = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [navExpanded, setNavExpanded] = useState(false);
     const { data, loading } = useGetUserQuery();
@@ -70,25 +70,20 @@ const Navbar: React.FC<NavbarProps> = () => {
                     onClick={() => {
                         //if open then close hamburger
                         if (navExpanded) hamburgerClickHandler();
-                        history.push("/auth");
+                        navigate("/auth");
                     }}
                 >
-                    <BiLogIn
-                        className={`${globalStyles.link} ${styles.loginIcon}`}
-                    />
+                    <BiLogIn className={`${globalStyles.link} ${styles.loginIcon}`} />
                 </li>
             );
         return null;
     };
 
-    if (history.location.pathname === "/") return null;
+    // if (history.location.pathname === "/") return null;
 
     return (
-        <nav
-            className={styles.navbar}
-            style={{ marginBottom: navExpanded ? "20rem" : undefined }}
-        >
-            <div className={styles.logo} onClick={() => history.push("/")}>
+        <nav className={styles.navbar} style={{ marginBottom: navExpanded ? "20rem" : undefined }}>
+            <div className={styles.logo} onClick={() => navigate("/")}>
                 <CgCrown />
                 Langyboost
             </div>
@@ -96,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <li
                     onClick={() => {
                         if (navExpanded) hamburgerClickHandler();
-                        history.push("/courses");
+                        navigate("/courses");
                     }}
                     className={globalStyles.link}
                 >
@@ -105,16 +100,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <li
                     onClick={() => {
                         if (navExpanded) hamburgerClickHandler();
-                        history.push("/articles");
+                        navigate("/articles");
                     }}
                     className={globalStyles.link}
                 >
                     Articles
                 </li>
-                <li
-                    onClick={() => history.push("/resources")}
-                    className={globalStyles.link}
-                >
+                <li onClick={() => navigate("/resources")} className={globalStyles.link}>
                     Resources
                 </li>
                 {authButtons(true)}
@@ -125,7 +117,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <img
                         alt="fireIcon"
                         height="30"
-                        onClick={() => history.push("/cards/enDu")}
+                        onClick={() => navigate("/cards/enDu")}
                         width="30"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/FireIcon.svg/1501px-FireIcon.svg.png"
                     />
@@ -136,7 +128,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         className={styles.profileIcon}
                         alt="swedenIcon"
                         height="30"
-                        onClick={() => history.push("/course/8")}
+                        onClick={() => navigate("/course/8")}
                         width="30"
                         src="https://static.posters.cz/image/750/placky-odznaky/flag-sweden-i2430.jpg"
                     />
@@ -148,14 +140,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                         alt="girl"
                         height="30"
                         width="30"
-                        onClick={() => history.push("/settings")}
+                        onClick={() => navigate("/profile")}
                         src="https://i.pinimg.com/originals/fb/b9/63/fbb963ea21a040904d5331af46c70f5e.jpg"
                     />
                 </li>
                 <hr style={{ height: "30px" }} />
                 <li>
                     <FiSettings
-                        onClick={() => history.push("/settings")}
+                        onClick={() => navigate("/settings")}
                         className={`${styles.settingsIcon} ${globalStyles.link}`}
                     />
                 </li>

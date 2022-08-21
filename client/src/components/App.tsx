@@ -1,7 +1,6 @@
 // import Navbar from "components/Navbar";
 import Routes from "components/Routes";
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 // import { setAccessToken } from "utils/getToken";
 // import Footer from "components/Footer";
 // import Spinner from "components/Spinner";
@@ -30,18 +29,15 @@ const App: React.FC<AppProps> = () => {
 
     // if (loading) return <Spinner />;
 
-    return (
-        <BrowserRouter>
-            {/* <div className="appWrapper">
+    /* <div className="appWrapper">
                 <Navbar />
                 <div className="bodyWrapper">
                     <Routes />
                 </div>
                 <Footer />
-            </div> */}
-            <Routes />
-        </BrowserRouter>
-    );
+            </div> */
+
+    return <Routes />;
 };
 
 export default App;

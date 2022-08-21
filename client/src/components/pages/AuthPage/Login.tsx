@@ -12,13 +12,9 @@ import {
     Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import {
-    GetUserDocument,
-    GetUserQuery,
-    useLoginMutation,
-} from "generated/graphql";
+import { GetUserDocument, GetUserQuery, useLoginMutation } from "generated/graphql";
 import React, { FormEvent, useState } from "react";
-import { RouteComponentProps } from "react-router";
+import { NavigateFunction } from "react-router";
 import { setAccessToken } from "utils/getToken";
 import { validate } from "components/pages/AuthPage/Register";
 
@@ -42,7 +38,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Login: React.FC<RouteComponentProps> = ({ history }) => {
+interface LoginProps {
+    navigate: NavigateFunction;
+}
+
+const Login: React.FC<LoginProps> = ({ navigate }) => {
     const classes = useStyles();
 
     const [email, setEmail] = useState("");
@@ -75,15 +75,11 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
             setAccessToken(response.data.login.accessToken);
         }
 
-        history.push("/");
+        navigate("/");
     };
 
     return (
-        <Container
-            component="main"
-            className={"custom-form-wrapper"}
-            maxWidth="xs"
-        >
+        <Container component="main" className={"custom-form-wrapper"} maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -92,11 +88,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form
-                    onSubmit={onSubmitHandler}
-                    className={classes.form}
-                    noValidate
-                >
+                <form onSubmit={onSubmitHandler} className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -141,20 +133,12 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link
-                                onClick={() => alert("Not implemented")}
-                                href="#"
-                                variant="body2"
-                            >
+                            <Link onClick={() => alert("Not implemented")} href="#" variant="body2">
                                 Forgot password?
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link
-                                onClick={() => history.push("/register")}
-                                href="#"
-                                variant="body2"
-                            >
+                            <Link onClick={() => navigate("/register")} href="#" variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>

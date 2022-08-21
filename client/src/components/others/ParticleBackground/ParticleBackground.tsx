@@ -2,6 +2,7 @@ import React from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { particleConfig } from "config/particleConfig";
+import landingPageStyles from "../../pages/LandingPage/landingPage.module.scss";
 
 interface ParticleBackgroundProps {}
 
@@ -25,7 +26,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
             init={particlesInit}
             loaded={particlesLoaded}
             options={particleConfig}
-            className="particles"
+            className={landingPageStyles.particles}
         />
     );
 };

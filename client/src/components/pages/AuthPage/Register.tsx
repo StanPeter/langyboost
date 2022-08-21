@@ -19,7 +19,7 @@ import {
     useRegisterMutation,
 } from "generated/graphql";
 import { FormEvent, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { setAccessToken } from "utils/getToken";
 
 const useStyles = makeStyles((theme) => ({
@@ -93,10 +93,10 @@ const Register: React.FC<RegisterProps> = () => {
             setAccessToken(responseLogin.data.login.accessToken);
         }
 
-        history.push("/");
+        navigate("/");
     };
     const classes = useStyles();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     return (
         <Container
@@ -205,7 +205,7 @@ const Register: React.FC<RegisterProps> = () => {
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Link
-                                onClick={() => history.push("/login")}
+                                onClick={() => navigate("/login")}
                                 href="#"
                                 variant="body2"
                             >

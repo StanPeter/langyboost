@@ -1,6 +1,6 @@
 .formInput {
     border: 1px solid #85cdca;
-    border-radius: 0 5px 5px 0;
+    background: #fafbff;
     border-left-width: 0;
     height: 44px;
     min-width: 78%;
@@ -8,10 +8,22 @@
     width: 78%;
     background: none;
     text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    letter-spacing: 0.05em;
 
     &:focus {
-        border: 1px solid #85cdca;
+        border: 2px solid #85cdca;
+        font-style: normal;
         outline: none;
+    }
+
+    &.withoutLabel {
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
+        border-right-width: 0;
+        margin-bottom: 0.8rem;
     }
 }
 

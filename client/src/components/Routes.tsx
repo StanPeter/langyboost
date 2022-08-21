@@ -1,9 +1,7 @@
 // import Home from "pages/Home";
-import Register from "components/pages/AuthPage/Register";
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import AdminHome from "components/pages/AdminHome/AdminHome";
-import Login from "components/pages/AuthPage/Login";
 import LandingPage from "components/pages/LandingPage/LandingPage";
 import CoursesPage from "components/pages/CoursesPage/CoursesPage";
 import ArticlesPage from "components/pages/ArticlesPage/ArticlesPage";
@@ -17,25 +15,25 @@ import TermsConditionsPage from "components/pages/TermsConditionsPage/TermsCondi
 
 interface RoutesProps {}
 
-const Routes: React.FC<RoutesProps> = () => {
+const Routess: React.FC<RoutesProps> = () => {
     return (
-        <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/cards/:courseName" component={CardPage} />
-            <Route exact path="/courses" component={CoursesPage} />
-            <Route exact path="/course/:id" component={CourseDetailPage} />
-            <Route exact path="/articles" component={ArticlesPage} />
-            <Route exact path="/article/:id" component={ArticleDetailPage} />
-            <Route exact path="/resources" component={ResourcesPage} />
-            <Route exact path="/settings" component={PersonalSettingsPage} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/admin" component={AdminHome} />
-            <Route exact path="/auth" component={AuthPage} />
-            <Route exact path="/termsConditions" component={TermsConditionsPage} />
-        </Switch>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/cards/:courseName" element={<CardPage />} />
+                <Route path="/courses" element={<CoursesPage />} />
+                <Route path="/course/:id" element={<CourseDetailPage />} />
+                <Route path="/articles" element={<ArticlesPage />} />
+                <Route path="/article/:id" element={<ArticleDetailPage />} />
+                <Route path="/resources" element={<ResourcesPage />} />
+                <Route path="/settings" element={<PersonalSettingsPage routeMode="settings" />} />
+                <Route path="/profile" element={<PersonalSettingsPage routeMode="profile" />} />
+                <Route path="/admin" element={<AdminHome />} />
+                <Route path="/auth" element={<AuthPage />} />
+                <Route path="/termsConditions" element={<TermsConditionsPage />} />
+            </Routes>
+        </BrowserRouter>
     );
 };
 
-export default Routes;
+export default Routess;

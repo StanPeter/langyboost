@@ -60,4 +60,14 @@
         box-shadow: 0px 6px 6px rgb(0 0 0 / 30%);
         border-radius: 15px;
     }
+
+    &.fullLine {
+        letter-spacing: 0.1em;
+        box-shadow: 0px 6px 6px rgb(0 0 0 / 30%);
+        height: 45px;
+        font-size: 1.2em;
+        padding: 0;
+        margin: 0;
+        // min-width: 338px;
+    }
 }

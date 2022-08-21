@@ -7,6 +7,7 @@ export const contentWrapper: string;
 export const customFormWrapper: string;
 export const disabled: string;
 export const easingIn: string;
+export const fullLine: string;
 export const header: string;
 export const link: string;
 export const small: string;
