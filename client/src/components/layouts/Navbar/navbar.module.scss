@@ -2,7 +2,7 @@
 
 /* navbar */
 .navbar {
-    margin: 2rem auto 6rem auto;
+    margin: 0 auto;
     height: 3rem;
     background-color: var.$main-color;
     display: flex;
@@ -13,6 +13,10 @@
     position: relative;
     border-radius: 4rem;
     width: 92%;
+}
+
+.separatorDiv {
+    height: 2rem;
 }
 
 .navbarLinks {
@@ -84,13 +88,11 @@
     color: #2a4d69;
     height: 35px;
     display: flex;
-    width: 170px;
-    min-width: 170px;
+    justify-content: center;
+    width: 15%;
+    min-width: 15%;
     align-items: center;
     transition: 0.3 ease-in;
-    // position: absolute;
-    // top: 33%;
-    // left: 0%;
 
     &:hover {
     }

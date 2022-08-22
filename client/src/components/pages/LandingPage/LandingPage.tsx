@@ -2,6 +2,7 @@ import React from "react";
 import ParticleBackground from "components/others/ParticleBackground/ParticleBackground";
 import styles from "./landingPage.module.scss";
 import LoginForm from "components/others/LoginForm/LoginForm";
+import mainBodyStyles from "../../layouts/MainBody/mainBody.module.scss";
 
 interface LandingPageProps {}
 
@@ -21,7 +22,9 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     return (
         <div className={styles.landingPage}>
             <ParticleBackground />
-            <LoginForm useCase="landingPage" />
+            <div className={mainBodyStyles.bodyWrapper}>
+                <LoginForm useCase="landingPage" />
+            </div>
         </div>
     );
 };

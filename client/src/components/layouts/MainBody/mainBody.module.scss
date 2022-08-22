@@ -1,5 +1,5 @@
 .appWrapper {
-    position: absolute;
+    // position: absolute;
     min-height: 100%;
     min-width: 100%;
 }
@@ -24,17 +24,57 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 15rem;
-    width: 80%;
-    margin: 10% auto 0;
-
-    // position: absolute;
-    // top: 50%;
-    // left: 10%;
-    // transform: translate(0, -50%);
+    width: 100%;
+    margin: auto;
+    padding: 10% 0.5rem;
 }
 
-@media screen and (max-width: 550px) {
+/*
+Default styiling is made for a mobile device 350-480px, so that breakpoint won't be neccesary
+*/
+
+/* BREAKPOINTS  */
+
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+    // .bodyWrapper {
+    //     width: 95%;
+    // }
+}
+
+// SMALLER SCREEN TABLET
+@media screen and (min-width: 600px) {
+    // .bodyWrapper { //perfect
+    //     width: 90%;
+    // }
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
     .bodyWrapper {
-        width: 100%;
+        width: 85%;
+        padding: 10% 0;
+    }
+}
+
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+    .bodyWrapper {
+        width: 70%;
+    }
+}
+
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+    .bodyWrapper {
+        width: 60%;
+    }
+}
+
+// LARGE SCREEN DESKTOP
+@media screen and (min-width: 1800px) {
+    .bodyWrapper {
+        width: 50%;
+        max-width: 1000px;
     }
 }

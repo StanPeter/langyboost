@@ -96,18 +96,6 @@ button {
     z-index: -1;
 }
 
-.bodyWrapper {
-    display: flex;
-    // background-color: red;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 15rem;
-    margin-top: 7%;
-    width: 80%;
-    margin: 6% auto 0;
-}
-
 /* DONT SEE ANY USECASE !!  */
 .contentWrapper {
     width: 85%;
@@ -200,24 +188,37 @@ button {
     html {
         font-size: 14px !important;
     }
-
-    // .custom-form-wrapper {
-    //     max-width: unset !important;
-    //     width: unset !important;
-    // }
 }
 
 @media screen and (max-width: 550px) {
-    // .contentWrapper {
-    //     width: 93%;
-    // }
-
     .custom-form-wrapper {
         max-width: unset !important;
         width: unset !important;
     }
+}
 
-    .bodyWrapper {
-        width: 100%;
-    }
+/* BREAKPOINTS  */
+
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+}
+
+// SMALLER SCREEN TABLET
+@media screen and (min-width: 600px) {
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
+}
+
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+}
+
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+}
+
+// LARGE SCREEN DESKTOP
+@media screen and (min-width: 1800px) {
 }

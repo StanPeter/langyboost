@@ -30,13 +30,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
     // }, []);
 
     const buttonStyleLeft = {
-        borderTopLeftRadius: useCase === "authPage" ? "25px" : undefined,
+        borderTopLeftRadius: useCase === "authPage" ? "1.8rem" : undefined,
         width: "50%",
         height: useCase === "landingPage" ? "58px" : undefined,
     };
 
     const buttonStyleRight = {
-        borderTopRightRadius: useCase === "authPage" ? "25px" : undefined,
+        borderTopRightRadius: useCase === "authPage" ? "1.8rem" : undefined,
         width: "50%",
         height: useCase === "landingPage" ? "58px" : undefined,
     };
@@ -54,7 +54,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
     };
 
     const signFormStyles = {
-        width: useCase === "landingPage" ? "60%" : "70%",
+        // width: "70%",
         marginTop: useCase === "landingPage" ? 0 : "26%",
     };
 

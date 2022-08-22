@@ -4,6 +4,7 @@ import Navbar from "components/layouts/Navbar/Navbar";
 import Select from "components/ui/Select/Select";
 import globalStyles from "styles/style.module.scss";
 import styles from "./articlesPage.module.scss";
+import MainBody from "components/layouts/MainBody/MainBody";
 
 interface ArticlesPageProps {}
 
@@ -26,34 +27,30 @@ const data = [
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     return (
-        <div className={globalStyles.appWrapper}>
-            <Navbar />
-            <div className={globalStyles.bodyWrapper}>
-                <div className={styles.coursesPage}>
-                    <h2 className={globalStyles.header}>Articles</h2>
-                    <div className={styles.coursesFilters}>
-                        <Select
-                            type="multiselect"
-                            useCase="filter"
-                            data={data}
-                            title="Filter by language"
-                            value={["german"]}
-                            onChange={() => {}}
-                        />
-                        <div className={styles.coursesFilter}>
-                            <label htmlFor="">Sort by</label>
-                            <select name="sourceLanguage" id="" className={styles.coursesSelect}>
-                                <option value="en">Newest</option>
-                                <option value="ge">Most popular</option>
-                                <option value="ge">Most viewed</option>
-                            </select>
-                        </div>
+        <MainBody>
+            <div className={styles.coursesPage}>
+                <h2 className={globalStyles.header}>Articles</h2>
+                <div className={styles.coursesFilters}>
+                    <Select
+                        type="multiselect"
+                        useCase="filter"
+                        data={data}
+                        title="Filter by language"
+                        value={["german"]}
+                        onChange={() => {}}
+                    />
+                    <div className={styles.coursesFilter}>
+                        <label htmlFor="">Sort by</label>
+                        <select name="sourceLanguage" id="" className={styles.coursesSelect}>
+                            <option value="en">Newest</option>
+                            <option value="ge">Most popular</option>
+                            <option value="ge">Most viewed</option>
+                        </select>
                     </div>
-                    <hr className={styles.coursesSeparator} />
                 </div>
+                <hr className={styles.coursesSeparator} />
             </div>
-            <Footer />
-        </div>
+        </MainBody>
     );
 };
 
