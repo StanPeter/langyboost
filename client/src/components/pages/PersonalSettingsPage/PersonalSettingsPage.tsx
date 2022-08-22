@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Button from "components/ui/Button/Button";
 import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";
-import globalStyles from "styles/style.module.scss";
 import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
 import InputSwitcher from "components/ui/InputSwitcher";
 import MainBody from "components/layouts/MainBody/MainBody";
@@ -118,7 +117,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
     return (
         <MainBody>
             <div className={styles.personalSettingsPage}>
-                <h2 className={globalStyles.header}>Personal Settings</h2>
+                <h2>Personal Settings</h2>
                 <div className={styles.settingsContainer}>
                     <div className={styles.settingsButtons}>
                         <Button

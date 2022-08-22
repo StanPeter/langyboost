@@ -1,7 +1,6 @@
 export const active: string;
 export const appWrapper: string;
 export const big: string;
-export const bodyWrapper: string;
 export const button: string;
 export const contentWrapper: string;
 export const customFormWrapper: string;

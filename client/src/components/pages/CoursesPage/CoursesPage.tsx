@@ -1,19 +1,14 @@
 import React from "react";
 import styles from "./cousesPage.module.scss";
-import globalStyles from "styles/style.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
 
 interface CoursesPageProps {}
 
 const CoursesPage: React.FC<CoursesPageProps> = () => {
-    console.log(globalStyles.appWrapper, " app wrapper");
-    console.log(globalStyles, " app wrapper");
-    console.log(styles.coursesFilter, " app wrapper 3333");
-
     return (
         <MainBody>
             <div className={styles.coursesPage}>
-                <h2 className={globalStyles.header}>Courses</h2>
+                <h2>Courses</h2>
                 <div className={styles.coursesFilters}>
                     <div className={styles.coursesFilter}>
                         <label htmlFor="">I speak</label>

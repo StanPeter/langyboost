@@ -1,5 +1,4 @@
 export const appWrapper: string;
-export const bodyWrapper: string;
 export const contentWrapper: string;
 export const customFormWrapper: string;
 export const easingIn: string;
@@ -19,5 +18,6 @@ export const open: string;
 export const profileIcon: string;
 export const profileName: string;
 export const right: string;
+export const separatorDiv: string;
 export const settingsIcon: string;
 export const tooltip: string;

@@ -1,10 +1,7 @@
-import Footer from "components/layouts/Footer/Footer";
-import Navbar from "components/layouts/Navbar/Navbar";
 import PhraseCardsControls from "components/others/PhraseCardsControls/PhraseCardsControls";
 import Tooltip from "components/ui/Tooltip/Tooltip";
 import React, { useState } from "react";
 import styles from "./cardPage.module.scss";
-import globalStyles from "styles/style.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
 // import { useGetPhrasesQuery } from "generated/graphql";
 // import Spinner from "./Spinner";
@@ -44,7 +41,7 @@ const CardPage: React.FC<CardPageProps> = () => {
         <MainBody>
             <div className={styles.cardPage}>
                 <div style={{ display: "flex" }}>
-                    <h2 className={globalStyles.header}>Card 7 of 50</h2>
+                    <h2>Card 7 of 50</h2>
                     <Tooltip />
                 </div>
                 <div

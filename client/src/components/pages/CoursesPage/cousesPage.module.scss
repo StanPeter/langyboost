@@ -5,7 +5,6 @@
 }
 
 .coursesSelect {
-    // -webkit-appearance: none;
     outline: none;
     background-color: #daffe9;
     border: 2px solid #85cdca;
@@ -19,11 +18,6 @@
     padding-left: 12px;
 
     & option {
-        // outline: none;
-        // appearance: none;
-        // -moz-appearance: none;
-        // -webkit-appearance: none;
-
         background-color: #daffe9;
         border: 2px solid #85cdca !important;
     }
@@ -31,7 +25,6 @@
 
 .coursesFilter {
     display: flex;
-    // flex-direction: row;
     align-items: center;
     justify-content: flex-end;
 }
@@ -55,10 +48,8 @@
         background: #41b3a3;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 15px;
-        font-family: Roboto;
         font-size: 16px;
         line-height: 40px;
-        /* or 250% */
         width: 177px;
         height: 31px;
         border: none;
@@ -78,32 +69,15 @@
 }
 
 .coursesFilters {
-    margin-top: 5rem;
+    margin-top: 2rem;
 
     & label {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
         font-size: 20px;
         line-height: 40px;
-        /* or 200% */
-
         text-align: center;
         letter-spacing: 0.05em;
-
         color: #203a4f;
-
         display: flex;
         flex-direction: column;
-    }
-}
-
-@supports (-moz-appearance: none) {
-    select {
-        // -moz-appearance: none !important;
-        // background: transparent
-        //     url("data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==")
-        //     right center no-repeat !important;
-        // background-position: calc(100% - 5px) center !important;
     }
 }

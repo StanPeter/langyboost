@@ -78,21 +78,12 @@
 }
 
 .coursesFilters {
-    margin-top: 5rem;
-
-    & label {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
+    ¡ & label {
         font-size: 20px;
         line-height: 40px;
-        /* or 200% */
-
         text-align: center;
         letter-spacing: 0.05em;
-
         color: #203a4f;
-
         display: flex;
         flex-direction: column;
     }
@@ -100,10 +91,10 @@
 
 // @supports (-moz-appearance: none) {
 //     select {
-        // -moz-appearance: none !important;
-        // background: transparent
-        //     url("data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==")
-        //     right center no-repeat !important;
-        // background-position: calc(100% - 5px) center !important;
+// -moz-appearance: none !important;
+// background: transparent
+//     url("data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==")
+//     right center no-repeat !important;
+// background-position: calc(100% - 5px) center !important;
 //     }
 // }

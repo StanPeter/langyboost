@@ -166,14 +166,14 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
     const content = (
         <div className={styles.dialog}>
             <header className={styles.header}>
-                <h2>
-                    Get a membership to finally reach your dreams and learn the desired langauge!
-                </h2>
+                <h4>
+                    Get a membership to finally reach your dreams and learn the desired language!
+                </h4>
             </header>
             <hr className={styles.separator} />
             {existingSections.includes("membership") && (
                 <section>
-                    <h2
+                    <h4
                         onClick={() => {
                             setShowedSectionHelper(
                                 showedSection === "membership" ? "subscription" : "membership"
@@ -184,7 +184,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         {membership ? (
                             <span className={styles.pickedChoice}>{membership}</span>
                         ) : null}
-                    </h2>
+                    </h4>
                     <div
                         className={`${styles.cardsWrapper} ${
                             firstRender ? styles.firstSectionAnimation : ""
@@ -197,7 +197,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                                 membership === "peon" ? `${styles.cardChosen}` : ""
                             }`}
                         >
-                            <h1>Peon</h1>
+                            <h2>Peon</h2>
                             <hr />
                             <div className={styles.privilegesContainer}>
                                 {peonText.map((text, index: number) => (
@@ -214,7 +214,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                                 membership === "king" ? `${styles.cardChosen}` : ""
                             }`}
                         >
-                            <h1>King</h1>
+                            <h2>King</h2>
                             <hr />
                             <div className={styles.privilegesContainer}>
                                 {kingText.map((text, index: number) => (
@@ -231,7 +231,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
             {existingSections.includes("subscription") && (
                 <section>
                     <hr className={styles.separator} />
-                    <h2
+                    <h4
                         onClick={() => {
                             setShowedSectionHelper(
                                 showedSection === "subscription" ? "paymendMethod" : "subscription"
@@ -252,7 +252,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                                 {subscription.repeatPayment}
                             </span>
                         ) : null}
-                    </h2>
+                    </h4>
                     <div className={`${styles.section}`} style={sectionStyles.subscription}>
                         <InputSwitcher
                             name="Period"
@@ -295,7 +295,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
             {existingSections.includes("paymendMethod") && (
                 <section>
                     <hr className={styles.separator} />
-                    <h2
+                    <h4
                         onClick={() => {
                             setShowedSectionHelper(
                                 showedSection === "paymendMethod"
@@ -308,7 +308,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         {paymentMethod ? (
                             <span className={styles.pickedChoice}>{paymentMethod}</span>
                         ) : null}
-                    </h2>
+                    </h4>
                     <div
                         className={`${styles.paymentMethodsWrapper} ${styles.section}}`}
                         style={sectionStyles.paymendMethod}
@@ -345,13 +345,13 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
             {existingSections.includes("paymentDetails") && (
                 <section>
                     <hr className={styles.separator} />
-                    <h2
+                    <h4
                         onClick={() => {
                             setShowedSectionHelper("paymentDetails");
                         }}
                     >
                         Payment details
-                    </h2>
+                    </h4>
                     <div
                         className={`${styles.section} ${styles.paymentCardWrapper}`}
                         style={sectionStyles.paymentDetails}

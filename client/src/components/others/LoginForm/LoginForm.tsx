@@ -55,7 +55,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
 
     const signFormStyles = {
         // width: "70%",
-        marginTop: useCase === "landingPage" ? 0 : "26%",
+        // marginTop: useCase === "landingPage" ? 0 : "26%",
     };
 
     return (

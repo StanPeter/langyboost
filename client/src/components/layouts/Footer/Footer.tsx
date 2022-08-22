@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import styles from "./footer.module.scss";
+import globalStyles from "../../../styles/style.module.scss";
 
 interface FooterProps {}
 
@@ -68,7 +69,7 @@ const Footer: React.FC<FooterProps> = () => {
                 </li>
             </ul>
             <p className={styles.copyright}>
-                <span className="link" onClick={() => navigate("/termsConditions")}>
+                <span className={globalStyles.link} onClick={() => navigate("/termsConditions")}>
                     Copyright
                 </span>{" "}
                 1999-2021 by Refsnes Data. All Rights Reserved.

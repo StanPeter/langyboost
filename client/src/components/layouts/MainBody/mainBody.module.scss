@@ -14,17 +14,17 @@
     left: 0;
     bottom: 0;
     right: 0;
-    position: absolute;
+    position: fixed;
     z-index: -1;
 }
 
 .bodyWrapper {
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 15rem;
     width: 100%;
+    min-height: 100vh;
     margin: auto;
     padding: 10% 0.5rem;
 }
@@ -68,13 +68,14 @@ Default styiling is made for a mobile device 350-480px, so that breakpoint won't
 @media screen and (min-width: 1500px) {
     .bodyWrapper {
         width: 60%;
+        max-width: 1200px;
     }
 }
 
 // LARGE SCREEN DESKTOP
 @media screen and (min-width: 1800px) {
-    .bodyWrapper {
-        width: 50%;
-        max-width: 1000px;
-    }
+    // .bodyWrapper {
+    //     width: 50%;
+
+    // }
 }

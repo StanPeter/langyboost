@@ -1,8 +1,5 @@
 import React from "react";
-import Footer from "components/layouts/Footer/Footer";
-import Navbar from "components/layouts/Navbar/Navbar";
 import Select from "components/ui/Select/Select";
-import globalStyles from "styles/style.module.scss";
 import styles from "./articlesPage.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
 
@@ -29,7 +26,7 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     return (
         <MainBody>
             <div className={styles.coursesPage}>
-                <h2 className={globalStyles.header}>Articles</h2>
+                <h2>Articles</h2>
                 <div className={styles.coursesFilters}>
                     <Select
                         type="multiselect"

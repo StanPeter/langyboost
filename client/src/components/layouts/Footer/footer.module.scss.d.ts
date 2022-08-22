@@ -1,5 +1,4 @@
 export const appWrapper: string;
-export const bodyWrapper: string;
 export const contentWrapper: string;
 export const copyright: string;
 export const customFormWrapper: string;
