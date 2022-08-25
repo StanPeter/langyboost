@@ -37,15 +37,23 @@ const CardPage: React.FC<CardPageProps> = () => {
     // if (cardIndex >= data.getPhrases.length && !noMorePhrases)
     //     setNoMorePhrases(true);
 
+    /*
+    //network-only makes it to do a request every single time
+    const { data, loading } = useHelloQuery({ fetchPolicy: "network-only" });
+
+    if (!data || error) return null;
+    if (loading) return <Spinner />;
+    */
+
     return (
         <MainBody>
             <div className={styles.cardPage}>
-                <div style={{ display: "flex" }}>
+                <div>
                     <h2>Card 7 of 50</h2>
                     <Tooltip />
                 </div>
                 <div
-                    className={`${styles.card} ${
+                    className={`${styles.cardWrapper} ${
                         animationChangeCard ? styles.animationChangeCard : ""
                     }`}
                     onAnimationEnd={() => {
@@ -54,15 +62,23 @@ const CardPage: React.FC<CardPageProps> = () => {
                     }}
                 >
                     <div className={styles.cardPhrase}>
-                        <h2>
+                        <h2 className={`${hideTranslation ? styles.focused : ""}`}>
                             Denke lieber an das, was du hast
                             {/* {data.getPhrases[cardIndex]?.phrase ||
                                     "No more phrases"} */}
                         </h2>
-                        {!hideTranslation ? <p>Not implemented</p> : null}
+                        {!hideTranslation ? (
+                            <React.Fragment>
+                                <hr
+                                    className={styles.translationSeparator}
+                                    style={{ width: "50%" }}
+                                />
+                                <h3 className={styles.focused}>Not implemented</h3>
+                            </React.Fragment>
+                        ) : null}
                     </div>
 
-                    <hr className={styles.separator} />
+                    <hr className={styles.controlsSeparator} />
                     <PhraseCardsControls
                         setHidetranslation={setHidetranslation}
                         setAnimationChangeCard={setAnimationChangeCard}
@@ -70,14 +86,6 @@ const CardPage: React.FC<CardPageProps> = () => {
                         noMorePhrases={false}
                     />
                 </div>
-                {/* 
-                    <div className="card">
-                        <p className="card-text">
-                            Denke lieber an das, was du hast
-                        </p>
-                        <hr className="separator" />
-                        <PhraseCardsControls />
-                    </div> */}
             </div>
         </MainBody>
     );
