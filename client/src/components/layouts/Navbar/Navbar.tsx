@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
@@ -6,14 +6,9 @@ import { CgCrown } from "react-icons/cg";
 import { BiLogIn } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import styles from "./navbar.module.scss";
+import NavbarLink from "components/ui/NavbarLink";
 
 interface NavbarProps {}
-
-const toggler = (links: NodeListOf<Element>, nameOfClass: string) => {
-    links.forEach((link) => {
-        link.classList.toggle(nameOfClass);
-    });
-};
 
 const Navbar: React.FC<NavbarProps> = () => {
     const [expanded, setExpanded] = useState<boolean>(false);
@@ -40,8 +35,6 @@ const Navbar: React.FC<NavbarProps> = () => {
         });
 
     const authButtons = (hide: boolean) => {
-        // console.log(data, "data");
-
         if (data?.getUser)
             return (
                 <li
@@ -69,6 +62,71 @@ const Navbar: React.FC<NavbarProps> = () => {
             );
         return null;
     };
+
+    const authSection = expanded ? (
+        <ul className={`${styles.expandedNavLinks} ${expandedHelper && styles.expanded}`}>
+            <NavbarLink
+                name="Courses"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/courses")}
+            />
+            <NavbarLink
+                name="Articles"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/articles")}
+            />
+            <NavbarLink
+                name="Resources"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/resources")}
+            />
+            <NavbarLink
+                name="Current lesson"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/cards/enDu")}
+            />
+            <NavbarLink
+                name="Current course"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/course/8")}
+            />
+            <NavbarLink
+                name="Profile"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/profile")}
+            />
+            <NavbarLink
+                name="Settings"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={() => navigate("/settings")}
+            />
+            {/* <NavbarLink
+                    name="Sign out"
+                    expandedHelper={expandedHelper}
+                    hamburgerClickHandler={hamburgerClickHandler}
+                    onClick={async () => {
+                        await logout();
+                        setAccessToken("");
+                        await client.resetStore();
+                    }}
+                /> */}
+            <NavbarLink
+                name="Sign in"
+                expandedHelper={expandedHelper}
+                hamburgerClickHandler={hamburgerClickHandler}
+                onClick={async () => {
+                    navigate("/auth");
+                }}
+            />
+        </ul>
+    ) : null;
 
     return (
         <nav className={styles.navbar} style={{ marginBottom: expanded ? "20rem" : undefined }}>
@@ -137,88 +195,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                 {authButtons(false)}
             </ul>
             <div className={styles.hamburger} onClick={hamburgerClickHandler}>
-                <div className={styles.line}></div>
-                <div className={styles.line}></div>
-                <div className={styles.line}></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-            {expanded ? (
-                <ul className={`${styles.expandedNavLinks} ${expandedHelper && styles.expanded}`}>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/courses");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Courses
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/articles");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Articles
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/resources");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Resources
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/cards/enDu");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Current lesson
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/course/8");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Current course
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/profile");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Profile
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            navigate("/settings");
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Settings
-                    </li>
-                    <li
-                        onClick={async () => {
-                            await hamburgerClickHandler();
-                            await logout();
-                            setAccessToken("");
-                            await client.resetStore();
-                        }}
-                        className={`${expandedHelper ? styles.transition : ""}`}
-                    >
-                        Logout
-                    </li>
-                </ul>
-            ) : null}
+            {authSection}
         </nav>
     );
 };

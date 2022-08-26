@@ -2,17 +2,17 @@
 
 $animationLength: 0.8s;
 
-/* NAVBAR */
+/* NAVBAR - has four main elements -> logo, left list, right list and expanded list (only for small screens) */
 .navbar {
-    height: 3rem;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    height: 3rem;
     background-color: var.$main-color;
     color: var.$light-shades;
     font-size: 1.2rem;
-    position: relative;
-    width: 100%;
 
     & p {
         font-size: 1rem !important;
@@ -26,18 +26,14 @@ $animationLength: 0.8s;
     justify-content: center;
     align-items: center;
     height: 2.2rem;
-    margin-left: 1rem;
-    border: 1px solid var.$light-shades;
-    background-color: var.$light-shades;
-    border-radius: 100%;
-    color: #2a4d69;
-    transition: 0.3 ease-in;
     width: 20%;
     min-width: 10rem;
-
-    &:hover {
-        cursor: pointer;
-    }
+    border: 1px solid var.$light-shades;
+    border-radius: 100%;
+    margin-left: 1rem;
+    background-color: var.$light-shades;
+    color: #2a4d69;
+    cursor: pointer;
 
     & svg {
         margin-right: 0.2rem;
@@ -45,9 +41,49 @@ $animationLength: 0.8s;
 }
 
 /* NAVBAR LINKS LEFT and RIGHT */
-.navbarLinks.right,
-.navbarLinks.left {
-    display: none;
+.navbarLinks {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: 40%;
+    max-width: calc(50% - 2.5rem); //half of max of Logo div
+    width: calc(50% - 2.5rem); //half of max of Logo div
+    margin: 0;
+    list-style: none;
+
+    & li {
+        padding: 0 0.6rem;
+        font-size: 0.9rem;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            font-weight: 900;
+        }
+    }
+
+    &.left {
+        display: none;
+        justify-content: center;
+    }
+
+    &.right {
+        display: none;
+        justify-content: flex-end;
+        margin-right: 1rem;
+
+        & li {
+            display: flex;
+            padding: 0 0.8rem;
+        }
+        & li:nth-child(2) {
+            padding: 0;
+        }
+        & li > p {
+            padding: 0.3rem;
+            font-size: 1.2rem;
+        }
+    }
 }
 
 /* ICONS */
@@ -65,25 +101,18 @@ $animationLength: 0.8s;
     height: 2rem;
 }
 
-/* HAMBURGER */
-.hamburger {
-    margin-right: 1rem;
-    position: absolute;
-    right: 0;
-    top: 20%;
-    cursor: pointer;
-    z-index: 1;
-}
+/* FOR MOBILE / SMALL TABLES ONLY */
 
 .expandedNavLinks {
-    background-color: var.$main-color;
-    list-style: none;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
     position: absolute;
     top: 3rem;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var.$main-color;
+    list-style: none;
 
     &.expanded {
         animation: circleAnimationIn $animationLength ease-in-out;
@@ -93,32 +122,21 @@ $animationLength: 0.8s;
         animation: circleAnimationOut $animationLength ease-in-out;
     }
 
-    align-items: center;
-
     & li {
+        display: flex;
+        justify-content: center;
+        width: 100%;
         padding: 0.6rem;
         font-size: 1.5rem;
         letter-spacing: 0.2rem;
         opacity: 0;
         list-style: none;
-        width: 100%;
-        display: flex;
-        justify-content: center;
 
         &:hover {
             cursor: pointer;
             transform: scale(1.05);
             font-weight: 900;
             opacity: 1;
-        }
-
-        &.left {
-            display: flex;
-            width: 80%;
-        }
-
-        &.right {
-            display: none;
         }
 
         @for $i from 1 through 8 {
@@ -133,6 +151,24 @@ $animationLength: 0.8s;
     }
 }
 
+.hamburger {
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
+    top: 20%;
+    cursor: pointer;
+    z-index: 1;
+
+    //to create the icon
+    & div {
+        width: 2rem;
+        background-color: var.$light-shades;
+        height: 0.2rem;
+        margin: 5px;
+    }
+}
+
+/* ANIMATIONS */
 @keyframes circleAnimationIn {
     0% {
         clip-path: circle(0px at 96% -1rem);
@@ -148,76 +184,6 @@ $animationLength: 0.8s;
     }
     100% {
         clip-path: circle(0px at 96% -1rem);
-    }
-}
-
-.line {
-    width: 2rem;
-    background-color: var.$light-shades;
-    height: 0.2rem;
-    margin: 5px;
-}
-
-/* ANIMATIONS, TRANSITIONS */
-// .navLinkTransition:nth-child(1) {
-//     transition: all 0.5s ease 0.2s;
-// }
-
-// .navLinkTransition:nth-child(2) {
-//     transition: all 0.5s ease 0.4s;
-// }
-
-// .navLinkTransition:nth-child(3) {
-//     transition: all 0.5s ease 0.6s;
-// }
-
-// .navbarLinks.open {
-//     clip-path: circle(1500px at 90% -10%);
-//     -webkit-clip-path: circle(1500px at 90% -10%);
-// }
-
-// .navbarLinks li.fade {
-//     opacity: 0.7;
-// }
-
-// .navbarLinks li.fade:hover {
-//     opacity: 1;
-// }
-
-.navbarLinks {
-    background-color: var.$main-color;
-    list-style: none;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    margin: 0;
-
-    clip-path: circle(100px at 92% -34%);
-    -webkit-clip-path: circle(100px at 92% -34%);
-    transition: all 1.2s ease-out;
-
-    align-items: center;
-
-    & li {
-        opacity: 0;
-        padding: 2rem;
-        font-size: 1.5rem;
-        width: 100%;
-
-        &:hover {
-            cursor: pointer;
-            transform: scale(1.05);
-            font-weight: 900;
-        }
-
-        &.left {
-            display: flex;
-            width: 80%;
-        }
-
-        &.right {
-            display: none;
-        }
     }
 }
 
@@ -240,50 +206,17 @@ $animationLength: 0.8s;
     }
 
     .navbarLinks {
-        clip-path: none;
-        -webkit-clip-path: none;
-
-        flex-direction: row;
-        height: 100%;
-        background-color: unset;
-        min-width: 40%;
-        max-width: calc(50% - 2.5rem); //half of max of Logo div
-
-        & li {
-            opacity: 1;
-            padding: 0 0.6rem;
-            font-size: 0.9rem;
-            width: unset;
-        }
-
-        &.left {
-            display: flex;
-            justify-content: center;
-        }
-
+        &.left,
         &.right {
             display: flex;
-            justify-content: flex-end;
-
-            & li {
-                display: flex;
-                padding: 0 0.8rem;
-            }
-            & li:nth-child(2) {
-                padding: 0;
-            }
-            & li > p {
-                padding: 0.3rem;
-                font-size: 1.2rem;
-            }
         }
     }
 
     .logo {
         position: unset;
-        font-size: 1.5rem;
         width: 5rem;
         min-width: unset;
+        font-size: 1.5rem;
 
         & span {
             display: none;
@@ -304,6 +237,10 @@ $animationLength: 0.8s;
         & li {
             padding: 0 0.8rem;
             font-size: 1rem;
+        }
+
+        &.right {
+            margin-right: unset;
         }
     }
 

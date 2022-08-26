@@ -6,7 +6,6 @@ export const expanded: string;
 export const expandedNavLinks: string;
 export const hamburger: string;
 export const left: string;
-export const line: string;
 export const loginIcon: string;
 export const logo: string;
 export const navbar: string;
