@@ -1,65 +1,56 @@
 @use "styles/style.module.scss" as var;
 
-/* navbar */
+$animationLength: 0.8s;
+
+/* NAVBAR */
 .navbar {
-    margin: 0 auto;
     height: 3rem;
-    background-color: var.$main-color;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    background-color: var.$main-color;
     color: var.$light-shades;
     font-size: 1.2rem;
     position: relative;
-    border-radius: 4rem;
-    width: 92%;
+    width: 100%;
+
+    & p {
+        font-size: 1rem !important;
+    }
 }
 
-.separatorDiv {
-    height: 2rem;
-}
-
-.navbarLinks {
-    list-style: none;
-    margin: 0 2rem;
+/* LOGO DIV */
+.logo {
+    position: absolute;
     display: flex;
-    flex-direction: row;
-    cursor: pointer;
+    justify-content: center;
     align-items: center;
-    // width: 50%;
+    height: 2.2rem;
+    margin-left: 1rem;
+    border: 1px solid var.$light-shades;
+    background-color: var.$light-shades;
+    border-radius: 100%;
+    color: #2a4d69;
+    transition: 0.3 ease-in;
+    width: 20%;
+    min-width: 10rem;
 
-    &.left {
-        justify-content: flex-start;
-        width: 50%;
+    &:hover {
+        cursor: pointer;
     }
 
-    &.right {
-        justify-content: flex-end;
-        width: 50%;
-
-        & li {
-            display: flex;
-            align-items: center;
-        }
-        & li:nth-child(2) {
-            padding: 0;
-        }
-        & li > p {
-            padding: 5px;
-            font-size: 1.2rem;
-        }
-    }
-
-    &.right li {
-        padding: 0 1.5rem;
+    & svg {
+        margin-right: 0.2rem;
     }
 }
 
-.navbarLinks li {
-    padding: 0 1rem;
-    font-size: 1rem;
+/* NAVBAR LINKS LEFT and RIGHT */
+.navbarLinks.right,
+.navbarLinks.left {
+    display: none;
 }
 
+/* ICONS */
 .loginIcon {
     font-size: 1.7rem;
 }
@@ -74,113 +65,289 @@
     height: 2rem;
 }
 
-.profileName {
-    font-size: 1rem !important;
-}
-
-.logo {
-    margin: 0 3rem 0 1rem;
-    z-index: 2;
-    padding: 0.6rem;
-    border: 1px solid var.$light-shades;
-    background-color: var.$light-shades;
-    border-radius: 100%;
-    color: #2a4d69;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    width: 15%;
-    min-width: 15%;
-    align-items: center;
-    transition: 0.3 ease-in;
-
-    &:hover {
-    }
-}
-
-.hideNav,
+/* HAMBURGER */
 .hamburger {
-    display: none;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
+    top: 20%;
+    cursor: pointer;
+    z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
-    /* navbar media */
-    .navbarLinks {
-        /* position: fixed; */
-        background-color: var.$main-color;
-        // height: 32vh;
-        height: 18rem;
-        width: 100%;
-        flex-direction: column;
-        margin: 0;
-        clip-path: circle(100px at 92% -34%);
-        -webkit-clip-path: circle(100px at 92% -34%);
-        transition: all 1.2s ease-out;
-        /* pointer-events: none; */
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        margin-top: 18rem;
+.expandedNavLinks {
+    background-color: var.$main-color;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+
+    &.expanded {
+        animation: circleAnimationIn $animationLength ease-in-out;
     }
 
-    .navbarLinks li {
+    &:not(.expanded) {
+        animation: circleAnimationOut $animationLength ease-in-out;
+    }
+
+    align-items: center;
+
+    & li {
+        padding: 0.6rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+        opacity: 0;
+        list-style: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            font-weight: 900;
+            opacity: 1;
+        }
+
+        &.left {
+            display: flex;
+            width: 80%;
+        }
+
+        &.right {
+            display: none;
+        }
+
+        @for $i from 1 through 8 {
+            &:nth-child(#{$i}) {
+                transition: opacity 0.2s ease-in #{0.3s / $i};
+            }
+        }
+
+        &.transition {
+            opacity: 0.7;
+        }
+    }
+}
+
+@keyframes circleAnimationIn {
+    0% {
+        clip-path: circle(0px at 96% -1rem);
+    }
+    100% {
+        clip-path: circle(140% at 0 0);
+    }
+}
+
+@keyframes circleAnimationOut {
+    0% {
+        clip-path: circle(140% at 0 0);
+    }
+    100% {
+        clip-path: circle(0px at 96% -1rem);
+    }
+}
+
+.line {
+    width: 2rem;
+    background-color: var.$light-shades;
+    height: 0.2rem;
+    margin: 5px;
+}
+
+/* ANIMATIONS, TRANSITIONS */
+// .navLinkTransition:nth-child(1) {
+//     transition: all 0.5s ease 0.2s;
+// }
+
+// .navLinkTransition:nth-child(2) {
+//     transition: all 0.5s ease 0.4s;
+// }
+
+// .navLinkTransition:nth-child(3) {
+//     transition: all 0.5s ease 0.6s;
+// }
+
+// .navbarLinks.open {
+//     clip-path: circle(1500px at 90% -10%);
+//     -webkit-clip-path: circle(1500px at 90% -10%);
+// }
+
+// .navbarLinks li.fade {
+//     opacity: 0.7;
+// }
+
+// .navbarLinks li.fade:hover {
+//     opacity: 1;
+// }
+
+.navbarLinks {
+    background-color: var.$main-color;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+
+    clip-path: circle(100px at 92% -34%);
+    -webkit-clip-path: circle(100px at 92% -34%);
+    transition: all 1.2s ease-out;
+
+    align-items: center;
+
+    & li {
         opacity: 0;
         padding: 2rem;
         font-size: 1.5rem;
         width: 100%;
-        display: flex;
-        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            font-weight: 900;
+        }
+
+        &.left {
+            display: flex;
+            width: 80%;
+        }
+
+        &.right {
+            display: none;
+        }
+    }
+}
+
+/* BREAKPOINTS  */
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+}
+
+// SMALLER SCREEN TABLET
+@media screen and (min-width: 600px) {
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
+    .navbar {
+        justify-content: unset;
+        width: 92%;
+        margin: 2rem auto 0;
+        border-radius: 4rem;
     }
 
-    .navbarLinks.right {
+    .navbarLinks {
+        clip-path: none;
+        -webkit-clip-path: none;
+
+        flex-direction: row;
+        height: 100%;
+        background-color: unset;
+        min-width: 40%;
+        max-width: calc(50% - 2.5rem); //half of max of Logo div
+
+        & li {
+            opacity: 1;
+            padding: 0 0.6rem;
+            font-size: 0.9rem;
+            width: unset;
+        }
+
+        &.left {
+            display: flex;
+            justify-content: center;
+        }
+
+        &.right {
+            display: flex;
+            justify-content: flex-end;
+
+            & li {
+                display: flex;
+                padding: 0 0.8rem;
+            }
+            & li:nth-child(2) {
+                padding: 0;
+            }
+            & li > p {
+                padding: 0.3rem;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .logo {
+        position: unset;
+        font-size: 1.5rem;
+        width: 5rem;
+        min-width: unset;
+
+        & span {
+            display: none;
+        }
+    }
+
+    .hamburger,
+    .authIcon {
         display: none;
     }
+}
 
-    .hideNav {
-        display: block;
+//extra media
+@media screen and (min-width: 950px) {
+    .navbarLinks {
+        max-width: calc(50% - 7.5rem); //half of max of Logo div
+
+        & li {
+            padding: 0 0.8rem;
+            font-size: 1rem;
+        }
     }
 
-    /* animations & transitions */
-    .navbarLinks.open {
-        clip-path: circle(1500px at 90% -10%);
-        -webkit-clip-path: circle(1500px at 90% -10%);
-        /* pointer-events: all; */
+    .navbarLinks.right li {
+        padding: 0 1.2rem;
     }
 
-    .navLinkTransition:nth-child(1) {
-        transition: all 0.5s ease 0.2s;
-    }
+    .logo {
+        font-size: unset;
+        width: 20%;
+        min-width: 10rem;
 
-    .navLinkTransition:nth-child(2) {
-        transition: all 0.5s ease 0.4s;
+        & span {
+            display: unset;
+        }
     }
+}
 
-    .navLinkTransition:nth-child(3) {
-        transition: all 0.5s ease 0.6s;
-    }
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+    .navbarLinks {
+        & li {
+            padding: 0 1rem;
+        }
 
-    .navbarLinks li.fade {
-        opacity: 0.7;
+        &.right {
+            & li {
+                padding: 0 1.5rem;
+            }
+        }
     }
+}
 
-    .navbarLinks li.fade:hover {
-        opacity: 1;
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+    .navbarLinks {
+        &.right li,
+        &.left li {
+            padding: 0 2rem;
+            letter-spacing: 0.1rem;
+        }
     }
+}
 
-    /* hamburger media */
-    .line {
-        width: 2rem;
-        background-color: var.$light-shades;
-        height: 0.2rem;
-        margin: 5px;
-    }
-
-    .hamburger {
-        display: block;
-        position: absolute;
-        right: 5%;
-        top: 25%;
-        cursor: pointer;
-        z-index: 2;
-    }
+// LARGE SCREEN DESKTOP
+@media screen and (min-width: 1800px) {
 }

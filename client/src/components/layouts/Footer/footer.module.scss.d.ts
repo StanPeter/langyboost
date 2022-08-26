@@ -6,7 +6,6 @@ export const icoGithub: string;
 export const icoInstagram: string;
 export const icoLinkedin: string;
 export const icoTwitter: string;
-export const link: string;
 export const rotateCenter: string;
 export const rotateCenterHover: string;
 export const socialCircle: string;

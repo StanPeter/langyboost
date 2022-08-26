@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import { setAccessToken } from "utils/getToken";
@@ -6,7 +6,6 @@ import { CgCrown } from "react-icons/cg";
 import { BiLogIn } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import styles from "./navbar.module.scss";
-import globalStyles from "styles/style.module.scss";
 
 interface NavbarProps {}
 
@@ -17,35 +16,28 @@ const toggler = (links: NodeListOf<Element>, nameOfClass: string) => {
 };
 
 const Navbar: React.FC<NavbarProps> = () => {
-    const navigate = useNavigate();
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const [expandedHelper, setExpandedHelper] = useState<boolean>(false);
 
-    const [navExpanded, setNavExpanded] = useState(false);
+    const navigate = useNavigate();
     const { data, loading } = useGetUserQuery();
     const [logout, { client }] = useLogoutMutation();
 
-    const hamburgerClickHandler = () => {
-        const navLinks = document.querySelector(".navbar-links")!;
-        const links = document.querySelectorAll(".navbar-links li");
+    const hamburgerClickHandler = () =>
+        new Promise((res) => {
+            //if changed, set it up in expanded class scss animation too!
+            if (expanded)
+                setTimeout(() => {
+                    setExpanded(false);
+                    res(true);
+                }, 800);
+            else {
+                setExpanded(true);
+                res(true);
+            }
 
-        if (!navExpanded) {
-            setNavExpanded(true);
-            toggler(links, "nav-link-transition");
-
-            setTimeout(() => {
-                toggler(links, "nav-link-transition");
-            }, 1000);
-        } else {
-            toggler(links, "nav-link-transition");
-
-            setTimeout(() => {
-                setNavExpanded(false);
-                toggler(links, "nav-link-transition");
-            }, 1000);
-        }
-
-        navLinks.classList.toggle("open");
-        toggler(links, "fade");
-    };
+            setExpandedHelper(!expanded);
+        });
 
     const authButtons = (hide: boolean) => {
         // console.log(data, "data");
@@ -53,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         if (data?.getUser)
             return (
                 <li
-                    className={hide ? styles.hideNav : ""}
+                    className={hide ? styles.authIcon : ""}
                     onClick={async () => {
                         await logout();
                         setAccessToken("");
@@ -66,106 +58,168 @@ const Navbar: React.FC<NavbarProps> = () => {
         else if (!data?.getUser && !loading)
             return (
                 <li
-                    className={hide ? styles.hideNav : ""}
+                    className={hide ? styles.authIcon : ""}
                     onClick={() => {
                         //if open then close hamburger
-                        if (navExpanded) hamburgerClickHandler();
                         navigate("/auth");
                     }}
                 >
-                    <BiLogIn className={`${globalStyles.link} ${styles.loginIcon}`} />
+                    <BiLogIn className={`${styles.loginIcon}`} />
                 </li>
             );
         return null;
     };
 
-    // if (history.location.pathname === "/") return null;
-
     return (
-        <React.Fragment>
-            <div className={styles.separatorDiv}></div>
-            <nav
-                className={styles.navbar}
-                style={{ marginBottom: navExpanded ? "20rem" : undefined }}
-            >
-                <div className={styles.logo} onClick={() => navigate("/")}>
-                    <CgCrown />
-                    Langyboost
-                </div>
-                <ul className={`${styles.navbarLinks} ${styles.left}`}>
+        <nav className={styles.navbar} style={{ marginBottom: expanded ? "20rem" : undefined }}>
+            <div className={styles.logo} onClick={() => navigate("/")}>
+                <CgCrown />
+                <span>Langyboost</span>
+            </div>
+            <ul className={`${styles.navbarLinks} ${styles.left}`}>
+                <li
+                    onClick={() => {
+                        navigate("/courses");
+                    }}
+                >
+                    Courses
+                </li>
+                <li
+                    onClick={() => {
+                        navigate("/articles");
+                    }}
+                >
+                    Articles
+                </li>
+                <li onClick={() => navigate("/resources")}>Resources</li>
+            </ul>
+            <ul className={`${styles.navbarLinks} ${styles.right} `}>
+                <li>
+                    <p>2</p>
+                    <img
+                        alt="fireIcon"
+                        height="30"
+                        onClick={() => navigate("/cards/enDu")}
+                        width="30"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/FireIcon.svg/1501px-FireIcon.svg.png"
+                    />
+                </li>
+                <li>
+                    <p>5</p>
+                    <img
+                        className={styles.profileIcon}
+                        alt="swedenIcon"
+                        height="30"
+                        onClick={() => navigate("/course/8")}
+                        width="30"
+                        src="https://static.posters.cz/image/750/placky-odznaky/flag-sweden-i2430.jpg"
+                    />
+                </li>
+                <li>
+                    <p>Jill</p>
+                    <img
+                        className={styles.profileIcon}
+                        alt="girl"
+                        height="30"
+                        width="30"
+                        onClick={() => navigate("/profile")}
+                        src="https://i.pinimg.com/originals/fb/b9/63/fbb963ea21a040904d5331af46c70f5e.jpg"
+                    />
+                </li>
+                <hr style={{ height: "30px" }} />
+                <li>
+                    <FiSettings
+                        onClick={() => navigate("/settings")}
+                        className={`${styles.settingsIcon}`}
+                    />
+                </li>
+                <hr style={{ height: "30px" }} />
+                {authButtons(false)}
+            </ul>
+            <div className={styles.hamburger} onClick={hamburgerClickHandler}>
+                <div className={styles.line}></div>
+                <div className={styles.line}></div>
+                <div className={styles.line}></div>
+            </div>
+            {expanded ? (
+                <ul className={`${styles.expandedNavLinks} ${expandedHelper && styles.expanded}`}>
                     <li
-                        onClick={() => {
-                            if (navExpanded) hamburgerClickHandler();
+                        onClick={async () => {
+                            await hamburgerClickHandler();
                             navigate("/courses");
                         }}
-                        className={globalStyles.link}
+                        className={`${expandedHelper ? styles.transition : ""}`}
                     >
                         Courses
                     </li>
                     <li
-                        onClick={() => {
-                            if (navExpanded) hamburgerClickHandler();
+                        onClick={async () => {
+                            await hamburgerClickHandler();
                             navigate("/articles");
                         }}
-                        className={globalStyles.link}
+                        className={`${expandedHelper ? styles.transition : ""}`}
                     >
                         Articles
                     </li>
-                    <li onClick={() => navigate("/resources")} className={globalStyles.link}>
+                    <li
+                        onClick={async () => {
+                            await hamburgerClickHandler();
+                            navigate("/resources");
+                        }}
+                        className={`${expandedHelper ? styles.transition : ""}`}
+                    >
                         Resources
                     </li>
-                    {authButtons(true)}
+                    <li
+                        onClick={async () => {
+                            await hamburgerClickHandler();
+                            navigate("/cards/enDu");
+                        }}
+                        className={`${expandedHelper ? styles.transition : ""}`}
+                    >
+                        Current lesson
+                    </li>
+                    <li
+                        onClick={async () => {
+                            await hamburgerClickHandler();
+                            navigate("/course/8");
+                        }}
+                        className={`${expandedHelper ? styles.transition : ""}`}
+                    >
+                        Current course
+                    </li>
+                    <li
+                        onClick={async () => {
+                            await hamburgerClickHandler();
+                            navigate("/profile");
+                        }}
+                        className={`${expandedHelper ? styles.transition : ""}`}
+                    >
+                        Profile
+                    </li>
+                    <li
+                        onClick={async () => {
+                            await hamburgerClickHandler();
+                            navigate("/settings");
+                        }}
+                        className={`${expandedHelper ? styles.transition : ""}`}
+                    >
+                        Settings
+                    </li>
+                    <li
+                        onClick={async () => {
+                            await hamburgerClickHandler();
+                            await logout();
+                            setAccessToken("");
+                            await client.resetStore();
+                        }}
+                        className={`${expandedHelper ? styles.transition : ""}`}
+                    >
+                        Logout
+                    </li>
                 </ul>
-                <ul className={`${styles.navbarLinks} ${styles.right}`}>
-                    <li>
-                        <p>2</p>
-                        <img
-                            alt="fireIcon"
-                            height="30"
-                            onClick={() => navigate("/cards/enDu")}
-                            width="30"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/FireIcon.svg/1501px-FireIcon.svg.png"
-                        />
-                    </li>
-                    <li>
-                        <p>5</p>
-                        <img
-                            className={styles.profileIcon}
-                            alt="swedenIcon"
-                            height="30"
-                            onClick={() => navigate("/course/8")}
-                            width="30"
-                            src="https://static.posters.cz/image/750/placky-odznaky/flag-sweden-i2430.jpg"
-                        />
-                    </li>
-                    <li>
-                        <p className={styles.profileName}>Jill</p>
-                        <img
-                            className={styles.profileIcon}
-                            alt="girl"
-                            height="30"
-                            width="30"
-                            onClick={() => navigate("/profile")}
-                            src="https://i.pinimg.com/originals/fb/b9/63/fbb963ea21a040904d5331af46c70f5e.jpg"
-                        />
-                    </li>
-                    <hr style={{ height: "30px" }} />
-                    <li>
-                        <FiSettings
-                            onClick={() => navigate("/settings")}
-                            className={`${styles.settingsIcon} ${globalStyles.link}`}
-                        />
-                    </li>
-                    <hr style={{ height: "30px" }} />
-                    {authButtons(false)}
-                </ul>
-                <div className="hamburger" onClick={hamburgerClickHandler}>
-                    <div className={styles.line}></div>
-                    <div className={styles.line}></div>
-                    <div className={styles.line}></div>
-                </div>
-            </nav>
-        </React.Fragment>
+            ) : null}
+        </nav>
     );
 };
 
