@@ -28,3 +28,4 @@ export type PaymentDetailsTypes = {
     cardDetails: string;
     cardSecretNums: string;
 };
+export type Direction = "left" | "right";

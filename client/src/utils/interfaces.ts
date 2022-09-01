@@ -10,3 +10,9 @@ export interface SectionStyles {
     paymendMethod: React.CSSProperties;
     paymentDetails: React.CSSProperties;
 }
+//ui
+export interface Course {
+    imgSrc: string;
+    value: string;
+    cardIndex: number;
+}
