@@ -7,7 +7,7 @@ interface ButtonProps {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
     active?: boolean | (() => boolean);
     disabled?: boolean | (() => boolean);
-    type?: "big" | "small" | "fullLine";
+    type?: "big" | "small" | "middle" | "fullLine";
 }
 
 const Button: React.FC<ButtonProps> = ({ text, style, onClick, active, disabled, type }) => {

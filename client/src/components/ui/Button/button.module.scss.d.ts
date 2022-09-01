@@ -4,5 +4,7 @@ export const button: string;
 export const disabled: string;
 export const easingIn: string;
 export const fullLine: string;
+export const middle: string;
+export const separator: string;
 export const small: string;
 export const tooltip: string;

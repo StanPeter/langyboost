@@ -12,6 +12,8 @@
     color: #203a4f;
     background: #fafbff;
 
+    border-radius: 0.8rem;
+
     font-size: 1rem;
 
     outline: none;
@@ -40,34 +42,38 @@
     }
 
     &.small {
-        width: 145px;
-        height: 28px;
+        width: 10rem;
+        height: 2rem;
         font-size: 1rem;
-
         box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
-        border-radius: 15px;
+    }
+
+    &.middle {
+        width: 15rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+
+        margin: 1rem 0;
+        letter-spacing: 0.1em;
     }
 
     &.big {
-        width: 338px;
-        height: 51px;
+        width: 20rem;
+        height: 3rem;
         font-size: 1.5rem;
 
         margin: 2rem 0;
-
         letter-spacing: 0.1em;
 
         box-shadow: 0px 6px 6px rgb(0 0 0 / 30%);
-        border-radius: 15px;
     }
 
     &.fullLine {
         letter-spacing: 0.1em;
         box-shadow: 0px 6px 6px rgb(0 0 0 / 30%);
-        height: 45px;
+        height: 2.5rem;
         font-size: 1.2em;
         padding: 0;
         margin: 0;
-        // min-width: 338px;
     }
 }

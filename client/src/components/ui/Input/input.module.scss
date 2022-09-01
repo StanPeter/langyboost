@@ -2,7 +2,7 @@
     border: 1px solid #85cdca;
     background: #fafbff;
     border-left-width: 0;
-    height: 44px;
+    height: 2.5rem;
     min-width: 78%;
     max-width: 78%;
     width: 78%;
@@ -27,11 +27,16 @@
     }
 }
 
-.formLabel {
+.label {
     align-items: center;
     display: flex;
-    justify-content: center;
-    height: 44px;
+    justify-content: flex-start;
+    height: 2.5rem;
+    padding-right: 0.5rem;
+}
+
+.formLabel {
+    @extend .label;
     max-width: 22%;
     min-width: 22%;
     width: 22%;
@@ -41,9 +46,25 @@
     color: #203a4f;
 }
 
+.filterLabel {
+    @extend .label;
+    max-width: 30%;
+    min-width: 30%;
+    width: 30%;
+    color: #203a4f;
+}
+
 .formItem {
     display: flex;
     margin: 0.5rem 0;
     width: 100%;
     padding: 0px 2rem;
+}
+
+/* CLEAR OUT LATER ON */
+.filterItem {
+    display: flex;
+    margin: 0.5rem 0;
+    width: 70%;
+    // padding: 0px 2rem;
 }

@@ -62,7 +62,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     <InputSwitcher
                         name="Sound effects"
                         type="singleselect"
-                        typeOfMultiselect="form"
+                        useCase="form"
                         dataOfMultiselect={[
                             { text: "Turned off", value: "off" },
                             { text: "Turned on", value: "on" },
@@ -71,7 +71,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     <InputSwitcher
                         name="Theme"
                         type="singleselect"
-                        typeOfMultiselect="form"
+                        useCase="form"
                         dataOfMultiselect={[
                             { text: "Lingo(default)", value: "lingo" },
                             { text: "Dark", value: "dark" },
@@ -87,7 +87,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     <InputSwitcher
                         name="Language"
                         type="singleselect"
-                        typeOfMultiselect="form"
+                        useCase="form"
                         dataOfMultiselect={[
                             { text: "en", value: "en" },
                             { text: "ge", value: "ge" },

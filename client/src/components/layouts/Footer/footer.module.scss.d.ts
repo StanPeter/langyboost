@@ -8,6 +8,7 @@ export const icoLinkedin: string;
 export const icoTwitter: string;
 export const rotateCenter: string;
 export const rotateCenterHover: string;
+export const separator: string;
 export const socialCircle: string;
 export const socialNetwork: string;
 export const tooltip: string;

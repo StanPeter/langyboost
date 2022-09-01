@@ -257,7 +257,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         <InputSwitcher
                             name="Period"
                             type="singleselect"
-                            typeOfMultiselect="form"
+                            useCase="form"
                             dataOfMultiselect={[
                                 { text: "Monthly", value: "monthly" },
                                 { text: "Yearly", value: "early" },
@@ -268,7 +268,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         <InputSwitcher
                             name="Repeat payment"
                             type="singleselect"
-                            typeOfMultiselect="form"
+                            useCase="form"
                             styleInput={{ fontSize: "12px" }}
                             dataOfMultiselect={[
                                 { text: "Yes", value: "yes" },

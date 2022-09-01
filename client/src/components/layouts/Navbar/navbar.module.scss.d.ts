@@ -12,6 +12,7 @@ export const navbar: string;
 export const navbarLinks: string;
 export const profileIcon: string;
 export const right: string;
+export const separator: string;
 export const settingsIcon: string;
 export const tooltip: string;
 export const transition: string;

@@ -1,83 +1,124 @@
-.coursesPage {
+/* FILTERS PART */
+.wrapper {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+}
+
+.filtersWrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     align-items: center;
 }
 
-.coursesSelect {
-    outline: none;
-    background-color: #daffe9;
-    border: 2px solid #85cdca;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    width: 180px;
-    height: 35px;
-    font-size: 20px;
-    text-align: left;
-    margin: 1rem;
-    padding-left: 12px;
-
-    & option {
-        background-color: #daffe9;
-        border: 2px solid #85cdca !important;
-    }
+.btnWrapper {
+    display: none;
 }
 
-.coursesFilter {
+/* ANIMATION COURSES PART */
+.courseWrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
-.coursesSelectThird {
-    z-index: 1;
-}
+.course {
+    margin: 0.5rem 1.5rem;
 
-.coursesSeparator {
-    width: 755.01px;
-    // height: 0px;
-    margin: 2rem 0;
+    &:nth-of-type(5),
+    &:nth-of-type(1) {
+        width: 3rem;
+        height: 3rem;
+    }
 
-    border: 1px solid #85cdca;
-}
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+        width: 5rem;
+        height: 5rem;
+    }
 
-.coursesBtn {
-    position: absolute;
+    &:nth-of-type(3) {
+        width: 8rem;
+        height: 8rem;
 
-    & button {
-        background: #41b3a3;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 15px;
-        font-size: 16px;
-        line-height: 40px;
-        width: 177px;
-        height: 31px;
-        border: none;
+        & img {
+            box-shadow: 0px 0px 1.2rem 0.5rem #85cdca;
+        }
+    }
 
-        letter-spacing: 0.1em;
+    & img {
+        width: 100%;
+        height: 85%;
+        border-radius: 50%;
+        cursor: pointer;
 
-        color: #fafbff;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 
-        position: relative;
-        left: 200px;
-        top: 1px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .chosen {
+        box-shadow: 0px 0px 20px 10px #85cdca;
     }
 }
 
-.coursesFilters {
-    margin-top: 2rem;
+.sliderArrow {
+    font-size: 2rem;
+    cursor: pointer;
+}
 
-    & label {
-        font-size: 20px;
-        line-height: 40px;
-        text-align: center;
-        letter-spacing: 0.05em;
-        color: #203a4f;
-        display: flex;
-        flex-direction: column;
+.animate {
+    animation: switchAnimation 300ms ease-in-out;
+}
+
+@keyframes switchAnimation {
+    0% {
+        opacity: 0;
     }
+
+    80% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* BREAKPOINTS  */
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+}
+
+// SMALLER SCREEN TABLET
+@media screen and (min-width: 600px) {
+    .filtersWrapper {
+        width: calc(80% - 1rem);
+        margin-right: 1rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .btnWrapper {
+        display: flex;
+        align-items: flex-end;
+        width: 20%;
+    }
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
+}
+
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+}
+
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+}
+
+// LARGE SCREEN DESKTOP
+@media screen and (min-width: 1800px) {
 }

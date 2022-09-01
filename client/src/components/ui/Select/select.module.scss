@@ -13,9 +13,9 @@
     position: relative;
     display: flex;
 
-    &:hover {
-        cursor: pointer;
-    }
+    // &:hover {
+    //     cursor: pointer;
+    // }
 
     & label {
         &.formType {
@@ -30,13 +30,12 @@
 .input {
     display: flex;
     justify-content: space-between;
+    height: 2.5rem;
 
     &.formType {
         margin: 0;
         border: 1px solid #85cdca;
-        border-radius: 0 5px 5px 0;
         border-left-width: 0;
-        height: 44px;
         max-width: 78%;
         min-width: 78%;
         width: 78%;
@@ -47,10 +46,8 @@
     &.filterType {
         background: #daffe9;
         border: 2px solid #85cdca;
-        border-radius: 5px;
-        margin: 1rem 1rem 0;
-        width: 180px;
-        height: 35px;
+        min-width: 70%;
+        width: 70%;
     }
 
     & img {
@@ -67,14 +64,21 @@
 }
 
 .value {
-    padding: 5px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+
+    & img {
+        margin-left: 0.5rem;
+    }
 }
 
 .dropdownIcon {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 15px;
+    padding: 1rem;
 
     &:hover {
         cursor: pointer;
@@ -89,11 +93,8 @@
     float: right;
     background: #daffe9;
     border: 1px solid #85cdca;
-    border-radius: 0px 0px 40px 40px;
+    border-radius: 0px 0px 2.3rem 2.3rem;
     border-top: none;
-
-    max-width: 78%;
-    min-width: 78%;
     align-items: center;
     margin-right: 0;
     height: auto;
@@ -109,6 +110,16 @@
 
     & div:not(:last-child) {
         border-bottom: 1px solid #85cdca;
+    }
+
+    &.formType {
+        max-width: 78%;
+        min-width: 78%;
+    }
+
+    &.filterType {
+        max-width: 70%;
+        min-width: 70%;
     }
 }
 
@@ -137,10 +148,17 @@
     float: right;
     margin: 0px 4rem;
 
+    & div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.3rem 0;
+    }
+
     & img {
-        padding-right: 5px;
-        width: 26px;
-        height: 26px;
+        margin-right: 1rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }
 

@@ -11,7 +11,7 @@ interface InputProps {
     type: InputTypes;
     placeholder?: string;
     dataOfMultiselect?: MultiselectItem[];
-    typeOfMultiselect?: "filter" | "form";
+    useCase?: "filter" | "form";
     onClick?: () => void;
     valueOfButton?: string;
     styleInput?: object;
@@ -24,19 +24,22 @@ const InputSwitcher: React.FC<InputProps> = ({
     type,
     placeholder,
     dataOfMultiselect = [],
-    typeOfMultiselect = "form",
+    useCase = "form",
     onClick = () => console.log("no on clicked was passed!"),
     valueOfButton = " ",
     styleInput,
     value,
     onChange,
 }) => {
+    //maybe won't be neccesary later on
+    const inputClass = useCase === "form" ? inputStyles.formItem : inputStyles.filterItem;
+
     switch (type) {
         case "date":
         case "email":
         case "text":
             return (
-                <div className={inputStyles.formItem}>
+                <div className={inputClass}>
                     <Input
                         styleInput={styleInput}
                         name={name}
@@ -55,11 +58,11 @@ const InputSwitcher: React.FC<InputProps> = ({
                 };
 
             return (
-                <div className={inputStyles.formItem}>
+                <div className={inputClass}>
                     <Select
                         styleInput={styleInput}
                         title={name}
-                        useCase={typeOfMultiselect}
+                        useCase={useCase}
                         type={type}
                         data={dataOfMultiselect}
                         value={value}
@@ -69,7 +72,7 @@ const InputSwitcher: React.FC<InputProps> = ({
             );
         case "buttonSelect":
             return (
-                <div className={inputStyles.formItem}>
+                <div className={inputClass}>
                     <ButtonSelect
                         onClick={() => onClick()}
                         type="button"

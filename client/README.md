@@ -14,3 +14,20 @@ npm run gen
 
 ## additional info
 images can be found inside on src/images but particles could be loaded only from within public/particles -> having two folders for images
+
+
+### PROGRESS
+- navbar FINISHED
+- footbar -> just rewrite for min width medias
+- navbody FINISHED
+- personal settings FINISHED
+- auth FINISHED
+- landingPage FINISHED (particles lagging)
+- cardPage FINISHED
+
+- coursePage NOT DONE
+- courseDetail NOT DONE
+- artilesPage NOT DONE
+- articleDetail NOT DONE
+- resourcesPage NOT DONE
+- termsConditions NOT DONE

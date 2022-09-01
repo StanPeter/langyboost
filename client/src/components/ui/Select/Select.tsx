@@ -61,22 +61,41 @@ const Select: React.FC<MultiselectProps> = ({
     const addTypeClass = (inputClass: string) =>
         `${inputClass} ${useCase === "form" ? styles.formType : styles.filterType}`;
 
+    const inputBorderRadius = () => {
+        if (hideDropdown) return "5px"; //dropdown not shown
+        else if (useCase === "filter") return "5px 5px 0 0"; //dropdown hidden and filter case
+        return "5px 5px 0 5px"; //dropdown hidden and form case
+    };
+
+    const valueBuilder = (el: MultiselectItem) => {
+        if (el.imgSrc && type === "singleselect")
+            return (
+                <React.Fragment>
+                    {el.text} <img src={el.imgSrc} alt="" />
+                </React.Fragment>
+            );
+        else if (el.imgSrc) return <img src={el.imgSrc} alt="" />;
+        return el.text;
+    };
+
     return (
         <div className={styles.container}>
             <div
                 className={styles.inputWrapper}
-                style={{ background: !hideDropdown ? "#daffe9" : undefined }}
+                style={{ background: !hideDropdown && useCase === "form" ? "#daffe9" : undefined }}
             >
                 <label
                     style={styleInput}
-                    className={`${inputStyles.formLabel} ${addTypeClass("")}`}
+                    className={`${
+                        useCase === "filter" ? inputStyles.filterLabel : inputStyles.formLabel
+                    } ${addTypeClass("")}`}
                     htmlFor=""
                 >
                     {title}
                 </label>
                 <div
-                    onClick={() => setHideDropdown(!hideDropdown)}
-                    style={{ borderBottomRightRadius: !hideDropdown ? "0px" : undefined }}
+                    // onClick={() => setHideDropdown(!hideDropdown)}
+                    style={{ borderRadius: inputBorderRadius() }}
                     className={addTypeClass(styles.input)}
                 >
                     <div className={styles.valueWrapper}>
@@ -89,7 +108,7 @@ const Select: React.FC<MultiselectProps> = ({
                                     id={el.value}
                                     onClick={(e) => deleteItemHandler(e.currentTarget.id)}
                                 >
-                                    {el.imgSrc ? <img src={el.imgSrc} alt="" /> : el.text}
+                                    {valueBuilder(el)}
                                 </div>
                             ))}
                     </div>
