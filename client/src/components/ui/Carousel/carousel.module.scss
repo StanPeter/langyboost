@@ -7,47 +7,72 @@
 
 .course {
     margin: 0.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 
     &:nth-of-type(5),
     &:nth-of-type(1) {
         width: 3rem;
         height: 3rem;
+
+        & p {
+            font-size: 1rem;
+        }
     }
 
     &:nth-of-type(2),
     &:nth-of-type(4) {
         width: 5rem;
         height: 5rem;
+
+        & p {
+            font-size: 1.2rem;
+        }
     }
 
     &:nth-of-type(3) {
         width: 8rem;
         height: 8rem;
 
-        & img {
-            box-shadow: 0px 0px 1.2rem 0.5rem #85cdca;
+        & p {
+            font-size: 1.5rem;
+            text-shadow: -2px 0 #203a4f, 0 2px #203a4f, 2px 0 #203a4f, 0 -2px #203a4f;
         }
     }
 
-    & img {
-        width: 100%;
-        height: 85%;
-        border-radius: 50%;
-        cursor: pointer;
-
-        &:hover {
-            transform: scale(1.05);
-        }
+    & p {
+        text-shadow: -1px 0 #203a4f, 0 1px #203a4f, 1px 0 #203a4f, 0 -1px #203a4f;
+        color: #fafbff;
     }
 
-    .chosen {
-        box-shadow: 0px 0px 20px 10px #85cdca;
+    &.chosen {
+        box-shadow: 0px 0px 1rem 0.8rem #85cdca;
     }
 }
 
 .sliderArrow {
     font-size: 2rem;
     cursor: pointer;
+}
+
+.courseInfo {
+    border: 1.5px solid #85cdca;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 45px 15px;
+    width: 72%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
 }
 
 .animate {

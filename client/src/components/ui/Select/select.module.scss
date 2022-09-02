@@ -113,11 +113,15 @@
     }
 
     &.formType {
+        max-height: 12rem;
+        overflow: scroll;
         max-width: 78%;
         min-width: 78%;
     }
 
     &.filterType {
+        max-height: 12rem;
+        overflow: scroll;
         max-width: 70%;
         min-width: 70%;
     }

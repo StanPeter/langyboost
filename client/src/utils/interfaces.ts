@@ -1,9 +1,3 @@
-export interface MultiselectItem {
-    imgSrc?: string;
-    text: string;
-    value: string;
-}
-
 export interface SectionStyles {
     membership: React.CSSProperties;
     subscription: React.CSSProperties;
@@ -15,4 +9,13 @@ export interface Course {
     imgSrc: string;
     value: string;
     cardIndex: number;
+    name: string;
+    text: string;
+}
+export interface MultiselectItem {
+    imgSrc?: string;
+    value: string;
+    cardIndex?: number;
+    name: string;
+    text?: string;
 }

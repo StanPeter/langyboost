@@ -71,11 +71,11 @@ const Select: React.FC<MultiselectProps> = ({
         if (el.imgSrc && type === "singleselect")
             return (
                 <React.Fragment>
-                    {el.text} <img src={el.imgSrc} alt="" />
+                    {el.name} <img src={el.imgSrc} alt="" />
                 </React.Fragment>
             );
         else if (el.imgSrc) return <img src={el.imgSrc} alt="" />;
-        return el.text;
+        return el.name;
     };
 
     return (
@@ -126,7 +126,7 @@ const Select: React.FC<MultiselectProps> = ({
                 }`}
             >
                 {data.map((el, i) => {
-                    if (!el.text && !el.imgSrc) {
+                    if (!el.name && !el.imgSrc) {
                         console.log("No parameter for multiselect was passed!");
                         return null;
                     }
@@ -144,7 +144,7 @@ const Select: React.FC<MultiselectProps> = ({
                             <li className={styles.dropdownItem}>
                                 <div>
                                     {el.imgSrc ? <img src={el.imgSrc} alt="" /> : null}
-                                    {el.text ? <p>{el.text}</p> : null}
+                                    {el.name ? <p>{el.name}</p> : null}
                                 </div>
                             </li>
                         </div>

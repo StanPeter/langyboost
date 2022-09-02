@@ -259,8 +259,8 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                             type="singleselect"
                             useCase="form"
                             dataOfMultiselect={[
-                                { text: "Monthly", value: "monthly" },
-                                { text: "Yearly", value: "early" },
+                                { name: "Monthly", value: "monthly" },
+                                { name: "Yearly", value: "early" },
                             ]}
                             onChange={(d) => setSubscription({ ...subscription, period: d })}
                             value={[subscription.period]}
@@ -271,8 +271,8 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                             useCase="form"
                             styleInput={{ fontSize: "12px" }}
                             dataOfMultiselect={[
-                                { text: "Yes", value: "yes" },
-                                { text: "No", value: "no" },
+                                { name: "Yes", value: "yes" },
+                                { name: "No", value: "no" },
                             ]}
                             onChange={(d) =>
                                 setSubscription({ ...subscription, repeatPayment: d || "no" })

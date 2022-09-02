@@ -3,25 +3,14 @@ import styles from "./cousesPage.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
 import InputSwitcher from "components/ui/InputSwitcher";
 import GeFlagImg from "images/flags/ge.png";
-import GrFlagImg from "images/flags/gr.png";
 import EnFlagImg from "images/flags/en.png";
-import FrFlagImg from "images/flags/fr.png";
-import EsFlagImg from "images/flags/es.png";
 import Button from "components/ui/Button/Button";
 import globalStyles from "styles/style.module.scss";
 import { MEDIA_SCREENS } from "utils/appParameters";
 import Carousel from "components/ui/Carousel/Carousel";
+import { betaCourses, customCourses, mainCourses } from "utils/mockData";
 
 interface CoursesPageProps {}
-
-//cardIndex 0 means course is not displayed, then the rest goes from left 1 2 3(middle one) 4 5
-const INIT_COURSES = [
-    { value: "en", imgSrc: EnFlagImg, cardIndex: 1 },
-    { value: "eS", imgSrc: EsFlagImg, cardIndex: 2 },
-    { value: "fr", imgSrc: FrFlagImg, cardIndex: 3 },
-    { value: "ge", imgSrc: GeFlagImg, cardIndex: 4 },
-    { value: "gr", imgSrc: GrFlagImg, cardIndex: 5 },
-];
 
 const CoursesPage: React.FC<CoursesPageProps> = () => {
     /* HOOKS */
@@ -29,8 +18,6 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
     const [wantToLearn, setWantToLearn] = useState<string[] | null>(null);
     const [chosenCourse, setChosenCourse] = useState<string[] | null>(null);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    const [courses, setCourses] = useState(INIT_COURSES);
     const [chosenCourseValue, setChosenCourseValue] = useState("fr");
 
     useEffect(() => {
@@ -58,10 +45,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         name="I speak"
                         type="singleselect"
                         useCase="filter"
-                        dataOfMultiselect={[
-                            { text: "English", value: "en", imgSrc: EnFlagImg },
-                            { text: "German", value: "ge", imgSrc: GeFlagImg },
-                        ]}
+                        dataOfMultiselect={mainCourses}
                         value={iSpeak}
                         onChange={(val) => setISpeak(val)}
                     />
@@ -69,10 +53,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         name="Want to learn"
                         type="singleselect"
                         useCase="filter"
-                        dataOfMultiselect={[
-                            { text: "English", value: "en", imgSrc: EnFlagImg },
-                            { text: "German", value: "ge", imgSrc: GeFlagImg },
-                        ]}
+                        dataOfMultiselect={mainCourses}
                         value={wantToLearn}
                         onChange={(val) => setWantToLearn(val)}
                     />
@@ -80,10 +61,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         name="Chosen course"
                         type="singleselect"
                         useCase="filter"
-                        dataOfMultiselect={[
-                            { text: "English", value: "en", imgSrc: EnFlagImg },
-                            { text: "German", value: "ge", imgSrc: GeFlagImg },
-                        ]}
+                        dataOfMultiselect={mainCourses}
                         value={chosenCourse}
                         onChange={(val) => setChosenCourse(val)}
                     />
@@ -102,13 +80,13 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             )}
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
-            <Carousel courses={courses} setCourses={setCourses} />
+            <Carousel data={mainCourses} onChange={setChosenCourseValue} />
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Custom German Courses</h2>
-            <Carousel courses={courses} setCourses={setCourses} />
+            <Carousel data={customCourses} onChange={setChosenCourseValue} />
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Beta Courses</h2>
-            <Carousel courses={courses} setCourses={setCourses} />
+            <Carousel data={betaCourses} onChange={setChosenCourseValue} />
             <hr className={globalStyles.separator} />
             <Button text="Start learning!" type="big" onClick={() => {}} />
         </MainBody>

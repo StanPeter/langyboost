@@ -1,50 +1,32 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Course } from "utils/interfaces";
 import { Direction } from "utils/types";
 import styles from "./carousel.module.scss";
-import GeFlagImg from "images/flags/ge.png";
-import GrFlagImg from "images/flags/gr.png";
-import EnFlagImg from "images/flags/en.png";
-import FrFlagImg from "images/flags/fr.png";
-import ItFlagImg from "images/flags/it.png";
-import EsFlagImg from "images/flags/es.png";
-import RuFlagImg from "images/flags/ru.png";
-import PtFlagImg from "images/flags/pt.png";
-
-const EMPTY_COURSES = [
-    { value: "en", imgSrc: EnFlagImg, cardIndex: 0 },
-    { value: "eS", imgSrc: EsFlagImg, cardIndex: 0 },
-    { value: "fr", imgSrc: FrFlagImg, cardIndex: 0 },
-    { value: "ge", imgSrc: GeFlagImg, cardIndex: 0 },
-    { value: "gr", imgSrc: GrFlagImg, cardIndex: 0 },
-    { value: "it", imgSrc: ItFlagImg, cardIndex: 0 },
-    { value: "ru", imgSrc: RuFlagImg, cardIndex: 0 },
-    { value: "pt", imgSrc: PtFlagImg, cardIndex: 0 },
-];
 
 interface CarouselProps {
-    courses: Course[];
-    setCourses: Dispatch<SetStateAction<Course[]>>;
+    data: Course[];
+    onChange: Dispatch<SetStateAction<string>>;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ courses, setCourses }) => {
+const Carousel: React.FC<CarouselProps> = ({ data, onChange }) => {
     /* HOOKS */
     const [animate, setAnimate] = useState(false);
-    const [coursesHelper, setCoursesHelper] = useState<Course[]>([]);
+    const [values, setValues] = useState<Course[]>([]);
+    const [chosenValue, setChosenValue] = useState<Course | null>(null);
 
-    /* HANDLERS */
-    const getImgSrc = (cardIndex: number): string => {
-        for (let i = 0; i < courses.length; i++) {
-            if (courses[i].cardIndex === cardIndex) return courses[i].imgSrc;
-        }
-
-        alert("SHOUDNT GO HERE");
-        return "";
-    };
+    //set initial values
+    useEffect(() => {
+        setValues(
+            data.filter((d) => {
+                if (d.cardIndex === 3) setChosenValue(d);
+                return d.cardIndex !== 0;
+            })
+        );
+    }, [data]);
 
     const getItemIndex = (mainIdx: number, step: 1 | 2, direction: Direction) => {
-        const lastIndex = courses.length - 1;
+        const lastIndex = data.length - 1;
         const firstIndex = 0;
 
         let result = direction === "left" ? mainIdx - step : mainIdx + step;
@@ -57,10 +39,15 @@ const Carousel: React.FC<CarouselProps> = ({ courses, setCourses }) => {
         return result;
     };
 
-    const onSwitchHandler = (direction?: Direction | null, clickedIdx?: number) => {
+    const onSwitchHandler = (direction?: Direction | null, clickedVal?: string) => {
         //for arrow handling there is direction filled, for click handling there is index clicked number
-        if (!direction && !clickedIdx) {
+        if (!direction && !clickedVal) {
             console.log("NOT FILLED PARAMS FOR THE FUNCTION");
+            return;
+        } else if (clickedVal && values[2].value === clickedVal) {
+            const newChosenValue = chosenValue ? null : values[2];
+            onChange(newChosenValue?.value || "");
+            setChosenValue(newChosenValue);
             return;
         }
 
@@ -68,14 +55,12 @@ const Carousel: React.FC<CarouselProps> = ({ courses, setCourses }) => {
 
         if (direction) {
             chosenIndex = getItemIndex(
-                courses.findIndex((course: Course) => course.cardIndex === 3),
+                data.findIndex((course: Course) => course.value === chosenValue?.value),
                 1,
                 direction
             );
-        }
-
-        if (clickedIdx) {
-            chosenIndex = courses.findIndex((course: Course) => course.cardIndex === clickedIdx);
+        } else if (clickedVal) {
+            chosenIndex = data.findIndex((course: Course) => course.value === clickedVal);
         }
 
         //@ts-ignore
@@ -85,37 +70,58 @@ const Carousel: React.FC<CarouselProps> = ({ courses, setCourses }) => {
     const setNewCourses = async (chosenIndex: number) => {
         if (animate) return;
 
-        const newCourses = [...EMPTY_COURSES];
-
-        newCourses[getItemIndex(chosenIndex, 2, "left")].cardIndex = 1;
-        newCourses[getItemIndex(chosenIndex, 1, "left")].cardIndex = 2;
-        newCourses[chosenIndex].cardIndex = 3;
-        newCourses[getItemIndex(chosenIndex, 1, "right")].cardIndex = 4;
-        newCourses[getItemIndex(chosenIndex, 2, "right")].cardIndex = 5;
+        const newValues = [
+            data[getItemIndex(chosenIndex, 2, "left")],
+            data[getItemIndex(chosenIndex, 1, "left")],
+            data[chosenIndex],
+            data[getItemIndex(chosenIndex, 1, "right")],
+            data[getItemIndex(chosenIndex, 2, "right")],
+        ];
 
         setAnimate(true);
-        // setChosenCourseValue(newCourses[chosenIndex].value);
-        setCoursesHelper(newCourses);
+        setValues(newValues);
+        setChosenValue(newValues[2]);
     };
 
+    console.log("rerender");
+
     return (
-        <div className={styles.courseWrapper}>
-            <FiArrowLeft onClick={() => onSwitchHandler("left")} className={styles.sliderArrow} />
-            {[1, 2, 3, 4, 5].map((idx) => (
-                <div
-                    onAnimationEnd={() => {
-                        setAnimate(false);
-                        setCourses(coursesHelper);
-                    }}
-                    className={`${styles.course} ${animate ? styles.animate : ""}`}
-                    key={idx}
-                    onClick={() => onSwitchHandler(null, idx)}
-                >
-                    <img src={getImgSrc(idx)} alt="flag" />
-                </div>
-            ))}
-            <FiArrowRight onClick={() => onSwitchHandler("right")} className={styles.sliderArrow} />
-        </div>
+        <React.Fragment>
+            <div className={styles.courseWrapper}>
+                {values.length > 0 ? (
+                    <React.Fragment>
+                        <FiArrowLeft
+                            onClick={() => onSwitchHandler("left")}
+                            className={styles.sliderArrow}
+                        />
+                        {values.map((val, idx) => (
+                            <div
+                                className={`${styles.course} ${animate ? styles.animate : ""} ${
+                                    chosenValue?.value === val.value ? styles.chosen : ""
+                                } `}
+                                key={idx}
+                                style={{ backgroundImage: `url(${val.imgSrc})` }}
+                                onClick={() => onSwitchHandler(null, val.value)}
+                                onAnimationEnd={() => {
+                                    setAnimate(false);
+                                    if (chosenValue) onChange(chosenValue.value);
+                                }}
+                            >
+                                {/* <img src={val.imgSrc} alt={val.value} /> */}
+                                <p>{val.name}</p>
+                            </div>
+                        ))}
+                        <FiArrowRight
+                            onClick={() => onSwitchHandler("right")}
+                            className={styles.sliderArrow}
+                        />
+                    </React.Fragment>
+                ) : (
+                    <p>No available courses</p>
+                )}
+            </div>
+            {chosenValue ? <p className={styles.courseInfo}>{chosenValue.text}</p> : null}
+        </React.Fragment>
     );
 };
 

@@ -64,8 +64,8 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         type="singleselect"
                         useCase="form"
                         dataOfMultiselect={[
-                            { text: "Turned off", value: "off" },
-                            { text: "Turned on", value: "on" },
+                            { name: "Turned off", value: "off" },
+                            { name: "Turned on", value: "on" },
                         ]}
                     />
                     <InputSwitcher
@@ -73,9 +73,9 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         type="singleselect"
                         useCase="form"
                         dataOfMultiselect={[
-                            { text: "Lingo(default)", value: "lingo" },
-                            { text: "Dark", value: "dark" },
-                            { text: "Halloween", value: "halloween" },
+                            { name: "Lingo(default)", value: "lingo" },
+                            { name: "Dark", value: "dark" },
+                            { name: "Halloween", value: "halloween" },
                         ]}
                     />
                     <InputSwitcher
@@ -89,9 +89,9 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         type="singleselect"
                         useCase="form"
                         dataOfMultiselect={[
-                            { text: "en", value: "en" },
-                            { text: "ge", value: "ge" },
-                            { text: "es", value: "es" },
+                            { name: "en", value: "en" },
+                            { name: "ge", value: "ge" },
+                            { name: "es", value: "es" },
                         ]}
                     />
                     <InputSwitcher name="Password" type="text" />
