@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./cousesPage.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
 import InputSwitcher from "components/ui/InputSwitcher";
-import GeFlagImg from "images/flags/ge.png";
-import EnFlagImg from "images/flags/en.png";
 import Button from "components/ui/Button/Button";
 import globalStyles from "styles/style.module.scss";
 import { MEDIA_SCREENS } from "utils/appParameters";
@@ -14,11 +12,10 @@ interface CoursesPageProps {}
 
 const CoursesPage: React.FC<CoursesPageProps> = () => {
     /* HOOKS */
-    const [iSpeak, setISpeak] = useState<string[] | null>(["en"]);
-    const [wantToLearn, setWantToLearn] = useState<string[] | null>(null);
-    const [chosenCourse, setChosenCourse] = useState<string[] | null>(null);
+    const [iSpeak, setISpeak] = useState<string>("");
+    const [wantToLearn, setWantToLearn] = useState<string>("");
+    const [chosenCourse, setChosenCourse] = useState<string>("");
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [chosenCourseValue, setChosenCourseValue] = useState("fr");
 
     useEffect(() => {
         window.addEventListener("resize", handleWindowResize);
@@ -80,13 +77,25 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             )}
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
-            <Carousel data={mainCourses} onChange={setChosenCourseValue} />
+            <Carousel
+                data={mainCourses}
+                value={chosenCourse}
+                onChange={setChosenCourse}
+            />
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Custom German Courses</h2>
-            <Carousel data={customCourses} onChange={setChosenCourseValue} />
+            <Carousel
+                data={customCourses}
+                value={chosenCourse}
+                onChange={setChosenCourse}
+            />
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Beta Courses</h2>
-            <Carousel data={betaCourses} onChange={setChosenCourseValue} />
+            <Carousel
+                data={betaCourses}
+                value={chosenCourse}
+                onChange={setChosenCourse}
+            />
             <hr className={globalStyles.separator} />
             <Button text="Start learning!" type="big" onClick={() => {}} />
         </MainBody>

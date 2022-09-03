@@ -7,23 +7,22 @@ import styles from "./carousel.module.scss";
 interface CarouselProps {
     data: Course[];
     onChange: Dispatch<SetStateAction<string>>;
+    value: string;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ data, onChange }) => {
+const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
     /* HOOKS */
     const [animate, setAnimate] = useState(false);
-    const [values, setValues] = useState<Course[]>([]);
+    const [values, setValues] = useState<Course[]>(data.slice(0, 5));
     const [chosenValue, setChosenValue] = useState<Course | null>(null);
 
-    //set initial values
     useEffect(() => {
-        setValues(
-            data.filter((d) => {
-                if (d.cardIndex === 3) setChosenValue(d);
-                return d.cardIndex !== 0;
-            })
-        );
-    }, [data]);
+        if (value !== chosenValue?.value) {
+            const possibleValues = data.map((d) => d.value);
+            if (possibleValues.includes(value)) onSwitchHandler(null, value);
+            else setChosenValue(null);
+        }
+    }, [value]);
 
     const getItemIndex = (mainIdx: number, step: 1 | 2, direction: Direction) => {
         const lastIndex = data.length - 1;
@@ -104,10 +103,10 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange }) => {
                                 onClick={() => onSwitchHandler(null, val.value)}
                                 onAnimationEnd={() => {
                                     setAnimate(false);
-                                    if (chosenValue) onChange(chosenValue.value);
+                                    if (chosenValue && chosenValue?.value !== value)
+                                        onChange(chosenValue.value);
                                 }}
                             >
-                                {/* <img src={val.imgSrc} alt={val.value} /> */}
                                 <p>{val.name}</p>
                             </div>
                         ))}

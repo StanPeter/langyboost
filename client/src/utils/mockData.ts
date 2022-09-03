@@ -24,35 +24,35 @@ export const mainCourses = [
     {
         value: "eS",
         imgSrc: EsFlagImg,
-        cardIndex: 1,
+        cardIndex: 0,
         text: "Spanish (español or castellano, Castilian) is a Romance language of the Indo-European language family that evolved from colloquial spoken Latin in the Iberian Peninsula of Europe. Today, it is a global language with nearly 500 million native speakers, mainly in the Americas and Spain.",
         name: "Spanish",
     },
     {
         value: "fr",
         imgSrc: FrFlagImg,
-        cardIndex: 2,
+        cardIndex: 0,
         text: "French (français [fʁɑ̃sɛ] or langue française [lɑ̃ɡ fʁɑ̃sɛːz]) is a Romance language of the Indo-European family. It descended from the Vulgar Latin of the Roman Empire, as did all Romance languages. French evolved from Gallo-Romance, the Latin spoken in Gaul, and more specifically in Northern Gaul. ",
         name: "French",
     },
     {
         value: "ge",
         imgSrc: GeFlagImg,
-        cardIndex: 3,
+        cardIndex: 0,
         text: "    Official language of both Germany and Austria and one of the official languages of Switzerland. German, with its 130 million native speakers, belongs to the West Germanic group of the Indo-European language family, along with English, Frisian, and Dutch.",
         name: "German",
     },
     {
         value: "gr",
         imgSrc: GrFlagImg,
-        cardIndex: 4,
+        cardIndex: 0,
         text: "Greek (Modern Greek: Ελληνικά, romanized: Elliniká; Ancient Greek: Ἑλληνική, romanized: Hellēnikḗ) is an independent branch of the Indo-European family of languages, native to Greece, Cyprus, southern Albania, and other regions of the Balkans, the Black Sea coast, Asia Minor, and the Eastern Mediterranean.",
         name: "German",
     },
     {
         value: "it",
         imgSrc: ItFlagImg,
-        cardIndex: 5,
+        cardIndex: 0,
         text: "Italian (italiano [itaˈljaːno] (listen) or lingua italiana [ˈliŋɡwa itaˈljaːna]) is a Romance language of the Indo-European language family that evolved from the Vulgar Latin of the Roman Empire. About 85 million people speak this language (2022). ",
         name: "Italian",
     },
@@ -73,11 +73,11 @@ export const mainCourses = [
 ];
 
 export const customCourses = [
-    // { value: "customGe1", imgSrc: CustomGe1, cardIndex: 1 },
-    // { value: "customGe2", imgSrc: CustomGe2, cardIndex: 2 },
-    // { value: "customGe3", imgSrc: CustomGe3, cardIndex: 3 },
-    // { value: "customGe4", imgSrc: CustomGe4, cardIndex: 4 },
-    // { value: "customGe5", imgSrc: CustomGe5, cardIndex: 5 },
+    { value: "customGe1", imgSrc: CustomGe1, cardIndex: 0, text: 'text', name: 'Top500' },
+    { value: "customGe2", imgSrc: CustomGe2, cardIndex: 0, text: 'text', name: 'Science' },
+    { value: "customGe3", imgSrc: CustomGe3, cardIndex: 0, text: 'text', name: 'Economy' },
+    { value: "customGe4", imgSrc: CustomGe4, cardIndex: 0, text: 'text', name: 'Travel' },
+    { value: "customGe5", imgSrc: CustomGe5, cardIndex: 0, text: 'text', name: 'Bavarian' },
 ];
 
 export const betaCourses = [];
