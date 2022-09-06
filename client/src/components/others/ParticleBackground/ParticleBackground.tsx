@@ -1,8 +1,8 @@
 import React from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import { particleConfig } from "config/particleConfig";
-import landingPageStyles from "../../pages/LandingPage/landingPage.module.scss";
+import { particleConfig } from "utils/particleConfig";
+import landingPageStyles from "components/pages/LandingPage/landingPage.module.scss";
 
 interface ParticleBackgroundProps {}
 

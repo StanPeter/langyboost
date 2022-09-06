@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { Course } from "utils/interfaces";
-import { Direction } from "utils/types";
+import { Direction } from "enums/types";
 import styles from "./carousel.module.scss";
 
 interface CarouselProps {

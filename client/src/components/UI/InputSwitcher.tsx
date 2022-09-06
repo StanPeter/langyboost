@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { MultiselectItem } from "utils/interfaces";
-import { InputTypes } from "utils/types";
+import { InputTypes } from "enums/types";
 import ButtonSelect from "./ButtonSelect/ButtonSelect";
 import Input from "./Input/Input";
 import Select from "./Select/Select";

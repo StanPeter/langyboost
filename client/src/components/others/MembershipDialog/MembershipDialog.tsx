@@ -10,7 +10,7 @@ import {
     MembershipDialogSectionTypes,
     SubscriptionTypes,
     PaymentDetailsTypes,
-} from "utils/types";
+} from "enums/types";
 import americanExpress from "images/americanExpress.png";
 import visa from "images/visa.png";
 import paypal from "images/paypal.png";
