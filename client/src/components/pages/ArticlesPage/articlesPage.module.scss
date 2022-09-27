@@ -42,7 +42,6 @@
 
 .coursesSeparator {
     width: 755.01px;
-    // height: 0px;
     margin: 2rem 0;
 
     border: 1px solid #85cdca;
@@ -58,7 +57,6 @@
         font-family: Roboto;
         font-size: 16px;
         line-height: 40px;
-        /* or 250% */
         width: 177px;
         height: 31px;
         border: none;
@@ -88,13 +86,3 @@
         flex-direction: column;
     }
 }
-
-// @supports (-moz-appearance: none) {
-//     select {
-// -moz-appearance: none !important;
-// background: transparent
-//     url("data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==")
-//     right center no-repeat !important;
-// background-position: calc(100% - 5px) center !important;
-//     }
-// }

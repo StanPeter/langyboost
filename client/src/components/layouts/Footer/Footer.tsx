@@ -12,55 +12,35 @@ const Footer: React.FC<FooterProps> = () => {
         <footer className={styles.footer}>
             <ul className={`${styles.socialNetwork} ${styles.socialCircle}`}>
                 <li>
-                    <a
-                        href="/"
-                        className={`${styles.rotateCenterHover} ${styles.icoLinkedin}`}
-                        title="Linkedin"
-                    >
+                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoLinkedin}`} title="Linkedin">
                         <i className="">
                             <FaLinkedinIn />
                         </i>
                     </a>
                 </li>
                 <li>
-                    <a
-                        href="/"
-                        className={`${styles.rotateCenterHover} ${styles.icoTwitter}`}
-                        title="Twitter"
-                    >
+                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoTwitter}`} title="Twitter">
                         <i className="">
                             <FaTwitter />
                         </i>
                     </a>
                 </li>
                 <li>
-                    <a
-                        href="/"
-                        className={`${styles.rotateCenterHover} ${styles.icoGithub}`}
-                        title="Github"
-                    >
+                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoGithub}`} title="Github">
                         <i className="">
                             <FaGithub />
                         </i>
                     </a>
                 </li>
                 <li>
-                    <a
-                        href="/"
-                        className={`${styles.rotateCenterHover} ${styles.icoFacebook}`}
-                        title="Facebook"
-                    >
+                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoFacebook}`} title="Facebook">
                         <i className="">
                             <FaFacebookF />
                         </i>
                     </a>
                 </li>
                 <li>
-                    <a
-                        href="/"
-                        className={`${styles.rotateCenterHover} ${styles.icoInstagram}`}
-                        title="Instagram"
-                    >
+                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoInstagram}`} title="Instagram">
                         <i className="">
                             <FaInstagram />
                         </i>
@@ -68,8 +48,8 @@ const Footer: React.FC<FooterProps> = () => {
                 </li>
             </ul>
             <p className={styles.copyright}>
-                <span onClick={() => navigate("/termsConditions")}>Copyright</span> 1999-2021 by
-                Refsnes Data. All Rights Reserved.
+                <span onClick={() => navigate("/termsConditions")}>Copyright</span> 1999-2021 by Refsnes Data. All
+                Rights Reserved.
             </p>
         </footer>
     );

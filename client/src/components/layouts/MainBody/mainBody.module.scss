@@ -6,7 +6,7 @@
 
 .appWrapper::after {
     content: "";
-    background-image: url("../../../images/bgPicture.jpg");
+    background-image: url("../../../assets/images/bgPicture.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.6;
@@ -28,10 +28,6 @@
     margin: auto;
     padding: 10% 0.5rem;
 }
-
-/*
-Default styiling is made for a mobile device 350-480px, so that breakpoint won't be neccesary
-*/
 
 /* BREAKPOINTS  */
 

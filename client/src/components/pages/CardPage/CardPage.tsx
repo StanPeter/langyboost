@@ -1,8 +1,8 @@
+import MainBody from "components/layouts/MainBody/MainBody";
 import PhraseCardsControls from "components/others/PhraseCardsControls/PhraseCardsControls";
-import Tooltip from "components/ui/Tooltip/Tooltip";
+import Tooltip from "components/UI/Tooltip/Tooltip";
 import React, { useState } from "react";
 import styles from "./cardPage.module.scss";
-import MainBody from "components/layouts/MainBody/MainBody";
 // import { useGetPhrasesQuery } from "generated/graphql";
 // import Spinner from "./Spinner";
 
@@ -53,9 +53,7 @@ const CardPage: React.FC<CardPageProps> = () => {
                     <Tooltip />
                 </div>
                 <div
-                    className={`${styles.cardWrapper} ${
-                        animationChangeCard ? styles.animationChangeCard : ""
-                    }`}
+                    className={`${styles.cardWrapper} ${animationChangeCard ? styles.animationChangeCard : ""}`}
                     onAnimationEnd={() => {
                         setCardIndex(cardIndex + 1);
                         setAnimationChangeCard(false);
@@ -69,10 +67,7 @@ const CardPage: React.FC<CardPageProps> = () => {
                         </h2>
                         {!hideTranslation ? (
                             <React.Fragment>
-                                <hr
-                                    className={styles.translationSeparator}
-                                    style={{ width: "50%" }}
-                                />
+                                <hr className={styles.translationSeparator} style={{ width: "50%" }} />
                                 <h3 className={styles.focused}>Not implemented</h3>
                             </React.Fragment>
                         ) : null}

@@ -1,6 +1,6 @@
-import React from "react";
-import LoginForm from "components/others/LoginForm/LoginForm";
 import MainBody from "components/layouts/MainBody/MainBody";
+import LoginForm from "components/others/LoginForm/LoginForm";
+import React from "react";
 
 interface AuthPageProps {}
 

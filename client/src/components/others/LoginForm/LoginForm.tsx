@@ -1,11 +1,11 @@
+import Button from "components/UI/Button/Button";
+import Input from "components/UI/Input/Input";
 import React, { FormEvent, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { SiFacebook } from "react-icons/si";
 import { useNavigate } from "react-router";
 import styles from "./loginForm.module.scss";
-import Button from "components/ui/Button/Button";
-import Input from "components/ui/Input/Input";
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 interface LoginFormProps {
     useCase: "authPage" | "landingPage";
@@ -32,13 +32,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
     const buttonStyleLeft = {
         borderTopLeftRadius: useCase === "authPage" ? "1.8rem" : undefined,
         width: "50%",
-        height: useCase === "landingPage" ? "58px" : undefined,
+        height: useCase === "landingPage" ? "58px" : undefined
     };
 
     const buttonStyleRight = {
         borderTopRightRadius: useCase === "authPage" ? "1.8rem" : undefined,
         width: "50%",
-        height: useCase === "landingPage" ? "58px" : undefined,
+        height: useCase === "landingPage" ? "58px" : undefined
     };
 
     const onClickHandler = () => {

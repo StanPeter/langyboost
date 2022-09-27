@@ -14,12 +14,7 @@ const Button: React.FC<ButtonProps> = ({ text, style, onClick, active, disabled,
     const isDisabled = typeof disabled === "function" ? disabled() : disabled ?? false;
     const isActive = () => {
         if (isDisabled) return false;
-        else if (
-            typeof active === "undefined" ||
-            (typeof active === "function" && active()) ||
-            active
-        )
-            return true;
+        else if (typeof active === "undefined" || (typeof active === "function" && active()) || active) return true;
 
         return false;
     };
@@ -30,12 +25,7 @@ const Button: React.FC<ButtonProps> = ({ text, style, onClick, active, disabled,
     if (isDisabled) buttonClasses.push(styles.disabled);
 
     return (
-        <button
-            onClick={onClick}
-            className={buttonClasses.join(" ")}
-            disabled={isDisabled}
-            style={{ ...style }}
-        >
+        <button onClick={onClick} className={buttonClasses.join(" ")} disabled={isDisabled} style={{ ...style }}>
             {text}
         </button>
     );

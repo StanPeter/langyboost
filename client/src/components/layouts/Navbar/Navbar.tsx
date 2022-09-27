@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import NavbarLink from "components/UI/NavbarLink";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
-import { setAccessToken } from "utils/getToken";
-import { CgCrown } from "react-icons/cg";
+import React, { useState } from "react";
 import { BiLogIn } from "react-icons/bi";
+import { CgCrown } from "react-icons/cg";
 import { FiSettings } from "react-icons/fi";
+import { useNavigate } from "react-router";
+import { setAccessToken } from "utils/getToken";
 import styles from "./navbar.module.scss";
-import NavbarLink from "components/ui/NavbarLink";
 
 interface NavbarProps {}
 
@@ -19,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     const [logout, { client }] = useLogoutMutation();
 
     const hamburgerClickHandler = () =>
-        new Promise((res) => {
+        new Promise(res => {
             //if changed, set it up in expanded class scss animation too!
             if (expanded)
                 setTimeout(() => {
@@ -186,10 +186,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </li>
                 <hr style={{ height: "30px" }} />
                 <li>
-                    <FiSettings
-                        onClick={() => navigate("/settings")}
-                        className={`${styles.settingsIcon}`}
-                    />
+                    <FiSettings onClick={() => navigate("/settings")} className={`${styles.settingsIcon}`} />
                 </li>
                 <hr style={{ height: "30px" }} />
                 {authButtons(false)}

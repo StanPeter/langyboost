@@ -102,11 +102,11 @@
     }
 
     &:nth-child(1)::after {
-        background-image: url("../../../images/peon.png");
+        background-image: url("../../../assets/images/peon.png");
     }
 
     &:nth-of-type(2)::after {
-        background-image: url("../../../images/king.png");
+        background-image: url("../../../assets/images/king.png");
     }
 
     & h2 {

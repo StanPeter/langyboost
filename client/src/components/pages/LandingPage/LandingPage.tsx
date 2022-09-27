@@ -1,8 +1,8 @@
-import React from "react";
-import ParticleBackground from "components/others/ParticleBackground/ParticleBackground";
-import styles from "./landingPage.module.scss";
 import LoginForm from "components/others/LoginForm/LoginForm";
+import ParticleBackground from "components/others/ParticleBackground/ParticleBackground";
+import React from "react";
 import mainBodyStyles from "../../layouts/MainBody/mainBody.module.scss";
+import styles from "./landingPage.module.scss";
 
 interface LandingPageProps {}
 

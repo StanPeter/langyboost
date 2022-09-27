@@ -1,8 +1,8 @@
+import inputStyles from "components/UI/Input/input.module.scss";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { MultiselectItem } from "utils/interfaces";
+import { MultiselectItem } from "ts/interfaces";
 import styles from "./select.module.scss";
-import inputStyles from "components/ui/Input/input.module.scss";
 
 interface MultiselectProps {
     title: string;
@@ -14,15 +14,7 @@ interface MultiselectProps {
     onChange: (d: any) => SetStateAction<any>;
 }
 
-const Select: React.FC<MultiselectProps> = ({
-    data,
-    title,
-    useCase,
-    styleInput,
-    value,
-    type,
-    onChange,
-}) => {
+const Select: React.FC<MultiselectProps> = ({ data, title, useCase, styleInput, value, type, onChange }) => {
     /* HOOKS */
     const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
     const [hideDropdown, setHideDropdown] = useState(true);
@@ -48,7 +40,7 @@ const Select: React.FC<MultiselectProps> = ({
 
     const deleteItemHandler = (itemVal: string) => {
         if (type === "multiselect") {
-            const newValue = multiselectValue.filter((value) => value !== itemVal);
+            const newValue = multiselectValue.filter(value => value !== itemVal);
             setMultiselectValue(newValue);
             onChange(newValue);
         } else {
@@ -100,31 +92,24 @@ const Select: React.FC<MultiselectProps> = ({
                 >
                     <div className={styles.valueWrapper}>
                         {data
-                            .filter((el) => multiselectValue.includes(el.value))
+                            .filter(el => multiselectValue.includes(el.value))
                             .map((el, i) => (
                                 <div
                                     className={styles.value}
                                     key={i}
                                     id={el.value}
-                                    onClick={(e) => deleteItemHandler(e.currentTarget.id)}
+                                    onClick={e => deleteItemHandler(e.currentTarget.id)}
                                 >
                                     {valueBuilder(el)}
                                 </div>
                             ))}
                     </div>
-                    <div
-                        className={styles.dropdownIcon}
-                        onClick={() => setHideDropdown(!hideDropdown)}
-                    >
+                    <div className={styles.dropdownIcon} onClick={() => setHideDropdown(!hideDropdown)}>
                         <IoIosArrowDown />
                     </div>
                 </div>
             </div>
-            <div
-                className={`${styles.dropdown} ${addTypeClass("")} ${
-                    !hideDropdown ? styles.dropdownOpen : ""
-                }`}
-            >
+            <div className={`${styles.dropdown} ${addTypeClass("")} ${!hideDropdown ? styles.dropdownOpen : ""}`}>
                 {data.map((el, i) => {
                     if (!el.name && !el.imgSrc) {
                         console.log("No parameter for multiselect was passed!");
@@ -134,7 +119,7 @@ const Select: React.FC<MultiselectProps> = ({
                     return (
                         <div
                             key={i}
-                            onClick={(d) => {
+                            onClick={d => {
                                 if (type === "singleselect") setHideDropdown(true);
                                 addItemHandler(d.currentTarget.id);
                             }}

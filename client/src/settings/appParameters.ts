@@ -4,5 +4,5 @@ export const MEDIA_SCREENS = {
     bigTablet: 750,
     smallDesktop: 1200,
     midDesktop: 1500,
-    bigDesktop: 1800,
+    bigDesktop: 1800
 };

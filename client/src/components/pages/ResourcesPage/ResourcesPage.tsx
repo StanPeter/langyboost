@@ -1,5 +1,5 @@
-import React from "react";
 import MainBody from "components/layouts/MainBody/MainBody";
+import React from "react";
 
 interface ResourcesPageProps {}
 

@@ -6,7 +6,7 @@ interface HomeProps {}
 const AdminHome: React.FC<HomeProps> = () => {
     //network-only makes it to do a request every single time
     const { data, error, loading } = useGetUsersQuery({
-        fetchPolicy: "network-only",
+        fetchPolicy: "network-only"
     });
 
     if (error) return <div style={{ color: "red" }}>error {error.message}</div>;

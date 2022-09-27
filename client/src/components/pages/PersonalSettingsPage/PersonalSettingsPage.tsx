@@ -1,10 +1,10 @@
+import MainBody from "components/layouts/MainBody/MainBody";
+import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
+import Button from "components/UI/Button/Button";
+import InputSwitcher from "components/UI/InputSwitcher";
 import React, { useEffect, useState } from "react";
-import Button from "components/ui/Button/Button";
 import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";
-import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
-import InputSwitcher from "components/ui/InputSwitcher";
-import MainBody from "components/layouts/MainBody/MainBody";
 
 type ModeTypes = "profile" | "settings";
 
@@ -28,7 +28,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     src="https://pyxis.nymag.com/v1/imgs/64a/ad3/5896a5cd3008c6fe87b18cc78a99466035-the-witcher-ep-07-placeholder.rsocial.w1200.jpg"
                     alt=""
                     style={{
-                        opacity: opacityImg ? opacityImg : "unset",
+                        opacity: opacityImg ? opacityImg : "unset"
                     }}
                 />
                 <VscEdit
@@ -65,7 +65,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         useCase="form"
                         dataOfMultiselect={[
                             { name: "Turned off", value: "off" },
-                            { name: "Turned on", value: "on" },
+                            { name: "Turned on", value: "on" }
                         ]}
                     />
                     <InputSwitcher
@@ -75,7 +75,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         dataOfMultiselect={[
                             { name: "Lingo(default)", value: "lingo" },
                             { name: "Dark", value: "dark" },
-                            { name: "Halloween", value: "halloween" },
+                            { name: "Halloween", value: "halloween" }
                         ]}
                     />
                     <InputSwitcher
@@ -91,16 +91,12 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         dataOfMultiselect={[
                             { name: "en", value: "en" },
                             { name: "ge", value: "ge" },
-                            { name: "es", value: "es" },
+                            { name: "es", value: "es" }
                         ]}
                     />
                     <InputSwitcher name="Password" type="text" />
                     <InputSwitcher name="New password" type="text" />
-                    <InputSwitcher
-                        name="Repeat new password"
-                        styleInput={{ fontSize: "12px" }}
-                        type="text"
-                    />
+                    <InputSwitcher name="Repeat new password" styleInput={{ fontSize: "12px" }} type="text" />
                     <InputSwitcher name="Bank details" type="text" />
                     <Button text="Save changes" onClick={() => {}} active={true} type="big" />
                 </form>
@@ -111,7 +107,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
         width: "50%",
         height: "3rem",
         margin: 0,
-        padding: 0,
+        padding: 0
     };
 
     return (
@@ -125,7 +121,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                             active={mode === "profile"}
                             style={{
                                 ...menuBtnStyle,
-                                borderRadius: "25px 0px 0px 0px",
+                                borderRadius: "25px 0px 0px 0px"
                             }}
                             type="fullLine"
                             onClick={() => setMode("profile")}
@@ -135,7 +131,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                             active={mode === "settings"}
                             style={{
                                 ...menuBtnStyle,
-                                borderRadius: "0 25px 0px 0px",
+                                borderRadius: "0 25px 0px 0px"
                             }}
                             type="fullLine"
                             onClick={() => setMode("settings")}
@@ -144,9 +140,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     {renderedSection}
                 </div>
             </div>
-            {showModal && mode === "settings" ? (
-                <MembershipDialog hideFunction={() => setShowModal(false)} />
-            ) : null}
+            {showModal && mode === "settings" ? <MembershipDialog hideFunction={() => setShowModal(false)} /> : null}
         </MainBody>
     );
 };

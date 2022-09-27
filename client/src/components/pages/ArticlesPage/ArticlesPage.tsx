@@ -1,25 +1,25 @@
-import React from "react";
-import Select from "components/ui/Select/Select";
-import styles from "./articlesPage.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
+import Select from "components/UI/Select/Select";
+import React from "react";
+import styles from "./articlesPage.module.scss";
 
 interface ArticlesPageProps {}
 
 const data = [
     {
-        text: "German",
+        name: "German",
         imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png",
-        value: "german",
+        value: "german"
     },
     {
-        text: "Armenian",
+        name: "Armenian",
         imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e6-1f1e9.png",
-        value: "armenian",
+        value: "armenian"
     },
     {
-        text: "aloha",
-        value: "aloha",
-    },
+        name: "aloha",
+        value: "aloha"
+    }
 ];
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {

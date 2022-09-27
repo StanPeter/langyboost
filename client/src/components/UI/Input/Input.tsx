@@ -12,15 +12,7 @@ interface InputProps {
     withoutLabel?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
-    name,
-    styleInput,
-    value,
-    onChange,
-    type,
-    placeholder,
-    withoutLabel,
-}) => {
+const Input: React.FC<InputProps> = ({ name, styleInput, value, onChange, type, placeholder, withoutLabel }) => {
     const [focused, setFocused] = useState(false);
     const onFocus = () => setFocused(true);
     const onBlur = () => setFocused(false);
@@ -28,10 +20,7 @@ const Input: React.FC<InputProps> = ({
     return (
         <React.Fragment>
             {!withoutLabel && (
-                <div
-                    className={styles.formLabel}
-                    style={{ background: focused ? "#daffe9" : undefined }}
-                >
+                <div className={styles.formLabel} style={{ background: focused ? "#daffe9" : undefined }}>
                     <label style={styleInput} htmlFor={name}>
                         {name}
                     </label>
@@ -45,10 +34,10 @@ const Input: React.FC<InputProps> = ({
                 type={type}
                 style={{
                     background: focused ? "#daffe9" : undefined,
-                    borderRadius: !withoutLabel ? "0 5px 5px 0" : "none",
+                    borderRadius: !withoutLabel ? "0 5px 5px 0" : "none"
                 }}
                 value={value}
-                onChange={(e) => {
+                onChange={e => {
                     if (onChange) onChange(e.target.value);
                 }}
                 name={name.replace(new RegExp(" ", "g"), "")}

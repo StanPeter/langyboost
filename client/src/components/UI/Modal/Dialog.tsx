@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./dialog.module.scss";
-import { AiOutlineClose } from "react-icons/ai";
 import { createPortal } from "react-dom";
+import { AiOutlineClose } from "react-icons/ai";
+import styles from "./dialog.module.scss";
 
 interface DialogProps {
     hideFunction: Function;

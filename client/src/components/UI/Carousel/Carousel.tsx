@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { Course } from "utils/interfaces";
-import { Direction } from "enums/types";
+import { Course } from "ts/interfaces";
+import { Direction } from "ts/types";
 import styles from "./carousel.module.scss";
 
 interface CarouselProps {
@@ -18,7 +18,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
 
     useEffect(() => {
         if (value !== chosenValue?.value) {
-            const possibleValues = data.map((d) => d.value);
+            const possibleValues = data.map(d => d.value);
             if (possibleValues.includes(value)) onSwitchHandler(null, value);
             else setChosenValue(null);
         }
@@ -32,8 +32,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
 
         //for direction left, if it overflows then set to one of two last items, same for opposite direction
         if (result < firstIndex) result = result === -1 ? lastIndex : lastIndex - 1;
-        else if (result > lastIndex)
-            result = result === lastIndex + 1 ? firstIndex : firstIndex + 1;
+        else if (result > lastIndex) result = result === lastIndex + 1 ? firstIndex : firstIndex + 1;
 
         return result;
     };
@@ -74,7 +73,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
             data[getItemIndex(chosenIndex, 1, "left")],
             data[chosenIndex],
             data[getItemIndex(chosenIndex, 1, "right")],
-            data[getItemIndex(chosenIndex, 2, "right")],
+            data[getItemIndex(chosenIndex, 2, "right")]
         ];
 
         setAnimate(true);
@@ -89,10 +88,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
             <div className={styles.courseWrapper}>
                 {values.length > 0 ? (
                     <React.Fragment>
-                        <FiArrowLeft
-                            onClick={() => onSwitchHandler("left")}
-                            className={styles.sliderArrow}
-                        />
+                        <FiArrowLeft onClick={() => onSwitchHandler("left")} className={styles.sliderArrow} />
                         {values.map((val, idx) => (
                             <div
                                 className={`${styles.course} ${animate ? styles.animate : ""} ${
@@ -103,17 +99,13 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
                                 onClick={() => onSwitchHandler(null, val.value)}
                                 onAnimationEnd={() => {
                                     setAnimate(false);
-                                    if (chosenValue && chosenValue?.value !== value)
-                                        onChange(chosenValue.value);
+                                    if (chosenValue && chosenValue?.value !== value) onChange(chosenValue.value);
                                 }}
                             >
                                 <p>{val.name}</p>
                             </div>
                         ))}
-                        <FiArrowRight
-                            onClick={() => onSwitchHandler("right")}
-                            className={styles.sliderArrow}
-                        />
+                        <FiArrowRight onClick={() => onSwitchHandler("right")} className={styles.sliderArrow} />
                     </React.Fragment>
                 ) : (
                     <p>No available courses</p>

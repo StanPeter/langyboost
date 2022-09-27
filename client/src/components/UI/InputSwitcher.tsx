@@ -1,10 +1,10 @@
 import React, { SetStateAction } from "react";
-import { MultiselectItem } from "utils/interfaces";
-import { InputTypes } from "enums/types";
+import { MultiselectItem } from "ts/interfaces";
+import { InputTypes } from "ts/types";
 import ButtonSelect from "./ButtonSelect/ButtonSelect";
 import Input from "./Input/Input";
-import Select from "./Select/Select";
 import inputStyles from "./Input/input.module.scss";
+import Select from "./Select/Select";
 
 interface InputProps {
     name: string;
@@ -29,7 +29,7 @@ const InputSwitcher: React.FC<InputProps> = ({
     valueOfButton = " ",
     styleInput,
     value,
-    onChange,
+    onChange
 }) => {
     //maybe won't be neccesary later on
     const inputClass = useCase === "form" ? inputStyles.formItem : inputStyles.filterItem;

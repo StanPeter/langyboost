@@ -1,0 +1,14 @@
+{
+    "name": "langyboost",
+    "api": {
+        "baseURL": "./",
+        "timeout": 60000
+    },
+    "languages": {
+        "english": {
+            "label": "English",
+            "default": true,
+            "code": ["en"]
+        }
+    }
+}

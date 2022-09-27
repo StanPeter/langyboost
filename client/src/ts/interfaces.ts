@@ -4,7 +4,8 @@ export interface SectionStyles {
     paymendMethod: React.CSSProperties;
     paymentDetails: React.CSSProperties;
 }
-//ui
+
+//UI
 export interface Course {
     imgSrc: string;
     value: string;

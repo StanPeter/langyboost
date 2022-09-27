@@ -8,12 +8,7 @@ interface NavbarLinkProps {
     onClick: () => any;
 }
 
-const NavbarLink: React.FC<NavbarLinkProps> = ({
-    expandedHelper,
-    name,
-    hamburgerClickHandler,
-    onClick,
-}) => {
+const NavbarLink: React.FC<NavbarLinkProps> = ({ expandedHelper, name, hamburgerClickHandler, onClick }) => {
     return (
         <li
             onClick={async () => {

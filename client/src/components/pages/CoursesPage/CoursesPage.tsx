@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import styles from "./cousesPage.module.scss";
 import MainBody from "components/layouts/MainBody/MainBody";
-import InputSwitcher from "components/ui/InputSwitcher";
-import Button from "components/ui/Button/Button";
-import globalStyles from "styles/style.module.scss";
-import { MEDIA_SCREENS } from "utils/appParameters";
-import Carousel from "components/ui/Carousel/Carousel";
-import { betaCourses, customCourses, mainCourses } from "utils/mockData";
+import Button from "components/UI/Button/Button";
+import Carousel from "components/UI/Carousel/Carousel";
+import InputSwitcher from "components/UI/InputSwitcher";
+import React, { useEffect, useState } from "react";
+import { MEDIA_SCREENS } from "settings/appParameters";
+import { betaCourses, customCourses, mainCourses } from "settings/mockData";
+import globalStyles from "styles/globalStyles.module.scss";
+import styles from "./cousesPage.module.scss";
 
 interface CoursesPageProps {}
 
@@ -44,7 +44,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         dataOfMultiselect={mainCourses}
                         value={iSpeak}
-                        onChange={(val) => setISpeak(val)}
+                        onChange={val => setISpeak(val)}
                     />
                     <InputSwitcher
                         name="Want to learn"
@@ -52,7 +52,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         dataOfMultiselect={mainCourses}
                         value={wantToLearn}
-                        onChange={(val) => setWantToLearn(val)}
+                        onChange={val => setWantToLearn(val)}
                     />
                     <InputSwitcher
                         name="Chosen course"
@@ -60,16 +60,11 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         dataOfMultiselect={mainCourses}
                         value={chosenCourse}
-                        onChange={(val) => setChosenCourse(val)}
+                        onChange={val => setChosenCourse(val)}
                     />
                 </div>
                 <div className={styles.btnWrapper}>
-                    <Button
-                        disabled={btnDisabled}
-                        type="small"
-                        text="Start now"
-                        onClick={() => {}}
-                    />
+                    <Button disabled={btnDisabled} type="small" text="Start now" onClick={() => {}} />
                 </div>
             </div>
             {windowWidth < MEDIA_SCREENS.tablet && (
@@ -77,25 +72,13 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             )}
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
-            <Carousel
-                data={mainCourses}
-                value={chosenCourse}
-                onChange={setChosenCourse}
-            />
+            <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Custom German Courses</h2>
-            <Carousel
-                data={customCourses}
-                value={chosenCourse}
-                onChange={setChosenCourse}
-            />
+            <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
             <hr className={globalStyles.separator} />
             <h2 style={{ margin: "2rem 0" }}>Beta Courses</h2>
-            <Carousel
-                data={betaCourses}
-                value={chosenCourse}
-                onChange={setChosenCourse}
-            />
+            <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
             <hr className={globalStyles.separator} />
             <Button text="Start learning!" type="big" onClick={() => {}} />
         </MainBody>

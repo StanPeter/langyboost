@@ -1,9 +1,11 @@
-import React from "react";
 import Footer from "components/layouts/Footer/Footer";
 import Navbar from "components/layouts/Navbar/Navbar";
+import React from "react";
 import styles from "./mainBody.module.scss";
 
-interface MainBodyProps {}
+interface MainBodyProps {
+    children: React.ReactNode;
+}
 
 const MainBody: React.FC<MainBodyProps> = ({ children }) => {
     return (

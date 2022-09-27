@@ -1,7 +1,7 @@
+import inputStyles from "components/UI/Input/input.module.scss";
 import React, { FormEvent } from "react";
-import styles from "./buttonSelect.module.scss";
 import Button from "../Button/Button";
-import inputStyles from "components/ui/Input/input.module.scss";
+import styles from "./buttonSelect.module.scss";
 
 interface ButtonSelectProps {
     title: string;
@@ -33,9 +33,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick
             <label className={inputStyles.formLabel} htmlFor="">
                 {title}
             </label>
-            <div className={`${styles.multiselectInput} ${styles.formType} ${styles.valueWrapper}`}>
-                {finalValue}
-            </div>
+            <div className={`${styles.multiselectInput} ${styles.formType} ${styles.valueWrapper}`}>{finalValue}</div>
         </div>
     );
 };
