@@ -114,4 +114,9 @@ try again to run server, it worked but haven't tried for a long time
 finish page not found
 implement UI elements for membership dialog
 responsiveness on most screens
+responsiveness of Carousel
+optimize and clean up MembershipDialog
+articles & resources page
+courses detail page
+
     
