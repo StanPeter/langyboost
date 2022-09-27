@@ -1,37 +1,23 @@
 # Created by StanPeter - https://github.com/StanPeter/langyboost
 
-# 1 Theoretical info about the project
-# 2 Technical info
-# 3 How to launch the app
-# 4 Structure of the app
-# 5 Used packages/dependencies
-# 6 Known bugs & things to improve 
+# FE / client PART
 
-# 1 === Theoretical info about the project ===
-This project is called Langyboost and its purpose is to build a useful, yet simple, language learning application. As I'm a huge fan of German language it will be the first supported one. 
-
-Application is currently under development stage and missing most of the desired features. In the end there will be multiple courses available, each having sections of phrases. (containing new words to learn) 
-
-I have been studying 3 languages so far and I believe this is the most efficient way to improve. (besides living in the foreign country of the target language) In short there will be phrases available for practise and each showing in intervals of days/weeks depending how well the user remembered them.
-
-I was inspired by many language learning applications but mostly by Memrise, where I disliked the long proccess of repetion of voice/writting inputs.
+# 1 Technical info
+# 2 How to launch the app
+# 3 Structure of the app
+# 4 Used packages/dependencies
+# 5 Known bugs & things to improve 
 
 
-# 2 === Technical info ===
+# 1 === Technical info ===
 
-# In short how app works
+# In short how FE app works
 1) All important is inside src/ folder, outside is only specific package settings
 2) Within our index.html file is loaded javascript file with help of React framework.
 3) There graphQl api communication, with help of appolo package, is handled.
 4) Then it goes to App.tsx file which only imports global styles and references on Store. (store will use hooks instead of Redux, but that's not implemented yet)
 5) Then our Routes.tsx builds possible url paths and in future will handle error handling and auth/adming rights
 6) From there it takes us to a specific page file which is always build from layouts components and UI, other components
-
-# Used tech FE
-react, hooks, ant design (tried others but dislike them), particles, sass graphql, apollo, typescript, html5
-
-# Used tech BE
-node, express, typescript, graphql, apollo-server, postgres, typeorm, type-graphql, cors, cookie-parser, dotenv, bccrypt, jsonwebtoken
 
 # Additional info
 images can be found inside on src/images but particles could be loaded only from within public/particles -> having two folders for images
@@ -52,14 +38,14 @@ npm run gen
 -> searches in http://localhost:4000/graphql so BE needs to be running on that address
 
 
-# 3 === How to launch the app ===
+# 2 === How to launch the app ===
 a) get to install NPM (https://www.npmjs.com/get-npm) or use Yarn if you wish
 b) execute command "npm install" -> will create folder of dependencies "node_modules" 
 c) launch the project using command "npm start" -> will translate files from "src" and automatically open your main browser on localhost URL  http://localhost:3000
 d) if you wish to make a production build, run "npm run build" which will get the app ready inside of "build" folder
 
 
-# 4 === Structure of the app ===
+# 3 === Structure of the app ===
 node_modules            automatically generated folder for dependencies 
 public                  contains favicon, robots.txt, index.html and particle images
 src
@@ -92,7 +78,7 @@ src
                 ComponentName.test.js            if a test exists
 
 
-# 5 === Used packages/dependencies ===
+# 4 === Used packages/dependencies ===
 react                   used JS framework for this project
 apollo                  graphql library provider for client
 graphql                 query language for API communication
@@ -112,27 +98,20 @@ react-icons             library providing icons
 tsparticles             particle effects library (for landing page)
 
 
-# 6 === Known bugs & things to improve ===
-npm install causes 1 warning
-
-
-finish documentation README!!
-
+# 5 === Known bugs & things to improve ===
 authorization HOC page route
 errorboundary HOC
 not found PAGE
-
-make the app even launch
-
-
-
-
-
-        page AdminHome
-        
-        
-        
-        
-Known bugs/improvements to make
-	npm i in client - clear the warnings there
-        
+page AdminHome solve
+npm install causes 1 warning
+implement multi languages feature
+implement validations
+optimize the landing page particles
+implement global color scheme
+implement light and dark mode
+do something wth the AdminHome page
+try again to run server, it worked but haven't tried for a long time
+finish page not found
+implement UI elements for membership dialog
+responsiveness on most screens
+    

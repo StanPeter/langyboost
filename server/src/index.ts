@@ -8,11 +8,7 @@ import { createConnection } from "typeorm";
 import { User } from "entity/User";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import {
-    createAccessToken,
-    createRefreshToken,
-    sendRefreshToken,
-} from "utils/auth";
+import { createAccessToken, createRefreshToken, sendRefreshToken } from "utils/auth";
 import { verify } from "jsonwebtoken";
 import { PhrasesResolver } from "resolvers/PhrasesResolver";
 

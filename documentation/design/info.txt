@@ -1,1 +1,4 @@
-for designing used software Figma
+Used software Figma
+
+On top left corner is a dropdown to get to other pages of the App, not all are fully designed yet
+https://www.figma.com/file/6bJomlAMR5mBU0oVUVR7sg/langyboost?node-id=244%3A269
