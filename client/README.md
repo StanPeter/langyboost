@@ -118,5 +118,90 @@ responsiveness of Carousel
 optimize and clean up MembershipDialog
 articles & resources page
 courses detail page
+unsupported browsers check
 
-    
+# from interview
+accessebility -> for color blind and blind people -> write html tags as good as possible, source tag in img, btn right, inputs correctly
+responsiveness -> across browsers and screens
+patterns for graphical stuff -> such as margins, font sizes, color pallete etc
+testing -> learn about jest and other testing tools, write a lots of those
+graphql VS rest
+caching how to approach
+advance animations
+deployment via DevOps tools -> learn jenkins, docker, kubernettess, different services like AWS
+working with iFrames and maps
+naming convention
+trying out styled components, less etc.
+
+LEARN all of these and you will get senior knowledge
+Senior frontend developers should be very comfortable articulating HTML, JS, and CSS. Additionally, they should have basic concepts about how the internet works including browsers, networks, and servers. This means that concepts like prototypes, event bubbling, call stack, promises, ES6 are no foreign to you.
+
+checking out different HTML tags and CSS functions
+
+# from internet
+    The Document Object Model (DOM) and CSS Object Model (CSSOM)
+    The JavaScript Event Loop, Promises, Asyc/Await
+    CSS position Property
+    CSS Flexbox Layout
+    HTML Roles
+    Common Accessibility Issues to Always Check For
+    Unit & Integration Testing (Jest, Mocha, Chai, Cypress, Axe-Core)
+    Form action and target Attributes
+    JavaScript Design Patterns
+    Closures and Thunks
+    CSS Variables and Preprocessors
+    JavaScript as a Statically Typed Language (TypeScript)
+    Mutable and Immutable Types in JavaScript
+    JavaScript Passed by Reference / Passed by Value
+    JSON Data, JSON-LD, JSON Schemas & UI Schemas
+    HTML Meta Tags (Especially Viewport)
+    Different Ways Pages Zoom and How To Optimize For That
+    Front-End Frameworks (React, Vue, Angular)
+    HTML Templating (Handlebars, EJS)
+    Webpack / Babel
+    Git, Version Control and Rebasing
+    Jenkins, Docker, Continuous Integration
+    Caching
+    CSS Methodologies (i.e. BEM)
+    JavaScript Array Methods: .sort(), .filter(), .map(), .reduce()
+    JavaScript Object Methods: .keys(), .entries(), .values()
+    Front-End Performance Optimization & Speed
+    CSS Specificity and Inheritance
+    State Management (i.e. Redux)
+    Semantic HTML
+    Communicating with RESTful APIs
+
+
+    Key Front End Developers Skills
+    HTML/CSS
+    JavaScript
+    jQuery
+    JavaScript Frameworks
+    Front End Frameworks
+    CSS Preprocessors
+    RESTful Services/APIs
+    Responsive/Mobile Design
+    Cross-Browser Development
+    Content Management Systems
+    Testing/Debugging
+    Git/Version Control
+    Problem Solving
+
+    babel, webpack, communication
+
+        knowing the useful HTML5 elements thoroughly, as well as semantic markup (use tags that describe what this element is) and especially form fields.
+    Use WebAim to learn about accessibility. The UK .gov site is actually very good and even has some tips!
+    CSS rules are easy to learn, but hard to implement in a scalable way as a site grows. Rather than a framework, learn about abstracting colours (especially) and regularly-used styles into CCS custom properties (essentially constant-type variables). Learn flexbox rather than leaping into grid! Use class names that describe what they're for, rather than what they look like e.g. `.formborder` instead of `.blueborder` - the colour may change, and can be applied with a custom property. Don't use IDs as selectors - keep them for JavaScript.
+    Learn JavaScript well, use constants (`const`) for immutable things like arrays and objects (the values they hold can change but they can't mutate into, say, a variable. Use `let` for other variable values. Use objects to store and retrieve collections of simple non-sensitive data (e.g. a 'person', or user prefs), and in localStorage. Learn how to read and write JSON - it's the data backbone of JavaScript and storage and is used by many other languages and online API data sources. Avoid frameworks until you can write some interactive functionality yourself.
+    Use online optimisation for all media.
+    Finally: develop mobile-first, increase the width and add `@media` breakpoints when the appearance 'breaks' at wider screen widths, but try to keep things flexible and breakpoints to three maximum.
+
+
+# from second one 
+core of JS how it works
+encapsulation and other concepts of OOP
+testing, test injection
+many on many relations and other SQL topics
+architecture patterns
+patterns
+data structure
