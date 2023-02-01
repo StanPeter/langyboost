@@ -4,13 +4,24 @@ import styles from "./button.module.scss";
 interface ButtonProps {
     text: string;
     style?: object;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     active?: boolean | (() => boolean);
     disabled?: boolean | (() => boolean);
-    type?: "big" | "small" | "middle" | "fullLine";
+    useCase?: "big" | "small" | "middle" | "fullLine";
+    className?: string;
+    type?: "button" | "reset" | "submit";
 }
 
-const Button: React.FC<ButtonProps> = ({ text, style, onClick, active, disabled, type }) => {
+const Button: React.FC<ButtonProps> = ({
+    text,
+    style,
+    onClick = () => {},
+    active,
+    disabled,
+    useCase,
+    className,
+    type = "button"
+}) => {
     const isDisabled = typeof disabled === "function" ? disabled() : disabled ?? false;
     const isActive = () => {
         if (isDisabled) return false;
@@ -20,12 +31,18 @@ const Button: React.FC<ButtonProps> = ({ text, style, onClick, active, disabled,
     };
 
     const buttonClasses = [styles.button];
-    if (type) buttonClasses.push(styles[type]);
+    if (useCase) buttonClasses.push(styles[useCase]);
     if (isActive()) buttonClasses.push(styles.active);
     if (isDisabled) buttonClasses.push(styles.disabled);
 
     return (
-        <button onClick={onClick} className={buttonClasses.join(" ")} disabled={isDisabled} style={{ ...style }}>
+        <button
+            type={type}
+            onClick={onClick}
+            className={`${buttonClasses.join(" ")} ${className}`}
+            disabled={isDisabled}
+            style={{ ...style }}
+        >
             {text}
         </button>
     );

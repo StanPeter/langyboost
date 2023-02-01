@@ -1,0 +1,103 @@
+.gridRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.gridColumn {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    padding: 0.5rem 0;
+
+    &.modal {
+        padding: 0;
+    }
+}
+
+/* BREAKPOINTS  */
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+    .gridColumn {
+        width: calc(50% - 0.5rem);
+        display: flex;
+        flex-flow: column;
+
+        &:nth-of-type(even) {
+            align-items: end;
+            text-align: end;
+            margin-left: 0.5rem;
+        }
+    }
+
+    .gridCol_1 {
+        width: 100%;
+    }
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
+    .gridColumn {
+        align-items: unset !important;
+        text-align: unset !important;
+    }
+
+    .gridCol_1,
+    .gridCol_2,
+    .gridCol_4 {
+        width: calc(50% - 1rem);
+
+        &:nth-of-type(even) {
+            margin-left: 1rem;
+        }
+    }
+
+    .gridCol_3 {
+        width: calc(33.33% - 1rem);
+
+        &:not(:first-child) {
+            margin-left: 1rem;
+        }
+    }
+
+    .gridCol_5,
+    .gridCol_6 {
+        width: calc(33.33% - 1rem);
+
+        &:not(:nth-of-type(1)):not(:nth-of-type(4)) {
+            margin-left: 1rem;
+        }
+
+        &:nth-of-type(4) {
+            margin-left: 0rem;
+        }
+    }
+}
+
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+    // .gridColumn:not(:first-child) {
+    //     margin-left: 1rem !important;
+    // }
+
+    .gridCol_4 {
+        width: calc(25% - 1rem);
+
+        &:not(:first-child) {
+            margin-left: 1rem;
+        }
+    }
+
+    .gridCol_5 {
+        width: calc(20% - 1rem);
+    }
+}
+
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+    .gridCol_6 {
+        width: calc((100% / 6) - 1rem);
+    }
+}

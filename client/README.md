@@ -99,6 +99,13 @@ tsparticles             particle effects library (for landing page)
 
 
 # 5 === Known bugs & things to improve ===
+a) add form library
+b) add Next.js
+c) add testing
+d) connect all current architecture
+e) start mocking
+f) connect redux
+
 authorization HOC page route
 errorboundary HOC
 not found PAGE

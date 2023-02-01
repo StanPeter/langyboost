@@ -1,9 +1,8 @@
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-import { Context } from "components/hoc/Store";
 import TranslateText from "components/hoc/TranslateText";
 import CSS from "csstype";
-import React, { useContext } from "react";
+import React from "react";
 import getLanguageObject from "utils/getLanguageObject";
 
 // NOT IMPLEMENTED YET
@@ -25,7 +24,7 @@ type LoadingWrapperProps = {
 };
 
 const LoadingWrapper: React.FC<LoadingWrapperProps> = ({ children, loading, error, style }: LoadingWrapperProps) => {
-    const { language } = useContext(Context);
+    const language = "en";
     if (error)
         return (
             <p>

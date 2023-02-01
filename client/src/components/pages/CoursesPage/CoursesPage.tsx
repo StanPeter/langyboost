@@ -3,7 +3,6 @@ import Button from "components/UI/Button/Button";
 import Carousel from "components/UI/Carousel/Carousel";
 import InputSwitcher from "components/UI/InputSwitcher";
 import React, { useEffect, useState } from "react";
-import { MEDIA_SCREENS } from "settings/appParameters";
 import { betaCourses, customCourses, mainCourses } from "settings/mockData";
 import globalStyles from "styles/globalStyles.module.scss";
 import styles from "./cousesPage.module.scss";
@@ -67,7 +66,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                     <Button disabled={btnDisabled} type="small" text="Start now" onClick={() => {}} />
                 </div>
             </div>
-            {windowWidth < MEDIA_SCREENS.tablet && (
+            {windowWidth < 400 && (
                 <Button disabled={btnDisabled} type="middle" text="Start now" onClick={() => {}} />
             )}
             <hr className={globalStyles.separator} />

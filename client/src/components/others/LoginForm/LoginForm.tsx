@@ -1,11 +1,16 @@
 import Button from "components/UI/Button/Button";
 import Input from "components/UI/Input/Input";
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { SiFacebook } from "react-icons/si";
 import { useNavigate } from "react-router";
 import styles from "./loginForm.module.scss";
+
+interface IFormData {
+    hello?: string;
+}
 
 interface LoginFormProps {
     useCase: "authPage" | "landingPage";
@@ -13,9 +18,15 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<"signUp" | "signIn">("signIn");
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [username, setUsername] = useState("");
+    const {
+        handleSubmit,
+        register,
+        watch,
+        formState: { errors }
+    } = useForm();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
 
     const navigate = useNavigate();
 
@@ -29,34 +40,24 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
     //     }, 1000);
     // }, []);
 
-    const buttonStyleLeft = {
-        borderTopLeftRadius: useCase === "authPage" ? "1.8rem" : undefined,
-        width: "50%",
-        height: useCase === "landingPage" ? "58px" : undefined
-    };
+    const onSubmitHandler: SubmitHandler<IFormData> = data => {
+        // e.preventDefault();
 
-    const buttonStyleRight = {
-        borderTopRightRadius: useCase === "authPage" ? "1.8rem" : undefined,
-        width: "50%",
-        height: useCase === "landingPage" ? "58px" : undefined
-    };
+        console.log(data, "clicked");
 
-    const onClickHandler = () => {
-        console.log("clicked");
+        console.log(errors.hello, " errors");
 
-        navigate("/courses");
-    };
-
-    const submitHandler = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        console.log("clicked");
+        // navigate("/courses");
     };
 
     const signFormStyles = {
         // width: "70%",
         // marginTop: useCase === "landingPage" ? 0 : "26%",
     };
+
+    console.log("rerender");
+    // console.log(watch("hello"));
+    console.log(errors.hello, " errors");
 
     return (
         <div className={styles.signForm} style={signFormStyles}>
@@ -72,26 +73,31 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
                 className={styles.switcherWrapper}
             >
                 <Button
-                    type="fullLine"
-                    style={buttonStyleLeft}
+                    useCase="fullLine"
                     active={mode === "signIn"}
                     text="Sign in"
+                    className={`${styles.btn} ${styles.btnLeft} ${
+                        useCase === "authPage" ? styles.authPage : styles.landingPage
+                    }`}
                     onClick={() => setMode("signIn")}
                 />
                 <Button
-                    type="fullLine"
-                    style={buttonStyleRight}
+                    useCase="fullLine"
+                    className={`${styles.btn} ${styles.btnRight} ${
+                        useCase === "authPage" ? styles.authPage : styles.landingPage
+                    }`}
                     active={mode === "signUp"}
                     text="Sign up"
                     onClick={() => setMode("signUp")}
                 />
             </div>
-            <form autoComplete="off" onSubmit={submitHandler}>
-                {mode === "signUp" && (
+            <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
+                {/* {mode === "signUp" && (
                     <Input
                         withoutLabel
                         type="email"
                         name="email"
+                        register={register("email", { maxLength: 5, required: true })}
                         // value={email}
                         placeholder="email"
                         // onChange={(e) => setEmail(e.target.value)}
@@ -104,19 +110,22 @@ const LoginForm: React.FC<LoginFormProps> = ({ useCase }) => {
                     // value={username}
                     placeholder="username"
                     // onChange={(e) => setUsername(e.target.value)}
-                />
+                /> */}
+                <input type={"text"} {...register("hello", { maxLength: 5 })} />
                 <Input
                     withoutLabel
                     type="password"
                     name="password"
                     // value={password}
+                    register={() => register("password")}
                     placeholder="password"
                     // onChange={(e) => setPassword(e.target.value)}
                 />
+                <button type="submit">click</button>
                 <Button
-                    onClick={onClickHandler}
                     text={mode === "signIn" ? "Sign in" : "Sign up"}
-                    type="fullLine"
+                    useCase="fullLine"
+                    type="submit"
                     style={{ fontSize: "1.4rem", height: "58px", width: "100%" }}
                 />
             </form>

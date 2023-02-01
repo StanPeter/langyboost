@@ -1,5 +1,4 @@
-import { Context } from "components/hoc/Store";
-import React, { useContext } from "react";
+import React from "react";
 import getLanguageObject from "utils/getLanguageObject";
 
 interface ITranslateText {
@@ -12,7 +11,7 @@ interface ITranslateText {
 
 // Translates text into our target language
 export const TranslateText: React.FC<ITranslateText> = ({ children, params, useCase = "default" }) => {
-    const { language } = useContext(Context);
+    const language = "en";
     let translatedText: string = getLanguageObject(language)[children];
 
     if (useCase === "uppercase") translatedText = translatedText.toUpperCase();

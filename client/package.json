@@ -12,10 +12,17 @@
         "@types/react": "^18.0.21",
         "@types/react-dom": "^18.0.6",
         "@types/react-router-dom": "^5.3.3",
+        "@typescript-eslint/eslint-plugin": "^5.49.0",
+        "eslint": "^8.33.0",
+        "eslint-config-standard-with-typescript": "^33.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-n": "^15.6.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-react": "^7.32.2",
         "prettier": "^2.7.1",
         "prettier-plugin-organize-imports": "^3.1.1",
         "typed-scss-modules": "^7.0.0",
-        "typescript": "^4.8.3"
+        "typescript": "^4.9.4"
     },
     "dependencies": {
         "@apollo/client": "^3.6.9",
@@ -28,10 +35,12 @@
         "jwt-decode": "^3.1.2",
         "npm-check-updates": "^16.3.2",
         "react-error-boundary": "^3.1.4",
+        "react-hook-form": "^7.43.0",
         "react-icons": "^4.4.0",
         "react-router-dom": "^6.4.1",
         "react-scripts": "^5.0.1",
         "react-tsparticles": "^2.3.2",
+        "redux": "^4.2.1",
         "sass": "^1.55.0",
         "tsparticles": "^2.3.2"
     },

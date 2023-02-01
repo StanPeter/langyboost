@@ -12,7 +12,7 @@ import ItFlagImg from "assets/images/flags/it.png";
 import PtFlagImg from "assets/images/flags/pt.png";
 import RuFlagImg from "assets/images/flags/ru.png";
 
-//cardIndex 0 means course is not displayed, then the rest goes from left 1 2 3(middle one) 4 5
+// cardIndex 0 means course is not displayed, then the rest goes from left 1 2 3(middle one) 4 5
 export const mainCourses = [
     {
         value: "en",
@@ -81,3 +81,15 @@ export const customCourses = [
 ];
 
 export const betaCourses = [];
+
+// GET /clients/vat MOCK
+const getAvailableCoursesMockData = {
+    main: mainCourses,
+    betaCourses: betaCourses,
+    customCourses: customCourses
+};
+
+// MOCK connector
+export default {
+    getAvailableCoursesMockData: getAvailableCoursesMockData
+};

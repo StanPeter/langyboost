@@ -39,6 +39,26 @@
     }
 }
 
+.btn {
+    width: 50%;
+
+    &.landingPage {
+        height: 2rem;
+    }
+}
+
+.btnLeft {
+    &.authPage {
+        border-top-left-radius: 1.8rem;
+    }
+}
+
+.btnRight {
+    &.authPage {
+        border-top-right-radius: 1.8rem;
+    }
+}
+
 /* FOR LANDING PAGE ONLY */
 .slider {
     display: flex;

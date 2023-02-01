@@ -1,4 +1,5 @@
 import React, { SetStateAction, useState } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import styles from "./input.module.scss";
 
 interface InputProps {
@@ -10,9 +11,19 @@ interface InputProps {
     onChange?: (d: any) => SetStateAction<any>;
     placeholder?: string;
     withoutLabel?: boolean;
+    register?: UseFormRegisterReturn;
 }
 
-const Input: React.FC<InputProps> = ({ name, styleInput, value, onChange, type, placeholder, withoutLabel }) => {
+const Input: React.FC<InputProps> = ({
+    name,
+    styleInput,
+    value,
+    onChange,
+    type,
+    placeholder,
+    withoutLabel,
+    register
+}) => {
     const [focused, setFocused] = useState(false);
     const onFocus = () => setFocused(true);
     const onBlur = () => setFocused(false);
@@ -27,6 +38,7 @@ const Input: React.FC<InputProps> = ({ name, styleInput, value, onChange, type, 
                 </div>
             )}
             <input
+                {...register()}
                 onFocus={onFocus}
                 placeholder={placeholder}
                 onBlur={onBlur}

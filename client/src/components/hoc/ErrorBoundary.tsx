@@ -1,17 +1,15 @@
 import { Alert, Col, Row } from "antd";
 import Button from "components/UI/Button/Button";
-import React, { useContext } from "react";
+import React from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
-import { Outlet, useNavigate } from "react-router-dom";
-import { Context, defaultStoreState } from "./Store";
+import { Outlet } from "react-router-dom";
 import TranslateText from "./TranslateText";
 
 // NOT IMPLEMENTED YET
 
 /* handles globally unexpected errors within the app, displays message to the user and takes him back to the login page + resets the Store */
 export const ErrorBoundaryComponent: React.FC = () => {
-    const { language, setStoreState } = useContext(Context);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     /* Function for getting a message when Error happens */
     const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
@@ -81,13 +79,12 @@ export const ErrorBoundaryComponent: React.FC = () => {
 
     /* reset the store */
     const resetStoreState = () => {
-        setStoreState &&
-            setStoreState({
-                ...defaultStoreState,
-                language: language
-            });
-
-        navigate("/auth");
+        // setStoreState &&
+        //     setStoreState({
+        //         ...defaultStoreState,
+        //         language: language
+        //     });
+        // navigate("/auth");
     };
 
     return (

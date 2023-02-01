@@ -1,5 +1,4 @@
-import { Context } from "components/hoc/Store";
-import React, { useContext } from "react";
+import React from "react";
 import { Navigate, RouteProps } from "react-router-dom";
 
 // NOT IMPLEMENTED YET
@@ -7,7 +6,7 @@ import { Navigate, RouteProps } from "react-router-dom";
 interface IPrivateRoute extends RouteProps {}
 /* Pirvate route (through token) */
 const PrivateRoute: React.FC<IPrivateRoute> = ({ element }) => {
-    const { token } = useContext(Context);
+    const token = "token";
 
     return (
         <>
