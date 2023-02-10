@@ -1,57 +1,36 @@
-.formInput {
-    border: 1px solid #85cdca;
-    background: #fafbff;
-    border-left-width: 0;
-    height: 2.5rem;
-    min-width: 78%;
-    max-width: 78%;
-    width: 78%;
-    background: none;
-    text-align: center;
-    font-size: 1.2rem;
-    font-style: italic;
-    letter-spacing: 0.05em;
+.withoutLabel {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    border-right-width: 0;
+    // margin-bottom: 0.8rem;
+}
 
-    &:focus {
-        border: 2px solid #85cdca;
-        font-style: normal;
-        outline: none;
-    }
+.touched {
+    border: 2px solid var(--color-dark-accent);
+    font-style: normal;
+    outline: none;
+    background-color: var(--color-light-accent);
+}
 
-    &.withoutLabel {
-        min-width: 100%;
-        max-width: 100%;
-        width: 100%;
-        border-right-width: 0;
-        margin-bottom: 0.8rem;
+.invalidInput {
+    border: 2px solid var(--color-invalid-dark);
+    background-color: unset;
+
+    &.touched {
+        background-color: var(--color-invalid-light);
     }
 }
 
-.label {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    height: 2.5rem;
-    padding-right: 0.5rem;
-}
-
+// FORM type input
 .formLabel {
-    @extend .label;
     max-width: 22%;
     min-width: 22%;
     width: 22%;
     padding: 10px;
-    border: 1px solid #85cdca;
+    border: 1px solid var(--color-dark-accent);
     border-radius: 5px 0 0 5px;
-    color: #203a4f;
-}
-
-.filterLabel {
-    @extend .label;
-    max-width: 30%;
-    min-width: 30%;
-    width: 30%;
-    color: #203a4f;
+    color: var(--color-text-dark);
 }
 
 .formItem {
@@ -61,7 +40,14 @@
     padding: 0px 2rem;
 }
 
-/* CLEAR OUT LATER ON */
+// FILTER type input
+.filterLabel {
+    max-width: 30%;
+    min-width: 30%;
+    width: 30%;
+    color: var(--color-text-dark);
+}
+
 .filterItem {
     display: flex;
     margin: 0.5rem 0;

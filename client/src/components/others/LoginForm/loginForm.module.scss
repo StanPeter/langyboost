@@ -1,7 +1,7 @@
 .signForm {
     z-index: 1;
-    background: #fafbff;
-    border: 2px solid #85cdca;
+    background: var(--color-main-light);
+    border: 2px solid var(--color-dark-accent);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 1.8rem;
     width: 100%;
@@ -9,7 +9,7 @@
 
 .switcherWrapper {
     display: flex;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
 }
 
 .formIcons {
@@ -27,23 +27,30 @@
 .signUpText {
     display: flex;
     justify-content: center;
-    font-size: 1.2rem;
-    letter-spacing: 0.05em;
-    color: #203a4f;
+    // font-size: 1.2rem;
+    // letter-spacing: 0.05em;
+    // color: var(--color-text-dark);
     margin: 1.5rem 0;
 
     & hr {
         margin: auto 0.7rem;
         width: 15%;
-        border-top: 1px solid #85cdca;
+        border-top: 1px solid var(--color-dark-accent);
     }
+}
+
+.submitBtn {
+    font-size: 1.4rem;
+    height: 58px;
+    width: 100%;
 }
 
 .btn {
     width: 50%;
+    margin-bottom: 0;
 
     &.landingPage {
-        height: 2rem;
+        height: 2.1rem;
     }
 }
 
@@ -66,14 +73,14 @@
     justify-content: space-between;
     height: 159px;
     align-items: center;
-    background-color: #41b3a3;
-    color: #fafbff;
+    background-color: var(--color-main);
+    color: var(--color-text-light);
     border-radius: 1.8rem 1.8rem 0 0;
 
     & p {
         margin: 0 2rem;
-        font-size: 1.5rem;
-        letter-spacing: 0.1em;
+        // font-size: 1.5rem;
+        // letter-spacing: 0.1em;
         text-align: center;
     }
 }

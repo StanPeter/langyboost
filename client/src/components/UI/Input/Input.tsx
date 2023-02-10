@@ -1,9 +1,10 @@
-import React, { SetStateAction, useState } from "react";
+import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import styles from "./input.module.scss";
 
-interface InputProps {
-    name: string;
+interface IInputProps {
+    name?: string;
     onClick?: () => void;
     styleInput?: object;
     value?: any;
@@ -12,49 +13,68 @@ interface InputProps {
     placeholder?: string;
     withoutLabel?: boolean;
     register?: UseFormRegisterReturn;
+    ref?: HTMLInputElement;
+    validationMessage?: string;
+    whiteText?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
+const Input: React.FC<IInputProps> = ({
     name,
     styleInput,
     value,
     onChange,
     type,
     placeholder,
-    withoutLabel,
-    register
+    withoutLabel = false,
+    register,
+    ref,
+    validationMessage
 }) => {
-    const [focused, setFocused] = useState(false);
-    const onFocus = () => setFocused(true);
-    const onBlur = () => setFocused(false);
+    const [isToutched, setIsTouched] = useState(false);
+
+    useEffect(() => {
+        if (!isToutched && (validationMessage || value)) setIsTouched(true);
+    }, [validationMessage, value, isToutched]);
+
+    // handlers
+    const onFocus = () => {
+        setIsTouched(true);
+    };
+    const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        if (register) register.onBlur(e);
+    };
+    const onRef = (el: HTMLInputElement) => {
+        if (register) register.ref(el);
+        if (ref) ref = el;
+    };
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (register) register.onChange(e);
+        if (onChange) onChange(e.target.value);
+    };
 
     return (
-        <React.Fragment>
+        <InputWrapper validationMessage={validationMessage}>
             {!withoutLabel && (
-                <div className={styles.formLabel} style={{ background: focused ? "#daffe9" : undefined }}>
+                <div className={styles.formLabel}>
                     <label style={styleInput} htmlFor={name}>
                         {name}
                     </label>
                 </div>
             )}
             <input
-                {...register()}
+                ref={onRef}
                 onFocus={onFocus}
                 placeholder={placeholder}
                 onBlur={onBlur}
-                className={`${styles.formInput} ${withoutLabel ? styles.withoutLabel : ""}`}
+                className={`${withoutLabel ? styles.withoutLabel : ""} ${
+                    validationMessage ? styles.invalidInput : ""
+                } ${isToutched ? styles.touched : ""} `}
                 type={type}
-                style={{
-                    background: focused ? "#daffe9" : undefined,
-                    borderRadius: !withoutLabel ? "0 5px 5px 0" : "none"
-                }}
                 value={value}
-                onChange={e => {
-                    if (onChange) onChange(e.target.value);
-                }}
-                name={name.replace(new RegExp(" ", "g"), "")}
+                onChange={onChangeHandler}
+                name={register?.name || name}
             />
-        </React.Fragment>
+        </InputWrapper>
     );
 };
 

@@ -4,7 +4,7 @@ import Carousel from "components/UI/Carousel/Carousel";
 import InputSwitcher from "components/UI/InputSwitcher";
 import React, { useEffect, useState } from "react";
 import { betaCourses, customCourses, mainCourses } from "settings/mockData";
-import globalStyles from "styles/globalStyles.module.scss";
+import globalClasses from "styles/globalClasses.module.scss";
 import styles from "./cousesPage.module.scss";
 
 interface CoursesPageProps {}
@@ -66,19 +66,17 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                     <Button disabled={btnDisabled} type="small" text="Start now" onClick={() => {}} />
                 </div>
             </div>
-            {windowWidth < 400 && (
-                <Button disabled={btnDisabled} type="middle" text="Start now" onClick={() => {}} />
-            )}
-            <hr className={globalStyles.separator} />
+            {windowWidth < 400 && <Button disabled={btnDisabled} type="middle" text="Start now" onClick={() => {}} />}
+            <hr className={globalClasses.separator} />
             <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
             <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
-            <hr className={globalStyles.separator} />
+            <hr className={globalClasses.separator} />
             <h2 style={{ margin: "2rem 0" }}>Custom German Courses</h2>
             <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
-            <hr className={globalStyles.separator} />
+            <hr className={globalClasses.separator} />
             <h2 style={{ margin: "2rem 0" }}>Beta Courses</h2>
             <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
-            <hr className={globalStyles.separator} />
+            <hr className={globalClasses.separator} />
             <Button text="Start learning!" type="big" onClick={() => {}} />
         </MainBody>
     );

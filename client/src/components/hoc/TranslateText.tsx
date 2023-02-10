@@ -1,33 +1,36 @@
+import { useSelectorApp } from "hooks/common";
 import React from "react";
-import getLanguageObject from "utils/getLanguageObject";
+import english from "settings/languages/english.json";
+
+interface ILanguageObject {
+    [key: string]: string;
+}
+
+// for now only supports English
+const getLanguageObject = (lang: string): ILanguageObject => {
+    switch (lang) {
+        case "en":
+            return english;
+        default:
+            return {};
+    }
+};
 
 interface ITranslateText {
     children: string;
     params?: (string | number)[];
-    useCase?: "uppercase" | "default";
+    uppercase?: boolean;
 }
 
-// NOT IMPLEMENTED YET
+// Translates text into desired target language
+export const TranslateText: React.FC<ITranslateText> = ({ children, uppercase }) => {
+    const language = useSelectorApp().settings.language;
 
-// Translates text into our target language
-export const TranslateText: React.FC<ITranslateText> = ({ children, params, useCase = "default" }) => {
-    const language = "en";
     let translatedText: string = getLanguageObject(language)[children];
 
-    if (useCase === "uppercase") translatedText = translatedText.toUpperCase();
+    if (uppercase) translatedText = translatedText.toUpperCase();
 
-    // params replaces all {{xxx}} in string (according to the index)
-    if (params && children) {
-        translatedText &&
-            params?.map(e => {
-                const replaced = translatedText.replace(/{{( *\w*)*}}/, getLanguageObject(language)[e] || String(e));
-                translatedText = replaced;
-            });
-
-        return <span className="translateText">{translatedText || children}</span>;
-    }
-
-    return <span className="translateText">{translatedText || children}</span>;
+    return <span>{translatedText}</span>;
 };
 
 export default TranslateText;

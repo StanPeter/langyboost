@@ -6,7 +6,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // typescript
-export interface GlobalSettingsProps {
+export interface IGlobalSettingsProps {
     language: string;
 }
 
@@ -17,7 +17,7 @@ const slice = createSlice({
         language: 'en'
     },
     reducers: {
-        changeState: (state, action: PayloadAction<GlobalSettingsProps>) => {
+        changeState: (state, action: PayloadAction<IGlobalSettingsProps>) => {
             const newData = { ...state, ...action.payload };
 
             return newData;

@@ -27,6 +27,8 @@
     "dependencies": {
         "@apollo/client": "^3.6.9",
         "@apollo/react-hooks": "^4.0.0",
+        "@hookform/resolvers": "^2.9.10",
+        "@reduxjs/toolkit": "^1.9.2",
         "antd": "^4.23.2",
         "apollo-link-token-refresh": "^0.4.0",
         "axios": "^0.27.2",
@@ -34,15 +36,18 @@
         "graphql": "^16.6.0",
         "jwt-decode": "^3.1.2",
         "npm-check-updates": "^16.3.2",
+        "react-dom": "^18.2.0",
         "react-error-boundary": "^3.1.4",
         "react-hook-form": "^7.43.0",
         "react-icons": "^4.4.0",
+        "react-redux": "^8.0.5",
         "react-router-dom": "^6.4.1",
         "react-scripts": "^5.0.1",
         "react-tsparticles": "^2.3.2",
         "redux": "^4.2.1",
         "sass": "^1.55.0",
-        "tsparticles": "^2.3.2"
+        "tsparticles": "^2.3.2",
+        "yup": "^0.32.11"
     },
     "scripts": {
         "start": "react-scripts start",

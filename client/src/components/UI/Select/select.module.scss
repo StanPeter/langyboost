@@ -34,7 +34,7 @@
 
     &.formType {
         margin: 0;
-        border: 1px solid #85cdca;
+        border: 1px solid var(--color-dark-accent);
         border-left-width: 0;
         max-width: 78%;
         min-width: 78%;
@@ -44,8 +44,8 @@
     }
 
     &.filterType {
-        background: #daffe9;
-        border: 2px solid #85cdca;
+        background: var(--color-light-accent);
+        border: 2px solid var(--color-dark-accent);
         min-width: 70%;
         width: 70%;
     }
@@ -91,8 +91,8 @@
     opacity: 0;
     flex-direction: column;
     float: right;
-    background: #daffe9;
-    border: 1px solid #85cdca;
+    background: var(--color-light-accent);
+    border: 1px solid var(--color-dark-accent);
     border-radius: 0px 0px 2.3rem 2.3rem;
     border-top: none;
     align-items: center;
@@ -104,12 +104,12 @@
         opacity: 1;
         animation: scaleZ 300ms ease-in-out forwards;
         transform-origin: top center;
-        border: 1px solid #85cdca;
+        border: 1px solid var(--color-dark-accent);
         border-top: unset !important;
     }
 
     & div:not(:last-child) {
-        border-bottom: 1px solid #85cdca;
+        border-bottom: 1px solid var(--color-dark-accent);
     }
 
     &.formType {
@@ -140,7 +140,7 @@
     }
 
     &:not(:last-child) {
-        border-bottom: 1px solid #85cdca;
+        border-bottom: 1px solid var(--color-dark-accent);
     }
 }
 

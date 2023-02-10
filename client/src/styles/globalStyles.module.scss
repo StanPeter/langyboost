@@ -1,39 +1,48 @@
-//GLOBAL STRUCTURE
 /* IMPORTS*/
+/* GLOBAL VARIABLES */
+/* SEMANTIC ELEMENTS */
+/* OTHER ELEMENTS */
 /* ANIMATIONS */
-/* MEDIAS */
-
-//style should go - first position properties, then display properties, then dimention props and border/radius, then margin, padding, then the rest
+/* BREAKPOINTS  */
 
 /* IMPORTS */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-/* VARIABLES */
-$background-color: #e7f1f0;
-$light-shades: #fafbff; //Use this color as the background for your dark-on-light designs, or the text color of an inverted design.
-$light-accent: #65a4c7; //Accent colors can be used to bring attention to design elements by contrasting with the rest of the palette.
-$main-color: #41b3a3; //This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
-$dark-accent: #635580; //Another accent color to consider. Not all colors have to be used - sometimes a simple color scheme works best.
-$dark-shades: #002b38; //Use as the text color for dark-on-light designs, or as the background for inverted designs.
+/* GLOBAL VARIABLES */
+:root {
+    // MAIN COLOR PALLETE
 
-$red: #a1484c;
+    // MAIN COLORS
+    --color-main: #41b3a3; // This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
+    --color-main-light: #fafbff; // main color light, used for backgrounds and as white font color when dark background
+    --color-light-accent: #daffe9; // used as light accent of main color, mostly in forms as valid input
+    --color-dark-accent: #85cdca; // most of borders in boxes, elements
 
-/* HTML TAG STYLES */
+    // TEXT COLORS
+    --color-text-dark: #203a4f; // mostly font color when white background
+    --color-text-light: #fafbff; // main color light, used for backgrounds and as white font color when dark background
+
+    // OTHER COLORS
+    --color-invalid-light: #ffeae8; // color for invalid inputs
+    --color-invalid-dark: #bf4a1c; // color for invalid inputs
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 10px !important;
+    height: 100%;
+    width: 100%;
+}
+
+/* SEMANTIC ELEMENTS */
 iframe {
     // disable anoyning pop up errors created by create-react-scripts
     display: none;
-}
-
-html {
-    font-size: 12px !important;
-    height: 100%;
-    width: 100%;
 }
 
 body {
@@ -41,7 +50,7 @@ body {
     min-width: 100%;
     font-weight: 400;
     line-height: 1.43;
-    letter-spacing: 0.01071em;
+    letter-spacing: 0.05em;
     top: 0;
     left: 0;
     bottom: 0;
@@ -53,105 +62,76 @@ body {
 button {
     &:hover {
         cursor: pointer;
-        // box-shadow: 0px 8px 12px rgba(100, 198, 223, 0.4);
-        // transform: translateY(-3px);
     }
 }
 
+input {
+    border: 1px solid var(--color-dark-accent);
+    background: var(--color-main-light);
+    border-left-width: 0;
+    height: 2.5rem;
+    // min-width: 78%;
+    // max-width: 78%;
+    width: 78%;
+    text-align: center;
+    font-style: italic;
+}
+
+label {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    height: 2.5rem;
+    padding-right: 0.5rem;
+}
+
+/* OTHER ELEMENTS */
 h1,
 h2,
 h3,
 h4,
-h5 {
+p {
     text-align: center;
+    color: var(--color-text-dark);
 }
 
+// 16px 1rem
+// 32px 2rem
+// 8px 0.5rem
+// 4px 0.25rem
+
+// as base for calculations used 16px which is 1rem for +1200px size
 h1 {
-    font-weight: 900;
-    font-size: 1.8rem;
-    letter-spacing: 0.2em;
-    color: #203a4f;
+    font-weight: 500;
+    font-size: 1.75rem;
+    letter-spacing: 0.1rem;
 }
 
 h2 {
-    font-weight: 700;
-    font-size: 1.6rem;
-    letter-spacing: 0.1em;
-    color: #203a4f;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
 }
 
 h3 {
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-    color: #203a4f;
+    font-size: 1.37rem;
+    letter-spacing: 0.1rem;
 }
 
 h4 {
-    font-weight: 500;
-    font-size: 1.2rem;
-    letter-spacing: 0.1em;
-    color: #203a4f;
+    font-size: 1.25rem;
+    letter-spacing: 0.07rem;
 }
 
-/* CLASSES */
-.separator {
-    width: 80%;
-    margin: 2rem 0;
-    border: 1px solid #85cdca;
+p,
+input {
+    font-size: 1.12rem;
+    letter-spacing: 0.05em;
 }
 
-.tooltip {
-    position: relative;
-    padding: 3px;
-    & svg {
-        color: #85cdca;
-        stroke-width: 30px;
-        font-size: 1.2rem;
-    }
-
-    & p {
-        display: none;
-        opacity: 0;
-
-        position: absolute;
-        width: max-content;
-        max-width: 260px;
-        min-width: 40px;
-        font-style: italic;
-        font-weight: normal;
-        font-size: 0.8rem;
-        line-height: 20px;
-        color: #203a4f;
-        left: 25px;
-        top: -70px;
-        background: #fafbff;
-        border: 1px solid #85cdca;
-        box-sizing: border-box;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 15px 7px 15px 0;
-        padding: 6px;
-        animation: easingIn 1s both 200ms;
-    }
-
-    @keyframes easingIn {
-        0% {
-            opacity: 0;
-            display: blocl;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    &:hover {
-        p {
-            display: block;
-            opacity: 1;
-            // transition: opacity 400ms 220ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-    }
+svg {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.8rem;
 }
 
 /* BREAKPOINTS  */
@@ -161,19 +141,22 @@ h4 {
 
 // SMALLER SCREEN TABLET
 @media screen and (min-width: 600px) {
+    html {
+        font-size: 12px !important;
+    }
 }
 
 // BIGGER SCREEN TABLET
 @media screen and (min-width: 750px) {
     html {
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 }
 
 // SMALL SCREEN DESKTOP
 @media screen and (min-width: 1200px) {
     html {
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
 }
 
@@ -183,4 +166,7 @@ h4 {
 
 // LARGE SCREEN DESKTOP
 @media screen and (min-width: 1800px) {
+    html {
+        font-size: 18px !important;
+    }
 }

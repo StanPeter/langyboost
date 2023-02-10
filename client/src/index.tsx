@@ -10,8 +10,8 @@ import jwtDecode from "jwt-decode";
 import { getAccessToken, setAccessToken } from "utils/getToken";
 // import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
-// import trialReducer from "store/reducers/reducer";
-// import { Provider } from "react-redux";
+import { Provider } from "react-redux";
+import store from "store";
 
 // http link with the correct BE api url and credentials (to get cookies)
 const httpLink = new HttpLink({
@@ -93,7 +93,9 @@ const container = document.getElementById("root");
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(
     <ApolloProvider client={client}>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </ApolloProvider>
 );
 

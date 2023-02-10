@@ -1,3 +1,5 @@
+import store from "store";
+
 export const paymentMethodTypes = ["visa", "mastercard", "americanExpress", "paypal"];
 export const membershipOTypes = ["king", "peon"];
 
@@ -20,3 +22,7 @@ export type PaymentDetailsTypes = {
     cardSecretNums: string;
 };
 export type Direction = "left" | "right";
+
+// Redux types
+export type TRootState = ReturnType<typeof store.getState>;
+export type TDispatch = typeof store.dispatch;

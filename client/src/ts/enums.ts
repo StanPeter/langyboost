@@ -1,31 +1,10 @@
-export enum ECommonCountries {
-    CZ = "CZ",
-    SK = "SK"
+// Login form enums
+export enum ELoginFormUsecase {
+    AUTH_PAGE = "authPage",
+    LANGING_PAGE = "landingPage"
 }
 
-export enum ENotificationPlacement {
-    TOPLEFT = "topLeft",
-    TOPRIGHT = "topRight",
-    BOTTOMLEFT = "bottomLeft",
-    BOTTOMRIGHT = "bottomRight"
-}
-
-export enum ENotificationType {
-    OPEN = "open",
-    SUCCESS = "success",
-    ERROR = "error",
-    INFO = "info",
-    WARNING = "warning"
-}
-
-export enum EPristupPlatnost {
-    REGISTRACE = "REGISTRACE",
-    LOGIN = "LOGIN",
-    NELZE = "NELZE"
-}
-
-// potrebne kvoli backendu .. not ideal
-export enum ETrueFalse {
-    TRUE = "true",
-    FALSE = "false"
+export enum ELoginFormMode {
+    SIGN_UP = "signUp",
+    SIGN_IN = "signIn"
 }

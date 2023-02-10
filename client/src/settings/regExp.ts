@@ -1,6 +1,6 @@
 // this file was copied, later on will add some required regExp
 
-export {};
+export const passwordExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
 // export const splitUrl = /(\/)(?=[^/]*$)/;
 // export const emailRegExp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; // Validace emailu
