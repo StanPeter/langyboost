@@ -63,10 +63,10 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                     />
                 </div>
                 <div className={styles.btnWrapper}>
-                    <Button disabled={btnDisabled} type="small" text="Start now" onClick={() => {}} />
+                    <Button disabled={btnDisabled} useCase="small" text="Start now" onClick={() => {}} />
                 </div>
             </div>
-            {windowWidth < 400 && <Button disabled={btnDisabled} type="middle" text="Start now" onClick={() => {}} />}
+            {windowWidth < 400 && <Button disabled={btnDisabled} useCase="middle" text="Start now" onClick={() => {}} />}
             <hr className={globalClasses.separator} />
             <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
             <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
@@ -77,7 +77,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             <h2 style={{ margin: "2rem 0" }}>Beta Courses</h2>
             <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
             <hr className={globalClasses.separator} />
-            <Button text="Start learning!" type="big" onClick={() => {}} />
+            <Button text="Start learning!" useCase="big" onClick={() => {}} />
         </MainBody>
     );
 };

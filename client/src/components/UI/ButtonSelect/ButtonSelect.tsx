@@ -15,7 +15,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({ value, title, type, onClick
     const finalValue =
         type === "button" ? (
             <Button
-                type="small"
+                useCase="small"
                 text={value}
                 onClick={(e: FormEvent) => {
                     e.preventDefault();

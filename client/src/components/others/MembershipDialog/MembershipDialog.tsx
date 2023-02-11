@@ -246,7 +246,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         />
                         <Button
                             text="Ok"
-                            type="small"
+                            useCase="small"
                             disabled={() => (subscription.period && subscription.repeatPayment ? false : true)}
                             onClick={() => {
                                 setShowedSectionHelper("paymendMethod");
@@ -383,7 +383,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
             <hr className={styles.separator} />
             <Button
                 disabled={isDisabledSubmitBtn}
-                type="big"
+                useCase="big"
                 text="Finish payment"
                 onClick={e => onChangeHandler(e, "paymentDetails", "")}
             />

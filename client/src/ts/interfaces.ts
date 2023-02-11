@@ -20,3 +20,13 @@ export interface MultiselectItem {
     name: string;
     text?: string;
 }
+
+// used for unknown key pairs
+export interface Params {
+    [key: string]: string;
+}
+
+// used for unknown key pairs combining any types
+export interface ParamsAny {
+    [key: string]: any;
+}

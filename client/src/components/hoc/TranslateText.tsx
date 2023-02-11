@@ -1,5 +1,6 @@
 import { useSelectorApp } from "hooks/common";
 import React from "react";
+import { ERRORS } from "settings/errors";
 import english from "settings/languages/english.json";
 
 interface ILanguageObject {
@@ -28,6 +29,10 @@ export const TranslateText: React.FC<ITranslateText> = ({ children, uppercase })
 
     let translatedText: string = getLanguageObject(language)[children];
 
+    // error handling
+    if (!translatedText && children) {
+        console.log(ERRORS.PHRASE_KEY_NOT_FOUND, children, language);
+    }
     if (uppercase) translatedText = translatedText.toUpperCase();
 
     return <span>{translatedText}</span>;

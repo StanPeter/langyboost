@@ -4,7 +4,7 @@ import NotFound from "components/pages/NotFound/NotFound";
 // objekt s routama
 import Spinner from "components/UI/Spinner/Spinner";
 import React, { Suspense } from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { routeMapa } from "settings/routeMap";
 
 const AppRouter: React.FC = () => {
@@ -28,7 +28,7 @@ const AppRouter: React.FC = () => {
     // if (loading) return <Spinner />;
 
     return (
-        <Router>
+        <BrowserRouter>
             <Routes>
                 <Route element={<ErrorBoundaryComponent />}>
                     <Route path={"*"} element={<NotFound />} />
@@ -69,7 +69,7 @@ const AppRouter: React.FC = () => {
                     })}
                 </Route>
             </Routes>
-        </Router>
+        </BrowserRouter>
     );
 };
 

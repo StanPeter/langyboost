@@ -1,4 +1,5 @@
 import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
+import TranslateText from "components/hoc/TranslateText";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import styles from "./input.module.scss";
@@ -32,6 +33,7 @@ const Input: React.FC<IInputProps> = ({
 }) => {
     const [isToutched, setIsTouched] = useState(false);
 
+    // whether its been filled/clicked on
     useEffect(() => {
         if (!isToutched && (validationMessage || value)) setIsTouched(true);
     }, [validationMessage, value, isToutched]);
@@ -57,7 +59,7 @@ const Input: React.FC<IInputProps> = ({
             {!withoutLabel && (
                 <div className={styles.formLabel}>
                     <label style={styleInput} htmlFor={name}>
-                        {name}
+                        <TranslateText>{name || ""}</TranslateText>
                     </label>
                 </div>
             )}

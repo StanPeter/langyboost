@@ -1,3 +1,14 @@
 {
-    "ULTIMATE_PLATTFORM_TEXT": "The ultimate platfform for learning your desired language."
+    "ULTIMATE_PLATTFORM_TEXT": "The ultimate platfform for learning your desired language.",
+    "SIGN_IN": "Sign in",
+    "SIGN_UP": "Sign up",
+    "OR_SIGN_UP": "Or sign in with",
+    "OR_SIGN_IN": "Or sign up with",
+    "COURSES": "Courses",
+    "ARTICLES": "Articles",
+    "RESOURCES": "Resources",
+    "CURRENT_LESSON": "Current lesson",
+    "CURRENT_COURSE": "Current course",
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings"
 }

@@ -50,7 +50,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                 <InputSwitcher name="Phone number" type="text" />
                 <InputSwitcher name="Address" type="text" />
                 <InputSwitcher name="Nationality" type="text" />
-                <Button text="Save changes" onClick={() => {}} active={true} type="big" />
+                <Button text="Save changes" onClick={() => {}} active={true} useCase="big" />
             </form>
         </React.Fragment>
     );
@@ -98,7 +98,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     <InputSwitcher name="New password" type="text" />
                     <InputSwitcher name="Repeat new password" styleInput={{ fontSize: "12px" }} type="text" />
                     <InputSwitcher name="Bank details" type="text" />
-                    <Button text="Save changes" onClick={() => {}} active={true} type="big" />
+                    <Button text="Save changes" onClick={() => {}} active={true} useCase="big" />
                 </form>
             </React.Fragment>
         );
@@ -123,7 +123,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                                 ...menuBtnStyle,
                                 borderRadius: "25px 0px 0px 0px"
                             }}
-                            type="fullLine"
+                            useCase="fullLine"
                             onClick={() => setMode("profile")}
                         />
                         <Button
@@ -133,7 +133,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                                 ...menuBtnStyle,
                                 borderRadius: "0 25px 0px 0px"
                             }}
-                            type="fullLine"
+                            useCase="fullLine"
                             onClick={() => setMode("settings")}
                         />
                     </div>

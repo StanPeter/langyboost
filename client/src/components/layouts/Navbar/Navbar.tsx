@@ -1,4 +1,9 @@
-import NavbarLink from "components/UI/NavbarLink";
+import FireIcon from "assets/images/fireIcon.png";
+import ProfilePicture from "assets/images/profilePicture.jpg";
+import SwedenFlag from "assets/images/swedenFlag.jpg";
+import Image from "components/UI/Image";
+import Link from "components/UI/Link";
+import Paragraph from "components/UI/Paragraph";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import React, { useState } from "react";
 import { BiLogIn } from "react-icons/bi";
@@ -8,6 +13,16 @@ import { useNavigate } from "react-router";
 import { setAccessToken } from "utils/getToken";
 import styles from "./navbar.module.scss";
 
+const HAMBURGER_MENU = [
+    { text: "COURSES", url: "/courses" },
+    { text: "ARTICLES", url: "/articles" },
+    { text: "RESOURCES", url: "/resources" },
+    { text: "CURRENT_LESSON", url: "/cards/current" },
+    { text: "CURRENT_COURSE", url: "/course/current" },
+    { text: "PROFILE", url: "/profile" },
+    { text: "SETTINGS", url: "/settings" },
+    { text: "SIGN_IN", url: "/auth" }
+];
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
@@ -65,66 +80,17 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     const authSection = expanded ? (
         <ul className={`${styles.expandedNavLinks} ${expandedHelper && styles.expanded}`}>
-            <NavbarLink
-                name="Courses"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/courses")}
-            />
-            <NavbarLink
-                name="Articles"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/articles")}
-            />
-            <NavbarLink
-                name="Resources"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/resources")}
-            />
-            <NavbarLink
-                name="Current lesson"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/cards/enDu")}
-            />
-            <NavbarLink
-                name="Current course"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/course/8")}
-            />
-            <NavbarLink
-                name="Profile"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/profile")}
-            />
-            <NavbarLink
-                name="Settings"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={() => navigate("/settings")}
-            />
-            {/* <NavbarLink
-                    name="Sign out"
-                    expandedHelper={expandedHelper}
-                    hamburgerClickHandler={hamburgerClickHandler}
+            {HAMBURGER_MENU.map(el => (
+                <Link
+                    text={el.text}
                     onClick={async () => {
-                        await logout();
-                        setAccessToken("");
-                        await client.resetStore();
+                        await hamburgerClickHandler();
+                        navigate(el.url);
                     }}
-                /> */}
-            <NavbarLink
-                name="Sign in"
-                expandedHelper={expandedHelper}
-                hamburgerClickHandler={hamburgerClickHandler}
-                onClick={async () => {
-                    navigate("/auth");
-                }}
-            />
+                    classes={expandedHelper ? styles.transition : ""}
+                    whiteText
+                />
+            ))}
         </ul>
     ) : null;
 
@@ -135,59 +101,42 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <span>Langyboost</span>
             </div>
             <ul className={`${styles.navbarLinks} ${styles.left}`}>
-                <li
+                <Link
+                    text="COURSES"
                     onClick={() => {
                         navigate("/courses");
                     }}
-                >
-                    Courses
-                </li>
-                <li
+                />
+                <Link
+                    text="ARTICLES"
                     onClick={() => {
                         navigate("/articles");
                     }}
-                >
-                    Articles
-                </li>
-                <li onClick={() => navigate("/resources")}>Resources</li>
+                />
+                <Link
+                    text="RESOURCES"
+                    onClick={() => {
+                        navigate("/resources");
+                    }}
+                />
             </ul>
             <ul className={`${styles.navbarLinks} ${styles.right} `}>
-                <li>
-                    <p>2</p>
-                    <img
-                        alt="fireIcon"
-                        height="30"
-                        onClick={() => navigate("/cards/enDu")}
-                        width="30"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/FireIcon.svg/1501px-FireIcon.svg.png"
-                    />
-                </li>
-                <li>
-                    <p>5</p>
-                    <img
-                        className={styles.profileIcon}
-                        alt="swedenIcon"
-                        height="30"
-                        onClick={() => navigate("/course/8")}
-                        width="30"
-                        src="https://static.posters.cz/image/750/placky-odznaky/flag-sweden-i2430.jpg"
-                    />
-                </li>
-                <li>
-                    <p>Jill</p>
-                    <img
-                        className={styles.profileIcon}
-                        alt="girl"
-                        height="30"
-                        width="30"
-                        onClick={() => navigate("/profile")}
-                        src="https://i.pinimg.com/originals/fb/b9/63/fbb963ea21a040904d5331af46c70f5e.jpg"
-                    />
-                </li>
+                <Link>
+                    <Paragraph text="5" whiteText shouldTranslate={false} />
+                    <Image src={FireIcon} alt="fireIcon" onClick={() => navigate("/cards/current")} />
+                </Link>
+                <Link>
+                    <Paragraph text="5" whiteText shouldTranslate={false} />
+                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => navigate("/course/current")} />
+                </Link>
+                <Link>
+                    <Paragraph text="Jill" whiteText shouldTranslate={false} />
+                    <Image src={ProfilePicture} alt="profilePicture" onClick={() => navigate("/profile")} />
+                </Link>
                 <hr style={{ height: "30px" }} />
-                <li>
+                <Link>
                     <FiSettings onClick={() => navigate("/settings")} className={`${styles.settingsIcon}`} />
-                </li>
+                </Link>
                 <hr style={{ height: "30px" }} />
                 {authButtons(false)}
             </ul>

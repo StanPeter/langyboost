@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "components/UI/Button/Button";
 import Header from "components/UI/Header/Header";
 import Input from "components/UI/Input/Input";
+import Paragraph from "components/UI/Paragraph";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -28,6 +29,7 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<ELoginFormMode>(ELoginFormMode.SIGN_IN);
     const navigate = useNavigate();
+    // form handling library react-hook-form with yup validation
     const {
         handleSubmit,
         register,
@@ -49,7 +51,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             {useCase === ELoginFormUsecase.LANGING_PAGE && (
                 <div className={styles.slider}>
                     <FiArrowLeft className={styles.sliderArrow} />
-                    <Header level={2} whiteText phrase="ULTIMATE_PLATTFORM_TEXT" />
+                    <Header level={2} whiteText text="ULTIMATE_PLATTFORM_TEXT" />
                     <FiArrowRight className={styles.sliderArrow} />
                 </div>
             )}
@@ -57,7 +59,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 <Button
                     useCase="fullLine"
                     active={mode === ELoginFormMode.SIGN_IN}
-                    text="Sign in"
+                    text="SIGN_IN"
                     className={`${styles.btn} ${styles.btnLeft} ${
                         useCase === ELoginFormUsecase.AUTH_PAGE ? styles.authPage : styles.landingPage
                     }`}
@@ -69,7 +71,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                         useCase === ELoginFormUsecase.AUTH_PAGE ? styles.authPage : styles.landingPage
                     }`}
                     active={mode === ELoginFormMode.SIGN_UP}
-                    text="Sign up"
+                    text="SIGN_UP"
                     onClick={() => setMode(ELoginFormMode.SIGN_UP)}
                 />
             </div>
@@ -107,7 +109,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     />
                 )}
                 <Button
-                    text={mode === ELoginFormMode.SIGN_IN ? "Sign in" : "Sign up"}
+                    text={mode === ELoginFormMode.SIGN_IN ? "SIGN_IN" : "SIGN_UP"}
                     useCase="fullLine"
                     type="submit"
                     className={styles.submitBtn}
@@ -115,7 +117,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             </form>
             <div className={styles.signUpText}>
                 <hr />
-                <p>Or sign {mode === ELoginFormMode.SIGN_IN ? "in" : "up"} with</p>
+                <Paragraph text={mode === ELoginFormMode.SIGN_IN ? "OR_SIGN_IN" : "OR_SIGN_UP"} />
                 <hr />
             </div>
             <div className={styles.formIcons}>

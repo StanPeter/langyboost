@@ -1,3 +1,4 @@
+import TranslateText from "components/hoc/TranslateText";
 import React from "react";
 import styles from "./button.module.scss";
 
@@ -30,6 +31,7 @@ const Button: React.FC<ButtonProps> = ({
         return false;
     };
 
+    // add styiling classes
     const buttonClasses = [styles.button];
     if (useCase) buttonClasses.push(styles[useCase]);
     if (isActive()) buttonClasses.push(styles.active);
@@ -43,7 +45,7 @@ const Button: React.FC<ButtonProps> = ({
             disabled={isDisabled}
             style={{ ...style }}
         >
-            {text}
+            <TranslateText>{text}</TranslateText>
         </button>
     );
 };
