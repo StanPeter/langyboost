@@ -18,6 +18,8 @@ export type PaymentMethodTypes = "visa" | "mastercard" | "americanExpress" | "pa
 
 //UI
 export type InputTypes = "text" | "email" | "date" | "multiselect" | "buttonSelect" | "singleselect";
+export type TInputUsecase = "form" | "filter";
+export type TInputType = "text" | "date" | "email" | "password";
 
 export type ButtonUseCases = "big" | "small" | "middle" | "fullLine";
 

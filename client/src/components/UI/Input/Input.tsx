@@ -2,14 +2,17 @@ import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
 import TranslateText from "components/hoc/TranslateText";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
+import { TInputType, TInputUsecase } from "ts/types";
 import styles from "./input.module.scss";
 
 interface IInputProps {
     name?: string;
+    text?: string;
     onClick?: () => void;
     styleInput?: object;
+    classes?: string;
     value?: any;
-    type: "text" | "date" | "email" | "password";
+    type: TInputType;
     onChange?: (d: any) => SetStateAction<any>;
     placeholder?: string;
     withoutLabel?: boolean;
@@ -17,10 +20,12 @@ interface IInputProps {
     ref?: HTMLInputElement;
     validationMessage?: string;
     whiteText?: boolean;
+    useCase?: TInputUsecase;
 }
 
 const Input: React.FC<IInputProps> = ({
     name,
+    text,
     styleInput,
     value,
     onChange,
@@ -29,7 +34,9 @@ const Input: React.FC<IInputProps> = ({
     withoutLabel = false,
     register,
     ref,
-    validationMessage
+    classes,
+    validationMessage,
+    useCase = "form"
 }) => {
     const [isToutched, setIsTouched] = useState(false);
 
@@ -55,11 +62,11 @@ const Input: React.FC<IInputProps> = ({
     };
 
     return (
-        <InputWrapper validationMessage={validationMessage}>
+        <InputWrapper validationMessage={validationMessage} useCase={useCase} classes={classes}>
             {!withoutLabel && (
-                <div className={styles.formLabel}>
-                    <label style={styleInput} htmlFor={name}>
-                        <TranslateText>{name || ""}</TranslateText>
+                <div className={`${useCase === "form" ? styles.formLabel : styles.filterLabel}`}>
+                    <label style={styleInput} htmlFor={register?.name || name}>
+                        <TranslateText>{text || ""}</TranslateText>
                     </label>
                 </div>
             )}

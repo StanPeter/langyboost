@@ -1,7 +1,7 @@
 import MainBody from "components/layouts/MainBody/MainBody";
 import Button from "components/UI/Button/Button";
 import Carousel from "components/UI/Carousel/Carousel";
-import InputSwitcher from "components/UI/InputSwitcher";
+import Select from "components/UI/Select/Select";
 import React, { useEffect, useState } from "react";
 import { betaCourses, customCourses, mainCourses } from "settings/mockData";
 import globalClasses from "styles/globalClasses.module.scss";
@@ -37,36 +37,38 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             <h2 style={{ marginBottom: "2rem" }}>Courses</h2>
             <div className={styles.wrapper}>
                 <div className={styles.filtersWrapper}>
-                    <InputSwitcher
-                        name="I speak"
+                    <Select
+                        text="I_SPEAK"
                         type="singleselect"
                         useCase="filter"
-                        dataOfMultiselect={mainCourses}
-                        value={iSpeak}
+                        data={mainCourses}
+                        value={[iSpeak]}
                         onChange={val => setISpeak(val)}
                     />
-                    <InputSwitcher
-                        name="Want to learn"
+                    <Select
+                        text="WANT_TO_LEARN"
                         type="singleselect"
                         useCase="filter"
-                        dataOfMultiselect={mainCourses}
-                        value={wantToLearn}
+                        data={mainCourses}
+                        value={[wantToLearn]}
                         onChange={val => setWantToLearn(val)}
                     />
-                    <InputSwitcher
-                        name="Chosen course"
+                    <Select
+                        text="CHOSEN_COURSE"
                         type="singleselect"
                         useCase="filter"
-                        dataOfMultiselect={mainCourses}
-                        value={chosenCourse}
+                        data={mainCourses}
+                        value={[chosenCourse]}
                         onChange={val => setChosenCourse(val)}
                     />
                 </div>
                 <div className={styles.btnWrapper}>
-                    <Button disabled={btnDisabled} useCase="small" text="Start now" onClick={() => {}} />
+                    <Button disabled={btnDisabled} useCase="small" text="START_NOW" onClick={() => {}} />
                 </div>
             </div>
-            {windowWidth < 400 && <Button disabled={btnDisabled} useCase="middle" text="Start now" onClick={() => {}} />}
+            {windowWidth < 400 && (
+                <Button disabled={btnDisabled} useCase="middle" text="START_NOW" onClick={() => {}} />
+            )}
             <hr className={globalClasses.separator} />
             <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
             <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />

@@ -1,20 +1,32 @@
-import inputStyles from "components/UI/Input/input.module.scss";
+import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import globalClasses from "styles/globalClasses.module.scss";
 import { MultiselectItem } from "ts/interfaces";
+import { TInputUsecase } from "ts/types";
 import styles from "./select.module.scss";
 
 interface MultiselectProps {
-    title: string;
+    text: string;
     data: MultiselectItem[];
     value: string[];
-    useCase: "filter" | "form"; //whether is used inside a filter or a form
+    useCase: TInputUsecase; //whether is used inside a filter or a form
     type: "multiselect" | "singleselect";
     styleInput?: object;
-    onChange: (d: any) => SetStateAction<any>;
+    onChange?: (d: any) => SetStateAction<any>;
+    withoutLabel?: boolean;
 }
 
-const Select: React.FC<MultiselectProps> = ({ data, title, useCase, styleInput, value, type, onChange }) => {
+const Select: React.FC<MultiselectProps> = ({
+    data,
+    text,
+    useCase,
+    styleInput,
+    value,
+    type,
+    onChange = () => {},
+    withoutLabel
+}) => {
     /* HOOKS */
     const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
     const [hideDropdown, setHideDropdown] = useState(true);
@@ -71,20 +83,22 @@ const Select: React.FC<MultiselectProps> = ({ data, title, useCase, styleInput, 
     };
 
     return (
-        <div className={styles.container}>
+        <InputWrapper validationMessage="" useCase={useCase} classes={styles.container}>
             <div
                 className={styles.inputWrapper}
                 style={{ background: !hideDropdown && useCase === "form" ? "#daffe9" : undefined }}
             >
-                <label
-                    style={styleInput}
-                    className={`${
-                        useCase === "filter" ? inputStyles.filterLabel : inputStyles.formLabel
-                    } ${addTypeClass("")}`}
-                    htmlFor=""
-                >
-                    {title}
-                </label>
+                {!withoutLabel && (
+                    <label
+                        style={styleInput}
+                        className={`${
+                            useCase === "filter" ? globalClasses.filterLabel : globalClasses.formLabel
+                        } ${addTypeClass("")}`}
+                        htmlFor=""
+                    >
+                        {text}
+                    </label>
+                )}
                 <div
                     // onClick={() => setHideDropdown(!hideDropdown)}
                     style={{ borderRadius: inputBorderRadius() }}
@@ -136,7 +150,7 @@ const Select: React.FC<MultiselectProps> = ({ data, title, useCase, styleInput, 
                     );
                 })}
             </div>
-        </div>
+        </InputWrapper>
     );
 };
 

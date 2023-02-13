@@ -1,7 +1,12 @@
+import ProfilePicture from "assets/images/profilePicture.jpg";
 import MainBody from "components/layouts/MainBody/MainBody";
 import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
 import Button from "components/UI/Button/Button";
-import InputSwitcher from "components/UI/InputSwitcher";
+import ButtonSelect from "components/UI/ButtonSelect/ButtonSelect";
+import Header from "components/UI/Header/Header";
+import Image from "components/UI/Image";
+import Input from "components/UI/Input/Input";
+import Select from "components/UI/Select/Select";
 import React, { useEffect, useState } from "react";
 import { VscEdit } from "react-icons/vsc";
 import styles from "./personalSettingsPage.module.scss";
@@ -13,7 +18,7 @@ interface PersonalSettingsPageProps {
 }
 
 const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }) => {
-    const [opacityImg, setOpacityImg] = useState("0.8");
+    const [profileImgClass, setProfileImgClass] = useState(styles.imgOpacityLeave);
     const [mode, setMode] = useState<ModeTypes>("profile");
     const [showModal, setShowModal] = useState(false);
 
@@ -24,33 +29,27 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
     let renderedSection: JSX.Element = (
         <React.Fragment>
             <div className={styles.settingsImage}>
-                <img
-                    src="https://pyxis.nymag.com/v1/imgs/64a/ad3/5896a5cd3008c6fe87b18cc78a99466035-the-witcher-ep-07-placeholder.rsocial.w1200.jpg"
-                    alt=""
-                    style={{
-                        opacity: opacityImg ? opacityImg : "unset"
-                    }}
-                />
+                <Image src={ProfilePicture} alt="" classes={profileImgClass} />
                 <VscEdit
                     onMouseEnter={() => {
-                        setOpacityImg("0.5");
+                        setProfileImgClass(styles.imgOpacityEnter);
                     }}
                     onMouseLeave={() => {
-                        setOpacityImg("0.8");
+                        setProfileImgClass(styles.imgOpacityLeave);
                     }}
                     className={styles.settingsEditIcon}
                 />
             </div>
             <form className={styles.settingsForm} action="">
-                <InputSwitcher name="Sex" type="text" />
-                <InputSwitcher name="First name" type="text" />
-                <InputSwitcher name="Last name" type="text" />
-                <InputSwitcher name="E-mail" type="email" />
-                <InputSwitcher name="Birthdate" type="date" />
-                <InputSwitcher name="Phone number" type="text" />
-                <InputSwitcher name="Address" type="text" />
-                <InputSwitcher name="Nationality" type="text" />
-                <Button text="Save changes" onClick={() => {}} active={true} useCase="big" />
+                <Input text="SEX" type="text" />
+                <Input text="FIRST_NAME" type="text" />
+                <Input text="LAST_NAME" type="text" />
+                <Input text="EMAIL" type="email" />
+                <Input text="BIRTHDATE" type="date" />
+                <Input text="PHONE_NUMBER" type="text" />
+                <Input text="ADDRESS" type="text" />
+                <Input text="NATIONALITY" type="text" />
+                <Button text="SAVE_CHANGES" onClick={() => {}} active={true} useCase="big" />
             </form>
         </React.Fragment>
     );
@@ -59,80 +58,73 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
         renderedSection = (
             <React.Fragment>
                 <form className={styles.settingsForm} action="">
-                    <InputSwitcher
-                        name="Sound effects"
+                    <Select
+                        value={[]}
+                        onChange={() => {}}
+                        text="SOUND_OF_EFFECTS"
                         type="singleselect"
                         useCase="form"
-                        dataOfMultiselect={[
+                        data={[
                             { name: "Turned off", value: "off" },
                             { name: "Turned on", value: "on" }
                         ]}
                     />
-                    <InputSwitcher
-                        name="Theme"
+                    <Select
+                        value={[]}
+                        onChange={() => {}}
+                        text="THEME"
                         type="singleselect"
                         useCase="form"
-                        dataOfMultiselect={[
+                        data={[
                             { name: "Lingo(default)", value: "lingo" },
                             { name: "Dark", value: "dark" },
                             { name: "Halloween", value: "halloween" }
                         ]}
                     />
-                    <InputSwitcher
-                        name="Membership"
-                        type="buttonSelect"
-                        valueOfButton="Try now"
+                    <ButtonSelect
+                        text="Membership"
+                        type="button"
+                        value="Try now"
                         onClick={() => setShowModal(!showModal)}
                     />
-                    <InputSwitcher
-                        name="Language"
+                    <Select
+                        value={[]}
+                        onChange={() => {}}
+                        text="LANGUAGE"
                         type="singleselect"
                         useCase="form"
-                        dataOfMultiselect={[
+                        data={[
                             { name: "en", value: "en" },
                             { name: "ge", value: "ge" },
                             { name: "es", value: "es" }
                         ]}
                     />
-                    <InputSwitcher name="Password" type="text" />
-                    <InputSwitcher name="New password" type="text" />
-                    <InputSwitcher name="Repeat new password" styleInput={{ fontSize: "12px" }} type="text" />
-                    <InputSwitcher name="Bank details" type="text" />
-                    <Button text="Save changes" onClick={() => {}} active={true} useCase="big" />
+                    <Input text="PASSWORD" type="text" />
+                    <Input text="NEW_PASSWORD" type="text" />
+                    <Input text="REPEAT_NEW_PASSWORD" styleInput={{ fontSize: "12px" }} type="text" />
+                    <Input text="BANK_DETAILS" type="text" />
+                    <Button text="SAVE_CHANGES" onClick={() => {}} active={true} useCase="big" />
                 </form>
             </React.Fragment>
         );
 
-    const menuBtnStyle = {
-        width: "50%",
-        height: "3rem",
-        margin: 0,
-        padding: 0
-    };
-
     return (
         <MainBody>
             <div className={styles.personalSettingsPage}>
-                <h2>Personal Settings</h2>
+                <Header level={1} text="PERSONAL_SETTINGS" />
                 <div className={styles.settingsContainer}>
                     <div className={styles.settingsButtons}>
                         <Button
-                            text="My profile"
+                            text="MY_PROFILE"
                             active={mode === "profile"}
-                            style={{
-                                ...menuBtnStyle,
-                                borderRadius: "25px 0px 0px 0px"
-                            }}
+                            classes={styles.btnMenuLeft}
                             useCase="fullLine"
                             onClick={() => setMode("profile")}
                         />
                         <Button
-                            text="My Settings"
+                            text="MY_SETTINGS"
+                            classes={styles.btnMenuRight}
                             active={mode === "settings"}
-                            style={{
-                                ...menuBtnStyle,
-                                borderRadius: "0 25px 0px 0px"
-                            }}
                             useCase="fullLine"
                             onClick={() => setMode("settings")}
                         />

@@ -74,6 +74,24 @@
     color: var(--color-facebook);
 }
 
+// Input classes
+.formLabel {
+    max-width: 22%;
+    min-width: 22%;
+    width: 22%;
+    padding: 10px;
+    border: 1px solid var(--color-dark-accent);
+    border-radius: 5px 0 0 5px;
+    color: var(--color-text-dark);
+}
+
+.filterLabel {
+    max-width: 30%;
+    min-width: 30%;
+    width: 30%;
+    color: var(--color-text-dark);
+}
+
 /* BREAKPOINTS  */
 // SCREEN PHONE
 @media screen and (min-width: 450px) {

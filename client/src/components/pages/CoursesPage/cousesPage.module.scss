@@ -16,6 +16,11 @@
     display: none;
 }
 
+.separator {
+    color: var(--color-main-light);
+    height: 75%;
+}
+
 /* BREAKPOINTS  */
 // SCREEN PHONE
 @media screen and (min-width: 450px) {

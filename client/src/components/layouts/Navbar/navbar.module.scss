@@ -54,7 +54,7 @@ $animationLength: 0.8s;
 
         &:hover {
             cursor: pointer;
-            transform: scale(1.05);
+            scale: var(--transform-scale);
             font-weight: 900;
         }
     }
@@ -140,7 +140,7 @@ $animationLength: 0.8s;
 
         &:hover {
             cursor: pointer;
-            transform: scale(1.05);
+            scale: var(--transform-scale);
             font-weight: 900;
             opacity: 1;
         }

@@ -16,7 +16,7 @@
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.05);
+        scale: var(--transform-scale);
     }
 
     &:nth-of-type(5),
@@ -45,12 +45,14 @@
 
         & p {
             font-size: 1.5rem;
-            text-shadow: -2px 0 var(--color-text-dark), 0 2px var(--color-text-dark), 2px 0 var(--color-text-dark), 0 -2px var(--color-text-dark);
+            text-shadow: -2px 0 var(--color-text-dark), 0 2px var(--color-text-dark), 2px 0 var(--color-text-dark),
+                0 -2px var(--color-text-dark);
         }
     }
 
     & p {
-        text-shadow: -1px 0 var(--color-text-dark), 0 1px var(--color-text-dark), 1px 0 var(--color-text-dark), 0 -1px var(--color-text-dark);
+        text-shadow: -1px 0 var(--color-text-dark), 0 1px var(--color-text-dark), 1px 0 var(--color-text-dark),
+            0 -1px var(--color-text-dark);
         color: var(--color-text-light);
     }
 
@@ -85,7 +87,7 @@
     }
 
     80% {
-        transform: scale(1.02);
+        scale: var(--transform-scale);
     }
 
     100% {

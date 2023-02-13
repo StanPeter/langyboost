@@ -1,10 +1,6 @@
 import React, { SetStateAction } from "react";
 import { MultiselectItem } from "ts/interfaces";
 import { InputTypes } from "ts/types";
-import ButtonSelect from "./ButtonSelect/ButtonSelect";
-import Input from "./Input/Input";
-import inputStyles from "./Input/input.module.scss";
-import Select from "./Select/Select";
 
 interface InputProps {
     name: string;
@@ -32,56 +28,9 @@ const InputSwitcher: React.FC<InputProps> = ({
     onChange
 }) => {
     //maybe won't be neccesary later on
-    const inputClass = useCase === "form" ? inputStyles.formItem : inputStyles.filterItem;
+    // const inputClass = useCase === "form" ? inputStyles.formItem : inputStyles.filterItem;
 
     switch (type) {
-        case "date":
-        case "email":
-        case "text":
-            return (
-                <div className={inputClass}>
-                    <Input
-                        styleInput={styleInput}
-                        name={name}
-                        type={type}
-                        value={value}
-                        onChange={onChange}
-                        placeholder={placeholder}
-                    />
-                </div>
-            );
-        case "multiselect":
-        case "singleselect":
-            if (!onChange)
-                onChange = () => {
-                    console.log("on change not declared");
-                };
-
-            return (
-                <div className={inputClass}>
-                    <Select
-                        styleInput={styleInput}
-                        title={name}
-                        useCase={useCase}
-                        type={type}
-                        data={dataOfMultiselect}
-                        value={value}
-                        onChange={onChange}
-                    />
-                </div>
-            );
-        case "buttonSelect":
-            return (
-                <div className={inputClass}>
-                    <ButtonSelect
-                        onClick={() => onClick()}
-                        type="button"
-                        value={valueOfButton}
-                        title={name}
-                        styleInput={styleInput}
-                    />
-                </div>
-            );
         default:
             alert("No valid type was received");
             return null;

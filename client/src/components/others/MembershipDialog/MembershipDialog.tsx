@@ -5,8 +5,8 @@ import paypal from "assets/images/paypal.png";
 import peonPoint from "assets/images/peonPoint.png";
 import visa from "assets/images/visa.png";
 import Button from "components/UI/Button/Button";
-import InputSwitcher from "components/UI/InputSwitcher";
 import Dialog from "components/UI/Modal/Dialog";
+import Select from "components/UI/Select/Select";
 import React, { FormEvent, MouseEvent, useEffect, useState } from "react";
 import { SectionStyles } from "ts/interfaces";
 import {
@@ -221,23 +221,23 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
                         ) : null}
                     </h4>
                     <div className={`${styles.section}`} style={sectionStyles.subscription}>
-                        <InputSwitcher
-                            name="Period"
+                        <Select
+                            text="PERIOD"
                             type="singleselect"
                             useCase="form"
-                            dataOfMultiselect={[
+                            data={[
                                 { name: "Monthly", value: "monthly" },
                                 { name: "Yearly", value: "early" }
                             ]}
                             onChange={d => setSubscription({ ...subscription, period: d })}
-                            value={[subscription.period]}
+                            value={[subscription.period || ""]}
                         />
-                        <InputSwitcher
-                            name="Repeat payment"
+                        <Select
+                            text="REPEAT_PAYMENT"
                             type="singleselect"
                             useCase="form"
                             styleInput={{ fontSize: "12px" }}
-                            dataOfMultiselect={[
+                            data={[
                                 { name: "Yes", value: "yes" },
                                 { name: "No", value: "no" }
                             ]}

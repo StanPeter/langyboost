@@ -10,7 +10,7 @@ interface ButtonProps {
     active?: boolean | (() => boolean);
     disabled?: boolean | (() => boolean);
     useCase?: ButtonUseCases;
-    className?: string;
+    classes?: string;
     type?: "button" | "reset" | "submit";
 }
 
@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
     active,
     disabled,
     useCase,
-    className,
+    classes,
     type = "button"
 }) => {
     const isDisabled = typeof disabled === "function" ? disabled() : disabled ?? false;
@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
         <button
             type={type}
             onClick={onClick}
-            className={`${buttonClasses.join(" ")} ${className}`}
+            className={`${buttonClasses.join(" ")} ${classes}`}
             disabled={isDisabled}
             style={{ ...style }}
         >

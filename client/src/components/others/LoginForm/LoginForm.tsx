@@ -60,14 +60,14 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     useCase="fullLine"
                     active={mode === "singIn"}
                     text="SIGN_IN"
-                    className={`${styles.btn} ${styles.btnLeft} ${
+                    classes={`${styles.btn} ${styles.btnLeft} ${
                         useCase === "authPage" ? styles.authPage : styles.landingPage
                     }`}
                     onClick={() => setMode("singIn")}
                 />
                 <Button
                     useCase="fullLine"
-                    className={`${styles.btn} ${styles.btnRight} ${
+                    classes={`${styles.btn} ${styles.btnRight} ${
                         useCase === "authPage" ? styles.authPage : styles.landingPage
                     }`}
                     active={mode === "signUp"}
@@ -112,7 +112,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     text={mode === "singIn" ? "SIGN_IN" : "SIGN_UP"}
                     useCase="fullLine"
                     type="submit"
-                    className={styles.submitBtn}
+                    classes={styles.submitBtn}
                 />
             </form>
             <div className={styles.signUpText}>

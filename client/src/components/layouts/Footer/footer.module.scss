@@ -1,56 +1,59 @@
 .footer {
-    height: 6.5rem;
     width: 100%;
     color: var(--color-main-light);
     background-color: var(--color-main);
-    padding: 20px 0;
+    padding: 1.5rem 0;
     display: flex;
     flex-flow: column;
     align-items: center;
-    border-radius: 200px 200px 0 0;
+    border-radius: 20rem 20rem 0 0;
+    padding: 1rem 0;
 }
 
 .copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0.5rem 0;
     font-style: italic;
-    font-size: 0.8rem;
-}
 
-.socialNetwork {
-    list-style: none;
-    display: inline;
-    margin: auto;
+    p {
+        &:last-child {
+            display: none;
+        }
+    }
 
-    li {
-        display: inline-flex;
-        margin: 0 1rem;
+    a {
+        padding: 0 0.3rem;
+        color: var(--color-text-dark);
+        text-decoration: none;
+
+        &:hover {
+            scale: var(--transform-scale);
+            color: var(--color-text-light);
+        }
     }
 }
 
-.socialCircle a {
-    background-color: #e3e3e3;
+.socialNetwork {
+    li {
+        display: inline-flex;
+        margin: 0 1rem;
+
+        a {
+            background-color: var(--color-main-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            font-size: 1.5rem;
+        }
+    }
 }
 
-.socialCircle li a {
-    display: inline-block;
-    position: relative;
-    margin: 0 auto 0 auto;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    text-align: center;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-}
-
-.socialCircle li i {
-    margin: 0;
-    line-height: 48px;
-    text-align: center;
-}
-
-/* footer social icons */
+/* ANIMATIONS */
 .socialNetwork {
     a.icoFacebook:hover {
         background-color: #3b5998;
@@ -102,61 +105,6 @@
     -ms-transition: all 0.8s;
 }
 
-@media screen and (max-width: 500px) {
-    ul.socialNetwork li {
-        display: inline;
-        margin: 0 5px;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    ul.socialNetwork li {
-        display: inline;
-        margin: 0 5px;
-    }
-    .socialCircle li a {
-        display: inline-block;
-        position: relative;
-        margin: 0 auto 0 auto;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-        text-align: center;
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-    .socialCircle li i {
-        margin: 0;
-        line-height: 40px;
-        text-align: center;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    ul.socialNetwork li {
-        display: inline;
-        // margin: 0 2px;
-    }
-    .socialCircle li a {
-        display: inline-block;
-        position: relative;
-        margin: 0 auto 0 auto;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-        text-align: center;
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-    .socialCircle li i {
-        margin: 0;
-        line-height: 40px;
-        text-align: center;
-    }
-}
-
 .rotateCenterHover:hover {
     -webkit-animation: rotateCenter 0.6s ease-in-out both;
     animation: rotateCenter 0.6s ease-in-out both;
@@ -181,4 +129,43 @@
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+/* BREAKPOINTS  */
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+}
+
+// SMALLER SCREEN TABLET
+@media screen and (min-width: 600px) {
+    .copyright {
+        font-size: 1rem !important;
+
+        p {
+            &:last-child {
+                display: flex;
+            }
+        }
+    }
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
+    .socialCircle li a {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+}
+
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+}
+
+// LARGE SCREEN DESKTOP
+@media screen and (min-width: 1800px) {
 }
