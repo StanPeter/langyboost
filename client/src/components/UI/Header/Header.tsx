@@ -6,43 +6,26 @@ interface IHeader {
     text: string;
     level: 1 | 2 | 3 | 4 | 5;
     whiteText?: boolean;
+    shouldTranslate?: boolean;
+    classes?: string;
 }
 
 // custom header due to text translation
-const Header: React.FC<IHeader> = ({ text, level, whiteText }) => {
-    const classes = whiteText ? `${globalClasses.whiteText}` : "";
+const Header: React.FC<IHeader> = ({ text, level, whiteText, shouldTranslate = true, classes }) => {
+    const headerClasses = whiteText ? `${classes} ${globalClasses.whiteText}` : classes;
+    const translatedText = shouldTranslate ? <TranslateText>{text}</TranslateText> : text;
 
     switch (level) {
         case 1:
-            return (
-                <h1 className={classes}>
-                    <TranslateText>{text}</TranslateText>
-                </h1>
-            );
+            return <h1 className={headerClasses}>{translatedText}</h1>;
         case 2:
-            return (
-                <h2 className={classes}>
-                    <TranslateText>{text}</TranslateText>
-                </h2>
-            );
+            return <h2 className={headerClasses}>{translatedText}</h2>;
         case 3:
-            return (
-                <h3 className={classes}>
-                    <TranslateText>{text}</TranslateText>
-                </h3>
-            );
+            return <h3 className={headerClasses}>{translatedText}</h3>;
         case 4:
-            return (
-                <h4 className={classes}>
-                    <TranslateText>{text}</TranslateText>
-                </h4>
-            );
+            return <h4 className={headerClasses}>{translatedText}</h4>;
         case 5:
-            return (
-                <h5 className={classes}>
-                    <TranslateText>{text}</TranslateText>
-                </h5>
-            );
+            return <h5 className={headerClasses}>{translatedText}</h5>;
     }
 };
 

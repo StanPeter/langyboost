@@ -1,5 +1,5 @@
 // Componenty
-import { ErrorBoundaryComponent } from "components/hoc/ErrorBoundary";
+import ErrorBoundaryHoc from "components/hoc/ErrorBoundaryHoc";
 import NotFound from "components/pages/NotFound/NotFound";
 // objekt s routama
 import Spinner from "components/UI/Spinner/Spinner";
@@ -30,7 +30,7 @@ const AppRouter: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<ErrorBoundaryComponent />}>
+                <Route element={<ErrorBoundaryHoc />}>
                     <Route path={"*"} element={<NotFound />} />
                     {routeMapa().map((route, index: number) => {
                         const RouteComponent = route.component;

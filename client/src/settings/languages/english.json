@@ -10,5 +10,9 @@
     "CURRENT_LESSON": "Current lesson",
     "CURRENT_COURSE": "Current course",
     "PROFILE": "Profile",
-    "SETTINGS": "Settings"
+    "SETTINGS": "Settings",
+    "LANGYBOOST": "Langyboost",
+    "OK": "Ok",
+    "PAGE_NOT_EXIST": "Unfortunately, the page you are looking for does not exist",
+    "LOGOUT": "Logout"
 }

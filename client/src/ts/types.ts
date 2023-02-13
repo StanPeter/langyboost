@@ -3,6 +3,10 @@ import store from "store";
 export const paymentMethodTypes = ["visa", "mastercard", "americanExpress", "paypal"];
 export const membershipOTypes = ["king", "peon"];
 
+// loginForm
+export type TLoginFormUseCase = "landingPage" | "authPage";
+export type TLoginFormMode = "singIn" | "signUp";
+
 //personalSettingsPage
 export type MembershipDialogSectionTypes = "membership" | "subscription" | "paymendMethod" | "paymentDetails";
 export type MembershipTypes = "king" | "peon";
@@ -14,6 +18,8 @@ export type PaymentMethodTypes = "visa" | "mastercard" | "americanExpress" | "pa
 
 //UI
 export type InputTypes = "text" | "email" | "date" | "multiselect" | "buttonSelect" | "singleselect";
+
+export type ButtonUseCases = "big" | "small" | "middle" | "fullLine";
 
 export type PaymentDetailsTypes = {
     name: string;

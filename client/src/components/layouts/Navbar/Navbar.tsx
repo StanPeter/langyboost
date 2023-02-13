@@ -4,6 +4,7 @@ import SwedenFlag from "assets/images/swedenFlag.jpg";
 import Image from "components/UI/Image";
 import Link from "components/UI/Link";
 import Paragraph from "components/UI/Paragraph";
+import Span from "components/UI/Span";
 import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import React, { useState } from "react";
 import { BiLogIn } from "react-icons/bi";
@@ -25,6 +26,7 @@ const HAMBURGER_MENU = [
 ];
 interface NavbarProps {}
 
+// navigation bar section
 const Navbar: React.FC<NavbarProps> = () => {
     const [expanded, setExpanded] = useState<boolean>(false);
     const [expandedHelper, setExpandedHelper] = useState<boolean>(false);
@@ -33,6 +35,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     const { data, loading } = useGetUserQuery();
     const [logout, { client }] = useLogoutMutation();
 
+    // on click handler
     const hamburgerClickHandler = () =>
         new Promise(res => {
             //if changed, set it up in expanded class scss animation too!
@@ -49,36 +52,37 @@ const Navbar: React.FC<NavbarProps> = () => {
             setExpandedHelper(!expanded);
         });
 
+    // login and logout buttons
     const authButtons = (hide: boolean) => {
         if (data?.getUser)
             return (
-                <li
-                    className={hide ? styles.authIcon : ""}
+                <Link
+                    classes={hide ? styles.authIcon : ""}
                     onClick={async () => {
                         await logout();
                         setAccessToken("");
                         await client.resetStore();
                     }}
-                >
-                    Logout
-                </li>
+                    text={"LOGOUT"}
+                />
             );
         else if (!data?.getUser && !loading)
             return (
-                <li
-                    className={hide ? styles.authIcon : ""}
+                <Link
+                    classes={hide ? styles.authIcon : ""}
                     onClick={() => {
                         //if open then close hamburger
                         navigate("/auth");
                     }}
                 >
                     <BiLogIn className={`${styles.loginIcon}`} />
-                </li>
+                </Link>
             );
         return null;
     };
 
-    const authSection = expanded ? (
+    // Hamburger section (smaller screen)
+    const hamburgerSection = expanded ? (
         <ul className={`${styles.expandedNavLinks} ${expandedHelper && styles.expanded}`}>
             {HAMBURGER_MENU.map(el => (
                 <Link
@@ -95,10 +99,10 @@ const Navbar: React.FC<NavbarProps> = () => {
     ) : null;
 
     return (
-        <nav className={styles.navbar} style={{ marginBottom: expanded ? "20rem" : undefined }}>
+        <nav className={`${styles.navbar} ${expanded ? styles.expandedNavBar : ""}`}>
             <div className={styles.logo} onClick={() => navigate("/")}>
                 <CgCrown />
-                <span>Langyboost</span>
+                <Span text="LANGYBOOST" />
             </div>
             <ul className={`${styles.navbarLinks} ${styles.left}`}>
                 <Link
@@ -133,11 +137,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <Paragraph text="Jill" whiteText shouldTranslate={false} />
                     <Image src={ProfilePicture} alt="profilePicture" onClick={() => navigate("/profile")} />
                 </Link>
-                <hr style={{ height: "30px" }} />
+                <hr />
                 <Link>
                     <FiSettings onClick={() => navigate("/settings")} className={`${styles.settingsIcon}`} />
                 </Link>
-                <hr style={{ height: "30px" }} />
+                <hr />
                 {authButtons(false)}
             </ul>
             <div className={styles.hamburger} onClick={hamburgerClickHandler}>
@@ -145,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <div></div>
                 <div></div>
             </div>
-            {authSection}
+            {hamburgerSection}
         </nav>
     );
 };

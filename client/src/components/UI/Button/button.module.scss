@@ -22,7 +22,8 @@
         cursor: pointer;
         background-color: var(--color-main) !important;
         box-shadow: 0px 8px 12px rgba(100, 198, 223, 0.4);
-        transform: translateY(-3px);
+        // translate: -1px;
+        scale: 1.02;
     }
 
     &.disabled {
@@ -43,7 +44,7 @@
         width: 10rem;
         height: 2rem;
         font-size: 1rem;
-        box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+        box-shadow: var(--box-shadow-small);
     }
 
     &.middle {
@@ -63,12 +64,12 @@
         margin: 2rem 0;
         letter-spacing: 0.1em;
 
-        box-shadow: 0px 6px 6px rgb(0 0 0 / 30%);
+        box-shadow: var(--box-shadow-main);
     }
 
     &.fullLine {
         letter-spacing: 0.1em;
-        box-shadow: 0px 6px 6px rgb(0 0 0 / 30%);
+        box-shadow: var(--box-shadow-main);
         height: 2.5rem;
         font-size: 1.2em;
         padding: 0;

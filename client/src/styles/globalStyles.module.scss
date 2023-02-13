@@ -25,6 +25,17 @@
     // OTHER COLORS
     --color-invalid-light: #ffeae8; // color for invalid inputs
     --color-invalid-dark: #bf4a1c; // color for invalid inputs
+
+    --color-facebook: #45619d;
+    --color-thumpsDown: #c5a094;
+
+    // these colors find out
+    // #4f555a
+
+    // OTHERS
+    --box-shadow-main: 0px 6px 6px rgb(0 0 0 / 30%);
+    --box-shadow-small: 0px 4px 4px rgb(0 0 0 / 30%);
+    --transform-scale: scale(1.08);
 }
 
 * {
@@ -129,8 +140,8 @@ input {
 }
 
 svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin: 0 0.8rem;
 }
 

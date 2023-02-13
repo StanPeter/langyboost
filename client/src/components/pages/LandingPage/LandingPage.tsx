@@ -1,7 +1,6 @@
 import LoginForm from "components/others/LoginForm/LoginForm";
 import ParticleBackground from "components/others/ParticleBackground/ParticleBackground";
 import React from "react";
-import { ELoginFormUsecase } from "ts/enums";
 import mainBodyStyles from "../../layouts/MainBody/mainBody.module.scss";
 import styles from "./landingPage.module.scss";
 
@@ -24,7 +23,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
         <div className={styles.landingPage}>
             <ParticleBackground />
             <div className={mainBodyStyles.bodyWrapper}>
-                <LoginForm useCase={ELoginFormUsecase.LANGING_PAGE} />
+                <LoginForm useCase={"landingPage"} />
             </div>
         </div>
     );

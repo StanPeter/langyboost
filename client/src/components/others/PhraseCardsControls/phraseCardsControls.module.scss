@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    color: #2a4d69;
+    color: var(--color-text-dark);
     z-index: 1;
     min-width: 50%;
     max-width: 100%;
@@ -59,7 +59,7 @@
     border-bottom-left-radius: 8px;
 
     & svg {
-        color: #c5a094;
+        color: var(--color-thumpsDown);
     }
 }
 
@@ -74,7 +74,7 @@
     }
 
     &.disabled {
-        background-color: #cbc9cc;
+        background-color: var(--color-main-light);
         cursor: not-allowed;
     }
 }

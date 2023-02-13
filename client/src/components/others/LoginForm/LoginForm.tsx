@@ -11,7 +11,7 @@ import { SiFacebook } from "react-icons/si";
 import { useNavigate } from "react-router";
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from "settings/validationMapping";
 import globalClasses from "styles/globalClasses.module.scss";
-import { ELoginFormMode, ELoginFormUsecase } from "ts/enums";
+import { TLoginFormMode, TLoginFormUseCase } from "ts/types";
 import styles from "./loginForm.module.scss";
 
 interface IFormData {
@@ -22,19 +22,19 @@ interface IFormData {
 }
 
 interface ILoginFormProps {
-    useCase: ELoginFormUsecase;
+    useCase: TLoginFormUseCase;
 }
 
 // form has two modes, sing in and sign up
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
-    const [mode, setMode] = useState<ELoginFormMode>(ELoginFormMode.SIGN_IN);
+    const [mode, setMode] = useState<TLoginFormMode>("singIn");
     const navigate = useNavigate();
     // form handling library react-hook-form with yup validation
     const {
         handleSubmit,
         register,
         formState: { errors }
-    } = useForm({ resolver: yupResolver(mode === ELoginFormMode.SIGN_IN ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
+    } = useForm({ resolver: yupResolver(mode === "singIn" ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
 
     const onSubmitHandler: SubmitHandler<IFormData> = data => {
         // e.preventDefault();
@@ -48,7 +48,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
 
     return (
         <div className={styles.signForm}>
-            {useCase === ELoginFormUsecase.LANGING_PAGE && (
+            {useCase === "landingPage" && (
                 <div className={styles.slider}>
                     <FiArrowLeft className={styles.sliderArrow} />
                     <Header level={2} whiteText text="ULTIMATE_PLATTFORM_TEXT" />
@@ -58,25 +58,25 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             <div className={styles.switcherWrapper}>
                 <Button
                     useCase="fullLine"
-                    active={mode === ELoginFormMode.SIGN_IN}
+                    active={mode === "singIn"}
                     text="SIGN_IN"
                     className={`${styles.btn} ${styles.btnLeft} ${
-                        useCase === ELoginFormUsecase.AUTH_PAGE ? styles.authPage : styles.landingPage
+                        useCase === "authPage" ? styles.authPage : styles.landingPage
                     }`}
-                    onClick={() => setMode(ELoginFormMode.SIGN_IN)}
+                    onClick={() => setMode("singIn")}
                 />
                 <Button
                     useCase="fullLine"
                     className={`${styles.btn} ${styles.btnRight} ${
-                        useCase === ELoginFormUsecase.AUTH_PAGE ? styles.authPage : styles.landingPage
+                        useCase === "authPage" ? styles.authPage : styles.landingPage
                     }`}
-                    active={mode === ELoginFormMode.SIGN_UP}
+                    active={mode === "signUp"}
                     text="SIGN_UP"
-                    onClick={() => setMode(ELoginFormMode.SIGN_UP)}
+                    onClick={() => setMode("signUp")}
                 />
             </div>
             <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
-                {mode === ELoginFormMode.SIGN_UP && (
+                {mode === "signUp" && (
                     <Input
                         withoutLabel
                         type="text"
@@ -109,7 +109,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     />
                 )}
                 <Button
-                    text={mode === ELoginFormMode.SIGN_IN ? "SIGN_IN" : "SIGN_UP"}
+                    text={mode === "singIn" ? "SIGN_IN" : "SIGN_UP"}
                     useCase="fullLine"
                     type="submit"
                     className={styles.submitBtn}
@@ -117,7 +117,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             </form>
             <div className={styles.signUpText}>
                 <hr />
-                <Paragraph text={mode === ELoginFormMode.SIGN_IN ? "OR_SIGN_IN" : "OR_SIGN_UP"} />
+                <Paragraph text={mode === "singIn" ? "OR_SIGN_IN" : "OR_SIGN_UP"} />
                 <hr />
             </div>
             <div className={styles.formIcons}>

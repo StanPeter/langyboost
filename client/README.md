@@ -106,19 +106,13 @@ d) connect all current architecture
 e) start mocking
 f) connect redux
 
+Finish error handling HOC
 authorization HOC page route
-errorboundary HOC
-not found PAGE
 page AdminHome solve
 npm install causes 1 warning
 implement multi languages feature
-implement validations
-optimize the landing page particles
-implement global color scheme
 implement light and dark mode
 do something wth the AdminHome page
-try again to run server, it worked but haven't tried for a long time
-finish page not found
 implement UI elements for membership dialog
 responsiveness on most screens
 responsiveness of Carousel
