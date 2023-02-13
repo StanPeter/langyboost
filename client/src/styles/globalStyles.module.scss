@@ -93,7 +93,11 @@ label {
     // display: flex;
     // justify-content: flex-start;
     // height: 2.5rem;
-    padding-right: 0.5rem;
+    // padding-right: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 /* OTHER ELEMENTS */

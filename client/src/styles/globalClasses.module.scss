@@ -92,6 +92,21 @@
     color: var(--color-text-dark);
 }
 
+.iconSpin {
+    &:hover {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -ms--transform: rotate(360deg);
+        transform: rotate(360deg);
+        transition: all 0.8s;
+        -webkit-transition: all 0.8s;
+        -moz-transition: all 0.8s;
+        -o-transition: all 0.8s;
+        -ms-transition: all 0.8s;
+        cursor: pointer;
+    }
+}
+
 /* BREAKPOINTS  */
 // SCREEN PHONE
 @media screen and (min-width: 450px) {

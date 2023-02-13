@@ -121,8 +121,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 <hr />
             </div>
             <div className={styles.formIcons}>
-                <FcGoogle />
-                <SiFacebook className={`${globalClasses.facebook}`} />
+                <FcGoogle className={globalClasses.iconSpin} />
+                <SiFacebook className={`${globalClasses.facebook} ${globalClasses.iconSpin}`} />
             </div>
         </div>
     );

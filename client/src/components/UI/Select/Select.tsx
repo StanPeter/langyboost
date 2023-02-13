@@ -1,4 +1,5 @@
 import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
+import TranslateText from "components/hoc/TranslateText";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import globalClasses from "styles/globalClasses.module.scss";
@@ -66,9 +67,9 @@ const Select: React.FC<MultiselectProps> = ({
         `${inputClass} ${useCase === "form" ? styles.formType : styles.filterType}`;
 
     const inputBorderRadius = () => {
-        if (hideDropdown) return "5px"; //dropdown not shown
+        if (hideDropdown) return "0 5px 5px 0"; //dropdown not shown
         else if (useCase === "filter") return "5px 5px 0 0"; //dropdown hidden and filter case
-        return "5px 5px 0 5px"; //dropdown hidden and form case
+        return "0 5px 5px 0"; //dropdown hidden and form case
     };
 
     const valueBuilder = (el: MultiselectItem) => {
@@ -83,72 +84,74 @@ const Select: React.FC<MultiselectProps> = ({
     };
 
     return (
-        <InputWrapper validationMessage="" useCase={useCase} classes={styles.container}>
-            <div
-                className={styles.inputWrapper}
-                style={{ background: !hideDropdown && useCase === "form" ? "#daffe9" : undefined }}
-            >
-                {!withoutLabel && (
-                    <label
-                        style={styleInput}
-                        className={`${
-                            useCase === "filter" ? globalClasses.filterLabel : globalClasses.formLabel
-                        } ${addTypeClass("")}`}
-                        htmlFor=""
-                    >
-                        {text}
-                    </label>
-                )}
+        <InputWrapper validationMessage="" useCase={useCase}>
+            <div className={styles.container}>
                 <div
-                    // onClick={() => setHideDropdown(!hideDropdown)}
-                    style={{ borderRadius: inputBorderRadius() }}
-                    className={addTypeClass(styles.input)}
+                    className={styles.inputWrapper}
+                    style={{ background: !hideDropdown && useCase === "form" ? "#daffe9" : undefined }}
                 >
-                    <div className={styles.valueWrapper}>
-                        {data
-                            .filter(el => multiselectValue.includes(el.value))
-                            .map((el, i) => (
-                                <div
-                                    className={styles.value}
-                                    key={i}
-                                    id={el.value}
-                                    onClick={e => deleteItemHandler(e.currentTarget.id)}
-                                >
-                                    {valueBuilder(el)}
-                                </div>
-                            ))}
-                    </div>
-                    <div className={styles.dropdownIcon} onClick={() => setHideDropdown(!hideDropdown)}>
-                        <IoIosArrowDown />
+                    {!withoutLabel && (
+                        <label
+                            style={styleInput}
+                            className={`${
+                                useCase === "filter" ? globalClasses.filterLabel : globalClasses.formLabel
+                            } ${addTypeClass("")}`}
+                            htmlFor=""
+                        >
+                            <TranslateText>{text}</TranslateText>
+                        </label>
+                    )}
+                    <div
+                        // onClick={() => setHideDropdown(!hideDropdown)}
+                        style={{ borderRadius: inputBorderRadius() }}
+                        className={addTypeClass(styles.input)}
+                    >
+                        <div className={styles.valueWrapper}>
+                            {data
+                                .filter(el => multiselectValue.includes(el.value))
+                                .map((el, i) => (
+                                    <div
+                                        className={styles.value}
+                                        key={i}
+                                        id={el.value}
+                                        onClick={e => deleteItemHandler(e.currentTarget.id)}
+                                    >
+                                        {valueBuilder(el)}
+                                    </div>
+                                ))}
+                        </div>
+                        <div className={styles.dropdownIcon} onClick={() => setHideDropdown(!hideDropdown)}>
+                            <IoIosArrowDown />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className={`${styles.dropdown} ${addTypeClass("")} ${!hideDropdown ? styles.dropdownOpen : ""}`}>
-                {data.map((el, i) => {
-                    if (!el.name && !el.imgSrc) {
-                        console.log("No parameter for multiselect was passed!");
-                        return null;
-                    }
+                <div className={`${styles.dropdown} ${addTypeClass("")} ${!hideDropdown ? styles.dropdownOpen : ""}`}>
+                    {data.map((el, i) => {
+                        if (!el.name && !el.imgSrc) {
+                            console.log("No parameter for multiselect was passed!");
+                            return null;
+                        }
 
-                    return (
-                        <div
-                            key={i}
-                            onClick={d => {
-                                if (type === "singleselect") setHideDropdown(true);
-                                addItemHandler(d.currentTarget.id);
-                            }}
-                            className={styles.dropdownItemWrapper}
-                            id={el.value}
-                        >
-                            <li className={styles.dropdownItem}>
-                                <div>
-                                    {el.imgSrc ? <img src={el.imgSrc} alt="" /> : null}
-                                    {el.name ? <p>{el.name}</p> : null}
-                                </div>
-                            </li>
-                        </div>
-                    );
-                })}
+                        return (
+                            <div
+                                key={i}
+                                onClick={d => {
+                                    if (type === "singleselect") setHideDropdown(true);
+                                    addItemHandler(d.currentTarget.id);
+                                }}
+                                className={styles.dropdownItemWrapper}
+                                id={el.value}
+                            >
+                                <li className={styles.dropdownItem}>
+                                    <div>
+                                        {el.imgSrc ? <img src={el.imgSrc} alt="" /> : null}
+                                        {el.name ? <p>{el.name}</p> : null}
+                                    </div>
+                                </li>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </InputWrapper>
     );
