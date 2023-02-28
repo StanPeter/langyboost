@@ -8,19 +8,37 @@ interface ILink {
     whiteText?: boolean;
     children?: React.ReactNode;
     classes?: string;
+    hyperlinkClasses?: string;
 }
 
-const Link: React.FC<ILink> = ({ text = "", onClick = () => {}, whiteText, children, classes = "" }) => {
+const style = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+};
+
+const Link: React.FC<ILink> = ({
+    text = "",
+    onClick = () => {},
+    whiteText,
+    children,
+    classes = "",
+    hyperlinkClasses = ""
+}) => {
     if (children)
         return (
-            <li onClick={onClick} className={`${classes} ${whiteText ? globalClasses.whiteText : ""}`}>
-                {children}
+            <li className={`${classes} ${whiteText ? globalClasses.whiteText : ""}`}>
+                <a onClick={onClick} style={style} className={hyperlinkClasses}>
+                    {children}
+                </a>
             </li>
         );
 
     return (
         <li onClick={onClick} className={`${classes} ${whiteText ? globalClasses.whiteText : ""}`}>
-            <TranslateText>{text}</TranslateText>
+            <a onClick={onClick} className={hyperlinkClasses}>
+                <TranslateText>{text}</TranslateText>
+            </a>
         </li>
     );
 };

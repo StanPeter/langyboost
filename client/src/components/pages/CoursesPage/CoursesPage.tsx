@@ -1,7 +1,9 @@
 import MainBody from "components/layouts/MainBody/MainBody";
 import Button from "components/UI/Button/Button";
 import Carousel from "components/UI/Carousel/Carousel";
+import Header from "components/UI/Header/Header";
 import Select from "components/UI/Select/Select";
+import Separator from "components/UI/Separator/Separator";
 import React, { useEffect, useState } from "react";
 import { betaCourses, customCourses, mainCourses } from "settings/mockData";
 import globalClasses from "styles/globalClasses.module.scss";
@@ -34,8 +36,10 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
 
     return (
         <MainBody>
-            <h2 style={{ marginBottom: "2rem" }}>Courses</h2>
-            <div className={styles.wrapper}>
+            <header>
+                <Header level={1} classes={globalClasses.labelMargin} text="COURSES" />
+            </header>
+            <form className={styles.wrapper}>
                 <div className={styles.filtersWrapper}>
                     <Select
                         text="I_SPEAK"
@@ -62,24 +66,30 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         onChange={val => setChosenCourse(val)}
                     />
                 </div>
-                <div className={styles.btnWrapper}>
+                {/* <div className={styles.btnWrapper}>
                     <Button disabled={btnDisabled} useCase="small" text="START_NOW" onClick={() => {}} />
                 </div>
-            </div>
-            {windowWidth < 400 && (
-                <Button disabled={btnDisabled} useCase="middle" text="START_NOW" onClick={() => {}} />
-            )}
-            <hr className={globalClasses.separator} />
-            <h2 style={{ margin: "2rem 0" }}>Supported Courses</h2>
-            <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
-            <hr className={globalClasses.separator} />
-            <h2 style={{ margin: "2rem 0" }}>Custom German Courses</h2>
-            <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
-            <hr className={globalClasses.separator} />
-            <h2 style={{ margin: "2rem 0" }}>Beta Courses</h2>
-            <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
-            <hr className={globalClasses.separator} />
-            <Button text="Start learning!" useCase="big" onClick={() => {}} />
+                {windowWidth < 400 && (
+                    <Button disabled={btnDisabled} useCase="middle" text="START_NOW" onClick={() => {}} />
+                )} */}
+                <Separator useCase="fullHorizontal" />
+            </form>
+            <section>
+                <Header level={2} classes={globalClasses.labelMargin} text="SUPPORTED_COURSES" />
+                <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
+                <Separator useCase="fullHorizontal" />
+            </section>
+            <section>
+                <Header level={2} classes={globalClasses.labelMargin} text="CUSTOM_GERMAN_COURSES" />
+                <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
+                <Separator useCase="fullHorizontal" />
+            </section>
+            <section>
+                <Header level={2} classes={globalClasses.labelMargin} text="BETA_COURSES" />
+                <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
+                <Separator useCase="fullHorizontal" />
+            </section>
+            <Button text="START_NOW" useCase="big" onClick={() => {}} />
         </MainBody>
     );
 };

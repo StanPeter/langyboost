@@ -4,6 +4,7 @@ export const dropdownIcon: string;
 export const dropdownItem: string;
 export const dropdownItemWrapper: string;
 export const dropdownOpen: string;
+export const dropdownShown: string;
 export const filterType: string;
 export const formType: string;
 export const input: string;

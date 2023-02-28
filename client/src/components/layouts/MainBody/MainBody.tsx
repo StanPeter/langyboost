@@ -11,7 +11,7 @@ const MainBody: React.FC<MainBodyProps> = ({ children }) => {
     return (
         <div className={styles.appWrapper}>
             <Navbar />
-            <div className={styles.bodyWrapper}>{children}</div>
+            <main className={styles.bodyWrapper}>{children}</main>
             <Footer />
         </div>
     );

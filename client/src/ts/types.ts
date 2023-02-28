@@ -21,7 +21,8 @@ export type InputTypes = "text" | "email" | "date" | "multiselect" | "buttonSele
 export type TInputUsecase = "form" | "filter";
 export type TInputType = "text" | "date" | "email" | "password";
 
-export type ButtonUseCases = "big" | "small" | "middle" | "fullLine";
+export type TButtonUseCase = "big" | "small" | "middle" | "fullLine";
+export type TSeparatorUseCase = "fullHorizontal" | 'custom';
 
 export type PaymentDetailsTypes = {
     name: string;

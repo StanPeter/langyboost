@@ -79,9 +79,9 @@
     max-width: 22%;
     min-width: 22%;
     width: 22%;
-    padding: 10px;
+    // padding: 10px;
     border: 1px solid var(--color-dark-accent);
-    border-radius: 5px 0 0 5px;
+    border-radius: var(--margin-input) 0 0 var(--margin-input);
     color: var(--color-text-dark);
 }
 
@@ -90,6 +90,10 @@
     min-width: 30%;
     width: 30%;
     color: var(--color-text-dark);
+}
+
+.labelMargin {
+    margin: 2rem 0;
 }
 
 .iconSpin {

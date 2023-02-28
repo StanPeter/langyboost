@@ -137,11 +137,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <Paragraph text="Jill" whiteText shouldTranslate={false} />
                     <Image src={ProfilePicture} alt="profilePicture" onClick={() => navigate("/profile")} />
                 </Link>
-                <hr />
+                <hr className={styles.separator} />
                 <Link>
                     <FiSettings onClick={() => navigate("/settings")} className={`${styles.settingsIcon}`} />
                 </Link>
-                <hr />
+                <hr className={styles.separator} />
                 {authButtons(false)}
             </ul>
             <div className={styles.hamburger} onClick={hamburgerClickHandler}>

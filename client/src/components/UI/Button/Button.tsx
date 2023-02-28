@@ -1,6 +1,6 @@
 import TranslateText from "components/hoc/TranslateText";
 import React from "react";
-import { ButtonUseCases } from "ts/types";
+import { TButtonUseCase } from "ts/types";
 import styles from "./button.module.scss";
 
 interface ButtonProps {
@@ -9,7 +9,7 @@ interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     active?: boolean | (() => boolean);
     disabled?: boolean | (() => boolean);
-    useCase?: ButtonUseCases;
+    useCase?: TButtonUseCase;
     classes?: string;
     type?: "button" | "reset" | "submit";
 }

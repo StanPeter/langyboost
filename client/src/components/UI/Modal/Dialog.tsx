@@ -1,7 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import { ButtonUseCases } from "ts/types";
+import { TButtonUseCase } from "ts/types";
 import Button from "../Button/Button";
 import styles from "./dialog.module.scss";
 
@@ -11,7 +11,7 @@ interface DialogProps {
     submitBtn?: {
         onSubmit?: () => void;
         text: string;
-        useCase?: ButtonUseCases;
+        useCase?: TButtonUseCase;
         disabled?: boolean | (() => boolean);
     };
 }

@@ -1,6 +1,6 @@
 import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
 import TranslateText from "components/hoc/TranslateText";
-import inputStyles from "components/UI/Input/input.module.scss";
+import globalClasses from "styles/globalClasses.module.scss";
 import React, { FormEvent } from "react";
 import { TInputUsecase } from "ts/types";
 import Button from "../Button/Button";
@@ -44,7 +44,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
     return (
         <InputWrapper classes={styles.wrapper} useCase={useCase}>
             {!withoutLabel && (
-                <label className={inputStyles.formLabel} htmlFor="">
+                <label className={globalClasses.formLabel} htmlFor="">
                     <TranslateText>{text}</TranslateText>
                 </label>
             )}

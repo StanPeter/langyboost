@@ -13,40 +13,30 @@ const Footer: React.FC<FooterProps> = () => {
     return (
         <footer className={styles.footer}>
             <ul className={`${styles.socialNetwork} ${styles.socialCircle}`}>
-                <Link>
-                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoLinkedin}`} title="Linkedin">
-                        <i className="">
-                            <FaLinkedinIn />
-                        </i>
-                    </a>
+                <Link hyperlinkClasses={`${styles.rotateCenterHover} ${styles.icoLinkedin}`}>
+                    <i className="">
+                        <FaLinkedinIn />
+                    </i>
                 </Link>
-                <Link>
-                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoTwitter}`} title="Twitter">
-                        <i className="">
-                            <FaTwitter />
-                        </i>
-                    </a>
+                <Link hyperlinkClasses={`${styles.rotateCenterHover} ${styles.icoTwitter}`}>
+                    <i className="">
+                        <FaTwitter />
+                    </i>
                 </Link>
-                <Link>
-                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoGithub}`} title="Github">
-                        <i className="">
-                            <FaGithub />
-                        </i>
-                    </a>
+                <Link hyperlinkClasses={`${styles.rotateCenterHover} ${styles.icoGithub}`}>
+                    <i className="">
+                        <FaGithub />
+                    </i>
                 </Link>
-                <Link>
-                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoFacebook}`} title="Facebook">
-                        <i className="">
-                            <FaFacebookF />
-                        </i>
-                    </a>
+                <Link hyperlinkClasses={`${styles.rotateCenterHover} ${styles.icoFacebook}`}>
+                    <i className="">
+                        <FaFacebookF />
+                    </i>
                 </Link>
-                <Link>
-                    <a href="/" className={`${styles.rotateCenterHover} ${styles.icoInstagram}`} title="Instagram">
-                        <i className="">
-                            <FaInstagram />
-                        </i>
-                    </a>
+                <Link hyperlinkClasses={`${styles.rotateCenterHover} ${styles.icoInstagram}`}>
+                    <i className="">
+                        <FaInstagram />
+                    </i>
                 </Link>
             </ul>
             <div className={styles.copyright}>

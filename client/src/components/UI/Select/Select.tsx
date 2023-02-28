@@ -30,7 +30,7 @@ const Select: React.FC<MultiselectProps> = ({
 }) => {
     /* HOOKS */
     const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
-    const [hideDropdown, setHideDropdown] = useState(true);
+    const [dropdownHidden, setDropdownHidden] = useState(true); // whther its hidden or not
 
     /* set initial value */
     useEffect(() => {
@@ -66,11 +66,11 @@ const Select: React.FC<MultiselectProps> = ({
     const addTypeClass = (inputClass: string) =>
         `${inputClass} ${useCase === "form" ? styles.formType : styles.filterType}`;
 
-    const inputBorderRadius = () => {
-        if (hideDropdown) return "0 5px 5px 0"; //dropdown not shown
-        else if (useCase === "filter") return "5px 5px 0 0"; //dropdown hidden and filter case
-        return "0 5px 5px 0"; //dropdown hidden and form case
-    };
+    // const inputBorderRadius = () => {
+    //     if (dropdownHidden) return "0 5px 5px 0"; //dropdown not shown
+    //     else if (useCase === "filter") return "5px 5px 0 0"; //dropdown hidden and filter case
+    //     return "0 5px 5px 0"; //dropdown hidden and form case
+    // };
 
     const valueBuilder = (el: MultiselectItem) => {
         if (el.imgSrc && type === "singleselect")
@@ -88,7 +88,7 @@ const Select: React.FC<MultiselectProps> = ({
             <div className={styles.container}>
                 <div
                     className={styles.inputWrapper}
-                    style={{ background: !hideDropdown && useCase === "form" ? "#daffe9" : undefined }}
+                    // style={{ background: !dropdownHidden && useCase === "form" ? "#daffe9" : undefined }}
                 >
                     {!withoutLabel && (
                         <label
@@ -102,9 +102,9 @@ const Select: React.FC<MultiselectProps> = ({
                         </label>
                     )}
                     <div
-                        // onClick={() => setHideDropdown(!hideDropdown)}
-                        style={{ borderRadius: inputBorderRadius() }}
-                        className={addTypeClass(styles.input)}
+                        // onClick={() => setDropdownHidden(!dropdownHidden)}
+                        // style={{ borderRadius: inputBorderRadius() }}
+                        className={`${addTypeClass(styles.input)} ${!dropdownHidden ? styles.dropdownShown : ""}`}
                     >
                         <div className={styles.valueWrapper}>
                             {data
@@ -120,12 +120,12 @@ const Select: React.FC<MultiselectProps> = ({
                                     </div>
                                 ))}
                         </div>
-                        <div className={styles.dropdownIcon} onClick={() => setHideDropdown(!hideDropdown)}>
+                        <div className={styles.dropdownIcon} onClick={() => setDropdownHidden(!dropdownHidden)}>
                             <IoIosArrowDown />
                         </div>
                     </div>
                 </div>
-                <div className={`${styles.dropdown} ${addTypeClass("")} ${!hideDropdown ? styles.dropdownOpen : ""}`}>
+                <div className={`${styles.dropdown} ${addTypeClass("")} ${!dropdownHidden ? styles.dropdownOpen : ""}`}>
                     {data.map((el, i) => {
                         if (!el.name && !el.imgSrc) {
                             console.log("No parameter for multiselect was passed!");
@@ -136,7 +136,7 @@ const Select: React.FC<MultiselectProps> = ({
                             <div
                                 key={i}
                                 onClick={d => {
-                                    if (type === "singleselect") setHideDropdown(true);
+                                    if (type === "singleselect") setDropdownHidden(true);
                                     addItemHandler(d.currentTarget.id);
                                 }}
                                 className={styles.dropdownItemWrapper}

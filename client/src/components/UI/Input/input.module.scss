@@ -21,21 +21,3 @@
         background-color: var(--color-invalid-light);
     }
 }
-
-// FORM type input
-.formLabel {
-    max-width: 22%;
-    min-width: 22%;
-    width: 22%;
-    border: 1px solid var(--color-dark-accent);
-    border-radius: 5px 0 0 5px;
-    color: var(--color-text-dark);
-}
-
-// FILTER type input
-.filterLabel {
-    max-width: 30%;
-    min-width: 30%;
-    width: 30%;
-    color: var(--color-text-dark);
-}
