@@ -11,7 +11,7 @@ import { BiLogIn } from "react-icons/bi";
 import { CgCrown } from "react-icons/cg";
 import { FiSettings } from "react-icons/fi";
 import { useNavigate } from "react-router";
-import { setAccessToken } from "utils/getToken";
+// import { setAccessToken } from "utils/getToken";
 import styles from "./navbar.module.scss";
 
 const HAMBURGER_MENU = [
@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     classes={hide ? styles.authIcon : ""}
                     onClick={async () => {
                         await logout();
-                        setAccessToken("");
+                        sessionStorage.setItem("accessToken", "");
                         await client.resetStore();
                     }}
                     text={"LOGOUT"}

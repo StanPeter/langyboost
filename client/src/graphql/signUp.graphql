@@ -1,11 +1,11 @@
-mutation Register(
+mutation SignUp(
     $email: String!
     $password: String!
     $firstName: String!
     $lastName: String!
     $receivePromo: Boolean!
 ) {
-    register(
+    signUp(
         email: $email
         password: $password
         firstName: $firstName

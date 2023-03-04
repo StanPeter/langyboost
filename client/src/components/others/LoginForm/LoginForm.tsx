@@ -29,6 +29,7 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>("singIn");
     const navigate = useNavigate();
+
     // form handling library react-hook-form with yup validation
     const {
         handleSubmit,

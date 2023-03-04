@@ -1,6 +1,0 @@
-query Hello {
-    tryingOut {
-        id
-        email
-    }
-}

@@ -9,7 +9,7 @@ import { routeMapa } from "settings/routeMap";
 
 const AppRouter: React.FC = () => {
     // useEffect(() => {
-    //     fetch("http://localhost:4000/refresh_token", {
+    //     fetch("http://localhost:4000/refreshToken", {
     //         method: "POST",
     //         credentials: "include",
     //     }).then(async (data) => {

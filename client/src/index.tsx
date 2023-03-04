@@ -7,7 +7,7 @@ import { onError } from "@apollo/client/link/error";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
 import App from "App";
 import jwtDecode from "jwt-decode";
-import { getAccessToken, setAccessToken } from "utils/getToken";
+// import { getAccessToken, setAccessToken } from "utils/getToken";
 // import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
 import { Provider } from "react-redux";
@@ -22,7 +22,7 @@ const httpLink = new HttpLink({
 // each time before request get the accessToken and send in headers
 const authLink = new ApolloLink((operation, forward) => {
     // retrieve the authorization token from local storage.
-    const token = getAccessToken();
+    const token = sessionStorage.getItem("accessToken");
 
     // use the setContext method to set the HTTP headers.
     operation.setContext({
@@ -51,7 +51,7 @@ const refreshLink = new TokenRefreshLink({
     accessTokenField: "accessToken",
     // if token not yet expired or user doesn't have a token (guest) true should be returned
     isTokenValidOrUndefined: () => {
-        const token = getAccessToken();
+        const token = sessionStorage.getItem("accessToken");
 
         if (!token) return true;
 
@@ -66,14 +66,14 @@ const refreshLink = new TokenRefreshLink({
     },
     //where to send the request
     fetchAccessToken: () => {
-        return fetch("http://localhost:4000/refresh_token", {
+        return fetch("http://localhost:4000/refreshToken", {
             method: "POST",
             credentials: "include"
         });
     },
     //callback after the request
     handleFetch: accessToken => {
-        setAccessToken(accessToken);
+        sessionStorage.setItem("accessToken", accessToken);
     },
     handleError: err => {
         console.warn("Your refresh token is invalid. Try to relogin");

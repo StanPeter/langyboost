@@ -82,9 +82,9 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         ]}
                     />
                     <ButtonSelect
-                        text="Membership"
+                        text="MEMBERSHIP"
                         type="button"
-                        value="Try now"
+                        value="TRY_NOW"
                         onClick={() => setShowModal(!showModal)}
                     />
                     <Select

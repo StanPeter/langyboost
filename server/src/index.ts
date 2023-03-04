@@ -46,7 +46,7 @@ import { PhrasesResolver } from "resolvers/PhrasesResolver";
     });
 
     //refresh_token route to improve security and do this outside /graphql route
-    app.post("/refresh_token", async (req, res) => {
+    app.post("/refreshToken", async (req, res) => {
         //get refresh token and validate
         const refreshToken = req.cookies.jid;
 
