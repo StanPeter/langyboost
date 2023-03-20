@@ -6,15 +6,16 @@ interface IParagraph {
     text: string;
     shouldTranslate?: boolean;
     whiteText?: boolean;
+    classes?: string;
 }
 
 // custom header due to text translation
-const Paragraph: React.FC<IParagraph> = ({ text, whiteText, shouldTranslate = true }) => {
-    const classes = whiteText ? `${globalClasses.whiteText}` : "";
+const Paragraph: React.FC<IParagraph> = ({ text, whiteText, shouldTranslate = true, classes }) => {
+    const defaultClasses = whiteText ? `${globalClasses.whiteText}` : "";
 
     const translatedText = shouldTranslate ? <TranslateText>{text}</TranslateText> : text;
 
-    return <p className={classes}>{translatedText}</p>;
+    return <p className={`${classes} ${defaultClasses}`}>{translatedText}</p>;
 };
 
 export default Paragraph;

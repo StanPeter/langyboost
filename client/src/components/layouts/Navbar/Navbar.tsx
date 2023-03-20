@@ -5,7 +5,6 @@ import Image from "components/UI/Image";
 import Link from "components/UI/Link";
 import Paragraph from "components/UI/Paragraph";
 import Span from "components/UI/Span";
-import { useGetUserQuery, useLogoutMutation } from "generated/graphql";
 import React, { useState } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { CgCrown } from "react-icons/cg";
@@ -32,8 +31,10 @@ const Navbar: React.FC<NavbarProps> = () => {
     const [expandedHelper, setExpandedHelper] = useState<boolean>(false);
 
     const navigate = useNavigate();
-    const { data, loading } = useGetUserQuery();
-    const [logout, { client }] = useLogoutMutation();
+    // const { data, loading } = useGetUserQuery();
+    // const [logout, { client }] = useLogoutMutation();
+    const data = { getUser: "" };
+    const loading = false;
 
     // on click handler
     const hamburgerClickHandler = () =>
@@ -59,9 +60,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <Link
                     classes={hide ? styles.authIcon : ""}
                     onClick={async () => {
-                        await logout();
-                        sessionStorage.setItem("accessToken", "");
-                        await client.resetStore();
+                        // await logout();
+                        // sessionStorage.setItem("accessToken", "");
+                        // await client.resetStore();
                     }}
                     text={"LOGOUT"}
                 />

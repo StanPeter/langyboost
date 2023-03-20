@@ -2,6 +2,10 @@ import { User } from "entity/User";
 import { sign } from "jsonwebtoken";
 import { Response } from "express";
 
+// if a request is sent and the tokens lifetime is < commented time, create a new one
+export const ACCESS_TOKEN_EXPIRATION_LIMIT = 10 * 60; // 10m
+export const REFRESH_TOKEN_EXPIRATION_LIMIT = 60 * 24 * 60; // 24h
+
 export const createAccessToken = (user: User) => {
     // pass secret to create a token and secure it
     if (!process.env.ACCESS_TOKEN_SECRET)
@@ -12,6 +16,7 @@ export const createAccessToken = (user: User) => {
     });
 };
 
+// we want to return a bit different secret code than accessToken, httpOnly secures
 export const createRefreshToken = (user: User) => {
     if (!process.env.REFRESH_TOKEN_SECRET)
         throw new Error("No refresh token secret declared inside .env file!");
@@ -20,13 +25,22 @@ export const createRefreshToken = (user: User) => {
         { userId: user.id, tokenVersion: user.tokenVersion },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: "1d",
+            expiresIn: "2d",
         }
     );
 };
 
+// set refreshing token -> name, token, opts
 export const sendRefreshToken = (res: Response, token: string) => {
-    //set refreshing token -> name, token, opts
-    //we want to return a bit different secret code than accessToken -> 'gkrergeqqe'
-    res.cookie("jid", token, { httpOnly: true, path: "/refreshToken" });
+    // secure flag -> Ensures data transmission only over encrypted channels
+    // httpOnly -> Restricts client-side access
+    // res.cookie("jid", token, { httpOnly: true, path: "/refreshToken", secure: true });
+    res.cookie("jid", token, { httpOnly: true });
+};
+
+// set access token -> name, token, opts
+export const sendAccessToken = (res: Response, token: string) => {
+    // secure flag -> Ensures data transmission only over encrypted channels
+    // httpOnly -> Restricts client-side access
+    res.cookie("oad", token, { httpOnly: true });
 };

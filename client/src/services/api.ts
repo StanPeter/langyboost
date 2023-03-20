@@ -1,6 +1,4 @@
 import { AnyAction, Dispatch } from "redux";
-import MOCK from "settings/mockData";
-import settings from "../settings/appConfig.json";
 
 // const DEFAULT_VALUES = {
 //     pageSize: 50
@@ -17,12 +15,12 @@ interface ISearchVatNumber extends IOptions {
 
 // GET /clients/vat response
 export const getAvailableCourses = async (dispatch: Dispatch<AnyAction>, { xx, mocked }: ISearchVatNumber) => {
-    if (mocked || settings.isMocked) {
-        const mockData = MOCK.getAvailableCoursesMockData;
+    // if (mocked || settings.isMocked) {
+    //     const mockData = MOCK.getAvailableCoursesMockData;
 
-        console.log("MOCK DATA!");
-        return { body: mockData };
-    }
+    //     console.log("MOCK DATA!");
+    //     return { body: mockData };
+    // }
 
     // if (!clientId && !vatRegistrationNumber) return { data: [] };
 

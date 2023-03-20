@@ -11,18 +11,21 @@ import cors from "cors";
 import { createAccessToken, createRefreshToken, sendRefreshToken } from "utils/auth";
 import { verify } from "jsonwebtoken";
 import { PhrasesResolver } from "resolvers/PhrasesResolver";
+import settings from "settings/projectConfiq.json";
+import { testUserData } from "settings/mockData";
 
 (async () => {
+    // allowing CORS
+    const CORS_OPTIONS = {
+        credentials: true,
+        origin: "http://localhost:3000",
+    };
+
     //define express server
     const app = express();
 
     //set cors manually
-    app.use(
-        cors({
-            credentials: true,
-            origin: "http://localhost:3000",
-        })
-    );
+    app.use(cors(CORS_OPTIONS));
 
     //use cookie parser to get later cookies from req. in an object
     app.use(cookieParser());
@@ -50,6 +53,8 @@ import { PhrasesResolver } from "resolvers/PhrasesResolver";
         //get refresh token and validate
         const refreshToken = req.cookies.jid;
 
+        console.log(refreshToken, " refreshToken");
+
         if (!refreshToken) return res.send({ ok: false, accessToken: "" });
 
         let payload: any;
@@ -59,6 +64,14 @@ import { PhrasesResolver } from "resolvers/PhrasesResolver";
         } catch (error) {
             console.log(error, "error");
             return res.send({ ok: false, accessToken: "" });
+        }
+
+        // when mocked
+        if (settings.isMocked) {
+            const testUser = User.create(testUserData);
+
+            sendRefreshToken(res, createRefreshToken(testUser));
+            return res.send({ ok: true, accessToken: createAccessToken(testUser) });
         }
 
         //payload has property userId
@@ -90,8 +103,8 @@ import { PhrasesResolver } from "resolvers/PhrasesResolver";
         context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
     });
 
-    //connect express server with apollo, cors are set manually so set here to false
-    apolloServer.applyMiddleware({ app, cors: false });
+    //connect express server with apollo
+    apolloServer.applyMiddleware({ app, cors: CORS_OPTIONS });
 
     //run express server
     app.listen(4000, () => {

@@ -16,7 +16,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
     const [iSpeak, setISpeak] = useState<string>("");
     const [wantToLearn, setWantToLearn] = useState<string>("");
     const [chosenCourse, setChosenCourse] = useState<string>("");
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [_windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         window.addEventListener("resize", handleWindowResize);
@@ -30,7 +30,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
         setWindowWidth(window.innerWidth);
     };
 
-    const btnDisabled = () => (iSpeak && wantToLearn && chosenCourse ? false : true);
+    // const btnDisabled = () => (iSpeak && wantToLearn && chosenCourse ? false : true);
 
     console.log("rerendering");
 

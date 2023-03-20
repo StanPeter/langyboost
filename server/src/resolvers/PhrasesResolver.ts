@@ -1,10 +1,14 @@
 import { ApolloError } from "apollo-server-express";
 import { Phrases } from "entity/Phrases";
-import { Arg, Mutation, Query } from "type-graphql";
+import { addAccessTokenHeader } from "middleware/addAuthHeader";
+import { isAuth } from "middleware/isAuth";
+import { Arg, Mutation, Query, UseMiddleware } from "type-graphql";
 // import { Storage } from "@google-cloud/storage";
 // import { TranslationServiceClient } from "@google-cloud/translate";
 
 export class PhrasesResolver {
+    @UseMiddleware(isAuth) // second middleware
+    @UseMiddleware(addAccessTokenHeader) // first middleware
     @Query(() => [Phrases])
     async getPhrases() {
         // const allPhrases = await Phrases.find();
@@ -12,16 +16,16 @@ export class PhrasesResolver {
 
         // Imports the Google Cloud client library.
         // const { Storage } = require("@google-cloud/storage");
-        const now = new Date().getTime();
+        // const now = new Date().getTime();
 
         let phrases = await Phrases.find();
 
-        phrases = phrases.filter((phrase) => {
-            const practisedTime = new Date(phrase.practisedAt).getTime();
+        // phrases = phrases.filter((phrase) => {
+        //     const practisedTime = new Date(phrase.practisedAt).getTime();
 
-            if ((now - practisedTime) / 86400000 > phrase.streak) return true;
-            return false;
-        });
+        //     if ((now - practisedTime) / 86400000 > phrase.streak) return true;
+        //     return false;
+        // });
 
         return phrases;
 

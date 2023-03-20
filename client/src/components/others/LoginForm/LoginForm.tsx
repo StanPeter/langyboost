@@ -3,7 +3,8 @@ import Button from "components/UI/Button/Button";
 import Header from "components/UI/Header/Header";
 import Input from "components/UI/Input/Input";
 import Paragraph from "components/UI/Paragraph";
-import React, { useState } from "react";
+import { useSignInMutation, useSignUpMutation } from "generated/graphql";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
@@ -11,6 +12,7 @@ import { SiFacebook } from "react-icons/si";
 import { useNavigate } from "react-router";
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from "settings/validationMapping";
 import globalClasses from "styles/globalClasses.module.scss";
+import { ISingInResponse, ISingUpResponse } from "ts/api";
 import { TLoginFormMode, TLoginFormUseCase } from "ts/types";
 import styles from "./loginForm.module.scss";
 
@@ -18,7 +20,7 @@ interface IFormData {
     password?: string;
     username?: string;
     email?: string;
-    confirmPassword?: string;
+    repeatPassword?: string;
 }
 
 interface ILoginFormProps {
@@ -29,6 +31,11 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>("singIn");
     const navigate = useNavigate();
+    const [signMutation, { error, reset }] = mode === "signUp" ? useSignUpMutation() : useSignInMutation();
+
+    useEffect(() => {
+        reset();
+    }, [mode]);
 
     // form handling library react-hook-form with yup validation
     const {
@@ -37,14 +44,31 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         formState: { errors }
     } = useForm({ resolver: yupResolver(mode === "singIn" ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
 
-    const onSubmitHandler: SubmitHandler<IFormData> = data => {
+    const onSubmitHandler: SubmitHandler<IFormData> = formData => {
         // e.preventDefault();
 
-        console.log(data, "clicked");
+        if (!formData.password || !formData.email) return;
+        if (mode === "signUp" && (!formData.username || !formData.repeatPassword)) return;
 
-        console.log(errors.hello, " errors");
+        const variables = mode === "signUp" ? formData : { password: formData.password, email: formData.email };
 
-        navigate("/courses");
+        signMutation({
+            // @ts-ignore this error of incompability makes no sense
+            variables: variables
+        }).then(res => {
+            const data =
+                mode === "signUp" ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;
+
+            if (data.user) navigate("/articles");
+            // if ()
+            // console.log(res, " RES");
+            // console.log(data, " RES data");
+            // if (data.accessToken) sessionStorage.setItem("oat", data.accessToken);
+            // console.log(jwtDecode(data.accessToken), "DECODE");
+            // if (mode === 'signUp' && res.data)
+        });
+
+        // navigate("/courses");
     };
 
     return (
@@ -77,22 +101,22 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 />
             </div>
             <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
+                <Input
+                    withoutLabel
+                    type="text"
+                    register={register("email")}
+                    placeholder="email"
+                    validationMessage={errors.email?.message?.toString()}
+                />
                 {mode === "signUp" && (
                     <Input
                         withoutLabel
+                        validationMessage={errors.username?.message?.toString()}
                         type="text"
-                        register={register("email")}
-                        placeholder="email"
-                        validationMessage={errors.email?.message?.toString()}
+                        register={register("username")}
+                        placeholder="username"
                     />
                 )}
-                <Input
-                    withoutLabel
-                    validationMessage={errors.username?.message?.toString()}
-                    type="text"
-                    register={register("username")}
-                    placeholder="username"
-                />
                 <Input
                     withoutLabel
                     type="password"
@@ -104,9 +128,9 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     <Input
                         withoutLabel
                         type="password"
-                        validationMessage={errors.confirmPassword?.message?.toString()}
-                        register={register("confirmPassword")}
-                        placeholder="confirmPassword"
+                        validationMessage={errors.repeatPassword?.message?.toString()}
+                        register={register("repeatPassword")}
+                        placeholder="repeatPassword"
                     />
                 )}
                 <Button
@@ -115,6 +139,14 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     type="submit"
                     classes={styles.submitBtn}
                 />
+                {error && (
+                    <Header
+                        level={4}
+                        text={error.message}
+                        shouldTranslate={false}
+                        classes={`${globalClasses.validationMessage}`}
+                    />
+                )}
             </form>
             <div className={styles.signUpText}>
                 <hr />

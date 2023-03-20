@@ -390,7 +390,7 @@ const MembershipDialog: React.FC<MembershipDialogProps> = ({ hideFunction }) => 
         </div>
     );
 
-    return <Dialog content={content} hideFunction={hideFunction} />;
+    return <Dialog title="" content={content} hideFunction={hideFunction} />;
 };
 
 export default MembershipDialog;

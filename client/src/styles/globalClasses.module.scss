@@ -12,6 +12,13 @@
     color: var(--color-text-light);
 }
 
+.validationMessage {
+    // padding: 0.3rem 0;
+    font-weight: normal;
+    margin: 0.8rem 0 0;
+    color: var(--color-invalid-dark);
+}
+
 .tooltip {
     position: relative;
     padding: 3px;
@@ -63,11 +70,6 @@
             // transition: opacity 400ms 220ms cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
-}
-
-.validationMessage {
-    padding: 0.3rem 0;
-    color: var(--color-invalid-dark);
 }
 
 .facebook {

@@ -9,6 +9,11 @@
 }
 
 .modal {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+
     min-height: 12rem;
     max-height: 95vh;
     z-index: 20;
@@ -26,12 +31,21 @@
     animation: shadowDrop 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
+.modalTitle {
+    padding: 0;
+    margin: 0.6rem;
+}
+
+.modalContent {
+    padding: 2rem 1rem;
+}
+
 .close {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     position: absolute;
     right: 0;
     top: 0;
-    margin: 0.6rem;
+    margin: 0.7rem;
     color: var(--color-text-dark);
 
     &:hover {
@@ -40,14 +54,14 @@
     }
 }
 
-.submitBtn {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    margin: 0 !important;
-    padding: 0 !important;
-}
+// .submitBtn {
+//     position: fixed;
+//     bottom: 0;
+//     left: 50%;
+//     transform: translateX(-50%) translateY(-50%);
+//     margin: 0 !important;
+//     padding: 0 !important;
+// }
 
 /* ANIMATIONS */
 @keyframes shadowDrop {

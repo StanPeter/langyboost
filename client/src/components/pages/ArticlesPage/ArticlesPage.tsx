@@ -1,11 +1,12 @@
 import MainBody from "components/layouts/MainBody/MainBody";
 import Select from "components/UI/Select/Select";
+import { useGetPhrasesQuery } from "generated/graphql";
 import React from "react";
 import styles from "./articlesPage.module.scss";
 
 interface ArticlesPageProps {}
 
-const data = [
+const DATA = [
     {
         name: "German",
         imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png",
@@ -23,6 +24,17 @@ const data = [
 ];
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {
+    const { data, error } = useGetPhrasesQuery();
+
+    // useEffect(() => {
+    //   con
+
+    // }, [])
+
+    console.log(data, "DATA ACCESSS");
+
+    if (error) alert(error);
+
     return (
         <MainBody>
             <div className={styles.coursesPage}>
@@ -31,8 +43,8 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
                     <Select
                         type="multiselect"
                         useCase="filter"
-                        data={data}
-                        title="Filter by language"
+                        data={DATA}
+                        text="Filter by language"
                         value={["german"]}
                         onChange={() => {}}
                     />

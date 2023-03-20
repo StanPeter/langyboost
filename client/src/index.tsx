@@ -4,9 +4,9 @@ import { createRoot } from "react-dom/client";
 // import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient, ApolloLink, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import { TokenRefreshLink } from "apollo-link-token-refresh";
+// import { TokenRefreshLink } from "apollo-link-token-refresh";
 import App from "App";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 // import { getAccessToken, setAccessToken } from "utils/getToken";
 // import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
@@ -46,46 +46,48 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 //refreshing login after access token expired
-const refreshLink = new TokenRefreshLink({
-    // name of the access token in our response
-    accessTokenField: "accessToken",
-    // if token not yet expired or user doesn't have a token (guest) true should be returned
-    isTokenValidOrUndefined: () => {
-        const token = sessionStorage.getItem("accessToken");
+// const refreshLink = new TokenRefreshLink({
+//     // name of the access token in our response
+//     accessTokenField: "accessToken",
+//     // if token not yet expired or user doesn't have a token (guest) true should be returned
+//     isTokenValidOrUndefined: () => {
+//         console.log("running this");
 
-        if (!token) return true;
+//         const token = sessionStorage.getItem("accessToken");
 
-        try {
-            const { exp }: { exp: number } = jwtDecode(token);
+//         if (!token) return true;
 
-            if (Date.now() >= exp * 1000) return false;
-            return true;
-        } catch {
-            return false;
-        }
-    },
-    //where to send the request
-    fetchAccessToken: () => {
-        return fetch("http://localhost:4000/refreshToken", {
-            method: "POST",
-            credentials: "include"
-        });
-    },
-    //callback after the request
-    handleFetch: accessToken => {
-        sessionStorage.setItem("accessToken", accessToken);
-    },
-    handleError: err => {
-        console.warn("Your refresh token is invalid. Try to relogin");
-        console.error(err);
-    }
-});
+//         try {
+//             const { exp }: { exp: number } = jwtDecode(token);
+
+//             if (Date.now() >= exp * 1000) return false;
+//             return true;
+//         } catch {
+//             return false;
+//         }
+//     },
+//     //where to send the request
+//     fetchAccessToken: () => {
+//         return fetch("http://localhost:4000/refreshToken", {
+//             method: "POST",
+//             credentials: "include"
+//         });
+//     },
+//     //callback after the request
+//     handleFetch: accessToken => {
+//         sessionStorage.setItem("accessToken", accessToken);
+//     },
+//     handleError: err => {
+//         console.warn("Your refresh token is invalid. Try to relogin");
+//         console.error(err);
+//     }
+// });
 
 const cache = new InMemoryCache({});
 
 const client = new ApolloClient({
     // works as a concat of many links
-    link: ApolloLink.from([refreshLink, errorLink, authLink, httpLink]),
+    link: ApolloLink.from([errorLink, authLink, httpLink]),
     cache
 });
 

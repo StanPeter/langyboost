@@ -99,7 +99,6 @@ tsparticles             particle effects library (for landing page)
 
 
 # 5 === Known bugs & things to improve ===
-a) add form library
 b) add Next.js
 c) add testing
 d) connect all current architecture
@@ -127,7 +126,6 @@ responsiveness -> across browsers and screens
 patterns for graphical stuff -> such as margins, font sizes, color pallete etc
 testing -> learn about jest and other testing tools, write a lots of those
 graphql VS rest
-caching how to approach
 advance animations
 deployment via DevOps tools -> learn jenkins, docker, kubernettess, different services like AWS
 working with iFrames and maps

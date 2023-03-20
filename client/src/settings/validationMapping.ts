@@ -19,6 +19,6 @@ export const SING_UP_SCHEMA = yup.object().shape({
 
 // schema for sing in register form
 export const SING_IN_SCHEMA = yup.object().shape({
-    username: yup.string().required(V.required),
+    email: yup.string().email(V.notEmail).required(V.required),
     password: yup.string().required(V.required).matches(passwordExp, { message: V.passwordRegExp })
 });

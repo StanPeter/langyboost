@@ -1,7 +1,8 @@
 import Dialog from "components/UI/Modal/Dialog";
+import Paragraph from "components/UI/Paragraph";
 import React, { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { Outlet, RouteProps } from "react-router-dom";
+import { Outlet, RouteProps, useNavigate } from "react-router-dom";
 
 interface IErrorFallback {
     resetErrorBoundary: (...args: unknown[]) => void;
@@ -11,15 +12,18 @@ interface IErrorFallback {
 
 // fallback on error
 const ErrorFallback: React.FC<IErrorFallback> = ({ error, resetErrorBoundary, showDialog }) => {
-    const content = <div>there was an error: error.message</div>;
+    const navigate = useNavigate();
+
+    const content = <Paragraph shouldTranslate={false} text={error.message} />;
 
     return showDialog ? (
         <Dialog
+            title="UNEXPECTED_ERROR"
             content={content}
             hideFunction={() => {
                 resetErrorBoundary();
             }}
-            submitBtn={{ text: "OK", useCase: "middle" }}
+            submitBtn={{ text: "OK", useCase: "middle", onSubmit: () => navigate(0) }}
         />
     ) : null;
 };

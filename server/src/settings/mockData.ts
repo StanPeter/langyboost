@@ -1,5 +1,5 @@
 // USER mock data
-const testUserData = {
+export const testUserData = {
     id: 155,
     email: "test@gmail.com",
     username: "test",
@@ -11,11 +11,7 @@ const testUserData = {
 };
 
 const signUpMockData = true;
-const signInMockData = testUserData;
-const getUserMockData = testUserData;
 
 export default {
     signUpMockData: signUpMockData,
-    signInMockData: signInMockData,
-    getUserMockData: getUserMockData,
 };
