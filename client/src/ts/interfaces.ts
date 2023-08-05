@@ -1,3 +1,5 @@
+import React from 'react'
+
 export interface SectionStyles {
     membership: React.CSSProperties;
     subscription: React.CSSProperties;
