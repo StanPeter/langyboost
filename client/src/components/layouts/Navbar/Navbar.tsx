@@ -21,7 +21,7 @@ const HAMBURGER_MENU = [
     { text: 'CURRENT_COURSE', url: '/course/current' },
     { text: 'PROFILE', url: '/profile' },
     { text: 'SETTINGS', url: '/settings' },
-    { text: 'SIGN_IN', url: '/auth' },
+    { text: 'SIGN_IN', url: '/auth' }
 ];
 interface NavbarProps {}
 
@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     // on click handler
     const hamburgerClickHandler = () =>
-        new Promise((res) => {
+        new Promise(res => {
             //if changed, set it up in expanded class scss animation too!
             if (expanded)
                 setTimeout(() => {
@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     // Hamburger section (smaller screen)
     const hamburgerSection = expanded ? (
         <ul className={`${styles.expandedNavLinks} ${expandedHelper && styles.expanded}`}>
-            {HAMBURGER_MENU.map((el) => (
+            {HAMBURGER_MENU.map(el => (
                 <Link
                     text={el.text}
                     onClick={async () => {

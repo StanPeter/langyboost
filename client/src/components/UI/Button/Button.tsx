@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
     disabled,
     useCase,
     classes,
-    type = 'button',
+    type = 'button'
 }) => {
     const isDisabled = typeof disabled === 'function' ? disabled() : disabled ?? false;
     const isActive = () => {

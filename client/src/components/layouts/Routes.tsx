@@ -41,7 +41,7 @@ const AppRouter: React.FC = () => {
                                     <div
                                         style={{
                                             padding: '15px',
-                                            textAlign: 'center',
+                                            textAlign: 'center'
                                         }}
                                     >
                                         <Spinner />

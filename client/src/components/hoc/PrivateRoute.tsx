@@ -17,7 +17,7 @@ const PrivateRoute: React.FC<IPrivateRoute> = ({ element }) => {
                     to={'/'}
                     state={{
                         // save the route in case I try it without being logged in
-                        prevRoute: location.pathname,
+                        prevRoute: location.pathname
                     }}
                 />
             )}

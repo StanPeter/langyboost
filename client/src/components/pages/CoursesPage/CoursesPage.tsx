@@ -47,7 +47,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         data={mainCourses}
                         value={[iSpeak]}
-                        onChange={(val) => setISpeak(val)}
+                        onChange={val => setISpeak(val)}
                     />
                     <Select
                         text="WANT_TO_LEARN"
@@ -55,7 +55,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         data={mainCourses}
                         value={[wantToLearn]}
-                        onChange={(val) => setWantToLearn(val)}
+                        onChange={val => setWantToLearn(val)}
                     />
                     <Select
                         text="CHOSEN_COURSE"
@@ -63,7 +63,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         data={mainCourses}
                         value={[chosenCourse]}
-                        onChange={(val) => setChosenCourse(val)}
+                        onChange={val => setChosenCourse(val)}
                     />
                 </div>
                 {/* <div className={styles.btnWrapper}>

@@ -26,7 +26,7 @@ const Select: React.FC<MultiselectProps> = ({
     value,
     type,
     onChange = () => {},
-    withoutLabel,
+    withoutLabel
 }) => {
     /* HOOKS */
     const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
@@ -53,7 +53,7 @@ const Select: React.FC<MultiselectProps> = ({
 
     const deleteItemHandler = (itemVal: string) => {
         if (type === 'multiselect') {
-            const newValue = multiselectValue.filter((value) => value !== itemVal);
+            const newValue = multiselectValue.filter(value => value !== itemVal);
             setMultiselectValue(newValue);
             onChange(newValue);
         } else {
@@ -108,13 +108,13 @@ const Select: React.FC<MultiselectProps> = ({
                     >
                         <div className={styles.valueWrapper}>
                             {data
-                                .filter((el) => multiselectValue.includes(el.value))
+                                .filter(el => multiselectValue.includes(el.value))
                                 .map((el, i) => (
                                     <div
                                         className={styles.value}
                                         key={i}
                                         id={el.value}
-                                        onClick={(e) => deleteItemHandler(e.currentTarget.id)}
+                                        onClick={e => deleteItemHandler(e.currentTarget.id)}
                                     >
                                         {valueBuilder(el)}
                                     </div>
@@ -135,7 +135,7 @@ const Select: React.FC<MultiselectProps> = ({
                         return (
                             <div
                                 key={i}
-                                onClick={(d) => {
+                                onClick={d => {
                                     if (type === 'singleselect') setDropdownHidden(true);
                                     addItemHandler(d.currentTarget.id);
                                 }}

@@ -14,8 +14,8 @@ const loginApi = async (username: string, password: string, lang: string) => {
         data: {
             username,
             password,
-            lang,
-        },
+            lang
+        }
     });
     return resp.data.token;
 };

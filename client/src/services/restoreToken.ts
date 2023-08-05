@@ -6,7 +6,7 @@ import axios from 'axios';
 const restoreTokenApi = () => {
     return axios({
         method: 'GET',
-        url: 'apiPaths.RESTORE_TOKEN',
+        url: 'apiPaths.RESTORE_TOKEN'
     });
 };
 

@@ -17,7 +17,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
     };
 
     const particlesLoaded = async (container: any) => {
-        console.log(container, ' Particle loaded')
+        console.log(container, ' Particle loaded');
     };
 
     return (

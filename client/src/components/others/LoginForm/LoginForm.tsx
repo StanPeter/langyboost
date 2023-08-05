@@ -41,10 +41,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const {
         handleSubmit,
         register,
-        formState: { errors },
+        formState: { errors }
     } = useForm({ resolver: yupResolver(mode === 'singIn' ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
 
-    const onSubmitHandler: SubmitHandler<IFormData> = (formData) => {
+    const onSubmitHandler: SubmitHandler<IFormData> = formData => {
         // e.preventDefault();
 
         if (!formData.password || !formData.email) return;
@@ -54,8 +54,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
 
         signMutation({
             // @ts-ignore this error of incompability makes no sense
-            variables: variables,
-        }).then((res) => {
+            variables: variables
+        }).then(res => {
             const data =
                 mode === 'signUp' ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;
 

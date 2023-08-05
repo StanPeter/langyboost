@@ -6,7 +6,7 @@
 /* BREAKPOINTS  */
 
 /* IMPORTS */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* GLOBAL VARIABLES */
 :root {
@@ -72,10 +72,12 @@ body {
     bottom: 0;
     right: 0;
     position: absolute;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-section, form, header {
+section,
+form,
+header {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -83,7 +85,8 @@ section, form, header {
     align-items: center;
 }
 
-button, a {
+button,
+a {
     &:hover {
         cursor: pointer;
     }

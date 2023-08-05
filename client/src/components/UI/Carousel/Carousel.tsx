@@ -18,7 +18,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
 
     useEffect(() => {
         if (value !== chosenValue?.value) {
-            const possibleValues = data.map((d) => d.value);
+            const possibleValues = data.map(d => d.value);
             if (possibleValues.includes(value)) onSwitchHandler(null, value);
             else setChosenValue(null);
         }
@@ -73,7 +73,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
             data[getItemIndex(chosenIndex, 1, 'left')],
             data[chosenIndex],
             data[getItemIndex(chosenIndex, 1, 'right')],
-            data[getItemIndex(chosenIndex, 2, 'right')],
+            data[getItemIndex(chosenIndex, 2, 'right')]
         ];
 
         setAnimate(true);

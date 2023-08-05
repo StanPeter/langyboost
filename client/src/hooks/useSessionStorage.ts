@@ -36,7 +36,7 @@ function useStorage<T>(key: string, initialValue: T, useCase: 'session' | 'local
     // Return a wrapped version of useState's setter function that ...
     // ... persists the new value to sessionStorage.
     // @ts-ignore
-    const setValue: SetValue<T> = useEventCallback((value) => {
+    const setValue: SetValue<T> = useEventCallback(value => {
         // Prevent build error "window is undefined" but keeps working
         if (typeof window == 'undefined') {
             console.warn(`Tried setting ${useCase} storage key “${key}” even though environment is not a client`);

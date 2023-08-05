@@ -5,8 +5,8 @@
 }
 
 .appWrapper::after {
-    content: "";
-    background-image: url("../../../assets/images/bgPicture.jpg");
+    content: '';
+    background-image: url('../../../assets/images/bgPicture.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.6;

@@ -66,7 +66,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         useCase="form"
                         data={[
                             { name: 'Turned off', value: 'off' },
-                            { name: 'Turned on', value: 'on' },
+                            { name: 'Turned on', value: 'on' }
                         ]}
                     />
                     <Select
@@ -78,7 +78,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         data={[
                             { name: 'Lingo(default)', value: 'lingo' },
                             { name: 'Dark', value: 'dark' },
-                            { name: 'Halloween', value: 'halloween' },
+                            { name: 'Halloween', value: 'halloween' }
                         ]}
                     />
                     <ButtonSelect
@@ -96,7 +96,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         data={[
                             { name: 'en', value: 'en' },
                             { name: 'ge', value: 'ge' },
-                            { name: 'es', value: 'es' },
+                            { name: 'es', value: 'es' }
                         ]}
                     />
                     <Input text="PASSWORD" type="text" />

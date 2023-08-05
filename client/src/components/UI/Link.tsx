@@ -14,7 +14,7 @@ interface ILink {
 const style = {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
 };
 
 const Link: React.FC<ILink> = ({
@@ -23,7 +23,7 @@ const Link: React.FC<ILink> = ({
     whiteText,
     children,
     classes = '',
-    hyperlinkClasses = '',
+    hyperlinkClasses = ''
 }) => {
     if (children)
         return (

@@ -13,7 +13,7 @@ type IconName = 'thumbsDown' | 'thumbsUp';
 const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
     setHidetranslation,
     setAnimationChangeCard,
-    noMorePhrases,
+    noMorePhrases
 }) => {
     const [hideContinue, setHideContinue] = useState(true);
 
@@ -44,14 +44,14 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
     return (
         <div className={styles.controls}>
             {hideContinue && !noMorePhrases ? (
-                <div className={styles.controlThumbsDown} onClick={(e) => onClickHandler(e, 'thumbsDown')}>
+                <div className={styles.controlThumbsDown} onClick={e => onClickHandler(e, 'thumbsDown')}>
                     <i>
                         <FiThumbsDown />
                     </i>
                 </div>
             ) : null}
             {hideContinue && !noMorePhrases ? (
-                <div className={styles.controlThumbsUp} onClick={(e) => onClickHandler(e, 'thumbsUp')}>
+                <div className={styles.controlThumbsUp} onClick={e => onClickHandler(e, 'thumbsUp')}>
                     <div>
                         <i>
                             <FiThumbsUp />

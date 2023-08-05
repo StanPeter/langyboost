@@ -23,7 +23,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
     onClick,
     styleInput,
     useCase,
-    withoutLabel,
+    withoutLabel
 }) => {
     const finalValue =
         type === 'button' ? (

@@ -35,7 +35,7 @@ const ErrorBoundaryHoc: React.FC<IErrorBoundary> = ({ element }) => {
 
     return (
         <ErrorBoundary
-            FallbackComponent={(props) => ErrorFallback({ ...props, showDialog: showDialog })}
+            FallbackComponent={props => ErrorFallback({ ...props, showDialog: showDialog })}
             onReset={() => {
                 console.log('RESET');
                 setShowDialog(false);

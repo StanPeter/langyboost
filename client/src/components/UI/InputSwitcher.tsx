@@ -25,7 +25,7 @@ const InputSwitcher: React.FC<InputProps> = ({
     valueOfButton = ' ',
     styleInput,
     value,
-    onChange,
+    onChange
 }) => {
     //maybe won't be neccesary later on
     // const inputClass = useCase === "form" ? inputStyles.formItem : inputStyles.filterItem;
