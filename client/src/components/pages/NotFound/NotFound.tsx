@@ -1,7 +1,7 @@
-import MainBody from "components/layouts/MainBody/MainBody";
-import Header from "components/UI/Header/Header";
-import React from "react";
-import styles from "./notFound.module.scss";
+import MainBody from 'components/layouts/MainBody/MainBody';
+import Header from 'components/UI/Header/Header';
+import React from 'react';
+import styles from './notFound.module.scss';
 
 interface NotFoundProps {}
 

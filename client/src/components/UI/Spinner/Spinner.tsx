@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./spinner.module.scss";
+import React from 'react';
+import styles from './spinner.module.scss';
 
 interface SpinnerProps {}
 

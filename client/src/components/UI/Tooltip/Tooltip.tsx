@@ -1,6 +1,6 @@
-import React from "react";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
-import globalClasses from "styles/globalClasses.module.scss";
+import React from 'react';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
+import globalClasses from 'styles/globalClasses.module.scss';
 
 interface TooltipInterface {}
 

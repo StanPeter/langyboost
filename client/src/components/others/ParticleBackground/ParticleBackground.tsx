@@ -1,14 +1,14 @@
-import landingPageStyles from "components/pages/LandingPage/landingPage.module.scss";
-import React from "react";
-import Particles from "react-tsparticles";
-import { particleConfig } from "settings/particleConfig";
-import { loadFull } from "tsparticles";
+import landingPageStyles from 'components/pages/LandingPage/landingPage.module.scss';
+import React from 'react';
+import Particles from 'react-tsparticles';
+import { particleConfig } from 'settings/particleConfig';
+import { loadFull } from 'tsparticles';
 
 interface ParticleBackgroundProps {}
 
 const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
     const particlesInit = async (main: any) => {
-        console.log(main, " initializing");
+        console.log(main, ' initializing');
 
         // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
         // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -17,7 +17,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
     };
 
     const particlesLoaded = async (container: any) => {
-        console.log(container, " Particle loaded");
+        console.log(container, ' Particle loaded');
     };
 
     return (

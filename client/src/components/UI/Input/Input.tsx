@@ -1,10 +1,10 @@
-import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
-import TranslateText from "components/hoc/TranslateText";
-import React, { SetStateAction, useEffect, useState } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
-import globalClasses from "styles/globalClasses.module.scss";
-import { TInputType, TInputUsecase } from "ts/types";
-import styles from "./input.module.scss";
+import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
+import TranslateText from 'components/hoc/TranslateText';
+import React, { SetStateAction, useEffect, useState } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import globalClasses from 'styles/globalClasses.module.scss';
+import { TInputType, TInputUsecase } from 'ts/types';
+import styles from './input.module.scss';
 
 interface IInputProps {
     name?: string;
@@ -37,7 +37,7 @@ const Input: React.FC<IInputProps> = ({
     ref,
     classes,
     validationMessage,
-    useCase = "form"
+    useCase = 'form',
 }) => {
     const [isToutched, setIsTouched] = useState(false);
 
@@ -65,9 +65,9 @@ const Input: React.FC<IInputProps> = ({
     return (
         <InputWrapper validationMessage={validationMessage} useCase={useCase} classes={classes}>
             {!withoutLabel && (
-                <div className={`${useCase === "form" ? globalClasses.formLabel : globalClasses.filterLabel}`}>
+                <div className={`${useCase === 'form' ? globalClasses.formLabel : globalClasses.filterLabel}`}>
                     <label style={styleInput} htmlFor={register?.name || name}>
-                        <TranslateText>{text || ""}</TranslateText>
+                        <TranslateText>{text || ''}</TranslateText>
                     </label>
                 </div>
             )}
@@ -76,9 +76,9 @@ const Input: React.FC<IInputProps> = ({
                 onFocus={onFocus}
                 placeholder={placeholder}
                 onBlur={onBlur}
-                className={`${withoutLabel ? styles.withoutLabel : ""} ${
-                    validationMessage ? styles.invalidInput : ""
-                } ${isToutched ? styles.touched : ""} `}
+                className={`${withoutLabel ? styles.withoutLabel : ''} ${
+                    validationMessage ? styles.invalidInput : ''
+                } ${isToutched ? styles.touched : ''} `}
                 type={type}
                 value={value}
                 onChange={onChangeHandler}

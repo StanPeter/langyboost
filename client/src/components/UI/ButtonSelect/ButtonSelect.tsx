@@ -1,14 +1,14 @@
-import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
-import TranslateText from "components/hoc/TranslateText";
-import globalClasses from "styles/globalClasses.module.scss";
-import React, { FormEvent } from "react";
-import { TInputUsecase } from "ts/types";
-import Button from "../Button/Button";
-import styles from "./buttonSelect.module.scss";
+import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
+import TranslateText from 'components/hoc/TranslateText';
+import globalClasses from 'styles/globalClasses.module.scss';
+import React, { FormEvent } from 'react';
+import { TInputUsecase } from 'ts/types';
+import Button from '../Button/Button';
+import styles from './buttonSelect.module.scss';
 
 interface ButtonSelectProps {
     text: string;
-    type: "button" | "image";
+    type: 'button' | 'image';
     value: string; //title for the button or the image src name
     onClick?: Function;
     styleInput?: object;
@@ -23,10 +23,10 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
     onClick,
     styleInput,
     useCase,
-    withoutLabel
+    withoutLabel,
 }) => {
     const finalValue =
-        type === "button" ? (
+        type === 'button' ? (
             <Button
                 useCase="small"
                 text={value}

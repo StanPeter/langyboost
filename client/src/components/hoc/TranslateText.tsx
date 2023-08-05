@@ -1,7 +1,7 @@
-import { useSelectorApp } from "hooks/common";
-import React from "react";
-import { ERRORS } from "settings/errors";
-import english from "settings/languages/english.json";
+import { useSelectorApp } from 'hooks/common';
+import React from 'react';
+import { ERRORS } from 'settings/errors';
+import english from 'settings/languages/english.json';
 
 interface ILanguageObject {
     [key: string]: string;
@@ -10,7 +10,7 @@ interface ILanguageObject {
 // for now only supports English
 const getLanguageObject = (lang: string): ILanguageObject => {
     switch (lang) {
-        case "en":
+        case 'en':
             return english;
         default:
             return {};

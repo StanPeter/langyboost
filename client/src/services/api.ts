@@ -1,4 +1,4 @@
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction, Dispatch } from 'redux';
 
 // const DEFAULT_VALUES = {
 //     pageSize: 50
@@ -33,6 +33,6 @@ export const getAvailableCourses = async (dispatch: Dispatch<AnyAction>, { xx, m
 
     console.log(xx);
 
-    return "";
+    return '';
     // return { data: data.body?.foundVATnumbers as Params[], error: data.error };
 };

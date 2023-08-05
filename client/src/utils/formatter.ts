@@ -4,12 +4,12 @@
  * @returns formatted datetime in Client format e.g. 25.11.2022 10:32:43
  */
 export const apiDateTimeToDateTime = (date: string) => {
-    if (!date) return "";
+    if (!date) return '';
 
     const out = new Date(date);
 
     if (out instanceof Date) {
-        const format = (val: number) => (val?.toString().length === 2 ? val?.toString() : "0" + val?.toString());
+        const format = (val: number) => (val?.toString().length === 2 ? val?.toString() : '0' + val?.toString());
         const hours = format(out.getHours());
         const minutes = format(out.getMinutes());
         const seconds = format(out.getSeconds());
@@ -19,5 +19,5 @@ export const apiDateTimeToDateTime = (date: string) => {
         return `${date2}.${month}.${out.getFullYear()} ${hours}:${minutes}:${seconds}`;
     }
 
-    return "";
+    return '';
 };

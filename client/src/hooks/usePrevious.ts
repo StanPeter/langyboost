@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 /**
  * Hook which remembers the previous value of generic type
  * @param value Value to remember

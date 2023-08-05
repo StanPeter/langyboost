@@ -1,7 +1,7 @@
-import TranslateText from "components/hoc/TranslateText";
-import React from "react";
-import { TButtonUseCase } from "ts/types";
-import styles from "./button.module.scss";
+import TranslateText from 'components/hoc/TranslateText';
+import React from 'react';
+import { TButtonUseCase } from 'ts/types';
+import styles from './button.module.scss';
 
 interface ButtonProps {
     text: string;
@@ -11,7 +11,7 @@ interface ButtonProps {
     disabled?: boolean | (() => boolean);
     useCase?: TButtonUseCase;
     classes?: string;
-    type?: "button" | "reset" | "submit";
+    type?: 'button' | 'reset' | 'submit';
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,12 +22,12 @@ const Button: React.FC<ButtonProps> = ({
     disabled,
     useCase,
     classes,
-    type = "button"
+    type = 'button',
 }) => {
-    const isDisabled = typeof disabled === "function" ? disabled() : disabled ?? false;
+    const isDisabled = typeof disabled === 'function' ? disabled() : disabled ?? false;
     const isActive = () => {
         if (isDisabled) return false;
-        else if (typeof active === "undefined" || (typeof active === "function" && active()) || active) return true;
+        else if (typeof active === 'undefined' || (typeof active === 'function' && active()) || active) return true;
 
         return false;
     };
@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
         <button
             type={type}
             onClick={onClick}
-            className={`${buttonClasses.join(" ")} ${classes}`}
+            className={`${buttonClasses.join(' ')} ${classes}`}
             disabled={isDisabled}
             style={{ ...style }}
         >

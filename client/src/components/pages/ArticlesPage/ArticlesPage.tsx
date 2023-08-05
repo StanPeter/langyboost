@@ -1,26 +1,26 @@
-import MainBody from "components/layouts/MainBody/MainBody";
-import Select from "components/UI/Select/Select";
-import { useGetPhrasesQuery } from "generated/graphql";
-import React from "react";
-import styles from "./articlesPage.module.scss";
+import MainBody from 'components/layouts/MainBody/MainBody';
+import Select from 'components/UI/Select/Select';
+import { useGetPhrasesQuery } from 'generated/graphql';
+import React from 'react';
+import styles from './articlesPage.module.scss';
 
 interface ArticlesPageProps {}
 
 const DATA = [
     {
-        name: "German",
-        imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png",
-        value: "german"
+        name: 'German',
+        imgSrc: 'https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png',
+        value: 'german',
     },
     {
-        name: "Armenian",
-        imgSrc: "https://images.emojiterra.com/twitter/v13.0/512px/1f1e6-1f1e9.png",
-        value: "armenian"
+        name: 'Armenian',
+        imgSrc: 'https://images.emojiterra.com/twitter/v13.0/512px/1f1e6-1f1e9.png',
+        value: 'armenian',
     },
     {
-        name: "aloha",
-        value: "aloha"
-    }
+        name: 'aloha',
+        value: 'aloha',
+    },
 ];
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {
@@ -31,7 +31,7 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
 
     // }, [])
 
-    console.log(data, "DATA ACCESSS");
+    console.log(data, 'DATA ACCESSS');
 
     if (error) alert(error);
 
@@ -45,7 +45,7 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
                         useCase="filter"
                         data={DATA}
                         text="Filter by language"
-                        value={["german"]}
+                        value={['german']}
                         onChange={() => {}}
                     />
                     <div className={styles.coursesFilter}>

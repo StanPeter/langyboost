@@ -1,7 +1,7 @@
-import Footer from "components/layouts/Footer/Footer";
-import Navbar from "components/layouts/Navbar/Navbar";
-import React from "react";
-import styles from "./mainBody.module.scss";
+import Footer from 'components/layouts/Footer/Footer';
+import Navbar from 'components/layouts/Navbar/Navbar';
+import React from 'react';
+import styles from './mainBody.module.scss';
 
 interface MainBodyProps {
     children: React.ReactNode;

@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * @param cb function to be called after the delay
  * @param delay delay to wait for the user to type something and recall the function
- * @returns 
+ * @returns
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const debounce = (cb: (arg: any) => void, delay: number = 500) => {
@@ -18,10 +18,10 @@ export const debounce = (cb: (arg: any) => void, delay: number = 500) => {
 };
 
 /**
- * 
+ *
  * @param cb function to be called after the delay
  * @param delay delay after which the cb is called, keep in mind with throttle it gets tiggered always after the delay (intervals)
- * @returns 
+ * @returns
  */
 export const throttle = (cb: () => void, delay: number = 500) => {
     let shouldWait: boolean = false;

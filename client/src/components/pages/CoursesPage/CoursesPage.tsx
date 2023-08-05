@@ -1,28 +1,28 @@
-import MainBody from "components/layouts/MainBody/MainBody";
-import Button from "components/UI/Button/Button";
-import Carousel from "components/UI/Carousel/Carousel";
-import Header from "components/UI/Header/Header";
-import Select from "components/UI/Select/Select";
-import Separator from "components/UI/Separator/Separator";
-import React, { useEffect, useState } from "react";
-import { betaCourses, customCourses, mainCourses } from "settings/mockData";
-import globalClasses from "styles/globalClasses.module.scss";
-import styles from "./cousesPage.module.scss";
+import MainBody from 'components/layouts/MainBody/MainBody';
+import Button from 'components/UI/Button/Button';
+import Carousel from 'components/UI/Carousel/Carousel';
+import Header from 'components/UI/Header/Header';
+import Select from 'components/UI/Select/Select';
+import Separator from 'components/UI/Separator/Separator';
+import React, { useEffect, useState } from 'react';
+import { betaCourses, customCourses, mainCourses } from 'settings/mockData';
+import globalClasses from 'styles/globalClasses.module.scss';
+import styles from './cousesPage.module.scss';
 
 interface CoursesPageProps {}
 
 const CoursesPage: React.FC<CoursesPageProps> = () => {
     /* HOOKS */
-    const [iSpeak, setISpeak] = useState<string>("");
-    const [wantToLearn, setWantToLearn] = useState<string>("");
-    const [chosenCourse, setChosenCourse] = useState<string>("");
+    const [iSpeak, setISpeak] = useState<string>('');
+    const [wantToLearn, setWantToLearn] = useState<string>('');
+    const [chosenCourse, setChosenCourse] = useState<string>('');
     const [_windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        window.addEventListener("resize", handleWindowResize);
+        window.addEventListener('resize', handleWindowResize);
 
         return () => {
-            window.removeEventListener("resize", handleWindowResize);
+            window.removeEventListener('resize', handleWindowResize);
         };
     }, []);
 
@@ -32,7 +32,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
 
     // const btnDisabled = () => (iSpeak && wantToLearn && chosenCourse ? false : true);
 
-    console.log("rerendering");
+    console.log('rerendering');
 
     return (
         <MainBody>
@@ -47,7 +47,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         data={mainCourses}
                         value={[iSpeak]}
-                        onChange={val => setISpeak(val)}
+                        onChange={(val) => setISpeak(val)}
                     />
                     <Select
                         text="WANT_TO_LEARN"
@@ -55,7 +55,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         data={mainCourses}
                         value={[wantToLearn]}
-                        onChange={val => setWantToLearn(val)}
+                        onChange={(val) => setWantToLearn(val)}
                     />
                     <Select
                         text="CHOSEN_COURSE"
@@ -63,7 +63,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         useCase="filter"
                         data={mainCourses}
                         value={[chosenCourse]}
-                        onChange={val => setChosenCourse(val)}
+                        onChange={(val) => setChosenCourse(val)}
                     />
                 </div>
                 {/* <div className={styles.btnWrapper}>

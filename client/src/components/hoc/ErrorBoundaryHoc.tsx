@@ -1,8 +1,8 @@
-import Dialog from "components/UI/Modal/Dialog";
-import Paragraph from "components/UI/Paragraph";
-import React, { useState } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import { Outlet, RouteProps, useNavigate } from "react-router-dom";
+import Dialog from 'components/UI/Modal/Dialog';
+import Paragraph from 'components/UI/Paragraph';
+import React, { useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { Outlet, RouteProps, useNavigate } from 'react-router-dom';
 
 interface IErrorFallback {
     resetErrorBoundary: (...args: unknown[]) => void;
@@ -23,7 +23,7 @@ const ErrorFallback: React.FC<IErrorFallback> = ({ error, resetErrorBoundary, sh
             hideFunction={() => {
                 resetErrorBoundary();
             }}
-            submitBtn={{ text: "OK", useCase: "middle", onSubmit: () => navigate(0) }}
+            submitBtn={{ text: 'OK', useCase: 'middle', onSubmit: () => navigate(0) }}
         />
     ) : null;
 };
@@ -35,9 +35,9 @@ const ErrorBoundaryHoc: React.FC<IErrorBoundary> = ({ element }) => {
 
     return (
         <ErrorBoundary
-            FallbackComponent={props => ErrorFallback({ ...props, showDialog: showDialog })}
+            FallbackComponent={(props) => ErrorFallback({ ...props, showDialog: showDialog })}
             onReset={() => {
-                console.log("RESET");
+                console.log('RESET');
                 setShowDialog(false);
             }}
             onError={() => setShowDialog(true)}

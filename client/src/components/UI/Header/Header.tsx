@@ -1,6 +1,6 @@
-import TranslateText from "components/hoc/TranslateText";
-import React from "react";
-import globalClasses from "styles/globalClasses.module.scss";
+import TranslateText from 'components/hoc/TranslateText';
+import React from 'react';
+import globalClasses from 'styles/globalClasses.module.scss';
 
 interface IHeader {
     text: string;

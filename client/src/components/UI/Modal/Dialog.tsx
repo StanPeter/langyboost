@@ -1,10 +1,10 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import { AiOutlineClose } from "react-icons/ai";
-import { TButtonUseCase } from "ts/types";
-import Button from "../Button/Button";
-import Header from "../Header/Header";
-import styles from "./dialog.module.scss";
+import React from 'react';
+import { createPortal } from 'react-dom';
+import { AiOutlineClose } from 'react-icons/ai';
+import { TButtonUseCase } from 'ts/types';
+import Button from '../Button/Button';
+import Header from '../Header/Header';
+import styles from './dialog.module.scss';
 
 interface DialogProps {
     hideFunction: Function;
@@ -48,8 +48,8 @@ const ModalOverlay: React.FC<DialogProps> = ({ content, hideFunction, submitBtn,
 const Dialog: React.FC<DialogProps> = (props: DialogProps) => {
     return (
         <React.Fragment>
-            {createPortal(<Backdrop {...props} />, document.getElementById("backdrop")!)}
-            {createPortal(<ModalOverlay {...props} />, document.getElementById("modal-overlay")!)}
+            {createPortal(<Backdrop {...props} />, document.getElementById('backdrop')!)}
+            {createPortal(<ModalOverlay {...props} />, document.getElementById('modal-overlay')!)}
         </React.Fragment>
     );
 };

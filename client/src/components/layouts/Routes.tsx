@@ -1,11 +1,11 @@
 // Componenty
-import ErrorBoundaryHoc from "components/hoc/ErrorBoundaryHoc";
-import NotFound from "components/pages/NotFound/NotFound";
+import ErrorBoundaryHoc from 'components/hoc/ErrorBoundaryHoc';
+import NotFound from 'components/pages/NotFound/NotFound';
 // objekt s routama
-import Spinner from "components/UI/Spinner/Spinner";
-import React, { Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { routeMapa } from "settings/routeMap";
+import Spinner from 'components/UI/Spinner/Spinner';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { routeMapa } from 'settings/routeMap';
 
 const AppRouter: React.FC = () => {
     // useEffect(() => {
@@ -31,7 +31,7 @@ const AppRouter: React.FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route element={<ErrorBoundaryHoc />}>
-                    <Route path={"*"} element={<NotFound />} />
+                    <Route path={'*'} element={<NotFound />} />
                     {routeMapa().map((route, index: number) => {
                         const RouteComponent = route.component;
                         // wrap components with Spinner until they load properly
@@ -40,8 +40,8 @@ const AppRouter: React.FC = () => {
                                 fallback={
                                     <div
                                         style={{
-                                            padding: "15px",
-                                            textAlign: "center"
+                                            padding: '15px',
+                                            textAlign: 'center',
                                         }}
                                     >
                                         <Spinner />

@@ -1,18 +1,18 @@
-import InputWrapper from "components/hoc/InputWrapper/InputWrapper";
-import TranslateText from "components/hoc/TranslateText";
-import React, { SetStateAction, useEffect, useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import globalClasses from "styles/globalClasses.module.scss";
-import { MultiselectItem } from "ts/interfaces";
-import { TInputUsecase } from "ts/types";
-import styles from "./select.module.scss";
+import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
+import TranslateText from 'components/hoc/TranslateText';
+import React, { SetStateAction, useEffect, useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import globalClasses from 'styles/globalClasses.module.scss';
+import { MultiselectItem } from 'ts/interfaces';
+import { TInputUsecase } from 'ts/types';
+import styles from './select.module.scss';
 
 interface MultiselectProps {
     text: string;
     data: MultiselectItem[];
     value: string[];
     useCase: TInputUsecase; //whether is used inside a filter or a form
-    type: "multiselect" | "singleselect";
+    type: 'multiselect' | 'singleselect';
     styleInput?: object;
     onChange?: (d: any) => SetStateAction<any>;
     withoutLabel?: boolean;
@@ -26,7 +26,7 @@ const Select: React.FC<MultiselectProps> = ({
     value,
     type,
     onChange = () => {},
-    withoutLabel
+    withoutLabel,
 }) => {
     /* HOOKS */
     const [multiselectValue, setMultiselectValue] = useState<string[]>([]);
@@ -41,7 +41,7 @@ const Select: React.FC<MultiselectProps> = ({
     const addItemHandler = (itemVal: string) => {
         if (multiselectValue.includes(itemVal)) return;
 
-        if (type === "multiselect") {
+        if (type === 'multiselect') {
             const newValue = [...multiselectValue, itemVal];
             setMultiselectValue(newValue);
             onChange(newValue);
@@ -52,8 +52,8 @@ const Select: React.FC<MultiselectProps> = ({
     };
 
     const deleteItemHandler = (itemVal: string) => {
-        if (type === "multiselect") {
-            const newValue = multiselectValue.filter(value => value !== itemVal);
+        if (type === 'multiselect') {
+            const newValue = multiselectValue.filter((value) => value !== itemVal);
             setMultiselectValue(newValue);
             onChange(newValue);
         } else {
@@ -64,7 +64,7 @@ const Select: React.FC<MultiselectProps> = ({
 
     /* ADDING STYLES */
     const addTypeClass = (inputClass: string) =>
-        `${inputClass} ${useCase === "form" ? styles.formType : styles.filterType}`;
+        `${inputClass} ${useCase === 'form' ? styles.formType : styles.filterType}`;
 
     // const inputBorderRadius = () => {
     //     if (dropdownHidden) return "0 5px 5px 0"; //dropdown not shown
@@ -73,7 +73,7 @@ const Select: React.FC<MultiselectProps> = ({
     // };
 
     const valueBuilder = (el: MultiselectItem) => {
-        if (el.imgSrc && type === "singleselect")
+        if (el.imgSrc && type === 'singleselect')
             return (
                 <React.Fragment>
                     {el.name} <img src={el.imgSrc} alt="" />
@@ -94,8 +94,8 @@ const Select: React.FC<MultiselectProps> = ({
                         <label
                             style={styleInput}
                             className={`${
-                                useCase === "filter" ? globalClasses.filterLabel : globalClasses.formLabel
-                            } ${addTypeClass("")}`}
+                                useCase === 'filter' ? globalClasses.filterLabel : globalClasses.formLabel
+                            } ${addTypeClass('')}`}
                             htmlFor=""
                         >
                             <TranslateText>{text}</TranslateText>
@@ -104,17 +104,17 @@ const Select: React.FC<MultiselectProps> = ({
                     <div
                         // onClick={() => setDropdownHidden(!dropdownHidden)}
                         // style={{ borderRadius: inputBorderRadius() }}
-                        className={`${addTypeClass(styles.input)} ${!dropdownHidden ? styles.dropdownShown : ""}`}
+                        className={`${addTypeClass(styles.input)} ${!dropdownHidden ? styles.dropdownShown : ''}`}
                     >
                         <div className={styles.valueWrapper}>
                             {data
-                                .filter(el => multiselectValue.includes(el.value))
+                                .filter((el) => multiselectValue.includes(el.value))
                                 .map((el, i) => (
                                     <div
                                         className={styles.value}
                                         key={i}
                                         id={el.value}
-                                        onClick={e => deleteItemHandler(e.currentTarget.id)}
+                                        onClick={(e) => deleteItemHandler(e.currentTarget.id)}
                                     >
                                         {valueBuilder(el)}
                                     </div>
@@ -125,18 +125,18 @@ const Select: React.FC<MultiselectProps> = ({
                         </div>
                     </div>
                 </div>
-                <div className={`${styles.dropdown} ${addTypeClass("")} ${!dropdownHidden ? styles.dropdownOpen : ""}`}>
+                <div className={`${styles.dropdown} ${addTypeClass('')} ${!dropdownHidden ? styles.dropdownOpen : ''}`}>
                     {data.map((el, i) => {
                         if (!el.name && !el.imgSrc) {
-                            console.log("No parameter for multiselect was passed!");
+                            console.log('No parameter for multiselect was passed!');
                             return null;
                         }
 
                         return (
                             <div
                                 key={i}
-                                onClick={d => {
-                                    if (type === "singleselect") setDropdownHidden(true);
+                                onClick={(d) => {
+                                    if (type === 'singleselect') setDropdownHidden(true);
                                     addItemHandler(d.currentTarget.id);
                                 }}
                                 className={styles.dropdownItemWrapper}

@@ -1,6 +1,6 @@
-import React from "react";
-import { TSeparatorUseCase } from "ts/types";
-import styles from "./separator.module.scss";
+import React from 'react';
+import { TSeparatorUseCase } from 'ts/types';
+import styles from './separator.module.scss';
 
 interface ISeparator {
     style?: object;
@@ -11,9 +11,9 @@ interface ISeparator {
 const Separator: React.FC<ISeparator> = ({ style, useCase, classes }) => {
     let useCaseClasses: string[] = [];
 
-    if (useCase === "fullHorizontal") useCaseClasses.push(styles.fullHorizontal);
+    if (useCase === 'fullHorizontal') useCaseClasses.push(styles.fullHorizontal);
 
-    return <hr className={`${classes} ${useCaseClasses.join(" ")}`} style={style} />;
+    return <hr className={`${classes} ${useCaseClasses.join(' ')}`} style={style} />;
 };
 
 export default Separator;

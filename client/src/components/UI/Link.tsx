@@ -1,6 +1,6 @@
-import TranslateText from "components/hoc/TranslateText";
-import React from "react";
-import globalClasses from "styles/globalClasses.module.scss";
+import TranslateText from 'components/hoc/TranslateText';
+import React from 'react';
+import globalClasses from 'styles/globalClasses.module.scss';
 
 interface ILink {
     text?: string;
@@ -12,22 +12,22 @@ interface ILink {
 }
 
 const style = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 };
 
 const Link: React.FC<ILink> = ({
-    text = "",
+    text = '',
     onClick = () => {},
     whiteText,
     children,
-    classes = "",
-    hyperlinkClasses = ""
+    classes = '',
+    hyperlinkClasses = '',
 }) => {
     if (children)
         return (
-            <li className={`${classes} ${whiteText ? globalClasses.whiteText : ""}`}>
+            <li className={`${classes} ${whiteText ? globalClasses.whiteText : ''}`}>
                 <a onClick={onClick} style={style} className={hyperlinkClasses}>
                     {children}
                 </a>
@@ -35,7 +35,7 @@ const Link: React.FC<ILink> = ({
         );
 
     return (
-        <li onClick={onClick} className={`${classes} ${whiteText ? globalClasses.whiteText : ""}`}>
+        <li onClick={onClick} className={`${classes} ${whiteText ? globalClasses.whiteText : ''}`}>
             <a onClick={onClick} className={hyperlinkClasses}>
                 <TranslateText>{text}</TranslateText>
             </a>

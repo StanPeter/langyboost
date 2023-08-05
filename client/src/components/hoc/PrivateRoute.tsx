@@ -1,12 +1,12 @@
-import React from "react";
-import { Navigate, RouteProps } from "react-router-dom";
+import React from 'react';
+import { Navigate, RouteProps } from 'react-router-dom';
 
 // NOT IMPLEMENTED YET
 
 interface IPrivateRoute extends RouteProps {}
 /* Pirvate route (through token) */
 const PrivateRoute: React.FC<IPrivateRoute> = ({ element }) => {
-    const token = "token";
+    const token = 'token';
 
     return (
         <>
@@ -14,10 +14,10 @@ const PrivateRoute: React.FC<IPrivateRoute> = ({ element }) => {
                 element
             ) : (
                 <Navigate
-                    to={"/"}
+                    to={'/'}
                     state={{
                         // save the route in case I try it without being logged in
-                        prevRoute: location.pathname
+                        prevRoute: location.pathname,
                     }}
                 />
             )}

@@ -1,9 +1,9 @@
-import Link from "components/UI/Link";
-import Paragraph from "components/UI/Paragraph";
-import React from "react";
-import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { useNavigate } from "react-router";
-import styles from "./footer.module.scss";
+import Link from 'components/UI/Link';
+import Paragraph from 'components/UI/Paragraph';
+import React from 'react';
+import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { useNavigate } from 'react-router';
+import styles from './footer.module.scss';
 
 interface FooterProps {}
 
@@ -41,7 +41,7 @@ const Footer: React.FC<FooterProps> = () => {
             </ul>
             <div className={styles.copyright}>
                 <Paragraph text="COPYRIGHT" />
-                <a onClick={() => navigate("/termsConditions")} href="">
+                <a onClick={() => navigate('/termsConditions')} href="">
                     {new Date().getFullYear().toString()}
                 </a>
                 <Paragraph text="ALL_RIGHTS_RESERVED" />

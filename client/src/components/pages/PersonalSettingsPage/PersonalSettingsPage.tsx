@@ -1,17 +1,17 @@
-import ProfilePicture from "assets/images/profilePicture.jpg";
-import MainBody from "components/layouts/MainBody/MainBody";
-import MembershipDialog from "components/others/MembershipDialog/MembershipDialog";
-import Button from "components/UI/Button/Button";
-import ButtonSelect from "components/UI/ButtonSelect/ButtonSelect";
-import Header from "components/UI/Header/Header";
-import Image from "components/UI/Image";
-import Input from "components/UI/Input/Input";
-import Select from "components/UI/Select/Select";
-import React, { useEffect, useState } from "react";
-import { VscEdit } from "react-icons/vsc";
-import styles from "./personalSettingsPage.module.scss";
+import ProfilePicture from 'assets/images/profilePicture.jpg';
+import MainBody from 'components/layouts/MainBody/MainBody';
+import MembershipDialog from 'components/others/MembershipDialog/MembershipDialog';
+import Button from 'components/UI/Button/Button';
+import ButtonSelect from 'components/UI/ButtonSelect/ButtonSelect';
+import Header from 'components/UI/Header/Header';
+import Image from 'components/UI/Image';
+import Input from 'components/UI/Input/Input';
+import Select from 'components/UI/Select/Select';
+import React, { useEffect, useState } from 'react';
+import { VscEdit } from 'react-icons/vsc';
+import styles from './personalSettingsPage.module.scss';
 
-type ModeTypes = "profile" | "settings";
+type ModeTypes = 'profile' | 'settings';
 
 interface PersonalSettingsPageProps {
     routeMode?: ModeTypes;
@@ -19,7 +19,7 @@ interface PersonalSettingsPageProps {
 
 const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }) => {
     const [profileImgClass, setProfileImgClass] = useState(styles.imgOpacityLeave);
-    const [mode, setMode] = useState<ModeTypes>("profile");
+    const [mode, setMode] = useState<ModeTypes>('profile');
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
         </React.Fragment>
     );
 
-    if (mode === "settings")
+    if (mode === 'settings')
         renderedSection = (
             <React.Fragment>
                 <form className={styles.settingsForm} action="">
@@ -65,8 +65,8 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         type="singleselect"
                         useCase="form"
                         data={[
-                            { name: "Turned off", value: "off" },
-                            { name: "Turned on", value: "on" }
+                            { name: 'Turned off', value: 'off' },
+                            { name: 'Turned on', value: 'on' },
                         ]}
                     />
                     <Select
@@ -76,9 +76,9 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         type="singleselect"
                         useCase="form"
                         data={[
-                            { name: "Lingo(default)", value: "lingo" },
-                            { name: "Dark", value: "dark" },
-                            { name: "Halloween", value: "halloween" }
+                            { name: 'Lingo(default)', value: 'lingo' },
+                            { name: 'Dark', value: 'dark' },
+                            { name: 'Halloween', value: 'halloween' },
                         ]}
                     />
                     <ButtonSelect
@@ -94,14 +94,14 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         type="singleselect"
                         useCase="form"
                         data={[
-                            { name: "en", value: "en" },
-                            { name: "ge", value: "ge" },
-                            { name: "es", value: "es" }
+                            { name: 'en', value: 'en' },
+                            { name: 'ge', value: 'ge' },
+                            { name: 'es', value: 'es' },
                         ]}
                     />
                     <Input text="PASSWORD" type="text" />
                     <Input text="NEW_PASSWORD" type="text" />
-                    <Input text="REPEAT_NEW_PASSWORD" styleInput={{ fontSize: "12px" }} type="text" />
+                    <Input text="REPEAT_NEW_PASSWORD" styleInput={{ fontSize: '12px' }} type="text" />
                     <Input text="BANK_DETAILS" type="text" />
                     <Button text="SAVE_CHANGES" onClick={() => {}} active={true} useCase="big" />
                 </form>
@@ -116,23 +116,23 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                     <div className={styles.settingsButtons}>
                         <Button
                             text="MY_PROFILE"
-                            active={mode === "profile"}
+                            active={mode === 'profile'}
                             classes={styles.btnMenuLeft}
                             useCase="fullLine"
-                            onClick={() => setMode("profile")}
+                            onClick={() => setMode('profile')}
                         />
                         <Button
                             text="MY_SETTINGS"
                             classes={styles.btnMenuRight}
-                            active={mode === "settings"}
+                            active={mode === 'settings'}
                             useCase="fullLine"
-                            onClick={() => setMode("settings")}
+                            onClick={() => setMode('settings')}
                         />
                     </div>
                     {renderedSection}
                 </div>
             </div>
-            {showModal && mode === "settings" ? <MembershipDialog hideFunction={() => setShowModal(false)} /> : null}
+            {showModal && mode === 'settings' ? <MembershipDialog hideFunction={() => setShowModal(false)} /> : null}
         </MainBody>
     );
 };

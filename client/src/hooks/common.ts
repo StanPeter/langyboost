@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { TRootState } from "ts/types";
+import { useSelector } from 'react-redux';
+import { TRootState } from 'ts/types';
 
 /**
  * Reused hook to not repeat in defining const and putting type to it
