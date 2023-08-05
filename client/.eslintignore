@@ -1,0 +1,7 @@
+node_modules
+public
+custom.d.ts
+*.json
+*.scss
+*.png
+*.less

@@ -108,7 +108,7 @@ import { testUserData } from "settings/mockData";
 
     //run express server
     app.listen(4000, () => {
-        console.log("Server started");
+        console.log("Server started: http://localhost:4000/graphql");
     });
 })();
 

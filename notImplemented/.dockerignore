@@ -1,0 +1,6 @@
+**/.gitkeep
+**/node_modules
+build
+.dockerignore
+Dockerfile
+docker-compose.yml

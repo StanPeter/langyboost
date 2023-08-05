@@ -2,13 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <meta name="description" content="Web site created using create-react-app" />
+        <meta name="description" content="A language learning app. Learn german, italian, spanish and many others" />
+        <meta name="keywords" content="language, learn, study, german, english, spanish, polish, italian, norwegian" />
+        <meta name="author" content="stan05" />
         <title>Langyboost</title>
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-        <title>React App</title>
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     </head>
     <style>
         /* THESE STYLES IS ONLY FOR EXPLORER (OR IN FUTURE ANY OTHER UNSUPPORTED BROWSER) */
@@ -44,7 +45,7 @@
         }
         .container h2:before,
         .container h2:after {
-            content: ' ';
+            content: " ";
             background: #41b3a3;
             height: 1px;
             flex: 1 1 auto;
@@ -213,34 +214,34 @@
             console.log(this.id, this.innerHTML);
         };
 
-        document.getElementById('browser-safari').onclick = function () {
-            console.log('clicked');
+        document.getElementById("browser-safari").onclick = function () {
+            console.log("clicked");
             // window.location.href = 'https://support.apple.com/en-us/HT204416';
         };
-        document.getElementById('browser-chrome').onclick = function () {
-            console.log('clicked');
+        document.getElementById("browser-chrome").onclick = function () {
+            console.log("clicked");
             // window.location.href = 'https://www.google.com/chrome/browser/desktop/';
         };
-        document.getElementById('browser-firefox').onclick = function () {
-            console.log('clicked');
+        document.getElementById("browser-firefox").onclick = function () {
+            console.log("clicked");
             // window.location.href = 'https://www.mozilla.org/en-US/firefox/new/';
         };
-        document.getElementById('browser-edge').onclick = function () {
-            console.log('clicked');
+        document.getElementById("browser-edge").onclick = function () {
+            console.log("clicked");
             // window.location.href = 'https://www.microsoft.com/en-us/windows/microsoft-edge';
         };
-        document.getElementById('browser-edge').onclick(function () {
-            console.log('hello');
+        document.getElementById("browser-edge").onclick(function () {
+            console.log("hello");
         });
 
-        document.getElementById('hello').onclick = onClick;
+        document.getElementById("hello").onclick = onClick;
 
         // document.getElementById('root').style.display = 'none';
         // document.getElementById('ieRoot').style.display = 'flex';
 
         if (isIE) {
-            document.getElementById('ieRoot').style.display = 'block';
-            document.getElementById('root').style.display = 'none';
+            document.getElementById("ieRoot").style.display = "block";
+            document.getElementById("root").style.display = "none";
         }
     </script>
 </html>
