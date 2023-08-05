@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from "react";
 import { createRoot } from "react-dom/client";
 // import { ApolloProvider } from "@apollo/react-hooks";
@@ -11,7 +10,7 @@ import App from "App";
 // import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-import store from "store";
+import store from "store"
 
 // http link with the correct BE api url and credentials (to get cookies)
 const httpLink = new HttpLink({

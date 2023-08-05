@@ -10,17 +10,17 @@ const DATA = [
     {
         name: 'German',
         imgSrc: 'https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png',
-        value: 'german',
+        value: 'german'
     },
     {
         name: 'Armenian',
         imgSrc: 'https://images.emojiterra.com/twitter/v13.0/512px/1f1e6-1f1e9.png',
-        value: 'armenian',
+        value: 'armenian'
     },
     {
         name: 'aloha',
-        value: 'aloha',
-    },
+        value: 'aloha'
+    }
 ];
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {

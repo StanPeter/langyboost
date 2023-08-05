@@ -18,28 +18,28 @@ interface Props {
 const getDefaultHeaders = () => ({
     // 'Envelope-IdInApplication': uuidv4(),
     // 'Envelope-CorrelationId': uuidv4(),
-    'Envelope-Application': 'CFE',
+    'Envelope-Application': 'CFE'
 });
 
 const MOCK_DATA = {
     okResponse: {
         data: 'it went ok',
-        status: 200,
+        status: 200
     },
     businessError: {
         data: { error: { message: 'Testing business 200 error' } },
-        status: 200,
+        status: 200
     },
     internalError: {
         data: { errorMessage: 'Testing internal 500 error' },
-        status: 500,
-    },
+        status: 500
+    }
 };
 
 const cache: Cache = {};
 
 const sleep = (cb: () => any, time = 1000) => {
-    return new Promise((res) => {
+    return new Promise(res => {
         setTimeout(() => {
             res(cb());
         }, time);
@@ -61,7 +61,7 @@ export const fetchApi = async ({
     headers = {},
     params = {},
     shouldCache = true,
-    dispatch,
+    dispatch
 }: Props): Promise<IResponse> => {
     if (shouldCache && cache[url + JSON.stringify(params) + JSON.stringify(data)])
         return { body: cache[url + JSON.stringify(params) + JSON.stringify(data)] };
@@ -84,9 +84,9 @@ export const fetchApi = async ({
                 params: params,
                 headers: {
                     ...getDefaultHeaders(),
-                    ...headers,
+                    ...headers
                 },
-                data: data,
+                data: data
             });
         }
 

@@ -14,15 +14,15 @@ export interface IGlobalSettingsProps {
 const slice = createSlice({
     name: 'settings',
     initialState: {
-        language: 'en',
+        language: 'en'
     },
     reducers: {
         changeState: (state, action: PayloadAction<IGlobalSettingsProps>) => {
             const newData = { ...state, ...action.payload };
 
             return newData;
-        },
-    },
+        }
+    }
 });
 
 // actions
