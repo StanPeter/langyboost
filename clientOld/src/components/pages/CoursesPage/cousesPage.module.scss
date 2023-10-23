@@ -1,0 +1,59 @@
+/* FILTERS PART */
+.wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.filtersWrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnWrapper {
+    display: none;
+}
+
+.separator {
+    color: var(--color-main-light);
+    height: 75%;
+}
+
+/* BREAKPOINTS  */
+// SCREEN PHONE
+@media screen and (min-width: 450px) {
+}
+
+// SMALLER SCREEN TABLET
+@media screen and (min-width: 600px) {
+    .filtersWrapper {
+        width: calc(80% - 1rem);
+        margin-right: 1rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .btnWrapper {
+        display: flex;
+        align-items: flex-end;
+        width: 20%;
+    }
+}
+
+// BIGGER SCREEN TABLET
+@media screen and (min-width: 750px) {
+}
+
+// SMALL SCREEN DESKTOP
+@media screen and (min-width: 1200px) {
+}
+
+// MIDDLE SCREEN DESKTOP
+@media screen and (min-width: 1500px) {
+}
+
+// LARGE SCREEN DESKTOP
+@media screen and (min-width: 1800px) {
+}

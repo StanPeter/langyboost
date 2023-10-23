@@ -1,3 +1,9 @@
+import { ApolloError } from "apollo-server-errors";
+import { compare, hash } from "bcryptjs";
+import { isAuth } from "middleware/isAuth";
+import mockData, { testUserData } from "settings/mockData";
+import settings from "settings/projectConfiq.json";
+import { IContextType } from "ts/interfaces";
 import {
     Arg,
     Ctx,
@@ -9,20 +15,13 @@ import {
     Resolver,
     UseMiddleware,
 } from "type-graphql";
-import { hash, compare } from "bcryptjs";
-import { User } from "entity/User";
+import { getConnection } from "typeorm";
 import {
     createAccessToken,
     createRefreshToken,
     sendAccessToken,
     sendRefreshToken,
 } from "utils/auth";
-import { isAuth } from "middleware/isAuth";
-import { getConnection } from "typeorm";
-import { ApolloError } from "apollo-server-errors";
-import settings from "settings/projectConfiq.json";
-import mockData, { testUserData } from "settings/mockData";
-import { IContextType } from "ts/interfaces";
 
 @ObjectType()
 class LoginResponse {

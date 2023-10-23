@@ -1,4 +1,4 @@
-import { apiDateTimeToDateTime } from './formatter';
+import Formatter from './formatter';
 
 interface INumInput {
     valueToParse: string;
@@ -69,9 +69,9 @@ export const dateInput = ({ valueToParse, maxDate, minDate, useCase = 'datetime'
 
     if (useCase === 'datetime') {
         if (maxDate && currentDate > new Date(maxDate))
-            return 'Date cannot be greater than ' + apiDateTimeToDateTime(maxDate) + '!';
+            return 'Date cannot be greater than ' + Formatter.apiDateTimeToDateTime(maxDate) + '!';
         if (minDate && currentDate < new Date(minDate))
-            return 'Date cannot be lesser than ' + apiDateTimeToDateTime(minDate) + '!';
+            return 'Date cannot be lesser than ' + Formatter.apiDateTimeToDateTime(minDate) + '!';
 
         return '';
     }

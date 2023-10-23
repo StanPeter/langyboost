@@ -1,3 +1,4 @@
 {
-    "isDevelopmentMode": true
+    "isDevelopmentMode": true,
+    "isMocked": true
 }

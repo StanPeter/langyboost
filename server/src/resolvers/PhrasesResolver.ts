@@ -1,5 +1,4 @@
 import { ApolloError } from "apollo-server-express";
-import { Phrases } from "entity/Phrases";
 import { addAccessTokenHeader } from "middleware/addAuthHeader";
 import { isAuth } from "middleware/isAuth";
 import { Arg, Mutation, Query, UseMiddleware } from "type-graphql";

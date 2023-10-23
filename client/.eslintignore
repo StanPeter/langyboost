@@ -1,23 +1,8 @@
-#ignore specific folders
 node_modules
-generated
-build
-dist
 public
-craco.config.js
-index.tsx
 custom.d.ts
-
-# ignore file types
-**/*.scss.d.ts
-**/*.md
-**/*.yml
-**/*.json
-**/*.html
-**/*.png
-**/*.less
-**/*.jpg
-**/*.jpeg
-**/*d.ts
-**/*graphql
-**/*module.scss
+App.less
+*.json
+*.scss
+*.png
+*.less

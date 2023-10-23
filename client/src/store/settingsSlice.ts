@@ -12,7 +12,7 @@ export interface IGlobalSettingsProps {
 
 // used for global settings such as language or themes
 const slice = createSlice({
-    name: 'settings',
+    name: 'settings', 
     initialState: {
         language: 'en'
     },

@@ -3,6 +3,9 @@ import store from 'store';
 export const paymentMethodTypes = ['visa', 'mastercard', 'americanExpress', 'paypal'];
 export const membershipOTypes = ['king', 'peon'];
 
+export type TStorage = 'localStorage' | 'sessionStorage';
+export type TLanguage = 'en' | 'pl' | 'fr';
+
 // loginForm
 export type TLoginFormUseCase = 'landingPage' | 'authPage';
 export type TLoginFormMode = 'singIn' | 'signUp';

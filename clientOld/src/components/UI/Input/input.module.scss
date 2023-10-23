@@ -1,0 +1,23 @@
+.withoutLabel {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    border-right-width: 0;
+    // margin-bottom: 0.8rem;
+}
+
+.touched {
+    border: 2px solid var(--color-dark-accent);
+    font-style: normal;
+    outline: none;
+    background-color: var(--color-light-accent);
+}
+
+.invalidInput {
+    border: 2px solid var(--color-invalid-dark);
+    background-color: unset;
+
+    &.touched {
+        background-color: var(--color-invalid-light);
+    }
+}

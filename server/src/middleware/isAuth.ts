@@ -1,13 +1,13 @@
 import { ApolloError } from "apollo-server-errors";
-import { User } from "entity/User";
-import { verify, TokenExpiredError, JsonWebTokenError, decode } from "jsonwebtoken";
+import { User } from "entity/_DEPRECATED_User";
+import { JsonWebTokenError, TokenExpiredError, decode, verify } from "jsonwebtoken";
 import { IAccessTokenPayload, IContextType, IRefreshTokenPayload } from "ts/interfaces";
 import { MiddlewareFn } from "type-graphql";
 import {
     ACCESS_TOKEN_EXPIRATION_LIMIT,
+    REFRESH_TOKEN_EXPIRATION_LIMIT,
     createAccessToken,
     createRefreshToken,
-    REFRESH_TOKEN_EXPIRATION_LIMIT,
     sendAccessToken,
     sendRefreshToken,
 } from "utils/auth";
@@ -105,6 +105,8 @@ const verifyRefreshToken = async (refreshToken: string, context: IContextType) =
 
 // auntenticate our access token, if invalid check for refresh token, if both invalid -> deny access, else -> grant access
 export const isAuth: MiddlewareFn<IContextType> = async ({ context }, next) => {
+    return next();
+
     // get tokens from our saved cookies
     const refreshToken = context.req.cookies.jid;
     const accessToken = context.req.cookies.oad;

@@ -1,6 +1,6 @@
-import { User } from "entity/User";
-import { sign } from "jsonwebtoken";
+import { User } from "entity/_DEPRECATED_User";
 import { Response } from "express";
+import { sign } from "jsonwebtoken";
 
 // if a request is sent and the tokens lifetime is < commented time, create a new one
 export const ACCESS_TOKEN_EXPIRATION_LIMIT = 10 * 60; // 10m

@@ -1,31 +1,27 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src",
-        "outDir": "build/dist",
-        "module": "esnext",
-        "target": "es5",
-        "lib": ["es6", "dom", "esnext.asynciterable"],
-        "sourceMap": true,
-        "allowJs": true,
-        "jsx": "react",
-        "moduleResolution": "node",
-        "rootDir": "src",
-        "forceConsistentCasingInFileNames": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "allowSyntheticDefaultImports": true,
-        "noUnusedLocals": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "strict": true,
-        "noFallthroughCasesInSwitch": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "checkJs": true
-    },
-    "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts"],
-    "include": ["src"]
+  "compilerOptions": {
+    "baseUrl": "src",
+    "target": "ES2021",
+    "useDefineForClassFields": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "types": ["node"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

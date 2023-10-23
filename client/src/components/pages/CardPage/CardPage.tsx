@@ -3,7 +3,7 @@ import PhraseCardsControls from 'components/others/PhraseCardsControls/PhraseCar
 import Tooltip from 'components/UI/Tooltip/Tooltip';
 import React, { useState } from 'react';
 import styles from './cardPage.module.scss';
-// import { useGetPhrasesQuery } from "generated/graphql";
+// import { useGetPhrasesQuery } from "graphql/generated/graphql";
 // import Spinner from "./Spinner";
 
 // interface PhraseCard {
