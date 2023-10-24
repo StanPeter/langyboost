@@ -9,9 +9,10 @@
 		"noImplicitAny": true,
 		"strictNullChecks": true,
 		"strictFunctionTypes": true,
+		"strict": true,
 		"noImplicitThis": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
+		"noUnusedLocals": false, // error when a const / imports are not used
+		"noUnusedParameters": false,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"allowSyntheticDefaultImports": true,

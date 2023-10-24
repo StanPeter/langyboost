@@ -3,6 +3,11 @@ generator client {
     output   = "../src/generated/prisma"
 }
 
+generator pothos {
+    provider = "prisma-pothos-types"
+    output   = "../src/generated/pothos.ts"
+}
+
 // generator typegraphql {
 //     provider = "typegraphql-prisma"
 //     output   = "../node_modules/@generated/typegraphql-prisma"

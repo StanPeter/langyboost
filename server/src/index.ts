@@ -3,16 +3,17 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import db from 'db';
 import dotenv from 'dotenv';
-import { User } from 'entity/_DEPRECATED_User';
+// import { User } from 'schema/User';
 import express from 'express';
 import { verify } from 'jsonwebtoken';
 import 'reflect-metadata';
-import { PhrasesResolver } from 'resolvers/PhrasesResolver';
+// import { PhrasesResolver } from 'resolvers/PhrasesResolver';
 import { testUserData } from 'settings/mockData';
 import settings from 'settings/projectConfiq.json';
-import { buildSchema } from 'type-graphql';
-import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
-import { UserResolver } from './resolvers/UserResolver';
+// import { buildSchema } from 'type-graphql';
+// import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
+// import { UserResolver } from './resolvers/UserResolver';
+import { schema } from 'schema';
 
 // DB
 // const pass = 'stancek97';
@@ -66,78 +67,84 @@ import { UserResolver } from './resolvers/UserResolver';
 	dotenv.config();
 
 	//a random route, just to try out
-	app.get('/users', async (_req, res) => {
-		const users = await User.find();
+	// app.get('/users', async (_req, res) => {
+	// 	const users = await User.find();
 
-		res.json(users);
-	});
+	// 	res.json(users);
+	// });
 
 	//a second random route, just to try out
-	app.get('/users/:id', async (req, res) => {
-		const user = await User.findOne({ where: { id: req.params.id } });
+	// app.get('/users/:id', async (req, res) => {
+	// 	const user = await User.findOne({ where: { id: req.params.id } });
 
-		if (!user) res.send('User not found');
-		else res.json(user);
-	});
+	// 	if (!user) res.send('User not found');
+	// 	else res.json(user);
+	// });
 
 	//refresh_token route to improve security and do this outside /graphql route
-	app.post('/refreshToken', async (req, res) => {
-		//get refresh token and validate
-		const refreshToken = req.cookies.jid;
+	// app.post('/refreshToken', async (req, res) => {
+	// 	//get refresh token and validate
+	// 	const refreshToken = req.cookies.jid;
 
-		console.log(refreshToken, ' refreshToken');
+	// 	console.log(refreshToken, ' refreshToken');
 
-		if (!refreshToken) return res.send({ ok: false, accessToken: '' });
+	// 	if (!refreshToken) return res.send({ ok: false, accessToken: '' });
 
-		let payload: any;
-		try {
-			//it will automatically throw an error if verify(whether token is valid and not expired) fails
-			payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
-		} catch (error) {
-			console.log(error, 'error');
-			return res.send({ ok: false, accessToken: '' });
-		}
+	// 	let payload: any;
+	// 	try {
+	// 		//it will automatically throw an error if verify(whether token is valid and not expired) fails
+	// 		payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
+	// 	} catch (error) {
+	// 		console.log(error, 'error');
+	// 		return res.send({ ok: false, accessToken: '' });
+	// 	}
 
-		// when mocked
-		if (settings.isMocked) {
-			const testUser = User.create(testUserData);
+	// 	// when mocked
+	// 	if (settings.isMocked) {
+	// 		const testUser = User.create(testUserData);
 
-			sendRefreshToken(res, createRefreshToken(testUser));
-			return res.send({ ok: true, accessToken: createAccessToken(testUser) });
-		}
+	// 		sendRefreshToken(res, createRefreshToken(testUser));
+	// 		return res.send({ ok: true, accessToken: createAccessToken(testUser) });
+	// 	}
 
-		//payload has property userId
-		const user = await User.findOne({ id: payload.userId });
+	// 	//payload has property userId
+	// 	const user = await User.findOne({ id: payload.userId });
 
-		if (!user) {
-			console.log('User not found');
-			return res.send({ ok: false, accessToken: '' });
-		}
+	// 	if (!user) {
+	// 		console.log('User not found');
+	// 		return res.send({ ok: false, accessToken: '' });
+	// 	}
 
-		//in case the token has been revoked before
-		if (user.tokenVersion !== payload.tokenVersion) {
-			console.log('Token version invalid');
-			return res.send({ ok: false, accessToken: '' });
-		}
+	// 	//in case the token has been revoked before
+	// 	if (user.tokenVersion !== payload.tokenVersion) {
+	// 		console.log('Token version invalid');
+	// 		return res.send({ ok: false, accessToken: '' });
+	// 	}
 
-		sendRefreshToken(res, createRefreshToken(user));
-		return res.send({ ok: true, accessToken: createAccessToken(user) });
-	});
+	// 	sendRefreshToken(res, createRefreshToken(user));
+	// 	return res.send({ ok: true, accessToken: createAccessToken(user) });
+	// });
 
 	console.log(' FIST CONNECTION');
 
 	//connection for typeorm using ormconfig.json and its entities
 	// await createConnection().then(() => console.log('DONE'));
 
-	const post = db.post.findFirst();
-	console.log(post, ' RANDOMDADASAFASFASAS');
+	// await db.$connect();
+	console.log('connected');
+
+	// await db.post.create({ data: { title: 'test', username: 'test username' } });
+	console.log('created');
+	const post = await db.post.findMany({});
+	console.log(post, ' POST POSTED');
 	// const random = getMongoRepository(Phrases);
 
 	//define apolloserver for graphql
 	const apolloServer = new ApolloServer({
-		schema: await buildSchema({
-			resolvers: [UserResolver, PhrasesResolver],
-		}),
+		// schema: await buildSchema({
+		// 	resolvers: [UserResolver, PhrasesResolver],
+		// }),
+		schema: schema,
 		context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
 	});
 

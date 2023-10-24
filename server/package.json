@@ -2,7 +2,6 @@
 	"name": "langyboost-server",
 	"version": "1.0.0",
 	"license": "MIT",
-	"type": "module",
 	"description": "Awesome project developed with TypeORM.",
 	"devDependencies": {
 		"@prisma/client": "^5.4.2",
@@ -22,6 +21,8 @@
 	"dependencies": {
 		"@google-cloud/storage": "^5.10.0",
 		"@google-cloud/translate": "^6.2.6",
+		"@pothos/core": "^3.38.0",
+		"@pothos/plugin-prisma": "^3.61.0",
 		"apollo-server-express": "^2.24.0",
 		"bcryptjs": "^2.4.3",
 		"cookie-parser": "^1.4.5",
@@ -29,6 +30,7 @@
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"graphql": "^15.5.0",
+		"graphql-scalars": "^1.22.4",
 		"jsonwebtoken": "^8.5.1",
 		"mongodb": "6.1",
 		"pg": "^8.6.0",
@@ -42,7 +44,8 @@
 		"dev": "NODE_PATH=./src ts-node ./src/index.ts",
 		"startLinux": "NODE_PATH=./src nodemon --exec ts-node src/index.ts",
 		"start": "nodemon --exec \"ts-node -r tsconfig-paths/register\" src/index.ts",
-		"genPrisma": "yarn prisma generate --watch",
+		"genPrisma": "yarn run prisma generate --schema=./src/prisma/schema.prisma --watch",
+		"migratePrisma": "yarn run prisma migrate dev --schema=./src/prisma/schema.prisma",
 		"prod": "npm run build && npm run start"
 	}
 }
