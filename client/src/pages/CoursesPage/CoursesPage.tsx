@@ -5,7 +5,7 @@ import Header from 'components/UI/Header/Header';
 import Select from 'components/UI/Select/Select';
 import Separator from 'components/UI/Separator/Separator';
 import React, { useEffect, useState } from 'react';
-import { betaCourses, customCourses, mainCourses } from 'settings/mockData';
+import { betaCourses, customCourses, mainCourses } from 'services/mockData';
 import globalClasses from 'styles/globalClasses.module.scss';
 import styles from './cousesPage.module.scss';
 

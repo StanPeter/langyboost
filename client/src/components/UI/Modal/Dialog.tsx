@@ -24,33 +24,31 @@ const Backdrop: React.FC<DialogProps> = ({ hideFunction }) => (
 
 const ModalOverlay: React.FC<DialogProps> = ({ content, hideFunction, submitBtn, title }) => {
     return (
-        <React.Fragment>
-            <dialog className={styles.modal}>
-                <header>
-                    <Header level={3} text={title} classes={styles.modalTitle} />
-                    <AiOutlineClose onClick={() => hideFunction()} className={styles.close} />
-                </header>
-                <section className={styles.modalContent}>{content}</section>
-                {submitBtn && (
-                    <Button
-                        // classes={styles.submitBtn}
-                        disabled={submitBtn.disabled}
-                        useCase={submitBtn.useCase}
-                        text={submitBtn.text}
-                        onClick={submitBtn.onSubmit}
-                    />
-                )}
-            </dialog>
-        </React.Fragment>
+        <dialog className={styles.modal}>
+            <header>
+                <Header level={3} text={title} classes={styles.modalTitle} />
+                <AiOutlineClose onClick={() => hideFunction()} className={styles.close} />
+            </header>
+            <section className={styles.modalContent}>{content}</section>
+            {submitBtn && (
+                <Button
+                    // classes={styles.submitBtn}
+                    disabled={submitBtn.disabled}
+                    useCase={submitBtn.useCase}
+                    text={submitBtn.text}
+                    onClick={submitBtn.onSubmit}
+                />
+            )}
+        </dialog>
     );
 };
 
 const Dialog: React.FC<DialogProps> = (props: DialogProps) => {
     return (
-        <React.Fragment>
+        <>
             {createPortal(<Backdrop {...props} />, document.getElementById('backdrop')!)}
             {createPortal(<ModalOverlay {...props} />, document.getElementById('modal-overlay')!)}
-        </React.Fragment>
+        </>
     );
 };
 

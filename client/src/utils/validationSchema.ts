@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { passwordExp } from './regExp';
+import { passwordExp } from '../constants/regExp';
 
 
 /* contains vaidation using 'yup' library for the entire app */

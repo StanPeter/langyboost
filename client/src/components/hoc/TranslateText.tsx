@@ -1,7 +1,7 @@
 import { useSelectorApp } from 'hooks/common';
 import React from 'react';
-import { ERRORS } from 'settings/errors';
-import english from 'settings/languages/english.json';
+import { ERRORS } from 'constants/errors';
+import english from 'constants/languages/english.json';
 
 interface ILanguageObject {
     [key: string]: string;

@@ -10,7 +10,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { SiFacebook } from 'react-icons/si';
 import { useNavigate } from 'react-router';
-import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'settings/validationSchema';
+import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import globalClasses from 'styles/globalClasses.module.scss';
 import { ISingInResponse, ISingUpResponse } from 'ts/api';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
@@ -31,7 +31,8 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
     const navigate = useNavigate();
-    const [signMutation, { error, reset }] = mode === 'signUp' ? useSignUpMutation() : useSignInMutation();
+    const usedSignHook = mode === 'signUp' ? useSignUpMutation : useSignInMutation;
+    const [signMutation, { error, reset }] = usedSignHook();
 
     useEffect(() => {
         reset();
@@ -41,7 +42,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const {
         handleSubmit,
         register,
-        formState: { errors }
+        formState: { errors },
     } = useForm({ resolver: yupResolver(mode === 'singIn' ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
 
     const onSubmitHandler: SubmitHandler<IFormData> = formData => {
@@ -53,8 +54,9 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         const variables = mode === 'signUp' ? formData : { password: formData.password, email: formData.email };
 
         signMutation({
-            // @ts-ignore this error of incompability makes no sense
-            variables: variables
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            variables,
         }).then(res => {
             const data =
                 mode === 'signUp' ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;

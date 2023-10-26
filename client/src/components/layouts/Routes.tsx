@@ -1,11 +1,11 @@
 // Componenty
 import ErrorBoundaryHoc from 'components/hoc/ErrorBoundaryHoc';
-import NotFound from 'components/pages/NotFound/NotFound';
+import NotFound from 'pages/NotFound/NotFound';
 // objekt s routama
 import Spinner from 'components/UI/Spinner/Spinner';
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { routeMapa } from 'settings/routeMap';
+import routeMapa from 'utils/routeMap';
 
 const AppRouter: React.FC = () => {
     // useEffect(() => {
@@ -41,7 +41,7 @@ const AppRouter: React.FC = () => {
                                     <div
                                         style={{
                                             padding: '15px',
-                                            textAlign: 'center'
+                                            textAlign: 'center',
                                         }}
                                     >
                                         <Spinner />
@@ -55,7 +55,7 @@ const AppRouter: React.FC = () => {
                         // console.log(route);
                         // if (route.path === '/card/:cardId' || route.path === '/card/:cardId/transactions')
 
-                        return <Route path={route.path} element={Component} key={index} />;
+                        return <Route path={route.path} element={Component} key={route.path + index.toString()} />;
 
                         // return route.private ? (
                         //     <Route key={index} element={<MainWrapper />}>
