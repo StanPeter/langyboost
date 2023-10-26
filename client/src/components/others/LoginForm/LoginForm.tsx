@@ -9,11 +9,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { SiFacebook } from 'react-icons/si';
-import { useNavigate } from 'react-router';
-import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
+import { useNavigate } from 'react-router-dom';
 import globalClasses from 'styles/globalClasses.module.scss';
 import { ISingInResponse, ISingUpResponse } from 'ts/api';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
+import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import styles from './loginForm.module.scss';
 
 interface IFormData {
@@ -61,7 +61,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             const data =
                 mode === 'signUp' ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;
 
-            if (data.user) navigate('/articles');
+            // if (data.user) navigate('/articles');
             // if ()
             // console.log(res, " RES");
             // console.log(data, " RES data");
@@ -70,7 +70,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             // if (mode === 'signUp' && res.data)
         });
 
-        // navigate("/courses");
+        navigate('/courses');
     };
 
     return (

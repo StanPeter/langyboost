@@ -2,7 +2,7 @@ import Link from 'components/UI/Link';
 import Paragraph from 'components/UI/Paragraph';
 import React from 'react';
 import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import styles from './footer.module.scss';
 
 interface FooterProps {}

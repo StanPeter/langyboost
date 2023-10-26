@@ -43,58 +43,58 @@ function routeMapa<T>(): IRouteMapa<T>[] {
             path: routes.LANDING_PAGE,
             private: false,
         },
-        {
-            component: AuthPage,
-            path: routes.AUTH_PAGE,
-            private: false,
-        },
-        {
-            component: CardPage,
-            path: routes.CARD_PAGE,
-            private: false,
-        },
-        {
-            component: CoursesPage,
-            path: routes.COURSES_PAGE,
-            private: false,
-        },
-        {
-            component: CourseDetailPage,
-            path: routes.COURSE_DETAIL_PAGE,
-            private: false,
-        },
-        {
-            component: ArticlesPage,
-            path: routes.ARTICLES_PAGE,
-            private: false,
-        },
-        {
-            component: ArticleDetailPage,
-            path: routes.ARTICLE_DETAIL_PAGE,
-            private: false,
-        },
-        {
-            component: ResourcesPage,
-            path: routes.RESOURCES_PAGE,
-            private: false,
-        },
-        {
-            component: PersonalSettingsPage,
-            path: routes.SETTINGS_PAGE,
-            private: false,
-            routeMode: 'settings',
-        },
-        {
-            component: PersonalSettingsPage,
-            path: routes.PROFILE_PAGE,
-            private: false,
-            routeMode: 'profile',
-        },
-        {
-            component: TermsConditionsPage,
-            path: routes.TERMS_CONDITIONS_PAGE,
-            private: false,
-        },
+        // {
+        //     component: AuthPage,
+        //     path: routes.AUTH_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: CardPage,
+        //     path: routes.CARD_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: CoursesPage,
+        //     path: routes.COURSES_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: CourseDetailPage,
+        //     path: routes.COURSE_DETAIL_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: ArticlesPage,
+        //     path: routes.ARTICLES_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: ArticleDetailPage,
+        //     path: routes.ARTICLE_DETAIL_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: ResourcesPage,
+        //     path: routes.RESOURCES_PAGE,
+        //     private: false,
+        // },
+        // {
+        //     component: PersonalSettingsPage,
+        //     path: routes.SETTINGS_PAGE,
+        //     private: false,
+        //     routeMode: 'settings',
+        // },
+        // {
+        //     component: PersonalSettingsPage,
+        //     path: routes.PROFILE_PAGE,
+        //     private: false,
+        //     routeMode: 'profile',
+        // },
+        // {
+        //     component: TermsConditionsPage,
+        //     path: routes.TERMS_CONDITIONS_PAGE,
+        //     private: false,
+        // },
     ];
 }
 

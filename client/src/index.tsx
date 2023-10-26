@@ -7,10 +7,10 @@ import { onError } from '@apollo/client/link/error';
 // import { getAccessToken, setAccessToken } from "utils/getToken";
 // import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
-import App from 'App';
+import AppRouter from 'components/layouts/Routes';
 import { Provider } from 'react-redux';
 import store from 'store';
-// import './styles/globalStyles.module.scss';
+import './styles/globalStyles.module.scss';
 
 // http link with the correct BE api url and credentials (to get cookies)
 const httpLink = new HttpLink({
@@ -95,7 +95,7 @@ const root = createRoot(container!); // createRoot(container!) if you use TypeSc
 root.render(
     <ApolloProvider client={client}>
         <Provider store={store}>
-            <App />
+            <AppRouter />
         </Provider>
     </ApolloProvider>,
 );

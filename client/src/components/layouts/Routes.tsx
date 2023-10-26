@@ -1,8 +1,7 @@
 // Componenty
+import Spinner from 'components/UI/Spinner/Spinner';
 import ErrorBoundaryHoc from 'components/hoc/ErrorBoundaryHoc';
 import NotFound from 'pages/NotFound/NotFound';
-// objekt s routama
-import Spinner from 'components/UI/Spinner/Spinner';
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import routeMapa from 'utils/routeMap';
@@ -55,7 +54,7 @@ const AppRouter: React.FC = () => {
                         // console.log(route);
                         // if (route.path === '/card/:cardId' || route.path === '/card/:cardId/transactions')
 
-                        return <Route path={route.path} element={Component} key={route.path + index.toString()} />;
+                        return <Route path={route.path} element={Component} key={index.toString() + route.path} />;
 
                         // return route.private ? (
                         //     <Route key={index} element={<MainWrapper />}>
