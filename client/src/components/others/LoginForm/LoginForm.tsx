@@ -43,7 +43,12 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         handleSubmit,
         register,
         formState: { errors },
+        getValues,
+        watch,
     } = useForm({ resolver: yupResolver(mode === 'singIn' ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
+
+    watch();
+    const formValues = getValues();
 
     const onSubmitHandler: SubmitHandler<IFormData> = formData => {
         // e.preventDefault();
@@ -71,6 +76,14 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         });
 
         navigate('/courses');
+    };
+
+    const isBtnDisabled = () => {
+        if (!formValues.email || !formValues.password) return true;
+
+        if (mode === 'signUp' && (!formValues.repeatPassword || !formValues.username)) return true;
+
+        return false;
     };
 
     return (
@@ -139,6 +152,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
                     useCase="fullLine"
                     type="submit"
+                    disabled={isBtnDisabled()}
                     classes={styles.submitBtn}
                 />
                 {error && (

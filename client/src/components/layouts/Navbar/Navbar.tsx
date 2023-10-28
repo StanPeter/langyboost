@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { BiLogIn } from 'react-icons/bi';
 import { CgCrown } from 'react-icons/cg';
 import { FiSettings } from 'react-icons/fi';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 // import { setAccessToken } from "utils/getToken";
 import styles from './navbar.module.scss';
 
