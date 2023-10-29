@@ -5,7 +5,7 @@ import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
 import { useSignInMutation, useSignUpMutation } from 'graphql/generated/graphql';
 import React, { useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { SiFacebook } from 'react-icons/si';
@@ -17,9 +17,9 @@ import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import styles from './loginForm.module.scss';
 
 interface IFormData {
-    password?: string;
+    password: string;
     username?: string;
-    email?: string;
+    email: string;
     repeatPassword?: string;
 }
 
@@ -36,27 +36,28 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
 
     useEffect(() => {
         reset();
-    }, [mode]);
+    }, [mode, reset]);
 
     // form handling library react-hook-form with yup validation
     const {
-        handleSubmit,
         register,
         formState: { errors },
         getValues,
         watch,
+        handleSubmit,
     } = useForm({ resolver: yupResolver(mode === 'singIn' ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
 
     watch();
-    const formValues = getValues();
+    const formValues: IFormData = getValues() as unknown as IFormData;
 
-    const onSubmitHandler: SubmitHandler<IFormData> = formData => {
+    // submit handling, calling BE for auth access token
+    const onSubmitHandler = () => {
         // e.preventDefault();
 
-        if (!formData.password || !formData.email) return;
-        if (mode === 'signUp' && (!formData.username || !formData.repeatPassword)) return;
+        if (!formValues.password || !formValues.email) return;
+        if (mode === 'signUp' && (!formValues.username || !formValues.repeatPassword)) return;
 
-        const variables = mode === 'signUp' ? formData : { password: formData.password, email: formData.email };
+        const variables = mode === 'signUp' ? formValues : { password: formValues.password, email: formValues.email };
 
         signMutation({
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -69,7 +70,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             // if (data.user) navigate('/articles');
             // if ()
             // console.log(res, " RES");
-            // console.log(data, " RES data");
+            console.log(data, ' RES data');
             // if (data.accessToken) sessionStorage.setItem("oat", data.accessToken);
             // console.log(jwtDecode(data.accessToken), "DECODE");
             // if (mode === 'signUp' && res.data)
@@ -78,6 +79,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         navigate('/courses');
     };
 
+    // control buttons disability
     const isBtnDisabled = () => {
         if (!formValues.email || !formValues.password) return true;
 
@@ -152,6 +154,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
                     useCase="fullLine"
                     type="submit"
+                    // onClick={onSubmitHandler}
                     disabled={isBtnDisabled()}
                     classes={styles.submitBtn}
                 />
