@@ -21,7 +21,7 @@ const HAMBURGER_MENU = [
     { text: 'CURRENT_COURSE', url: '/course/current' },
     { text: 'PROFILE', url: '/profile' },
     { text: 'SETTINGS', url: '/settings' },
-    { text: 'SIGN_IN', url: '/auth' }
+    { text: 'SIGN_IN', url: '/auth' },
 ];
 interface NavbarProps {}
 

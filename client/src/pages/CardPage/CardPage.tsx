@@ -1,8 +1,9 @@
+import Tooltip from 'components/UI/Tooltip/Tooltip';
 import MainBody from 'components/layouts/MainBody/MainBody';
 import PhraseCardsControls from 'components/others/PhraseCardsControls/PhraseCardsControls';
-import Tooltip from 'components/UI/Tooltip/Tooltip';
 import React, { useState } from 'react';
 import styles from './cardPage.module.scss';
+import { motion } from 'framer-motion';
 // import { useGetPhrasesQuery } from "graphql/generated/graphql";
 // import Spinner from "./Spinner";
 
@@ -53,33 +54,58 @@ const CardPage: React.FC<CardPageProps> = () => {
                     <Tooltip />
                 </div>
                 <div
-                    className={`${styles.cardWrapper} ${animationChangeCard ? styles.animationChangeCard : ''}`}
-                    onAnimationEnd={() => {
-                        setCardIndex(cardIndex + 1);
-                        setAnimationChangeCard(false);
+                    style={{
+                        position: 'relative',
+                        width: '100%',
                     }}
                 >
-                    <div className={styles.cardPhrase}>
-                        <h2 className={`${hideTranslation ? styles.focused : ''}`}>
-                            Denke lieber an das, was du hast
-                            {/* {data.getPhrases[cardIndex]?.phrase ||
+                    {[...Array(3)].map((d, i) => {
+                        return (
+                            <div
+                                className={`${styles.cardWrapper} ${
+                                    animationChangeCard ? styles.animationChangeCard : ''
+                                }`}
+                                onAnimationEnd={() => {
+                                    setCardIndex(cardIndex + 1);
+                                    setAnimationChangeCard(false);
+                                }}
+                                style={{
+                                    left: 0,
+                                    top: -15 * i,
+                                    zIndex: -1 * i,
+                                    position: 'absolute',
+                                }}
+                            >
+                                <div
+                                    style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}
+                                >
+                                    <div className={styles.cardPhrase}>
+                                        <h2 className={`${hideTranslation ? styles.focused : ''}`}>
+                                            Denke lieber an das, was du hast
+                                            {/* {data.getPhrases[cardIndex]?.phrase ||
                                     "No more phrases"} */}
-                        </h2>
-                        {!hideTranslation ? (
-                            <React.Fragment>
-                                <hr className={styles.translationSeparator} style={{ width: '50%' }} />
-                                <h3 className={styles.focused}>Not implemented</h3>
-                            </React.Fragment>
-                        ) : null}
-                    </div>
-
-                    <hr className={styles.controlsSeparator} />
-                    <PhraseCardsControls
-                        setHidetranslation={setHidetranslation}
-                        setAnimationChangeCard={setAnimationChangeCard}
-                        // noMorePhrases={noMorePhrases}
-                        noMorePhrases={false}
-                    />
+                                        </h2>
+                                        {!hideTranslation ? (
+                                            <motion.div
+                                                animate={{ x: 0 }}
+                                                transition={{ ease: 'easeInOut', duration: 2 }}
+                                            >
+                                                <hr className={styles.translationSeparator} style={{ width: '50%' }} />
+                                                <h3 className={styles.focused}>Not implemented</h3>
+                                            </motion.div>
+                                        ) : null}
+                                    </div>
+                                    <hr className={styles.controlsSeparator} />
+                                    <PhraseCardsControls
+                                        setHidetranslation={setHidetranslation}
+                                        setAnimationChangeCard={setAnimationChangeCard}
+                                        // noMorePhrases={noMorePhrases}
+                                        noMorePhrases={false}
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </MainBody>
