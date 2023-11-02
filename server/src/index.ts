@@ -1,20 +1,17 @@
 import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import db from 'db';
 import dotenv from 'dotenv';
 // import { User } from 'schema/User';
 import express from 'express';
-import { verify } from 'jsonwebtoken';
 import 'reflect-metadata';
 // import { PhrasesResolver } from 'resolvers/PhrasesResolver';
-import { testUserData } from 'settings/mockData';
-import settings from 'settings/projectConfiq.json';
 // import { buildSchema } from 'type-graphql';
 // import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
 // import { UserResolver } from './resolvers/UserResolver';
 import { schema } from 'schema';
 
+// Requiring the module
 // DB
 // const pass = 'stancek97';
 // const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -125,18 +122,48 @@ import { schema } from 'schema';
 	// 	return res.send({ ok: true, accessToken: createAccessToken(user) });
 	// });
 
-	console.log(' FIST CONNECTION');
-
 	//connection for typeorm using ormconfig.json and its entities
 	// await createConnection().then(() => console.log('DONE'));
 
 	// await db.$connect();
-	console.log('connected');
+	// console.log('connected');
+
+	// Reading our test file
+	// const file = reader.readFile('C:/projekty/langyboost/server/src/data.xlsx');
+
+	// let data: any = [];
+	// let counter: number = 0;
+
+	// const sheets = file.SheetNames;
+
+	// const allFounds = await db.phrase.findRaw({});
+
+	// for (let i = 0; i < sheets.length; i++) {
+	// 	const temp = reader.utils.sheet_to_json(file.Sheets[file.SheetNames[i]]);
+	// 	temp.forEach(async (res: any) => {
+	// 		const foundPhrase = await db.phrase.findFirst({ where: { phrase: res.Phrase } });
+
+	// 		console.log(foundPhrase, ' foundPhrase foundPhrase');
+
+	// 		if (!foundPhrase) {
+	// 			await db.phrase.create({
+	// 				data: { phrase: res.Phrase, targetLang: 'de', translation: '' },
+	// 			});
+	// 			console.log(res.Phrase, ' PHRASE CREATED');
+	// 			counter += 1;
+	// 		}
+	// 		// if (res.Phrase) {
+	// 		// 	data.push(res);
+	// 		// }
+	// 	});
+	// }
+
+	// console.log(allFounds.length, ' TOTAL COUNT');
+
+	// Printing data
+	// console.log(data.length, ' FINAL DATA');
 
 	// await db.post.create({ data: { title: 'test', username: 'test username' } });
-	console.log('created');
-	const post = await db.post.findMany({});
-	console.log(post, ' POST POSTED');
 	// const random = getMongoRepository(Phrases);
 
 	//define apolloserver for graphql

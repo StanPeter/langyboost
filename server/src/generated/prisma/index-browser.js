@@ -100,16 +100,24 @@ Prisma.NullTypes = {
  * Enums
  */
 
-exports.Prisma.PostScalarFieldEnum = {
+exports.Prisma.PhraseScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  username: 'username'
+  phrase: 'phrase',
+  translation: 'translation',
+  targetLang: 'targetLang',
+  streak: 'streak',
+  practisedAt: 'practisedAt'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  username: 'username'
+  email: 'email',
+  username: 'username',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  receivePromo: 'receivePromo',
+  passwordHash: 'passwordHash',
+  tokenVersion: 'tokenVersion'
 };
 
 exports.Prisma.SortOrder = {
@@ -124,7 +132,7 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Post: 'Post',
+  Phrase: 'Phrase',
   User: 'User'
 };
 

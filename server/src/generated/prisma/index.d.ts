@@ -14,10 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Post
+ * Model Phrase
  * 
  */
-export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
+export type Phrase = $Result.DefaultSelection<Prisma.$PhrasePayload>
 /**
  * Model User
  * 
@@ -31,8 +31,8 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Posts
- * const posts = await prisma.post.findMany()
+ * // Fetch zero or more Phrases
+ * const phrases = await prisma.phrase.findMany()
  * ```
  *
  * 
@@ -52,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Posts
-   * const posts = await prisma.post.findMany()
+   * // Fetch zero or more Phrases
+   * const phrases = await prisma.phrase.findMany()
    * ```
    *
    * 
@@ -115,14 +115,14 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
       /**
-   * `prisma.post`: Exposes CRUD operations for the **Post** model.
+   * `prisma.phrase`: Exposes CRUD operations for the **Phrase** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Posts
-    * const posts = await prisma.post.findMany()
+    * // Fetch zero or more Phrases
+    * const phrases = await prisma.phrase.findMany()
     * ```
     */
-  get post(): Prisma.PostDelegate<ExtArgs>;
+  get phrase(): Prisma.PhraseDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -603,7 +603,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Post: 'Post',
+    Phrase: 'Phrase',
     User: 'User'
   };
 
@@ -621,81 +621,81 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'post' | 'user'
+      modelProps: 'phrase' | 'user'
       txIsolationLevel: never
     },
     model: {
-      Post: {
-        payload: Prisma.$PostPayload<ExtArgs>
-        fields: Prisma.PostFieldRefs
+      Phrase: {
+        payload: Prisma.$PhrasePayload<ExtArgs>
+        fields: Prisma.PhraseFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PostFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
+            args: Prisma.PhraseFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+            args: Prisma.PhraseFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>
           }
           findFirst: {
-            args: Prisma.PostFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
+            args: Prisma.PhraseFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+            args: Prisma.PhraseFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>
           }
           findMany: {
-            args: Prisma.PostFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
+            args: Prisma.PhraseFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>[]
           }
           create: {
-            args: Prisma.PostCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+            args: Prisma.PhraseCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>
           }
           createMany: {
-            args: Prisma.PostCreateManyArgs<ExtArgs>,
+            args: Prisma.PhraseCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.PostDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+            args: Prisma.PhraseDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>
           }
           update: {
-            args: Prisma.PostUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+            args: Prisma.PhraseUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>
           }
           deleteMany: {
-            args: Prisma.PostDeleteManyArgs<ExtArgs>,
+            args: Prisma.PhraseDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.PostUpdateManyArgs<ExtArgs>,
+            args: Prisma.PhraseUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.PostUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+            args: Prisma.PhraseUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PhrasePayload>
           }
           aggregate: {
-            args: Prisma.PostAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregatePost>
+            args: Prisma.PhraseAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePhrase>
           }
           groupBy: {
-            args: Prisma.PostGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<PostGroupByOutputType>[]
+            args: Prisma.PhraseGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PhraseGroupByOutputType>[]
           }
           findRaw: {
-            args: Prisma.PostFindRawArgs<ExtArgs>,
+            args: Prisma.PhraseFindRawArgs<ExtArgs>,
             result: Prisma.JsonObject
           }
           aggregateRaw: {
-            args: Prisma.PostAggregateRawArgs<ExtArgs>,
+            args: Prisma.PhraseAggregateRawArgs<ExtArgs>,
             result: Prisma.JsonObject
           }
           count: {
-            args: Prisma.PostCountArgs<ExtArgs>,
-            result: $Utils.Optional<PostCountAggregateOutputType> | number
+            args: Prisma.PhraseCountArgs<ExtArgs>,
+            result: $Utils.Optional<PhraseCountAggregateOutputType> | number
           }
         }
       }
@@ -911,323 +911,387 @@ export namespace Prisma {
    */
 
   /**
-   * Model Post
+   * Model Phrase
    */
 
-  export type AggregatePost = {
-    _count: PostCountAggregateOutputType | null
-    _min: PostMinAggregateOutputType | null
-    _max: PostMaxAggregateOutputType | null
+  export type AggregatePhrase = {
+    _count: PhraseCountAggregateOutputType | null
+    _avg: PhraseAvgAggregateOutputType | null
+    _sum: PhraseSumAggregateOutputType | null
+    _min: PhraseMinAggregateOutputType | null
+    _max: PhraseMaxAggregateOutputType | null
   }
 
-  export type PostMinAggregateOutputType = {
+  export type PhraseAvgAggregateOutputType = {
+    streak: number | null
+  }
+
+  export type PhraseSumAggregateOutputType = {
+    streak: number | null
+  }
+
+  export type PhraseMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    username: string | null
+    phrase: string | null
+    translation: string | null
+    targetLang: string | null
+    streak: number | null
+    practisedAt: Date | null
   }
 
-  export type PostMaxAggregateOutputType = {
+  export type PhraseMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    username: string | null
+    phrase: string | null
+    translation: string | null
+    targetLang: string | null
+    streak: number | null
+    practisedAt: Date | null
   }
 
-  export type PostCountAggregateOutputType = {
+  export type PhraseCountAggregateOutputType = {
     id: number
-    title: number
-    username: number
+    phrase: number
+    translation: number
+    targetLang: number
+    streak: number
+    practisedAt: number
     _all: number
   }
 
 
-  export type PostMinAggregateInputType = {
-    id?: true
-    title?: true
-    username?: true
+  export type PhraseAvgAggregateInputType = {
+    streak?: true
   }
 
-  export type PostMaxAggregateInputType = {
-    id?: true
-    title?: true
-    username?: true
+  export type PhraseSumAggregateInputType = {
+    streak?: true
   }
 
-  export type PostCountAggregateInputType = {
+  export type PhraseMinAggregateInputType = {
     id?: true
-    title?: true
-    username?: true
+    phrase?: true
+    translation?: true
+    targetLang?: true
+    streak?: true
+    practisedAt?: true
+  }
+
+  export type PhraseMaxAggregateInputType = {
+    id?: true
+    phrase?: true
+    translation?: true
+    targetLang?: true
+    streak?: true
+    practisedAt?: true
+  }
+
+  export type PhraseCountAggregateInputType = {
+    id?: true
+    phrase?: true
+    translation?: true
+    targetLang?: true
+    streak?: true
+    practisedAt?: true
     _all?: true
   }
 
-  export type PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Post to aggregate.
+     * Filter which Phrase to aggregate.
      */
-    where?: PostWhereInput
+    where?: PhraseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Posts to fetch.
+     * Determine the order of Phrases to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PhraseOrderByWithRelationInput | PhraseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PostWhereUniqueInput
+    cursor?: PhraseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Posts from the position of the cursor.
+     * Take `±n` Phrases from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Posts.
+     * Skip the first `n` Phrases.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Posts
+     * Count returned Phrases
     **/
-    _count?: true | PostCountAggregateInputType
+    _count?: true | PhraseCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PhraseAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PhraseSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: PostMinAggregateInputType
+    _min?: PhraseMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: PostMaxAggregateInputType
+    _max?: PhraseMaxAggregateInputType
   }
 
-  export type GetPostAggregateType<T extends PostAggregateArgs> = {
-        [P in keyof T & keyof AggregatePost]: P extends '_count' | 'count'
+  export type GetPhraseAggregateType<T extends PhraseAggregateArgs> = {
+        [P in keyof T & keyof AggregatePhrase]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePost[P]>
-      : GetScalarType<T[P], AggregatePost[P]>
+        : GetScalarType<T[P], AggregatePhrase[P]>
+      : GetScalarType<T[P], AggregatePhrase[P]>
   }
 
 
 
 
-  export type PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithAggregationInput | PostOrderByWithAggregationInput[]
-    by: PostScalarFieldEnum[] | PostScalarFieldEnum
-    having?: PostScalarWhereWithAggregatesInput
+  export type PhraseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PhraseWhereInput
+    orderBy?: PhraseOrderByWithAggregationInput | PhraseOrderByWithAggregationInput[]
+    by: PhraseScalarFieldEnum[] | PhraseScalarFieldEnum
+    having?: PhraseScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: PostCountAggregateInputType | true
-    _min?: PostMinAggregateInputType
-    _max?: PostMaxAggregateInputType
+    _count?: PhraseCountAggregateInputType | true
+    _avg?: PhraseAvgAggregateInputType
+    _sum?: PhraseSumAggregateInputType
+    _min?: PhraseMinAggregateInputType
+    _max?: PhraseMaxAggregateInputType
   }
 
-  export type PostGroupByOutputType = {
+  export type PhraseGroupByOutputType = {
     id: string
-    title: string
-    username: string
-    _count: PostCountAggregateOutputType | null
-    _min: PostMinAggregateOutputType | null
-    _max: PostMaxAggregateOutputType | null
+    phrase: string
+    translation: string
+    targetLang: string
+    streak: number
+    practisedAt: Date
+    _count: PhraseCountAggregateOutputType | null
+    _avg: PhraseAvgAggregateOutputType | null
+    _sum: PhraseSumAggregateOutputType | null
+    _min: PhraseMinAggregateOutputType | null
+    _max: PhraseMaxAggregateOutputType | null
   }
 
-  type GetPostGroupByPayload<T extends PostGroupByArgs> = Prisma.PrismaPromise<
+  type GetPhraseGroupByPayload<T extends PhraseGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<PostGroupByOutputType, T['by']> &
+      PickEnumerable<PhraseGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof PostGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PhraseGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], PostGroupByOutputType[P]>
-            : GetScalarType<T[P], PostGroupByOutputType[P]>
+              : GetScalarType<T[P], PhraseGroupByOutputType[P]>
+            : GetScalarType<T[P], PhraseGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PhraseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    username?: boolean
-  }, ExtArgs["result"]["post"]>
+    phrase?: boolean
+    translation?: boolean
+    targetLang?: boolean
+    streak?: boolean
+    practisedAt?: boolean
+  }, ExtArgs["result"]["phrase"]>
 
-  export type PostSelectScalar = {
+  export type PhraseSelectScalar = {
     id?: boolean
-    title?: boolean
-    username?: boolean
+    phrase?: boolean
+    translation?: boolean
+    targetLang?: boolean
+    streak?: boolean
+    practisedAt?: boolean
   }
 
 
-  export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Post"
+  export type $PhrasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Phrase"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      username: string
-    }, ExtArgs["result"]["post"]>
+      phrase: string
+      translation: string
+      targetLang: string
+      streak: number
+      practisedAt: Date
+    }, ExtArgs["result"]["phrase"]>
     composites: {}
   }
 
 
-  type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
+  type PhraseGetPayload<S extends boolean | null | undefined | PhraseDefaultArgs> = $Result.GetResult<Prisma.$PhrasePayload, S>
 
-  type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<PostFindManyArgs, 'select' | 'include'> & {
-      select?: PostCountAggregateInputType | true
+  type PhraseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PhraseFindManyArgs, 'select' | 'include'> & {
+      select?: PhraseCountAggregateInputType | true
     }
 
-  export interface PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Post'], meta: { name: 'Post' } }
+  export interface PhraseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Phrase'], meta: { name: 'Phrase' } }
     /**
-     * Find zero or one Post that matches the filter.
-     * @param {PostFindUniqueArgs} args - Arguments to find a Post
+     * Find zero or one Phrase that matches the filter.
+     * @param {PhraseFindUniqueArgs} args - Arguments to find a Phrase
      * @example
-     * // Get one Post
-     * const post = await prisma.post.findUnique({
+     * // Get one Phrase
+     * const phrase = await prisma.phrase.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends PostFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, PostFindUniqueArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends PhraseFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PhraseFindUniqueArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Post that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one Phrase that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {PostFindUniqueOrThrowArgs} args - Arguments to find a Post
+     * @param {PhraseFindUniqueOrThrowArgs} args - Arguments to find a Phrase
      * @example
-     * // Get one Post
-     * const post = await prisma.post.findUniqueOrThrow({
+     * // Get one Phrase
+     * const phrase = await prisma.phrase.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends PostFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, PostFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends PhraseFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PhraseFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first Post that matches the filter.
+     * Find the first Phrase that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindFirstArgs} args - Arguments to find a Post
+     * @param {PhraseFindFirstArgs} args - Arguments to find a Phrase
      * @example
-     * // Get one Post
-     * const post = await prisma.post.findFirst({
+     * // Get one Phrase
+     * const phrase = await prisma.phrase.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends PostFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, PostFindFirstArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends PhraseFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PhraseFindFirstArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first Post that matches the filter or
+     * Find the first Phrase that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindFirstOrThrowArgs} args - Arguments to find a Post
+     * @param {PhraseFindFirstOrThrowArgs} args - Arguments to find a Phrase
      * @example
-     * // Get one Post
-     * const post = await prisma.post.findFirstOrThrow({
+     * // Get one Phrase
+     * const phrase = await prisma.phrase.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends PostFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, PostFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends PhraseFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PhraseFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more Posts that matches the filter.
+     * Find zero or more Phrases that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {PhraseFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Posts
-     * const posts = await prisma.post.findMany()
+     * // Get all Phrases
+     * const phrases = await prisma.phrase.findMany()
      * 
-     * // Get first 10 Posts
-     * const posts = await prisma.post.findMany({ take: 10 })
+     * // Get first 10 Phrases
+     * const phrases = await prisma.phrase.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const postWithIdOnly = await prisma.post.findMany({ select: { id: true } })
+     * const phraseWithIdOnly = await prisma.phrase.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends PostFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends PhraseFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PhraseFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a Post.
-     * @param {PostCreateArgs} args - Arguments to create a Post.
+     * Create a Phrase.
+     * @param {PhraseCreateArgs} args - Arguments to create a Phrase.
      * @example
-     * // Create one Post
-     * const Post = await prisma.post.create({
+     * // Create one Phrase
+     * const Phrase = await prisma.phrase.create({
      *   data: {
-     *     // ... data to create a Post
+     *     // ... data to create a Phrase
      *   }
      * })
      * 
     **/
-    create<T extends PostCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, PostCreateArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends PhraseCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PhraseCreateArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many Posts.
-     *     @param {PostCreateManyArgs} args - Arguments to create many Posts.
+     * Create many Phrases.
+     *     @param {PhraseCreateManyArgs} args - Arguments to create many Phrases.
      *     @example
-     *     // Create many Posts
-     *     const post = await prisma.post.createMany({
+     *     // Create many Phrases
+     *     const phrase = await prisma.phrase.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends PostCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, PostCreateManyArgs<ExtArgs>>
+    createMany<T extends PhraseCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PhraseCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Post.
-     * @param {PostDeleteArgs} args - Arguments to delete one Post.
+     * Delete a Phrase.
+     * @param {PhraseDeleteArgs} args - Arguments to delete one Phrase.
      * @example
-     * // Delete one Post
-     * const Post = await prisma.post.delete({
+     * // Delete one Phrase
+     * const Phrase = await prisma.phrase.delete({
      *   where: {
-     *     // ... filter to delete one Post
+     *     // ... filter to delete one Phrase
      *   }
      * })
      * 
     **/
-    delete<T extends PostDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, PostDeleteArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends PhraseDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PhraseDeleteArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one Post.
-     * @param {PostUpdateArgs} args - Arguments to update one Post.
+     * Update one Phrase.
+     * @param {PhraseUpdateArgs} args - Arguments to update one Phrase.
      * @example
-     * // Update one Post
-     * const post = await prisma.post.update({
+     * // Update one Phrase
+     * const phrase = await prisma.phrase.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1237,34 +1301,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends PostUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, PostUpdateArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends PhraseUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PhraseUpdateArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more Posts.
-     * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
+     * Delete zero or more Phrases.
+     * @param {PhraseDeleteManyArgs} args - Arguments to filter Phrases to delete.
      * @example
-     * // Delete a few Posts
-     * const { count } = await prisma.post.deleteMany({
+     * // Delete a few Phrases
+     * const { count } = await prisma.phrase.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends PostDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, PostDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends PhraseDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PhraseDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Posts.
+     * Update zero or more Phrases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PhraseUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Posts
-     * const post = await prisma.post.updateMany({
+     * // Update many Phrases
+     * const phrase = await prisma.phrase.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1274,48 +1338,48 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends PostUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, PostUpdateManyArgs<ExtArgs>>
+    updateMany<T extends PhraseUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PhraseUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Post.
-     * @param {PostUpsertArgs} args - Arguments to update or create a Post.
+     * Create or update one Phrase.
+     * @param {PhraseUpsertArgs} args - Arguments to update or create a Phrase.
      * @example
-     * // Update or create a Post
-     * const post = await prisma.post.upsert({
+     * // Update or create a Phrase
+     * const phrase = await prisma.phrase.upsert({
      *   create: {
-     *     // ... data to create a Post
+     *     // ... data to create a Phrase
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Post we want to update
+     *     // ... the filter for the Phrase we want to update
      *   }
      * })
     **/
-    upsert<T extends PostUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, PostUpsertArgs<ExtArgs>>
-    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends PhraseUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PhraseUpsertArgs<ExtArgs>>
+    ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Find zero or more Posts that matches the filter.
-     * @param {PostFindRawArgs} args - Select which filters you would like to apply.
+     * Find zero or more Phrases that matches the filter.
+     * @param {PhraseFindRawArgs} args - Select which filters you would like to apply.
      * @example
-     * const post = await prisma.post.findRaw({
+     * const phrase = await prisma.phrase.findRaw({
      *   filter: { age: { $gt: 25 } } 
      * })
     **/
     findRaw(
-      args?: PostFindRawArgs
+      args?: PhraseFindRawArgs
     ): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Perform aggregation operations on a Post.
-     * @param {PostAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * Perform aggregation operations on a Phrase.
+     * @param {PhraseAggregateRawArgs} args - Select which aggregations you would like to apply.
      * @example
-     * const post = await prisma.post.aggregateRaw({
+     * const phrase = await prisma.phrase.aggregateRaw({
      *   pipeline: [
      *     { $match: { status: "registered" } },
      *     { $group: { _id: "$country", total: { $sum: 1 } } }
@@ -1323,37 +1387,37 @@ export namespace Prisma {
      * })
     **/
     aggregateRaw(
-      args?: PostAggregateRawArgs
+      args?: PhraseAggregateRawArgs
     ): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Count the number of Posts.
+     * Count the number of Phrases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCountArgs} args - Arguments to filter Posts to count.
+     * @param {PhraseCountArgs} args - Arguments to filter Phrases to count.
      * @example
-     * // Count the number of Posts
-     * const count = await prisma.post.count({
+     * // Count the number of Phrases
+     * const count = await prisma.phrase.count({
      *   where: {
-     *     // ... the filter for the Posts we want to count
+     *     // ... the filter for the Phrases we want to count
      *   }
      * })
     **/
-    count<T extends PostCountArgs>(
-      args?: Subset<T, PostCountArgs>,
+    count<T extends PhraseCountArgs>(
+      args?: Subset<T, PhraseCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], PostCountAggregateOutputType>
+          : GetScalarType<T['select'], PhraseCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Post.
+     * Allows you to perform aggregations operations on a Phrase.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PhraseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1373,13 +1437,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends PostAggregateArgs>(args: Subset<T, PostAggregateArgs>): Prisma.PrismaPromise<GetPostAggregateType<T>>
+    aggregate<T extends PhraseAggregateArgs>(args: Subset<T, PhraseAggregateArgs>): Prisma.PrismaPromise<GetPhraseAggregateType<T>>
 
     /**
-     * Group by Post.
+     * Group by Phrase.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostGroupByArgs} args - Group by arguments.
+     * @param {PhraseGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1394,14 +1458,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PostGroupByArgs,
+      T extends PhraseGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PostGroupByArgs['orderBy'] }
-        : { orderBy?: PostGroupByArgs['orderBy'] },
+        ? { orderBy: PhraseGroupByArgs['orderBy'] }
+        : { orderBy?: PhraseGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1450,20 +1514,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PhraseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPhraseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Post model
+   * Fields of the Phrase model
    */
-  readonly fields: PostFieldRefs;
+  readonly fields: PhraseFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Post.
+   * The delegate class that acts as a "Promise-like" for Phrase.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PhraseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
 
@@ -1492,290 +1556,293 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Post model
+   * Fields of the Phrase model
    */ 
-  interface PostFieldRefs {
-    readonly id: FieldRef<"Post", 'String'>
-    readonly title: FieldRef<"Post", 'String'>
-    readonly username: FieldRef<"Post", 'String'>
+  interface PhraseFieldRefs {
+    readonly id: FieldRef<"Phrase", 'String'>
+    readonly phrase: FieldRef<"Phrase", 'String'>
+    readonly translation: FieldRef<"Phrase", 'String'>
+    readonly targetLang: FieldRef<"Phrase", 'String'>
+    readonly streak: FieldRef<"Phrase", 'Int'>
+    readonly practisedAt: FieldRef<"Phrase", 'DateTime'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * Post findUnique
+   * Phrase findUnique
    */
-  export type PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * Filter, which Post to fetch.
+     * Filter, which Phrase to fetch.
      */
-    where: PostWhereUniqueInput
+    where: PhraseWhereUniqueInput
   }
 
 
   /**
-   * Post findUniqueOrThrow
+   * Phrase findUniqueOrThrow
    */
-  export type PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * Filter, which Post to fetch.
+     * Filter, which Phrase to fetch.
      */
-    where: PostWhereUniqueInput
+    where: PhraseWhereUniqueInput
   }
 
 
   /**
-   * Post findFirst
+   * Phrase findFirst
    */
-  export type PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * Filter, which Post to fetch.
+     * Filter, which Phrase to fetch.
      */
-    where?: PostWhereInput
+    where?: PhraseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Posts to fetch.
+     * Determine the order of Phrases to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PhraseOrderByWithRelationInput | PhraseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Posts.
+     * Sets the position for searching for Phrases.
      */
-    cursor?: PostWhereUniqueInput
+    cursor?: PhraseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Posts from the position of the cursor.
+     * Take `±n` Phrases from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Posts.
+     * Skip the first `n` Phrases.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Posts.
+     * Filter by unique combinations of Phrases.
      */
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+    distinct?: PhraseScalarFieldEnum | PhraseScalarFieldEnum[]
   }
 
 
   /**
-   * Post findFirstOrThrow
+   * Phrase findFirstOrThrow
    */
-  export type PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * Filter, which Post to fetch.
+     * Filter, which Phrase to fetch.
      */
-    where?: PostWhereInput
+    where?: PhraseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Posts to fetch.
+     * Determine the order of Phrases to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PhraseOrderByWithRelationInput | PhraseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Posts.
+     * Sets the position for searching for Phrases.
      */
-    cursor?: PostWhereUniqueInput
+    cursor?: PhraseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Posts from the position of the cursor.
+     * Take `±n` Phrases from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Posts.
+     * Skip the first `n` Phrases.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Posts.
+     * Filter by unique combinations of Phrases.
      */
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+    distinct?: PhraseScalarFieldEnum | PhraseScalarFieldEnum[]
   }
 
 
   /**
-   * Post findMany
+   * Phrase findMany
    */
-  export type PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * Filter, which Posts to fetch.
+     * Filter, which Phrases to fetch.
      */
-    where?: PostWhereInput
+    where?: PhraseWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Posts to fetch.
+     * Determine the order of Phrases to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PhraseOrderByWithRelationInput | PhraseOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Posts.
+     * Sets the position for listing Phrases.
      */
-    cursor?: PostWhereUniqueInput
+    cursor?: PhraseWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Posts from the position of the cursor.
+     * Take `±n` Phrases from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Posts.
+     * Skip the first `n` Phrases.
      */
     skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+    distinct?: PhraseScalarFieldEnum | PhraseScalarFieldEnum[]
   }
 
 
   /**
-   * Post create
+   * Phrase create
    */
-  export type PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * The data needed to create a Post.
+     * The data needed to create a Phrase.
      */
-    data: XOR<PostCreateInput, PostUncheckedCreateInput>
+    data: XOR<PhraseCreateInput, PhraseUncheckedCreateInput>
   }
 
 
   /**
-   * Post createMany
+   * Phrase createMany
    */
-  export type PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Posts.
+     * The data used to create many Phrases.
      */
-    data: PostCreateManyInput | PostCreateManyInput[]
+    data: PhraseCreateManyInput | PhraseCreateManyInput[]
   }
 
 
   /**
-   * Post update
+   * Phrase update
    */
-  export type PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * The data needed to update a Post.
+     * The data needed to update a Phrase.
      */
-    data: XOR<PostUpdateInput, PostUncheckedUpdateInput>
+    data: XOR<PhraseUpdateInput, PhraseUncheckedUpdateInput>
     /**
-     * Choose, which Post to update.
+     * Choose, which Phrase to update.
      */
-    where: PostWhereUniqueInput
+    where: PhraseWhereUniqueInput
   }
 
 
   /**
-   * Post updateMany
+   * Phrase updateMany
    */
-  export type PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Posts.
+     * The data used to update Phrases.
      */
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
+    data: XOR<PhraseUpdateManyMutationInput, PhraseUncheckedUpdateManyInput>
     /**
-     * Filter which Posts to update
+     * Filter which Phrases to update
      */
-    where?: PostWhereInput
+    where?: PhraseWhereInput
   }
 
 
   /**
-   * Post upsert
+   * Phrase upsert
    */
-  export type PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * The filter to search for the Post to update in case it exists.
+     * The filter to search for the Phrase to update in case it exists.
      */
-    where: PostWhereUniqueInput
+    where: PhraseWhereUniqueInput
     /**
-     * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
+     * In case the Phrase found by the `where` argument doesn't exist, create a new Phrase with this data.
      */
-    create: XOR<PostCreateInput, PostUncheckedCreateInput>
+    create: XOR<PhraseCreateInput, PhraseUncheckedCreateInput>
     /**
-     * In case the Post was found with the provided `where` argument, update it with this data.
+     * In case the Phrase was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PostUpdateInput, PostUncheckedUpdateInput>
+    update: XOR<PhraseUpdateInput, PhraseUncheckedUpdateInput>
   }
 
 
   /**
-   * Post delete
+   * Phrase delete
    */
-  export type PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
     /**
-     * Filter which Post to delete.
+     * Filter which Phrase to delete.
      */
-    where: PostWhereUniqueInput
+    where: PhraseWhereUniqueInput
   }
 
 
   /**
-   * Post deleteMany
+   * Phrase deleteMany
    */
-  export type PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Posts to delete
+     * Filter which Phrases to delete
      */
-    where?: PostWhereInput
+    where?: PhraseWhereInput
   }
 
 
   /**
-   * Post findRaw
+   * Phrase findRaw
    */
-  export type PostFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
      */
@@ -1788,9 +1855,9 @@ export namespace Prisma {
 
 
   /**
-   * Post aggregateRaw
+   * Phrase aggregateRaw
    */
-  export type PostAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
      */
@@ -1803,13 +1870,13 @@ export namespace Prisma {
 
 
   /**
-   * Post without action
+   * Phrase without action
    */
-  export type PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PhraseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the Phrase
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: PhraseSelect<ExtArgs> | null
   }
 
 
@@ -1820,46 +1887,94 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
+  export type UserAvgAggregateOutputType = {
+    tokenVersion: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    tokenVersion: number | null
+  }
+
   export type UserMinAggregateOutputType = {
     id: string | null
-    title: string | null
+    email: string | null
     username: string | null
+    firstName: string | null
+    lastName: string | null
+    receivePromo: boolean | null
+    passwordHash: string | null
+    tokenVersion: number | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    title: string | null
+    email: string | null
     username: string | null
+    firstName: string | null
+    lastName: string | null
+    receivePromo: boolean | null
+    passwordHash: string | null
+    tokenVersion: number | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    title: number
+    email: number
     username: number
+    firstName: number
+    lastName: number
+    receivePromo: number
+    passwordHash: number
+    tokenVersion: number
     _all: number
   }
 
 
+  export type UserAvgAggregateInputType = {
+    tokenVersion?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    tokenVersion?: true
+  }
+
   export type UserMinAggregateInputType = {
     id?: true
-    title?: true
+    email?: true
     username?: true
+    firstName?: true
+    lastName?: true
+    receivePromo?: true
+    passwordHash?: true
+    tokenVersion?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    title?: true
+    email?: true
     username?: true
+    firstName?: true
+    lastName?: true
+    receivePromo?: true
+    passwordHash?: true
+    tokenVersion?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    title?: true
+    email?: true
     username?: true
+    firstName?: true
+    lastName?: true
+    receivePromo?: true
+    passwordHash?: true
+    tokenVersion?: true
     _all?: true
   }
 
@@ -1901,6 +2016,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1931,15 +2058,24 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
     id: string
-    title: string
+    email: string
     username: string
+    firstName: string
+    lastName: string
+    receivePromo: boolean
+    passwordHash: string
+    tokenVersion: number
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1960,14 +2096,24 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
+    email?: boolean
     username?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    receivePromo?: boolean
+    passwordHash?: boolean
+    tokenVersion?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    title?: boolean
+    email?: boolean
     username?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    receivePromo?: boolean
+    passwordHash?: boolean
+    tokenVersion?: boolean
   }
 
 
@@ -1976,8 +2122,13 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
+      email: string
       username: string
+      firstName: string
+      lastName: string
+      receivePromo: boolean
+      passwordHash: string
+      tokenVersion: number
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2400,8 +2551,13 @@ export namespace Prisma {
    */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly title: FieldRef<"User", 'String'>
+    readonly email: FieldRef<"User", 'String'>
     readonly username: FieldRef<"User", 'String'>
+    readonly firstName: FieldRef<"User", 'String'>
+    readonly lastName: FieldRef<"User", 'String'>
+    readonly receivePromo: FieldRef<"User", 'Boolean'>
+    readonly passwordHash: FieldRef<"User", 'String'>
+    readonly tokenVersion: FieldRef<"User", 'Int'>
   }
     
 
@@ -2722,19 +2878,27 @@ export namespace Prisma {
    * Enums
    */
 
-  export const PostScalarFieldEnum: {
+  export const PhraseScalarFieldEnum: {
     id: 'id',
-    title: 'title',
-    username: 'username'
+    phrase: 'phrase',
+    translation: 'translation',
+    targetLang: 'targetLang',
+    streak: 'streak',
+    practisedAt: 'practisedAt'
   };
 
-  export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+  export type PhraseScalarFieldEnum = (typeof PhraseScalarFieldEnum)[keyof typeof PhraseScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    title: 'title',
-    username: 'username'
+    email: 'email',
+    username: 'username',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    receivePromo: 'receivePromo',
+    passwordHash: 'passwordHash',
+    tokenVersion: 'tokenVersion'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2787,51 +2951,103 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
 
 
-  export type PostWhereInput = {
-    AND?: PostWhereInput | PostWhereInput[]
-    OR?: PostWhereInput[]
-    NOT?: PostWhereInput | PostWhereInput[]
-    id?: StringFilter<"Post"> | string
-    title?: StringFilter<"Post"> | string
-    username?: StringFilter<"Post"> | string
+  export type PhraseWhereInput = {
+    AND?: PhraseWhereInput | PhraseWhereInput[]
+    OR?: PhraseWhereInput[]
+    NOT?: PhraseWhereInput | PhraseWhereInput[]
+    id?: StringFilter<"Phrase"> | string
+    phrase?: StringFilter<"Phrase"> | string
+    translation?: StringFilter<"Phrase"> | string
+    targetLang?: StringFilter<"Phrase"> | string
+    streak?: IntFilter<"Phrase"> | number
+    practisedAt?: DateTimeFilter<"Phrase"> | Date | string
   }
 
-  export type PostOrderByWithRelationInput = {
+  export type PhraseOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
-    username?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    targetLang?: SortOrder
+    streak?: SortOrder
+    practisedAt?: SortOrder
   }
 
-  export type PostWhereUniqueInput = Prisma.AtLeast<{
+  export type PhraseWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: PostWhereInput | PostWhereInput[]
-    OR?: PostWhereInput[]
-    NOT?: PostWhereInput | PostWhereInput[]
-    title?: StringFilter<"Post"> | string
-    username?: StringFilter<"Post"> | string
+    AND?: PhraseWhereInput | PhraseWhereInput[]
+    OR?: PhraseWhereInput[]
+    NOT?: PhraseWhereInput | PhraseWhereInput[]
+    phrase?: StringFilter<"Phrase"> | string
+    translation?: StringFilter<"Phrase"> | string
+    targetLang?: StringFilter<"Phrase"> | string
+    streak?: IntFilter<"Phrase"> | number
+    practisedAt?: DateTimeFilter<"Phrase"> | Date | string
   }, "id">
 
-  export type PostOrderByWithAggregationInput = {
+  export type PhraseOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    username?: SortOrder
-    _count?: PostCountOrderByAggregateInput
-    _max?: PostMaxOrderByAggregateInput
-    _min?: PostMinOrderByAggregateInput
+    phrase?: SortOrder
+    translation?: SortOrder
+    targetLang?: SortOrder
+    streak?: SortOrder
+    practisedAt?: SortOrder
+    _count?: PhraseCountOrderByAggregateInput
+    _avg?: PhraseAvgOrderByAggregateInput
+    _max?: PhraseMaxOrderByAggregateInput
+    _min?: PhraseMinOrderByAggregateInput
+    _sum?: PhraseSumOrderByAggregateInput
   }
 
-  export type PostScalarWhereWithAggregatesInput = {
-    AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    OR?: PostScalarWhereWithAggregatesInput[]
-    NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Post"> | string
-    title?: StringWithAggregatesFilter<"Post"> | string
-    username?: StringWithAggregatesFilter<"Post"> | string
+  export type PhraseScalarWhereWithAggregatesInput = {
+    AND?: PhraseScalarWhereWithAggregatesInput | PhraseScalarWhereWithAggregatesInput[]
+    OR?: PhraseScalarWhereWithAggregatesInput[]
+    NOT?: PhraseScalarWhereWithAggregatesInput | PhraseScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Phrase"> | string
+    phrase?: StringWithAggregatesFilter<"Phrase"> | string
+    translation?: StringWithAggregatesFilter<"Phrase"> | string
+    targetLang?: StringWithAggregatesFilter<"Phrase"> | string
+    streak?: IntWithAggregatesFilter<"Phrase"> | number
+    practisedAt?: DateTimeWithAggregatesFilter<"Phrase"> | Date | string
   }
 
   export type UserWhereInput = {
@@ -2839,14 +3055,24 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    title?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
+    firstName?: StringFilter<"User"> | string
+    lastName?: StringFilter<"User"> | string
+    receivePromo?: BoolFilter<"User"> | boolean
+    passwordHash?: StringFilter<"User"> | string
+    tokenVersion?: IntFilter<"User"> | number
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
+    email?: SortOrder
     username?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    receivePromo?: SortOrder
+    passwordHash?: SortOrder
+    tokenVersion?: SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -2854,17 +3080,29 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    title?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
+    firstName?: StringFilter<"User"> | string
+    lastName?: StringFilter<"User"> | string
+    receivePromo?: BoolFilter<"User"> | boolean
+    passwordHash?: StringFilter<"User"> | string
+    tokenVersion?: IntFilter<"User"> | number
   }, "id">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
+    email?: SortOrder
     username?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    receivePromo?: SortOrder
+    passwordHash?: SortOrder
+    tokenVersion?: SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -2872,84 +3110,145 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    title?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
     username?: StringWithAggregatesFilter<"User"> | string
+    firstName?: StringWithAggregatesFilter<"User"> | string
+    lastName?: StringWithAggregatesFilter<"User"> | string
+    receivePromo?: BoolWithAggregatesFilter<"User"> | boolean
+    passwordHash?: StringWithAggregatesFilter<"User"> | string
+    tokenVersion?: IntWithAggregatesFilter<"User"> | number
   }
 
-  export type PostCreateInput = {
+  export type PhraseCreateInput = {
     id?: string
-    title: string
-    username: string
+    phrase: string
+    translation: string
+    targetLang: string
+    streak?: number
+    practisedAt?: Date | string
   }
 
-  export type PostUncheckedCreateInput = {
+  export type PhraseUncheckedCreateInput = {
     id?: string
-    title: string
-    username: string
+    phrase: string
+    translation: string
+    targetLang: string
+    streak?: number
+    practisedAt?: Date | string
   }
 
-  export type PostUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+  export type PhraseUpdateInput = {
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    targetLang?: StringFieldUpdateOperationsInput | string
+    streak?: IntFieldUpdateOperationsInput | number
+    practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostUncheckedUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+  export type PhraseUncheckedUpdateInput = {
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    targetLang?: StringFieldUpdateOperationsInput | string
+    streak?: IntFieldUpdateOperationsInput | number
+    practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostCreateManyInput = {
+  export type PhraseCreateManyInput = {
     id?: string
-    title: string
-    username: string
+    phrase: string
+    translation: string
+    targetLang: string
+    streak?: number
+    practisedAt?: Date | string
   }
 
-  export type PostUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+  export type PhraseUpdateManyMutationInput = {
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    targetLang?: StringFieldUpdateOperationsInput | string
+    streak?: IntFieldUpdateOperationsInput | number
+    practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostUncheckedUpdateManyInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+  export type PhraseUncheckedUpdateManyInput = {
+    phrase?: StringFieldUpdateOperationsInput | string
+    translation?: StringFieldUpdateOperationsInput | string
+    targetLang?: StringFieldUpdateOperationsInput | string
+    streak?: IntFieldUpdateOperationsInput | number
+    practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateInput = {
     id?: string
-    title: string
+    email: string
     username: string
+    firstName: string
+    lastName: string
+    receivePromo?: boolean
+    passwordHash: string
+    tokenVersion: number
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    title: string
+    email: string
     username: string
+    firstName: string
+    lastName: string
+    receivePromo?: boolean
+    passwordHash: string
+    tokenVersion: number
   }
 
   export type UserUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    receivePromo?: BoolFieldUpdateOperationsInput | boolean
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    tokenVersion?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    receivePromo?: BoolFieldUpdateOperationsInput | boolean
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    tokenVersion?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserCreateManyInput = {
     id?: string
-    title: string
+    email: string
     username: string
+    firstName: string
+    lastName: string
+    receivePromo?: boolean
+    passwordHash: string
+    tokenVersion: number
   }
 
   export type UserUpdateManyMutationInput = {
-    title?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    receivePromo?: BoolFieldUpdateOperationsInput | boolean
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    tokenVersion?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateManyInput = {
-    title?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    receivePromo?: BoolFieldUpdateOperationsInput | boolean
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    tokenVersion?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2967,22 +3266,61 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type PostCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    username?: SortOrder
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type PostMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    username?: SortOrder
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type PostMinOrderByAggregateInput = {
+  export type PhraseCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    username?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    targetLang?: SortOrder
+    streak?: SortOrder
+    practisedAt?: SortOrder
+  }
+
+  export type PhraseAvgOrderByAggregateInput = {
+    streak?: SortOrder
+  }
+
+  export type PhraseMaxOrderByAggregateInput = {
+    id?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    targetLang?: SortOrder
+    streak?: SortOrder
+    practisedAt?: SortOrder
+  }
+
+  export type PhraseMinOrderByAggregateInput = {
+    id?: SortOrder
+    phrase?: SortOrder
+    translation?: SortOrder
+    targetLang?: SortOrder
+    streak?: SortOrder
+    practisedAt?: SortOrder
+  }
+
+  export type PhraseSumOrderByAggregateInput = {
+    streak?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3003,26 +3341,108 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
+    email?: SortOrder
     username?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    receivePromo?: SortOrder
+    passwordHash?: SortOrder
+    tokenVersion?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    tokenVersion?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
+    email?: SortOrder
     username?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    receivePromo?: SortOrder
+    passwordHash?: SortOrder
+    tokenVersion?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
+    email?: SortOrder
     username?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    receivePromo?: SortOrder
+    passwordHash?: SortOrder
+    tokenVersion?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    tokenVersion?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3037,6 +3457,28 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3056,7 +3498,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -3064,7 +3506,50 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 
@@ -3073,9 +3558,9 @@ export namespace Prisma {
    * Aliases for legacy arg types
    */
     /**
-     * @deprecated Use PostDefaultArgs instead
+     * @deprecated Use PhraseDefaultArgs instead
      */
-    export type PostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PostDefaultArgs<ExtArgs>
+    export type PhraseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PhraseDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */

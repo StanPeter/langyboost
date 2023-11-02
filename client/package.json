@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "langyboostclient",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -16,7 +16,8 @@
     "unusedCheck": "npx depcheck",
     "outdatedCheck": "npm outdated",
     "formatCode": "prettier --write \"**/*.{js,jsx,ts,tsx,scss,less}\"",
-    "genScssTypes": "npx typed-scss-modules src --watch"
+    "genScssTypes": "npx typed-scss-modules src --watch",
+    "genGraphqlTypes": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
@@ -27,6 +28,7 @@
     "axios": "^0.27.2",
     "framer-motion": "^10.16.4",
     "graphql": "^16.6.0",
+    "i18next": "^23.6.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,35 +1,34 @@
 generator client {
     provider = "prisma-client-js"
-    output   = "../src/generated/prisma"
+    output   = "../generated/prisma"
 }
 
 generator pothos {
     provider = "prisma-pothos-types"
-    output   = "../src/generated/pothos.ts"
+    output   = "../generated/pothos.ts"
 }
-
-// generator typegraphql {
-//     provider = "typegraphql-prisma"
-//     output   = "../node_modules/@generated/typegraphql-prisma"
-// }
-
-// generator typegraphql {
-//     provider = "typegraphql-prisma"
-// }
 
 datasource db {
     provider = "mongodb"
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id       String @id @default(auto()) @map("_id") @db.ObjectId
-    title    String
-    username String
+model Phrase {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    phrase      String
+    translation String
+    targetLang  String
+    streak      Int      @default(0)
+    practisedAt DateTime @default(now())
 }
 
 model User {
-    id       String @id @default(auto()) @map("_id") @db.ObjectId
-    title    String
-    username String
+    id           String  @id @default(auto()) @map("_id") @db.ObjectId
+    email        String
+    username     String
+    firstName    String
+    lastName     String
+    receivePromo Boolean @default(false)
+    passwordHash String
+    tokenVersion Int
 }

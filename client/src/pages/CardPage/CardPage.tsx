@@ -1,9 +1,10 @@
+import Spinner from 'components/UI/Spinner/Spinner';
 import Tooltip from 'components/UI/Tooltip/Tooltip';
 import MainBody from 'components/layouts/MainBody/MainBody';
-import PhraseCardsControls from 'components/others/PhraseCardsControls/PhraseCardsControls';
+import { useGetPhrasesQuery } from 'graphql/generated/graphql';
 import React, { useState } from 'react';
+import Card from './Card';
 import styles from './cardPage.module.scss';
-import { motion } from 'framer-motion';
 // import { useGetPhrasesQuery } from "graphql/generated/graphql";
 // import Spinner from "./Spinner";
 
@@ -16,96 +17,91 @@ import { motion } from 'framer-motion';
 //     card?: PhraseCard[];
 // }
 
+const data = [
+    {
+        phrase: 'phrase 1',
+        translation: 'translation 1',
+    },
+    {
+        phrase: 'phrase 2',
+        translation: 'translation 2',
+    },
+    {
+        phrase: 'phrase 3',
+        translation: 'translation 3',
+    },
+];
+
 interface CardPageProps {}
 
 const CardPage: React.FC<CardPageProps> = () => {
-    const [hideTranslation, setHidetranslation] = useState(true);
-    const [animationChangeCard, setAnimationChangeCard] = useState(false);
-    const [cardIndex, setCardIndex] = useState(0);
+    const { data, error, loading } = useGetPhrasesQuery({});
+    const [numberOfCards, setNumberOfCards] = useState(5);
+    // const [phrases, setPhrases] = useState(data?.getPhrases.slice(0, 20) || []);
     // const [noMorePhrases, setNoMorePhrases] = useState(false);
 
-    // const { data, error } = useGetPhrasesQuery({});
-
     // useEffect(() => {
-    //     if (cardIndex >= data.getPhrases.length) {
+    //     if (cardIndex >= data.length) {
     //         setNoMorePhrases(true);
     //     }
     // }, [cardIndex]);
 
-    // if (!data || error) return null;
     // if (loading) return <Spinner />;
+    // if (!phrases) return null;
 
-    // if (cardIndex >= data.getPhrases.length && !noMorePhrases)
-    //     setNoMorePhrases(true);
+    // if (cardIndex >= data.length && !noMorePhrases) setNoMorePhrases(true);
 
     /*
-    //network-only makes it to do a request every single time
+    network-only makes it to do a request every single time
     const { data, loading } = useHelloQuery({ fetchPolicy: "network-only" });
-
-    if (!data || error) return null;
-    if (loading) return <Spinner />;
     */
+
+
+    // if (data.length < 1 || error) return null;
+    if (loading) return <Spinner />;
+
+    const phrases = data?.getPhrases.slice(0, 5) || [];
 
     return (
         <MainBody>
-            <div className={styles.cardPage}>
+            <div className={styles.cardPage} style={{ position: 'relative' }}>
                 <div>
-                    <h2>Card 7 of 50</h2>
+                    <h2>
+                        Card {numberOfCards ? phrases.length - numberOfCards + 1 : phrases.length} of {phrases.length}
+                    </h2>
                     <Tooltip />
                 </div>
-                <div
-                    style={{
-                        position: 'relative',
-                        width: '100%',
-                    }}
-                >
-                    {[...Array(3)].map((d, i) => {
-                        return (
-                            <div
-                                className={`${styles.cardWrapper} ${
-                                    animationChangeCard ? styles.animationChangeCard : ''
-                                }`}
-                                onAnimationEnd={() => {
-                                    setCardIndex(cardIndex + 1);
-                                    setAnimationChangeCard(false);
-                                }}
-                                style={{
-                                    left: 0,
-                                    top: -15 * i,
-                                    zIndex: -1 * i,
-                                    position: 'absolute',
-                                }}
-                            >
-                                <div
-                                    style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}
-                                >
-                                    <div className={styles.cardPhrase}>
-                                        <h2 className={`${hideTranslation ? styles.focused : ''}`}>
-                                            Denke lieber an das, was du hast
-                                            {/* {data.getPhrases[cardIndex]?.phrase ||
-                                    "No more phrases"} */}
-                                        </h2>
-                                        {!hideTranslation ? (
-                                            <motion.div
-                                                animate={{ x: 0 }}
-                                                transition={{ ease: 'easeInOut', duration: 2 }}
-                                            >
-                                                <hr className={styles.translationSeparator} style={{ width: '50%' }} />
-                                                <h3 className={styles.focused}>Not implemented</h3>
-                                            </motion.div>
-                                        ) : null}
-                                    </div>
-                                    <hr className={styles.controlsSeparator} />
-                                    <PhraseCardsControls
-                                        setHidetranslation={setHidetranslation}
-                                        setAnimationChangeCard={setAnimationChangeCard}
-                                        // noMorePhrases={noMorePhrases}
-                                        noMorePhrases={false}
-                                    />
+                <div>
+                    {numberOfCards === 0 ? (
+                        <div
+                            className={`${styles.cardWrapper}`}
+                            style={{
+                                left: '6%',
+                                top: 0,
+                                display: 'flex',
+                                position: 'absolute',
+                            }}
+                        >
+                            <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}>
+                                <div className={styles.cardPhrase}>
+                                    <h2 className={styles.focused}>NO MORE PHRASES</h2>
                                 </div>
+                                <hr className={styles.controlsSeparator} />
+                                <i>
+                                    <p>{'Return to courses'}</p>
+                                </i>
                             </div>
-                        );
-                    })}
+                        </div>
+                    ) : (
+                        [...Array(numberOfCards)].map((_d, i) => (
+                            <Card
+                                data={phrases || []}
+                                numberOfCards={numberOfCards}
+                                setNumberOfCards={setNumberOfCards}
+                                index={i}
+                            />
+                        ))
+                    )}
                 </div>
             </div>
         </MainBody>

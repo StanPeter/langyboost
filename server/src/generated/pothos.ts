@@ -1,14 +1,14 @@
 /* eslint-disable */
-import type { Prisma, Post, User } from "C:\\projekty\\langyboost\\server\\src\\generated\\prisma";
+import type { Prisma, Phrase, User } from "C:\\projekty\\langyboost\\server\\src\\generated\\prisma";
 export default interface PrismaTypes {
-    Post: {
-        Name: "Post";
-        Shape: Post;
+    Phrase: {
+        Name: "Phrase";
+        Shape: Phrase;
         Include: never;
-        Select: Prisma.PostSelect;
-        OrderBy: Prisma.PostOrderByWithRelationInput;
-        WhereUnique: Prisma.PostWhereUniqueInput;
-        Where: Prisma.PostWhereInput;
+        Select: Prisma.PhraseSelect;
+        OrderBy: Prisma.PhraseOrderByWithRelationInput;
+        WhereUnique: Prisma.PhraseWhereUniqueInput;
+        Where: Prisma.PhraseWhereInput;
         Create: {};
         Update: {};
         RelationName: never;

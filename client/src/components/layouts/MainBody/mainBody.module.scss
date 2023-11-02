@@ -20,11 +20,12 @@
 
 .bodyWrapper {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     // justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    // min-height: 100vh;
     margin: auto;
     padding: 10% 0.5rem;
 }
@@ -49,7 +50,7 @@
 @media screen and (min-width: 750px) {
     .bodyWrapper {
         width: 85%;
-        padding: 10% 0;
+        padding: 6% 0;
     }
 }
 
