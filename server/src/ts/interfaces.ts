@@ -7,13 +7,13 @@ export interface IContextType {
 }
 
 export interface IAccessTokenPayload {
-    userId: number;
+    userId: string;
     iat: number;
     exp: number;
 }
 
 export interface IRefreshTokenPayload {
-    userId: number;
+    userId: string;
     tokenVersion: number;
     iat: number;
     exp: number;

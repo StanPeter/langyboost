@@ -1,46 +1,15 @@
 import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import db from 'db';
+import { TEST_USER_DATA } from 'db/mockData';
 import dotenv from 'dotenv';
-// import { User } from 'schema/User';
 import express from 'express';
+import { verify } from 'jsonwebtoken';
 import 'reflect-metadata';
-// import { PhrasesResolver } from 'resolvers/PhrasesResolver';
-// import { buildSchema } from 'type-graphql';
-// import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
-// import { UserResolver } from './resolvers/UserResolver';
 import { schema } from 'schema';
-
-// Requiring the module
-// DB
-// const pass = 'stancek97';
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = `mongodb+srv://stan05:${pass}@langyboostcluster.5eza2kb.mongodb.net/?retryWrites=true&w=majority`;
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-// 	serverApi: {
-// 		version: ServerApiVersion.v1,
-// 		strict: true,
-// 		deprecationErrors: true,
-// 	},
-// });
-
-// async function run() {
-// 	try {
-// 		// Connect the client to the server	(optional starting in v4.7)
-// 		await client.connect();
-// 		// Send a ping to confirm a successful connection
-// 		await client.db('admin').command({ ping: 1 });
-// 		console.log('Pinged your deployment. You successfully connected to MongoDB!');
-// 	} finally {
-// 		// Ensures that the client will close when you finish/error
-// 		await client.close();
-// 	}
-// }
-// run().catch(console.dir);
-
-// DB END
+import projectConfiq from 'settings/serverConfig';
+import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
 
 (async () => {
 	// allowing CORS
@@ -63,114 +32,57 @@ import { schema } from 'schema';
 	//loads from .env file
 	dotenv.config();
 
-	//a random route, just to try out
-	// app.get('/users', async (_req, res) => {
-	// 	const users = await User.find();
-
-	// 	res.json(users);
-	// });
-
-	//a second random route, just to try out
-	// app.get('/users/:id', async (req, res) => {
-	// 	const user = await User.findOne({ where: { id: req.params.id } });
-
-	// 	if (!user) res.send('User not found');
-	// 	else res.json(user);
-	// });
+	// test route, just to try out
+	app.get('/test/:id', async (req, res) => {
+		res.send('Tested ID' + req.params.id);
+	});
 
 	//refresh_token route to improve security and do this outside /graphql route
-	// app.post('/refreshToken', async (req, res) => {
-	// 	//get refresh token and validate
-	// 	const refreshToken = req.cookies.jid;
+	app.post('/refreshToken', async (req, res) => {
+		//get refresh token and validate
+		const refreshToken = req.cookies.jid;
 
-	// 	console.log(refreshToken, ' refreshToken');
+		console.log(refreshToken, ' refreshToken');
 
-	// 	if (!refreshToken) return res.send({ ok: false, accessToken: '' });
+		if (!refreshToken) return res.send({ ok: false, accessToken: '' });
 
-	// 	let payload: any;
-	// 	try {
-	// 		//it will automatically throw an error if verify(whether token is valid and not expired) fails
-	// 		payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
-	// 	} catch (error) {
-	// 		console.log(error, 'error');
-	// 		return res.send({ ok: false, accessToken: '' });
-	// 	}
+		let payload: any;
+		try {
+			//it will automatically throw an error if verify(whether token is valid and not expired) fails
+			payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
+		} catch (error) {
+			console.log(error, 'error');
+			return res.send({ ok: false, accessToken: '' });
+		}
 
-	// 	// when mocked
-	// 	if (settings.isMocked) {
-	// 		const testUser = User.create(testUserData);
+		// when mocked
+		if (projectConfiq.isMocked) {
+			const testUser = await db.user.create({ data: TEST_USER_DATA });
 
-	// 		sendRefreshToken(res, createRefreshToken(testUser));
-	// 		return res.send({ ok: true, accessToken: createAccessToken(testUser) });
-	// 	}
+			sendRefreshToken(res, createRefreshToken(testUser));
+			return res.send({ ok: true, accessToken: createAccessToken(testUser) });
+		}
 
-	// 	//payload has property userId
-	// 	const user = await User.findOne({ id: payload.userId });
+		//payload has property userId
+		const user = await db.user.findFirst({ where: { id: payload.userId } });
 
-	// 	if (!user) {
-	// 		console.log('User not found');
-	// 		return res.send({ ok: false, accessToken: '' });
-	// 	}
+		if (!user) {
+			console.log('User not found');
+			return res.send({ ok: false, accessToken: '' });
+		}
 
-	// 	//in case the token has been revoked before
-	// 	if (user.tokenVersion !== payload.tokenVersion) {
-	// 		console.log('Token version invalid');
-	// 		return res.send({ ok: false, accessToken: '' });
-	// 	}
+		//in case the token has been revoked before
+		if (user.tokenVersion !== payload.tokenVersion) {
+			console.log('Token version invalid');
+			return res.send({ ok: false, accessToken: '' });
+		}
 
-	// 	sendRefreshToken(res, createRefreshToken(user));
-	// 	return res.send({ ok: true, accessToken: createAccessToken(user) });
-	// });
-
-	//connection for typeorm using ormconfig.json and its entities
-	// await createConnection().then(() => console.log('DONE'));
-
-	// await db.$connect();
-	// console.log('connected');
-
-	// Reading our test file
-	// const file = reader.readFile('C:/projekty/langyboost/server/src/data.xlsx');
-
-	// let data: any = [];
-	// let counter: number = 0;
-
-	// const sheets = file.SheetNames;
-
-	// const allFounds = await db.phrase.findRaw({});
-
-	// for (let i = 0; i < sheets.length; i++) {
-	// 	const temp = reader.utils.sheet_to_json(file.Sheets[file.SheetNames[i]]);
-	// 	temp.forEach(async (res: any) => {
-	// 		const foundPhrase = await db.phrase.findFirst({ where: { phrase: res.Phrase } });
-
-	// 		console.log(foundPhrase, ' foundPhrase foundPhrase');
-
-	// 		if (!foundPhrase) {
-	// 			await db.phrase.create({
-	// 				data: { phrase: res.Phrase, targetLang: 'de', translation: '' },
-	// 			});
-	// 			console.log(res.Phrase, ' PHRASE CREATED');
-	// 			counter += 1;
-	// 		}
-	// 		// if (res.Phrase) {
-	// 		// 	data.push(res);
-	// 		// }
-	// 	});
-	// }
-
-	// console.log(allFounds.length, ' TOTAL COUNT');
-
-	// Printing data
-	// console.log(data.length, ' FINAL DATA');
-
-	// await db.post.create({ data: { title: 'test', username: 'test username' } });
-	// const random = getMongoRepository(Phrases);
+		sendRefreshToken(res, createRefreshToken(user));
+		return res.send({ ok: true, accessToken: createAccessToken(user) });
+	});
 
 	//define apolloserver for graphql
 	const apolloServer = new ApolloServer({
-		// schema: await buildSchema({
-		// 	resolvers: [UserResolver, PhrasesResolver],
-		// }),
 		schema: schema,
 		context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
 	});
@@ -183,21 +95,3 @@ import { schema } from 'schema';
 		console.log('Server started: http://localhost:4000/graphql');
 	});
 })();
-
-// createConnection()
-//   .then(async (connection) => {
-//     console.log("Inserting a new user into the database...");
-//     const user = new User();
-//     user.firstName = "Timber";
-//     user.lastName = "Saw";
-//     user.age = 25;
-//     await connection.manager.save(user);
-//     console.log("Saved a new user with id: " + user.id);
-
-//     console.log("Loading users from the database...");
-//     const users = await connection.manager.find(User);
-//     console.log("Loaded users: ", users);
-
-//     console.log("Here you can setup and run express/koa/any other framework.");
-//   })
-//   .catch((error) => console.log(error));

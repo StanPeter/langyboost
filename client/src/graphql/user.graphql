@@ -1,0 +1,39 @@
+query GetUser($userId: String!) {
+    getUser(id: $userId) {
+        id
+        firstName
+        lastName
+        userName
+        address
+        avatar
+        birthday
+        email
+        membershipExpiration
+        membershipType
+        nationality
+        phoneNumber
+    }
+}
+
+# register mutation
+mutation SignUp($email: String!, $password: String!, $repeatPassword: String!, $userName: String!) {
+    addUser(email: $email, password: $password, repeatPassword: $repeatPassword, userName: $userName) {
+        id
+        email
+        accessToken
+    }
+}
+
+# login mutation
+mutation SignIn($email: String!, $password: String!) {
+    signIn(email: $email, password: $password) {
+        id
+        email
+        accessToken
+    }
+}
+
+# logout mutation
+mutation SignOut {
+    signOut
+}

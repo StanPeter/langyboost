@@ -5,18 +5,30 @@ import type PrismaTypes from 'generated/pothos';
 // customized as described above.
 // Using a type only import will help avoid issues with undeclared
 // exports in esm mode
+import SimpleObjectsPlugin from '@pothos/plugin-simple-objects';
 import prisma from 'db';
+import { User } from 'generated/prisma';
 import { DateResolver } from 'graphql-scalars';
+import { IContextType } from 'ts/interfaces';
 
 // const prisma = new PrismaClient({});
+
+type TLoginResponse = {
+	user: User;
+	accessToken: string;
+};
 
 const builder = new SchemaBuilder<{
 	Scalars: {
 		Date: { Input: Date; Output: Date };
 	};
+	Objects: {
+		LoginResponse: TLoginResponse;
+	};
 	PrismaTypes: PrismaTypes;
+	Context: IContextType;
 }>({
-	plugins: [PrismaPlugin],
+	plugins: [PrismaPlugin, SimpleObjectsPlugin],
 	prisma: {
 		client: prisma,
 		// defaults to false, uses /// comments from prisma schema as descriptions

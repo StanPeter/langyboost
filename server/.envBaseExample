@@ -1,4 +1,4 @@
 ACCESS_TOKEN_SECRET=fillYourSecret
 REFRESH_TOKEN_SECRET=fillYourSecret
 GOOGLE_APPLICATION_CREDENTIALS="/home/user/googleApiKey/jsonFile"
-DATABASE_URL="mongodb+srv://{userName}:{userPassword}@{userClusterName}.5eza2kb.mongodb.net/?retryWrites=true&w=majority"
+DATABASE_URL="mongodb+srv://{userName}:{userPassword}@{userClusterName}.5eza2kb.mongodb.net/{dbName}"

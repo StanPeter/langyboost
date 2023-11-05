@@ -17,6 +17,7 @@ builder.prismaObject('User', {
 		membershipType: t.exposeString('membershipType', { nullable: true }),
 		membershipExpiration: t.exposeString('membershipExpiration', { nullable: true }),
 		avatar: t.exposeString('avatar', { nullable: true }),
+		accessToken: t.exposeString('accessToken', { nullable: true }),
 	}),
 });
 
