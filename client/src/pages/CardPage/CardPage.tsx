@@ -36,7 +36,7 @@ interface CardPageProps {}
 
 const CardPage: React.FC<CardPageProps> = () => {
     const { data, error, loading } = useGetPhrasesQuery({});
-    const [numberOfCards, setNumberOfCards] = useState(5);
+    const [numberOfCards, setNumberOfCards] = useState(20);
     // const [phrases, setPhrases] = useState(data?.getPhrases.slice(0, 20) || []);
     // const [noMorePhrases, setNoMorePhrases] = useState(false);
 
@@ -60,7 +60,7 @@ const CardPage: React.FC<CardPageProps> = () => {
     // if (data.length < 1 || error) return null;
     if (loading) return <Spinner />;
 
-    const phrases = data?.getPhrases.slice(0, 5) || [];
+    const phrases = data?.getPhrases.slice(0, 20) || [];
 
     return (
         <MainBody>

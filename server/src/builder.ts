@@ -1,5 +1,4 @@
 import SchemaBuilder from '@pothos/core';
-import { PrismaClient } from '@prisma/client';
 import PrismaPlugin from '@pothos/plugin-prisma';
 import type PrismaTypes from 'generated/pothos';
 // This is the default location for the generator, but this can be

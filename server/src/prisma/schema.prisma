@@ -13,6 +13,12 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+enum Role {
+    MEMBER
+    PREMIUM
+    ADMIN
+}
+
 model Phrase {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
     phrase      String
@@ -23,12 +29,19 @@ model Phrase {
 }
 
 model User {
-    id           String  @id @default(auto()) @map("_id") @db.ObjectId
-    email        String
-    username     String
-    firstName    String
-    lastName     String
-    receivePromo Boolean @default(false)
-    passwordHash String
-    tokenVersion Int
+    id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+    email                String
+    firstName            String  @default("")
+    lastName             String  @default("")
+    userName             String
+    receivePromo         Boolean @default(false)
+    passwordHash         String
+    tokenVersion         Int     @default(0)
+    birthday             String  @default("")
+    phoneNumber          String  @default("")
+    address              String  @default("")
+    nationality          String  @default("")
+    membershipExpiration String  @default("")
+    membershipType       Role    @default(MEMBER)
+    avatar               String  @default("")
 }
