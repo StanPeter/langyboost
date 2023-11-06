@@ -55,7 +55,13 @@ builder.mutationFields((t) => ({
 					data: { email: args.email, userName: args.userName, passwordHash: hashedPass },
 				});
 
-				return newUser;
+				// create both tokens
+				const accessToken = createAccessToken(newUser);
+
+				sendRefreshToken(res, createRefreshToken(newUser));
+				sendAccessToken(res, accessToken);
+
+				return { ...newUser, accessToken };
 			} catch (error) {
 				throw new ApolloError('There was an error: ' + (error as Error).message);
 			}

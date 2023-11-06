@@ -18,7 +18,7 @@ import styles from './loginForm.module.scss';
 
 interface IFormData {
     password: string;
-    username?: string;
+    userName?: string;
     email: string;
     repeatPassword?: string;
 }
@@ -51,11 +51,12 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const formValues: IFormData = getValues() as unknown as IFormData;
 
     // submit handling, calling BE for auth access token
-    const onSubmitHandler = () => {
-        // e.preventDefault();
+    const onSubmitHandler = (e: SubmitEvent) => {
+        e.preventDefault();
+        console.log('CLICKED');
 
         if (!formValues.password || !formValues.email) return;
-        if (mode === 'signUp' && (!formValues.username || !formValues.repeatPassword)) return;
+        if (mode === 'signUp' && (!formValues.userName || !formValues.repeatPassword)) return;
 
         const variables = mode === 'signUp' ? formValues : { password: formValues.password, email: formValues.email };
 
@@ -64,26 +65,25 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             // @ts-ignore
             variables,
         }).then(res => {
-            const data =
+            const userData =
+                // @ts-ignore
                 mode === 'signUp' ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;
 
-            // if (data.user) navigate('/articles');
-            // if ()
-            // console.log(res, " RES");
-            console.log(data, ' RES data');
-            // if (data.accessToken) sessionStorage.setItem("oat", data.accessToken);
-            // console.log(jwtDecode(data.accessToken), "DECODE");
+            if (userData.accessToken) {
+                sessionStorage.setItem('oat', userData.accessToken);
+                navigate('/articles');
+            }
             // if (mode === 'signUp' && res.data)
         });
 
-        navigate('/courses');
+        // navigate('/courses');
     };
 
     // control buttons disability
     const isBtnDisabled = () => {
         if (!formValues.email || !formValues.password) return true;
 
-        if (mode === 'signUp' && (!formValues.repeatPassword || !formValues.username)) return true;
+        if (mode === 'signUp' && (!formValues.repeatPassword || !formValues.userName)) return true;
 
         return false;
     };
@@ -117,7 +117,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     onClick={() => setMode('signUp')}
                 />
             </div>
-            <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
+            <form autoComplete="off">
                 <Input
                     withoutLabel
                     type="text"
@@ -128,10 +128,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 {mode === 'signUp' && (
                     <Input
                         withoutLabel
-                        validationMessage={errors.username?.message?.toString()}
+                        validationMessage={errors.userName?.message?.toString()}
                         type="text"
-                        register={register('username')}
-                        placeholder="username"
+                        register={register('userName')}
+                        placeholder="userName"
                     />
                 )}
                 <Input
@@ -154,7 +154,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
                     useCase="fullLine"
                     type="submit"
-                    // onClick={onSubmitHandler}
+                    onClick={onSubmitHandler}
                     disabled={isBtnDisabled()}
                     classes={styles.submitBtn}
                 />

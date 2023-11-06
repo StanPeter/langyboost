@@ -5,6 +5,7 @@ export interface ISingUpResponse {
             user: {
                 email: string;
                 id: number;
+                accessToken: string;
             };
         };
     };
@@ -17,6 +18,7 @@ export interface ISingInResponse {
             user: {
                 email: string;
                 id: number;
+                accessToken: string;
             };
         };
     };

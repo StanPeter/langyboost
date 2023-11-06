@@ -1,5 +1,5 @@
 query GetUser($userId: String!) {
-    getUser(id: $userId) {
+    getUser(userId: $userId) {
         id
         firstName
         lastName
@@ -34,6 +34,6 @@ mutation SignIn($email: String!, $password: String!) {
 }
 
 # logout mutation
-mutation SignOut {
-    signOut
-}
+# mutation SignOut {
+#     signOut
+# }
