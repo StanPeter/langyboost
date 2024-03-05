@@ -1,1 +1,1 @@
-export const code: string;
+export declare const code: string;

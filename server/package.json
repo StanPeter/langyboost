@@ -43,9 +43,9 @@
 	},
 	"scripts": {
 		"build": "tsc",
-		"dev": "NODE_PATH=./src ts-node ./src/index.ts",
+		"devOld": "NODE_PATH=./src ts-node ./src/index.ts",
 		"startLinux": "NODE_PATH=./src nodemon --exec ts-node src/index.ts",
-		"start": "nodemon --exec \"ts-node -r tsconfig-paths/register\" src/index.ts",
+		"dev": "nodemon --exec \"ts-node -r tsconfig-paths/register\" src/index.ts",
 		"genPrisma": "yarn run prisma generate --schema=./src/prisma/schema.prisma --watch",
 		"migratePrisma": "yarn run prisma migrate dev --schema=./src/prisma/schema.prisma",
 		"prod": "npm run build && npm run start"

@@ -12,6 +12,12 @@
     -ms-transform: translateZ(0);
     transform: translateZ(0);
 }
+
+.small {
+    margin: 1rem;
+    font-size: 0.3rem;
+}
+
 @-webkit-keyframes load5 {
     0%,
     100% {

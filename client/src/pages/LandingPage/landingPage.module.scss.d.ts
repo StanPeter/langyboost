@@ -1,2 +1,2 @@
-export const landingPage: string;
-export const particles: string;
+export declare const landingPage: string;
+export declare const particles: string;

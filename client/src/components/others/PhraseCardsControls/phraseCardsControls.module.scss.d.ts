@@ -1,6 +1,6 @@
-export const controlContinue: string;
-export const controlIcon: string;
-export const controls: string;
-export const controlThumbsDown: string;
-export const controlThumbsUp: string;
-export const disabled: string;
+export declare const controlContinue: string;
+export declare const controlIcon: string;
+export declare const controls: string;
+export declare const controlThumbsDown: string;
+export declare const controlThumbsUp: string;
+export declare const disabled: string;

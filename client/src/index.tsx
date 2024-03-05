@@ -49,7 +49,7 @@ const refreshLink = new TokenRefreshLink({
         console.log('running this');
 
         const token = sessionStorage.getItem('accessToken');
-
+        
         if (!token) return true;
 
         try {

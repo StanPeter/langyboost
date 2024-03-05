@@ -3,6 +3,7 @@ import Button from 'components/UI/Button/Button';
 import Header from 'components/UI/Header/Header';
 import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
+import Spinner from 'components/UI/Spinner/Spinner';
 import { useSignInMutation, useSignUpMutation } from 'graphql/generated/graphql';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -32,7 +33,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
     const navigate = useNavigate();
     const usedSignHook = mode === 'signUp' ? useSignUpMutation : useSignInMutation;
-    const [signMutation, { error, reset }] = usedSignHook();
+    const [signMutation, { error, reset, loading }] = usedSignHook();
 
     useEffect(() => {
         reset();
@@ -49,6 +50,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
 
     watch();
     const formValues: IFormData = getValues() as unknown as IFormData;
+
+    console.log(document.cookie, ' COOOKIEEE');
 
     // submit handling, calling BE for auth access token
     const onSubmitHandler = (e: SubmitEvent) => {
@@ -68,6 +71,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
             const userData =
                 // @ts-ignore
                 mode === 'signUp' ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;
+
+            console.log(userData, ' userData');
 
             if (userData.accessToken) {
                 sessionStorage.setItem('oat', userData.accessToken);
@@ -150,14 +155,19 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                         placeholder="repeatPassword"
                     />
                 )}
-                <Button
-                    text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
-                    useCase="fullLine"
-                    type="submit"
-                    onClick={onSubmitHandler}
-                    disabled={isBtnDisabled()}
-                    classes={styles.submitBtn}
-                />
+                {!loading ? (
+                    <Button
+                        text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
+                        useCase="fullLine"
+                        type="submit"
+                        onClick={onSubmitHandler}
+                        disabled={isBtnDisabled()}
+                        classes={styles.submitBtn}
+                    />
+                ) : (
+                    <Spinner useCase="small" />
+                )}
+
                 {error && (
                     <Header
                         level={4}

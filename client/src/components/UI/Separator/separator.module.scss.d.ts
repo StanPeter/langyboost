@@ -1,1 +1,1 @@
-export const fullHorizontal: string;
+export declare const fullHorizontal: string;

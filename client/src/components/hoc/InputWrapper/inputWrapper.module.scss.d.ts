@@ -1,4 +1,4 @@
-export const filterItem: string;
-export const formItem: string;
-export const invalid: string;
-export const wrapper: string;
+export declare const filterItem: string;
+export declare const formItem: string;
+export declare const invalid: string;
+export declare const wrapper: string;

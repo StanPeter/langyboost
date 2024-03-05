@@ -5,12 +5,10 @@ import { JsonWebTokenError, TokenExpiredError, decode, verify } from 'jsonwebtok
 import { IAccessTokenPayload, IContextType, IRefreshTokenPayload } from 'ts/interfaces';
 import { MiddlewareFn } from 'type-graphql';
 import {
-    ACCESS_TOKEN_EXPIRATION_LIMIT,
-    REFRESH_TOKEN_EXPIRATION_LIMIT,
-    createAccessToken,
-    createRefreshToken,
-    sendAccessToken,
-    sendRefreshToken,
+	ACCESS_TOKEN_EXPIRATION_LIMIT,
+	REFRESH_TOKEN_EXPIRATION_LIMIT,
+	createRefreshToken,
+	sendRefreshToken
 } from 'utils/auth';
 
 // check the expiration and extent its life span
@@ -26,7 +24,7 @@ const checkExpiration = (token: string, tokenType: 'access' | 'refresh', context
 
 	if (tokenType === 'access' && timeDiff < ACCESS_TOKEN_EXPIRATION_LIMIT) {
 		console.log('creating new access token through EXPIRATION ');
-		sendAccessToken(context.res, createRefreshToken(foundUser));
+		// sendAccessToken(context.res, createRefreshToken(foundUser));
 	} else if (tokenType === 'refresh' && timeDiff < REFRESH_TOKEN_EXPIRATION_LIMIT) {
 		console.log('creating new refresh token through EXPIRATION ');
 		sendRefreshToken(context.res, createRefreshToken(foundUser));
@@ -85,7 +83,7 @@ const verifyRefreshToken = async (refreshToken: string, context: IContextType) =
 		// create new access token and extend the lifespan of the refresh token
 
 		console.log('creating new access token');
-		sendAccessToken(context.res, createAccessToken(foundUser));
+		// sendAccessToken(context.res, createAccessToken(foundUser));
 		checkExpiration(refreshToken, 'refresh', context, foundUser);
 		// sendRefreshToken(context.res, createRefreshToken(foundUser));
 	} catch (error) {

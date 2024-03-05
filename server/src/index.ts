@@ -39,6 +39,8 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 
 	//refresh_token route to improve security and do this outside /graphql route
 	app.post('/refreshToken', async (req, res) => {
+		console.log(req.cookies, ' COOKIES');
+
 		//get refresh token and validate
 		const refreshToken = req.cookies.jid;
 
@@ -57,10 +59,11 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 
 		// when mocked
 		if (projectConfiq.isMocked) {
-			const testUser = await db.user.create({ data: TEST_USER_DATA });
+			// let testUser = await db.user.findFirst({ where: { id: TEST_USER_DATA.id } });
+			// if (!testUser) testUser = await db.user.create({ data: TEST_USER_DATA });
 
-			sendRefreshToken(res, createRefreshToken(testUser));
-			return res.send({ ok: true, accessToken: createAccessToken(testUser) });
+			sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
+			return res.send({ ok: true, accessToken: createAccessToken(TEST_USER_DATA) });
 		}
 
 		//payload has property userId

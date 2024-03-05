@@ -1,2 +1,2 @@
-export const appWrapper: string;
-export const bodyWrapper: string;
+export declare const appWrapper: string;
+export declare const bodyWrapper: string;

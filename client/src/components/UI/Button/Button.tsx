@@ -6,7 +6,7 @@ import styles from './button.module.scss';
 interface ButtonProps {
     text: string;
     style?: object;
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    onClick?: (e: SubmitEvent) => void;
     active?: boolean | (() => boolean);
     disabled?: boolean | (() => boolean);
     useCase?: TButtonUseCase;

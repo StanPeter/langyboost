@@ -44,5 +44,4 @@ model User {
     membershipExpiration String  @default("")
     membershipType       Role    @default(MEMBER)
     avatar               String  @default("")
-    accessToken          String  @default("")
 }

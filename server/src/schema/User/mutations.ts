@@ -2,9 +2,9 @@ import { ApolloError } from 'apollo-server-express';
 import { compare, hash } from 'bcryptjs';
 import builder from 'builder';
 import db from 'db';
-import mockData, { TEST_USER_DATA } from 'db/mockData';
+import mockData from 'db/mockData';
 import serverConfig from 'settings/serverConfig';
-import { createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken } from 'utils/auth';
+import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
 
 // define each individual mutation
 builder.mutationFields((t) => ({
@@ -19,9 +19,8 @@ builder.mutationFields((t) => ({
 		resolve: async (query, _, args, { res, req, payload }) => {
 			// for mocked use case
 			if (serverConfig.isMocked) {
-				const testUser = await db.user.create({ data: TEST_USER_DATA });
-
-				sendRefreshToken(res, createRefreshToken(testUser));
+				// const testUser = await db.user.create({ data: TEST_USER_DATA });
+				// sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
 
 				return mockData.signUpMockData;
 			}
@@ -41,10 +40,9 @@ builder.mutationFields((t) => ({
 			});
 
 			if (foundUser) {
-				throw new ApolloError('The user with the email already exists.');
+				throw new ApolloError('User already exists.');
 			}
-			if (args.password !== args.repeatPassword)
-				throw new ApolloError('Passwords do not match. Please try again.');
+			if (args.password !== args.repeatPassword) throw new ApolloError('Wrong password or email');
 
 			console.log('HASHING');
 			const hashedPass = await hash(args.password, 10);
@@ -59,7 +57,7 @@ builder.mutationFields((t) => ({
 				const accessToken = createAccessToken(newUser);
 
 				sendRefreshToken(res, createRefreshToken(newUser));
-				sendAccessToken(res, accessToken);
+				// sendAccessToken(res, accessToken);
 
 				return { ...newUser, accessToken };
 			} catch (error) {
@@ -76,9 +74,8 @@ builder.mutationFields((t) => ({
 		resolve: async (query, _, args, { res, req, payload }) => {
 			// for mocked use case
 			if (serverConfig.isMocked) {
-				const testUser = await db.user.create({ data: TEST_USER_DATA });
-
-				sendRefreshToken(res, createRefreshToken(testUser));
+				// const testUser = await db.user.create({ data: TEST_USER_DATA });
+				// sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
 
 				return mockData.signUpMockData;
 			}
@@ -102,7 +99,7 @@ builder.mutationFields((t) => ({
 
 			// create both tokens
 			sendRefreshToken(res, createRefreshToken(foundUser));
-			sendAccessToken(res, accessToken);
+			// sendAccessToken(res, accessToken);
 
 			//if all went ok, returns a new token
 			return { ...foundUser, accessToken };

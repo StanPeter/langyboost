@@ -1,6 +1,6 @@
-export const close: string;
-export const modal: string;
-export const modalContent: string;
-export const modalTitle: string;
-export const overlay: string;
-export const shadowDrop: string;
+export declare const close: string;
+export declare const modal: string;
+export declare const modalContent: string;
+export declare const modalTitle: string;
+export declare const overlay: string;
+export declare const shadowDrop: string;

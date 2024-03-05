@@ -2,7 +2,7 @@ import { User } from 'generated/prisma';
 
 // USER mock data
 export const TEST_USER_DATA: User = {
-	id: '155',
+	id: '5f9a56b01e5b5f4f231e64c3',
 	userName: 'test user',
 	email: 'test@gmail.com',
 	firstName: 'Tes',
@@ -17,7 +17,6 @@ export const TEST_USER_DATA: User = {
 	membershipType: 'ADMIN',
 	nationality: 'GE',
 	phoneNumber: '7184 8788',
-	accessToken: '',
 };
 
 const signUpMockData = TEST_USER_DATA;

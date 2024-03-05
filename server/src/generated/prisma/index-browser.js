@@ -124,8 +124,7 @@ exports.Prisma.UserScalarFieldEnum = {
   nationality: 'nationality',
   membershipExpiration: 'membershipExpiration',
   membershipType: 'membershipType',
-  avatar: 'avatar',
-  accessToken: 'accessToken'
+  avatar: 'avatar'
 };
 
 exports.Prisma.SortOrder = {
