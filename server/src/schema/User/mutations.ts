@@ -1,6 +1,7 @@
 import { ApolloError } from 'apollo-server-express';
 import { compare, hash } from 'bcryptjs';
 import builder from 'builder';
+import errors from 'constants/errors';
 import db from 'db';
 import mockData from 'db/mockData';
 import serverConfig from 'settings/serverConfig';
@@ -25,6 +26,7 @@ builder.mutationFields((t) => ({
 				return mockData.signUpMockData;
 			}
 
+			// check whether user exist
 			const foundUser = await db.user.findFirst({
 				...query,
 				where: {
@@ -44,10 +46,10 @@ builder.mutationFields((t) => ({
 			}
 			if (args.password !== args.repeatPassword) throw new ApolloError('Wrong password or email');
 
-			console.log('HASHING');
+			// create hash password
 			const hashedPass = await hash(args.password, 10);
 
-			console.log(hashedPass, 'HASHING');
+			// create new user and handle tokens
 			try {
 				const newUser = await db.user.create({
 					data: { email: args.email, userName: args.userName, passwordHash: hashedPass },
@@ -65,7 +67,7 @@ builder.mutationFields((t) => ({
 			}
 		},
 	}),
-	signIn: t.prismaField({
+	loginUser: t.prismaField({
 		type: 'User',
 		args: {
 			email: t.arg.string({ required: true }),
@@ -80,6 +82,7 @@ builder.mutationFields((t) => ({
 				return mockData.signUpMockData;
 			}
 
+			// find user and validate
 			const foundUser = await db.user.findFirst({
 				...query,
 				where: {
@@ -88,13 +91,14 @@ builder.mutationFields((t) => ({
 			});
 
 			if (!foundUser) {
-				throw new ApolloError('Invalid email or password');
+				throw new ApolloError(errors.INVALID_EMAIL_PASSWORD);
 			}
 
 			const isValid = await compare(args.password, foundUser.passwordHash);
 
-			if (!isValid) throw new ApolloError('Invalid email or password');
+			if (!isValid) throw new ApolloError(errors.INVALID_EMAIL_PASSWORD);
 
+			// create access and refresh tokens
 			const accessToken = createAccessToken(foundUser);
 
 			// create both tokens

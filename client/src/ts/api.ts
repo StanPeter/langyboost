@@ -1,6 +1,6 @@
 export interface ISingUpResponse {
     data: {
-        signUp: {
+        addUser: {
             accessToken: string;
             user: {
                 email: string;
@@ -13,7 +13,7 @@ export interface ISingUpResponse {
 
 export interface ISingInResponse {
     data: {
-        signIn: {
+        loginUser: {
             accessToken: string;
             user: {
                 email: string;

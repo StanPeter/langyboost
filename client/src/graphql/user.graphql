@@ -16,7 +16,7 @@ query GetUser($userId: String!) {
 }
 
 # register mutation
-mutation SignUp($email: String!, $password: String!, $repeatPassword: String!, $userName: String!) {
+mutation AddUser($email: String!, $password: String!, $repeatPassword: String!, $userName: String!) {
     addUser(email: $email, password: $password, repeatPassword: $repeatPassword, userName: $userName) {
         id
         email
@@ -25,8 +25,8 @@ mutation SignUp($email: String!, $password: String!, $repeatPassword: String!, $
 }
 
 # login mutation
-mutation SignIn($email: String!, $password: String!) {
-    signIn(email: $email, password: $password) {
+mutation LoginUser($email: String!, $password: String!) {
+    loginUser(email: $email, password: $password) {
         id
         email
         accessToken

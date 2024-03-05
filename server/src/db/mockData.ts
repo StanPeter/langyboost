@@ -22,5 +22,5 @@ export const TEST_USER_DATA: User = {
 const signUpMockData = TEST_USER_DATA;
 
 export default {
-	signUpMockData: signUpMockData,
+	signUpMockData: { ...signUpMockData, accessToken: 'accessTokenMOCK' },
 };

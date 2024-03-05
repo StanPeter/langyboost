@@ -4,7 +4,7 @@ import Header from 'components/UI/Header/Header';
 import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
 import Spinner from 'components/UI/Spinner/Spinner';
-import { useSignInMutation, useSignUpMutation } from 'graphql/generated/graphql';
+import { useAddUserMutation, useLoginUserMutation } from 'graphql/generated/graphql';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
@@ -19,9 +19,9 @@ import styles from './loginForm.module.scss';
 
 interface IFormData {
     password: string;
-    userName?: string;
+    userName: string;
     email: string;
-    repeatPassword?: string;
+    repeatPassword: string;
 }
 
 interface ILoginFormProps {
@@ -32,7 +32,7 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
     const navigate = useNavigate();
-    const usedSignHook = mode === 'signUp' ? useSignUpMutation : useSignInMutation;
+    const usedSignHook = mode === 'signUp' ? useAddUserMutation : useLoginUserMutation;
     const [signMutation, { error, reset, loading }] = usedSignHook();
 
     useEffect(() => {
@@ -61,17 +61,14 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         if (!formValues.password || !formValues.email) return;
         if (mode === 'signUp' && (!formValues.userName || !formValues.repeatPassword)) return;
 
-        const variables = mode === 'signUp' ? formValues : { password: formValues.password, email: formValues.email };
-
-        signMutation({
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            variables,
-        }).then(res => {
+        // const variables = mode === 'signUp' ? formValues : { password: formValues.password, email: formValues.email };
+        signMutation({ variables: formValues }).then(res => {
             const userData =
-                // @ts-ignore
-                mode === 'signUp' ? (res as ISingUpResponse).data.signUp : (res as ISingInResponse).data.signIn;
+                mode === 'signUp'
+                    ? (res as unknown as ISingUpResponse).data.addUser
+                    : (res as unknown as ISingInResponse).data.loginUser;
 
+            console.log(res, ' res');
             console.log(userData, ' userData');
 
             if (userData.accessToken) {
