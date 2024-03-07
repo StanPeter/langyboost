@@ -79,6 +79,7 @@ builder.mutationFields((t) => ({
 				// const testUser = await db.user.create({ data: TEST_USER_DATA });
 				// sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
 
+				console.log('MOCK DATA', mockData.signUpMockData);
 				return mockData.signUpMockData;
 			}
 
@@ -105,8 +106,10 @@ builder.mutationFields((t) => ({
 			sendRefreshToken(res, createRefreshToken(foundUser));
 			// sendAccessToken(res, accessToken);
 
+			foundUser.accessToken = accessToken;
+
 			//if all went ok, returns a new token
-			return { ...foundUser, accessToken };
+			return foundUser;
 		},
 	}),
 }));

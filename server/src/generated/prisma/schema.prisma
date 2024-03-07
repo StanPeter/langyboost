@@ -3,10 +3,15 @@ generator client {
     output   = "../generated/prisma"
 }
 
-generator pothos {
-    provider = "prisma-pothos-types"
-    output   = "../generated/pothos.ts"
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../generated/typegraphql.ts"
 }
+
+// generator pothos {
+//     provider = "prisma-pothos-types"
+//     output   = "../generated/pothos.ts"
+// }
 
 datasource db {
     provider = "mongodb"
@@ -44,4 +49,5 @@ model User {
     membershipExpiration String  @default("")
     membershipType       Role    @default(MEMBER)
     avatar               String  @default("")
+    accessToken          String  @default("") // not used in the DB but could not do it any other way due to limitations on plugin
 }

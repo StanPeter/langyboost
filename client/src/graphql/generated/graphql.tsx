@@ -72,6 +72,7 @@ export type QueryGetUserArgs = {
 
 export type User = {
   __typename?: 'User';
+  accessToken: Scalars['String'];
   address?: Maybe<Scalars['String']>;
   avatar?: Maybe<Scalars['String']>;
   birthday?: Maybe<Scalars['String']>;
@@ -106,7 +107,7 @@ export type AddUserMutationVariables = Exact<{
 }>;
 
 
-export type AddUserMutation = { __typename?: 'Mutation', addUser: { __typename?: 'User', id: string, email: string } };
+export type AddUserMutation = { __typename?: 'Mutation', addUser: { __typename?: 'User', id: string, email: string, accessToken: string } };
 
 export type LoginUserMutationVariables = Exact<{
   email: Scalars['String'];
@@ -114,7 +115,7 @@ export type LoginUserMutationVariables = Exact<{
 }>;
 
 
-export type LoginUserMutation = { __typename?: 'Mutation', loginUser: { __typename?: 'User', id: string, email: string } };
+export type LoginUserMutation = { __typename?: 'Mutation', loginUser: { __typename?: 'User', id: string, email: string, accessToken: string } };
 
 
 export const GetPhrasesDocument = gql`
@@ -210,6 +211,7 @@ export const AddUserDocument = gql`
   ) {
     id
     email
+    accessToken
   }
 }
     `;
@@ -247,6 +249,7 @@ export const LoginUserDocument = gql`
   loginUser(email: $email, password: $password) {
     id
     email
+    accessToken
   }
 }
     `;

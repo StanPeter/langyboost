@@ -1,0 +1,14 @@
+export { AggregatePhraseArgs } from "./AggregatePhraseArgs";
+export { CreateManyPhraseArgs } from "./CreateManyPhraseArgs";
+export { CreateOnePhraseArgs } from "./CreateOnePhraseArgs";
+export { DeleteManyPhraseArgs } from "./DeleteManyPhraseArgs";
+export { DeleteOnePhraseArgs } from "./DeleteOnePhraseArgs";
+export { FindFirstPhraseArgs } from "./FindFirstPhraseArgs";
+export { FindFirstPhraseOrThrowArgs } from "./FindFirstPhraseOrThrowArgs";
+export { FindManyPhraseArgs } from "./FindManyPhraseArgs";
+export { FindUniquePhraseArgs } from "./FindUniquePhraseArgs";
+export { FindUniquePhraseOrThrowArgs } from "./FindUniquePhraseOrThrowArgs";
+export { GroupByPhraseArgs } from "./GroupByPhraseArgs";
+export { UpdateManyPhraseArgs } from "./UpdateManyPhraseArgs";
+export { UpdateOnePhraseArgs } from "./UpdateOnePhraseArgs";
+export { UpsertOnePhraseArgs } from "./UpsertOnePhraseArgs";

@@ -1935,6 +1935,7 @@ export namespace Prisma {
     membershipExpiration: string | null
     membershipType: $Enums.Role | null
     avatar: string | null
+    accessToken: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1953,6 +1954,7 @@ export namespace Prisma {
     membershipExpiration: string | null
     membershipType: $Enums.Role | null
     avatar: string | null
+    accessToken: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1971,6 +1973,7 @@ export namespace Prisma {
     membershipExpiration: number
     membershipType: number
     avatar: number
+    accessToken: number
     _all: number
   }
 
@@ -1999,6 +2002,7 @@ export namespace Prisma {
     membershipExpiration?: true
     membershipType?: true
     avatar?: true
+    accessToken?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2017,6 +2021,7 @@ export namespace Prisma {
     membershipExpiration?: true
     membershipType?: true
     avatar?: true
+    accessToken?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2035,6 +2040,7 @@ export namespace Prisma {
     membershipExpiration?: true
     membershipType?: true
     avatar?: true
+    accessToken?: true
     _all?: true
   }
 
@@ -2140,6 +2146,7 @@ export namespace Prisma {
     membershipExpiration: string
     membershipType: $Enums.Role
     avatar: string
+    accessToken: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2177,6 +2184,7 @@ export namespace Prisma {
     membershipExpiration?: boolean
     membershipType?: boolean
     avatar?: boolean
+    accessToken?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2195,6 +2203,7 @@ export namespace Prisma {
     membershipExpiration?: boolean
     membershipType?: boolean
     avatar?: boolean
+    accessToken?: boolean
   }
 
 
@@ -2217,6 +2226,7 @@ export namespace Prisma {
       membershipExpiration: string
       membershipType: $Enums.Role
       avatar: string
+      accessToken: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2653,6 +2663,7 @@ export namespace Prisma {
     readonly membershipExpiration: FieldRef<"User", 'String'>
     readonly membershipType: FieldRef<"User", 'Role'>
     readonly avatar: FieldRef<"User", 'String'>
+    readonly accessToken: FieldRef<"User", 'String'>
   }
     
 
@@ -3000,7 +3011,8 @@ export namespace Prisma {
     nationality: 'nationality',
     membershipExpiration: 'membershipExpiration',
     membershipType: 'membershipType',
-    avatar: 'avatar'
+    avatar: 'avatar',
+    accessToken: 'accessToken'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3185,6 +3197,7 @@ export namespace Prisma {
     membershipExpiration?: StringFilter<"User"> | string
     membershipType?: EnumRoleFilter<"User"> | $Enums.Role
     avatar?: StringFilter<"User"> | string
+    accessToken?: StringFilter<"User"> | string
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3203,6 +3216,7 @@ export namespace Prisma {
     membershipExpiration?: SortOrder
     membershipType?: SortOrder
     avatar?: SortOrder
+    accessToken?: SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3224,6 +3238,7 @@ export namespace Prisma {
     membershipExpiration?: StringFilter<"User"> | string
     membershipType?: EnumRoleFilter<"User"> | $Enums.Role
     avatar?: StringFilter<"User"> | string
+    accessToken?: StringFilter<"User"> | string
   }, "id">
 
   export type UserOrderByWithAggregationInput = {
@@ -3242,6 +3257,7 @@ export namespace Prisma {
     membershipExpiration?: SortOrder
     membershipType?: SortOrder
     avatar?: SortOrder
+    accessToken?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3268,6 +3284,7 @@ export namespace Prisma {
     membershipExpiration?: StringWithAggregatesFilter<"User"> | string
     membershipType?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     avatar?: StringWithAggregatesFilter<"User"> | string
+    accessToken?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type PhraseCreateInput = {
@@ -3345,6 +3362,7 @@ export namespace Prisma {
     membershipExpiration?: string
     membershipType?: $Enums.Role
     avatar?: string
+    accessToken?: string
   }
 
   export type UserUncheckedCreateInput = {
@@ -3363,6 +3381,7 @@ export namespace Prisma {
     membershipExpiration?: string
     membershipType?: $Enums.Role
     avatar?: string
+    accessToken?: string
   }
 
   export type UserUpdateInput = {
@@ -3380,6 +3399,7 @@ export namespace Prisma {
     membershipExpiration?: StringFieldUpdateOperationsInput | string
     membershipType?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     avatar?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3397,6 +3417,7 @@ export namespace Prisma {
     membershipExpiration?: StringFieldUpdateOperationsInput | string
     membershipType?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     avatar?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateManyInput = {
@@ -3415,6 +3436,7 @@ export namespace Prisma {
     membershipExpiration?: string
     membershipType?: $Enums.Role
     avatar?: string
+    accessToken?: string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -3432,6 +3454,7 @@ export namespace Prisma {
     membershipExpiration?: StringFieldUpdateOperationsInput | string
     membershipType?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     avatar?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -3449,6 +3472,7 @@ export namespace Prisma {
     membershipExpiration?: StringFieldUpdateOperationsInput | string
     membershipType?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     avatar?: StringFieldUpdateOperationsInput | string
+    accessToken?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3599,6 +3623,7 @@ export namespace Prisma {
     membershipExpiration?: SortOrder
     membershipType?: SortOrder
     avatar?: SortOrder
+    accessToken?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -3621,6 +3646,7 @@ export namespace Prisma {
     membershipExpiration?: SortOrder
     membershipType?: SortOrder
     avatar?: SortOrder
+    accessToken?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -3639,6 +3665,7 @@ export namespace Prisma {
     membershipExpiration?: SortOrder
     membershipType?: SortOrder
     avatar?: SortOrder
+    accessToken?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {

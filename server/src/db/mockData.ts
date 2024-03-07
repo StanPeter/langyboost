@@ -17,10 +17,11 @@ export const TEST_USER_DATA: User = {
 	membershipType: 'ADMIN',
 	nationality: 'GE',
 	phoneNumber: '7184 8788',
+	accessToken: 'accessTokenMOCK',
 };
 
 const signUpMockData = TEST_USER_DATA;
 
 export default {
-	signUpMockData: { ...signUpMockData, accessToken: 'accessTokenMOCK' },
+	signUpMockData: signUpMockData,
 };

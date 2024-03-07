@@ -2,7 +2,7 @@ import builder from 'builder';
 import db from 'db';
 
 // define model for User based on Prisma
-builder.prismaObject('User', {
+export const User = builder.prismaObject('User', {
 	name: 'User',
 	fields: (t) => ({
 		id: t.exposeID('id'),
@@ -17,7 +17,7 @@ builder.prismaObject('User', {
 		membershipType: t.exposeString('membershipType', { nullable: true }),
 		membershipExpiration: t.exposeString('membershipExpiration', { nullable: true }),
 		avatar: t.exposeString('avatar', { nullable: true }),
-		// accessToken: t.exposeString('', { nullable: true }),
+		accessToken: t.exposeString('accessToken', { nullable: true }),
 	}),
 });
 
