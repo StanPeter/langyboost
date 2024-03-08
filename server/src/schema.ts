@@ -1,7 +1,5 @@
-// import builder from 'builder';
+import { resolvers } from 'generated/typegraphql';
+import { PhraseResolver } from 'resolver/PhraseResolver';
 import { buildSchema } from 'type-graphql';
-import './schema/index';
 
-// export const schema = builder.toSchema({});
-
-export const schema = buildSchema({ resolvers: [] });
+export const schema = buildSchema({ resolvers: [...resolvers, PhraseResolver] });

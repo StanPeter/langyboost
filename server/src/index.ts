@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -6,6 +7,7 @@ import { TEST_USER_DATA } from 'db/mockData';
 import dotenv from 'dotenv';
 import express from 'express';
 import { verify } from 'jsonwebtoken';
+// reflect metadata has to be imported before schema due to experimental decorators
 import 'reflect-metadata';
 import { schema } from 'schema';
 import projectConfiq from 'settings/serverConfig';
@@ -86,7 +88,7 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 
 	//define apolloserver for graphql
 	const apolloServer = new ApolloServer({
-		schema: schema,
+		schema: await schema,
 		context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
 	});
 

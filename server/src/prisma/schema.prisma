@@ -4,8 +4,8 @@ generator client {
 }
 
 generator typegraphql {
-  provider = "typegraphql-prisma"
-  output   = "../generated/typegraphql"
+    provider = "typegraphql-prisma"
+    output   = "../generated/typegraphql"
 }
 
 // generator pothos {
@@ -28,7 +28,7 @@ model Phrase {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
     phrase      String
     translation String
-    targetLang  String
+    // targetLang  String  
     streak      Int      @default(0)
     practisedAt DateTime @default(now())
 }
