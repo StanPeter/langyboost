@@ -1,174 +1,172 @@
-// import { ApolloError } from 'apollo-server-errors';
-// import { compare, hash } from 'bcryptjs';
-// import db from 'db';
-// import { User as UserEntity } from 'schema/User';
-// import { User } from 'generated/prisma';
-// import { isAuth } from 'middleware/isAuth';
-// import mockData, { testUserData } from 'settings/mockData';
-// import settings from 'settings/projectConfiq.json';
-// import { IContextType } from 'ts/interfaces';
-// import { Arg, Ctx, Field, Int, Mutation, ObjectType, Query, Resolver, UseMiddleware } from 'type-graphql';
-// import { getConnection } from 'typeorm';
-// // import { createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken } from 'utils/auth';
+import { ApolloError } from 'apollo-server-errors';
+import { compare } from 'bcryptjs';
+import errors from 'constants/errors';
+import db from 'db';
+import mockData from 'db/mockData';
+import { User } from 'generated/typegraphql';
+import serverConfig from 'settings/serverConfig';
+import { IContextType } from 'ts/interfaces';
+import { Arg, Ctx, Field, Mutation, ObjectType, Resolver } from 'type-graphql';
+import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
 
-// // @ObjectType()
-// // class LoginResponse {
-// // 	@Field()
-// // 	accessToken: string;
+@ObjectType()
+class LoginResponse {
+	@Field()
+	accessToken!: string;
 
-// // 	@Field(() => User)
-// // 	user: User;
-// // }
+	@Field(() => User)
+	user!: User;
+}
 
-// @Resolver()
-// export class UserResolver {
-// 	// getting data of a user
-// 	@UseMiddleware(isAuth)
-// 	@Query(() => UserEntity, { nullable: true })
-// 	async getUser(@Ctx() { payload }: any) {
-// 		// when mocked
-// 		// if (settings.isMocked) return User.create(testUserData);
-// 		if (settings.isMocked) return db.user.create({ data: testUserData });
+@Resolver()
+export class UserResolver {
+	// getting data of a user
+	// @UseMiddleware(isAuth)
+	// @Query(() => UserEntity, { nullable: true })
+	// async getUser(@Ctx() { payload }: any) {
+	// 	when mocked
+	// 	if (settings.isMocked) return User.create(testUserData);
+	// 	if (settings.isMocked) return db.user.create({ data: testUserData });
 
-// 		try {
-// 			// const foundUser = await User.findOne({ id: payload.userId });
-// 			const foundUser = await db.user.findFirst({ where: { id: payload.userId } });
+	// 	try {
+	// 		const foundUser = await User.findOne({ id: payload.userId });
+	// 		const foundUser = await db.user.findFirst({ where: { id: payload.userId } });
 
-// 			return foundUser;
-// 		} catch (error) {
-// 			console.log(error, 'Unfortunately, there was an error');
-// 			return null;
-// 		}
-// 	}
+	// 		return foundUser;
+	// 	} catch (error) {
+	// 		console.log(error, 'Unfortunately, there was an error');
+	// 		return null;
+	// 	}
+	// }
 
-// 	// getting data of all users
-// 	// @UseMiddleware(isAuth)
-// 	// @Query(() => [User])
-// 	// getUsers(@Ctx() { payload }: IContextType) {
-// 	// 	console.log(payload, 'payload');
+	// getting data of all users
+	// @UseMiddleware(isAuth)
+	// @Query(() => [User])
+	// getUsers(@Ctx() { payload }: IContextType) {
+	// 	console.log(payload, 'payload');
 
-// 	// 	return User.find();
-// 	// }
+	// 	return User.find();
+	// }
 
-// 	// @Mutation(() => Boolean)
-// 	// async revokeRefreshTokenForUser(@Arg('userId', () => Int) userId: number) {
-// 	// 	await getConnection().getRepository(User).increment({ id: userId }, 'tokenVersion', 1);
+	// @Mutation(() => Boolean)
+	// async revokeRefreshTokenForUser(@Arg('userId', () => Int) userId: number) {
+	// 	await getConnection().getRepository(User).increment({ id: userId }, 'tokenVersion', 1);
 
-// 	// 	return true;
-// 	// }
+	// 	return true;
+	// }
 
-// 	// // sign in mutation
-// 	// @Mutation(() => LoginResponse)
-// 	// async signIn(
-// 	// 	@Arg('email') email: string,
-// 	// 	@Arg('password') password: string,
-// 	// 	@Ctx() { res }: IContextType //destructuring context type to later set cookies
-// 	// ): Promise<LoginResponse> {
-// 	// 	// return when mocked
-// 	// 	if (settings.isMocked) {
-// 	// 		const testUser = User.create(testUserData);
+	// sign in mutation
+	@Mutation(() => LoginResponse)
+	async signIn(
+		@Arg('email') email: string,
+		@Arg('password') password: string,
+		@Ctx() { res }: IContextType //destructuring context type to later set cookies
+	): Promise<LoginResponse> {
+		// for mocked use case
+		if (serverConfig.isMocked) {
+			// sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
+			return mockData.signUpMockData;
+		}
 
-// 	// 		sendRefreshToken(res, createRefreshToken(testUser));
+		// find user and validate
+		const foundUser = await db.user.findFirst({
+			where: {
+				email: { equals: email },
+			},
+		});
 
-// 	// 		return {
-// 	// 			user: testUser,
-// 	// 			accessToken: createAccessToken(testUser),
-// 	// 		};
-// 	// 	}
+		if (!foundUser) {
+			throw new ApolloError(errors.INVALID_EMAIL_PASSWORD);
+		}
 
-// 	// 	//just TS returning type, its a generic
-// 	// 	const user = await User.findOne({ where: { email } });
+		const isValid = await compare(password, foundUser.passwordHash);
 
-// 	// 	if (!user) throw new ApolloError('User does not exist! Please check again your email address.');
+		if (!isValid) throw new ApolloError(errors.INVALID_EMAIL_PASSWORD);
 
-// 	// 	const isValid = await compare(password, user.password);
+		// create access and refresh tokens
+		const accessToken = createAccessToken(foundUser);
 
-// 	// 	if (!isValid) throw new ApolloError('Invalid password! Please try again.');
+		// create both tokens
+		sendRefreshToken(res, createRefreshToken(foundUser));
+		// sendAccessToken(res, accessToken);
 
-// 	// 	const accessToken = createAccessToken(user);
+		foundUser.accessToken = accessToken;
 
-// 	// 	// create both tokens
-// 	// 	sendRefreshToken(res, createRefreshToken(user));
-// 	// 	sendAccessToken(res, accessToken);
+		// if all went ok, returns a new token
+		return { user: foundUser, accessToken: accessToken };
+	}
 
-// 	// 	//if all went ok, returns a new token
-// 	// 	return {
-// 	// 		accessToken: accessToken,
-// 	// 		user,
-// 	// 	};
-// 	// }
+	// logout mutation
+	// @Mutation(() => Boolean)
+	// async signOut(
+	// 	@Ctx() { res }: IContextType //destructuring context type to later set cookies
+	// ) {
+	// 	sendRefreshToken(res, '');
 
-// 	// // logout mutation
-// 	// @Mutation(() => Boolean)
-// 	// async signOut(
-// 	// 	@Ctx() { res }: IContextType //destructuring context type to later set cookies
-// 	// ) {
-// 	// 	sendRefreshToken(res, '');
+	// 	return true;
+	// }
 
-// 	// 	return true;
-// 	// }
+	// // sign up mutation
+	// @Mutation(() => LoginResponse)
+	// async signUp(
+	// 	@Arg('email') email: string,
+	// 	@Arg('username') username: string,
+	// 	@Arg('password') password: string,
+	// 	@Arg('repeatPassword') repeatPassword: string,
+	// 	@Ctx() { res }: IContextType
+	// ) {
+	// 	for mocked use case
+	// 	if (settings.isMocked) {
+	// 		const testUser = User.create(testUserData);
 
-// 	// // sign up mutation
-// 	// @Mutation(() => LoginResponse)
-// 	// async signUp(
-// 	// 	@Arg('email') email: string,
-// 	// 	@Arg('username') username: string,
-// 	// 	@Arg('password') password: string,
-// 	// 	@Arg('repeatPassword') repeatPassword: string,
-// 	// 	@Ctx() { res }: IContextType
-// 	// ) {
-// 	// 	// for mocked use case
-// 	// 	if (settings.isMocked) {
-// 	// 		const testUser = User.create(testUserData);
+	// 		sendRefreshToken(res, createRefreshToken(testUser));
 
-// 	// 		sendRefreshToken(res, createRefreshToken(testUser));
+	// 		return mockData.signUpMockData;
+	// 	}
 
-// 	// 		return mockData.signUpMockData;
-// 	// 	}
+	// 	const existingUser = await User.find({ where: { email: email } });
 
-// 	// 	const existingUser = await User.find({ where: { email: email } });
+	// 	if (existingUser.length > 0) throw new ApolloError('The user with the email already exists.');
+	// 	if (password !== repeatPassword) throw new ApolloError('Passwords do not match. Please try again.');
 
-// 	// 	if (existingUser.length > 0) throw new ApolloError('The user with the email already exists.');
-// 	// 	if (password !== repeatPassword) throw new ApolloError('Passwords do not match. Please try again.');
+	// 	const hashedPass = await hash(password, 10);
 
-// 	// 	const hashedPass = await hash(password, 10);
+	// 	try {
+	// 		const newUser = User.create({
+	// 			email,
+	// 			password: hashedPass,
+	// 			username: username,
+	// 		});
 
-// 	// 	try {
-// 	// 		const newUser = User.create({
-// 	// 			email,
-// 	// 			password: hashedPass,
-// 	// 			username: username,
-// 	// 		});
+	// 		newUser.save();
 
-// 	// 		newUser.save();
+	// 		await User.insert({
+	// 		    email,
+	// 		    password: hashedPass,
+	// 		    username: username,
+	// 		});
 
-// 	// 		// await User.insert({
-// 	// 		//     email,
-// 	// 		//     password: hashedPass,
-// 	// 		//     username: username,
-// 	// 		// });
+	// 		const existingUser2 = await User.find({ where: { email: email } });
 
-// 	// 		// const existingUser2 = await User.find({ where: { email: email } });
+	// 		console.log(existingUser2);
 
-// 	// 		// console.log(existingUser2);
+	// 		// same part as logging in
+	// 		create both tokens
+	// 		const accessToken = createAccessToken(newUser);
 
-// 	// 		// // same part as logging in
-// 	// 		// create both tokens
-// 	// 		const accessToken = createAccessToken(newUser);
+	// 		sendRefreshToken(res, createRefreshToken(newUser));
+	// 		sendAccessToken(res, accessToken);
 
-// 	// 		sendRefreshToken(res, createRefreshToken(newUser));
-// 	// 		sendAccessToken(res, accessToken);
+	// 		//if all went ok, returns a new tokens
+	// 		return {
+	// 			accessToken: createAccessToken(newUser),
+	// 			user: newUser,
+	// 		};
+	// 	} catch (error) {
+	// 		throw new ApolloError('There was an error: ' + (error as Error).message);
+	// 		return false;
+	// 	}
 
-// 	// 		// //if all went ok, returns a new tokens
-// 	// 		return {
-// 	// 			accessToken: createAccessToken(newUser),
-// 	// 			user: newUser,
-// 	// 		};
-// 	// 	} catch (error) {
-// 	// 		throw new ApolloError('There was an error: ' + (error as Error).message);
-// 	// 		// return false;
-// 	// 	}
-
-// 	// 	return true;
-// 	// }
-// }
+	// 	return true;
+	// }
+}

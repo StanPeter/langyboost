@@ -20,7 +20,7 @@ export const TEST_USER_DATA: User = {
 	accessToken: 'accessTokenMOCK',
 };
 
-const signUpMockData = TEST_USER_DATA;
+const signUpMockData = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' };
 
 export default {
 	signUpMockData: signUpMockData,
