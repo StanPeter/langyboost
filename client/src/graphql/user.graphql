@@ -1,34 +1,38 @@
-query GetUser($userId: String!) {
-    getUser(userId: $userId) {
-        id
-        firstName
-        lastName
-        userName
-        address
-        avatar
-        birthday
-        email
-        membershipExpiration
-        membershipType
-        nationality
-        phoneNumber
-    }
-}
+# query GetUser($userId: String!) {
+#     getUser(userId: $userId) {
+#         id
+#         firstName
+#         lastName
+#         userName
+#         address
+#         avatar
+#         birthday
+#         email
+#         membershipExpiration
+#         membershipType
+#         nationality
+#         phoneNumber
+#     }
+# }
 
 # register mutation
-mutation AddUser($email: String!, $password: String!, $repeatPassword: String!, $userName: String!) {
-    addUser(email: $email, password: $password, repeatPassword: $repeatPassword, userName: $userName) {
-        id
-        email
+mutation SignUp($email: String!, $password: String!, $repeatPassword: String!, $userName: String!) {
+    signUp(email: $email, password: $password, repeatPassword: $repeatPassword, userName: $userName) {
+        user {
+            email
+            passwordHash
+        }
         accessToken
     }
 }
 
 # login mutation
-mutation LoginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
-        id
-        email
+mutation SignIn($email: String!, $password: String!) {
+    signIn(email: $email, password: $password) {
+        user {
+            email
+            passwordHash
+        }
         accessToken
     }
 }

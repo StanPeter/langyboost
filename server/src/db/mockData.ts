@@ -1,4 +1,4 @@
-import { LoginResponse, UserSchema } from 'schema/User';
+import { LoginResponse, UserSchema } from 'model/User';
 
 // USER mock data
 export const TEST_USER_DATA: UserSchema = {

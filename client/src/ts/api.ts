@@ -1,11 +1,9 @@
 export interface ISingUpResponse {
     data: {
-        addUser: {
+        signUp: {
             accessToken: string;
             user: {
                 email: string;
-                id: number;
-                accessToken: string;
             };
         };
     };
@@ -13,12 +11,10 @@ export interface ISingUpResponse {
 
 export interface ISingInResponse {
     data: {
-        loginUser: {
+        signIn: {
             accessToken: string;
             user: {
                 email: string;
-                id: number;
-                accessToken: string;
             };
         };
     };

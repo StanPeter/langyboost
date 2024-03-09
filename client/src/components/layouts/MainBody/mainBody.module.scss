@@ -1,7 +1,11 @@
 .appWrapper {
     position: relative;
-    min-height: 100%;
+    // min-height: 100%;
     min-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures viewport height */
 }
 
 .appWrapper::after {

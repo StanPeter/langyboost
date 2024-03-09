@@ -1,6 +1,6 @@
 import MainBody from 'components/layouts/MainBody/MainBody';
 import Select from 'components/UI/Select/Select';
-import { useGetPhrasesQuery } from 'graphql/generated/graphql';
+// import { useGetPhrasesQuery } from 'graphql/generated/graphql';
 import React from 'react';
 import styles from './articlesPage.module.scss';
 
@@ -24,16 +24,16 @@ const DATA = [
 ];
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {
-    const { data, error } = useGetPhrasesQuery();
+    // const { data, error } = useGetPhrasesQuery();
 
     // useEffect(() => {
     //   con
 
     // }, [])
 
-    console.log(data, 'DATA ACCESSS');
+    // console.log(data, 'DATA ACCESSS');
 
-    if (error) alert(error);
+    // if (error) alert(error);
 
     return (
         <MainBody>

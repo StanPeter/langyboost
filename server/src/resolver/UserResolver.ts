@@ -3,7 +3,7 @@ import { compare, hash } from 'bcryptjs';
 import errors from 'constants/errors';
 import db from 'db';
 import mockData from 'db/mockData';
-import { LoginResponse } from 'schema/User';
+import { LoginResponse } from 'model/User';
 import serverConfig from 'settings/serverConfig';
 import { IContextType } from 'ts/interfaces';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';

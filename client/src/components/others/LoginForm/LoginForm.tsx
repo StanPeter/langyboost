@@ -4,7 +4,7 @@ import Header from 'components/UI/Header/Header';
 import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
 import Spinner from 'components/UI/Spinner/Spinner';
-import { useAddUserMutation, useLoginUserMutation } from 'graphql/generated/graphql';
+import { useSignInMutation, useSignUpMutation } from 'graphql/generated/graphql';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
@@ -32,7 +32,7 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
     const navigate = useNavigate();
-    const usedSignHook = mode === 'signUp' ? useAddUserMutation : useLoginUserMutation;
+    const usedSignHook = mode === 'signUp' ? useSignUpMutation : useSignInMutation;
     const [signMutation, { error, reset, loading }] = usedSignHook();
 
     useEffect(() => {
@@ -65,8 +65,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         signMutation({ variables: formValues }).then(res => {
             const userData =
                 mode === 'signUp'
-                    ? (res as unknown as ISingUpResponse).data.addUser
-                    : (res as unknown as ISingInResponse).data.loginUser;
+                    ? (res as unknown as ISingUpResponse).data.signUp
+                    : (res as unknown as ISingInResponse).data.signIn;
 
             console.log(res, ' res');
             console.log(userData, ' userData');
