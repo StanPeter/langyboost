@@ -1,24 +1,26 @@
-import { ObjectId } from 'mongodb';
-import { Field, ID, ObjectType } from 'type-graphql';
-import { BaseEntity } from 'typeorm';
+import { Phrase as PhraseTypeGraphql } from 'generated/typegraphql';
+import { ObjectType } from 'type-graphql';
 
-@ObjectType()
-export class Phrase extends BaseEntity {
-	@Field(() => ID)
-	id!: ObjectId;
+@ObjectType({ description: 'Phrase entity' }) //makes available to be used as an object type for resolvers
+export class User extends PhraseTypeGraphql {}
 
-	@Field(() => String)
-	phrase!: string;
+// @ObjectType()
+// export class Phrase extends BaseEntity {
+// 	@Field(() => ID)
+// 	id!: ObjectId;
 
-	@Field(() => String, { nullable: true })
-	translation?: string;
+// 	@Field(() => String)
+// 	phrase!: string;
 
-	@Field(() => String, { defaultValue: new Date() })
-	createdAt?: Date;
+// 	@Field(() => String, { nullable: true })
+// 	translation?: string;
 
-    @Field(() => Number, { defaultValue: 0 })
-	streak!: number;
+// 	@Field(() => String, { defaultValue: new Date() })
+// 	createdAt?: Date;
 
-	@Field(() => Date, { nullable: true })
-	practisedAt?: Date;
-}
+//     @Field(() => Number, { defaultValue: 0 })
+// 	streak!: number;
+
+// 	@Field(() => Date, { nullable: true })
+// 	practisedAt?: Date;
+// }

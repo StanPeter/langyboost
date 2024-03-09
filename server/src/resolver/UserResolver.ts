@@ -1,22 +1,13 @@
 import { ApolloError } from 'apollo-server-errors';
-import { compare } from 'bcryptjs';
+import { compare, hash } from 'bcryptjs';
 import errors from 'constants/errors';
 import db from 'db';
 import mockData from 'db/mockData';
-import { User } from 'generated/typegraphql';
+import { LoginResponse } from 'schema/User';
 import serverConfig from 'settings/serverConfig';
 import { IContextType } from 'ts/interfaces';
-import { Arg, Ctx, Field, Mutation, ObjectType, Resolver } from 'type-graphql';
+import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
 import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
-
-@ObjectType()
-class LoginResponse {
-	@Field()
-	accessToken!: string;
-
-	@Field(() => User)
-	user!: User;
-}
 
 @Resolver()
 export class UserResolver {
@@ -107,66 +98,57 @@ export class UserResolver {
 	// }
 
 	// // sign up mutation
-	// @Mutation(() => LoginResponse)
-	// async signUp(
-	// 	@Arg('email') email: string,
-	// 	@Arg('username') username: string,
-	// 	@Arg('password') password: string,
-	// 	@Arg('repeatPassword') repeatPassword: string,
-	// 	@Ctx() { res }: IContextType
-	// ) {
-	// 	for mocked use case
-	// 	if (settings.isMocked) {
-	// 		const testUser = User.create(testUserData);
+	@Mutation(() => LoginResponse)
+	async signUp(
+		@Arg('email') email: string,
+		@Arg('userName') userName: string,
+		@Arg('password') password: string,
+		@Arg('repeatPassword') repeatPassword: string,
+		@Ctx() { res }: IContextType
+	) {
+		// for mocked use case
+		// for mocked use case
+		if (serverConfig.isMocked) return mockData.signUpMockData;
 
-	// 		sendRefreshToken(res, createRefreshToken(testUser));
+		// check whether user exist
+		const foundUser = await db.user.findFirst({
+			where: {
+				OR: [
+					{
+						email: { equals: email },
+					},
+					{
+						userName: { equals: userName },
+					},
+				],
+			},
+		});
 
-	// 		return mockData.signUpMockData;
-	// 	}
+		// validation
+		if (foundUser) {
+			throw new ApolloError('User already exists.');
+		}
 
-	// 	const existingUser = await User.find({ where: { email: email } });
+		if (password !== repeatPassword) throw new ApolloError(errors.INVALID_EMAIL_PASSWORD);
 
-	// 	if (existingUser.length > 0) throw new ApolloError('The user with the email already exists.');
-	// 	if (password !== repeatPassword) throw new ApolloError('Passwords do not match. Please try again.');
+		// create hash password
+		const hashedPass = await hash(password, 10);
 
-	// 	const hashedPass = await hash(password, 10);
+		// create new user and handle tokens
+		try {
+			const newUser = await db.user.create({
+				data: { email: email, userName: userName, passwordHash: hashedPass },
+			});
 
-	// 	try {
-	// 		const newUser = User.create({
-	// 			email,
-	// 			password: hashedPass,
-	// 			username: username,
-	// 		});
+			// create both tokens
+			const accessToken = createAccessToken(newUser);
 
-	// 		newUser.save();
+			sendRefreshToken(res, createRefreshToken(newUser));
+			// sendAccessToken(res, accessToken);
 
-	// 		await User.insert({
-	// 		    email,
-	// 		    password: hashedPass,
-	// 		    username: username,
-	// 		});
-
-	// 		const existingUser2 = await User.find({ where: { email: email } });
-
-	// 		console.log(existingUser2);
-
-	// 		// same part as logging in
-	// 		create both tokens
-	// 		const accessToken = createAccessToken(newUser);
-
-	// 		sendRefreshToken(res, createRefreshToken(newUser));
-	// 		sendAccessToken(res, accessToken);
-
-	// 		//if all went ok, returns a new tokens
-	// 		return {
-	// 			accessToken: createAccessToken(newUser),
-	// 			user: newUser,
-	// 		};
-	// 	} catch (error) {
-	// 		throw new ApolloError('There was an error: ' + (error as Error).message);
-	// 		return false;
-	// 	}
-
-	// 	return true;
-	// }
+			return { user: newUser, accessToken };
+		} catch (error) {
+			throw new ApolloError('There was an error: ' + (error as Error).message);
+		}
+	}
 }

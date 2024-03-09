@@ -1,7 +1,7 @@
-import { User } from 'generated/prisma';
+import { LoginResponse, UserSchema } from 'schema/User';
 
 // USER mock data
-export const TEST_USER_DATA: User = {
+export const TEST_USER_DATA: UserSchema = {
 	id: '5f9a56b01e5b5f4f231e64c3',
 	userName: 'test user',
 	email: 'test@gmail.com',
@@ -20,7 +20,7 @@ export const TEST_USER_DATA: User = {
 	accessToken: 'accessTokenMOCK',
 };
 
-const signUpMockData = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' };
+const signUpMockData = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' } as LoginResponse;
 
 export default {
 	signUpMockData: signUpMockData,
