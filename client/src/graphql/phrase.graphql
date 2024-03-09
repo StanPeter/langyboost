@@ -1,8 +1,10 @@
-# query GetPhrases {
-#     getPhrases {
-#         phrase
-#         translation
-#         targetLang
-#         id
-#     }
-# }
+query GetPhrases {
+    getPhrases {
+        phrase
+        translation
+        targetLang
+        id
+        streak
+        practisedAt
+    }
+}

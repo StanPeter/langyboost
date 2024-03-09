@@ -1,11 +1,11 @@
 import PhraseCardsControls from 'components/others/PhraseCardsControls/PhraseCardsControls';
 import { motion } from 'framer-motion';
-import { Phrase } from 'graphql/generated/graphql';
+import { PhraseSchema } from 'graphql/generated/graphql';
 import React, { useState } from 'react';
 import styles from './cardPage.module.scss';
 
 interface CardPageProps {
-    data: Phrase[];
+    data: PhraseSchema[];
     index: number;
     numberOfCards: number;
     setNumberOfCards: React.Dispatch<React.SetStateAction<number>>;
@@ -21,7 +21,7 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards, 
     //     return data[numberOfCards - 1].phrase;
     // }, [animationChangeCard, numberOfCards]);
 
-    console.log(data, 'PASSED DATA');
+    console.log(data[0], 'PASSED DATA');
 
     return (
         <div
@@ -40,11 +40,11 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards, 
         >
             <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}>
                 <div className={styles.cardPhrase}>
-                    <h2 className={`${hideTranslation ? styles.focused : ''}`}>{data[numberOfCards - 1].phrase}</h2>
+                    <h2 className={`${hideTranslation ? styles.focused : ''}`}>{data[numberOfCards - 1]?.phrase}</h2>
                     {!hideTranslation ? (
                         <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ duration: 1 }}>
                             <hr className={styles.translationSeparator} />
-                            <h3 className={styles.focused}>{data[numberOfCards - 1].translation}</h3>
+                            <h3 className={styles.focused}>{data[numberOfCards - 1]?.translation}</h3>
                         </motion.div>
                     ) : null}
                 </div>

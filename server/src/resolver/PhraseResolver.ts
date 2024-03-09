@@ -1,12 +1,12 @@
 import db from 'db';
-import { Phrase } from 'generated/typegraphql';
+import { PhraseSchema } from 'model/Phrase';
 import { Query } from 'type-graphql';
 
 export class PhraseResolver {
 	// @UseMiddleware(isAuth) // second middleware
 	// @UseMiddleware(addAccessTokenHeader) // first middleware
-	@Query(() => [Phrase])
-	async getAllPhrases() {
+	@Query(() => [PhraseSchema])
+	async getPhrases() {
 		const allPhrases = await db.phrase.findMany({ where: { phrase: { startsWith: 'M' } } });
 		return allPhrases;
 		// const toTranslate = allPhrases.map((phrase) => phrase.phrase);

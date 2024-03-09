@@ -42,8 +42,9 @@ export type MutationSignUpArgs = {
   userName: Scalars['String'];
 };
 
-export type Phrase = {
-  __typename?: 'Phrase';
+/** Phrase entity */
+export type PhraseSchema = {
+  __typename?: 'PhraseSchema';
   id: Scalars['String'];
   phrase: Scalars['String'];
   practisedAt: Scalars['DateTime'];
@@ -54,7 +55,7 @@ export type Phrase = {
 
 export type Query = {
   __typename?: 'Query';
-  getAllPhrases: Array<Phrase>;
+  getPhrases: Array<PhraseSchema>;
 };
 
 export enum Role {
@@ -84,6 +85,11 @@ export type UserSchema = {
   userName: Scalars['String'];
 };
 
+export type GetPhrasesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPhrasesQuery = { __typename?: 'Query', getPhrases: Array<{ __typename?: 'PhraseSchema', phrase: string, translation: string, targetLang: string, id: string, streak: number, practisedAt: any }> };
+
 export type SignUpMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -103,6 +109,45 @@ export type SignInMutationVariables = Exact<{
 export type SignInMutation = { __typename?: 'Mutation', signIn: { __typename?: 'LoginResponse', accessToken: string, user: { __typename?: 'UserSchema', email: string, passwordHash: string } } };
 
 
+export const GetPhrasesDocument = gql`
+    query GetPhrases {
+  getPhrases {
+    phrase
+    translation
+    targetLang
+    id
+    streak
+    practisedAt
+  }
+}
+    `;
+
+/**
+ * __useGetPhrasesQuery__
+ *
+ * To run a query within a React component, call `useGetPhrasesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPhrasesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPhrasesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetPhrasesQuery(baseOptions?: Apollo.QueryHookOptions<GetPhrasesQuery, GetPhrasesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPhrasesQuery, GetPhrasesQueryVariables>(GetPhrasesDocument, options);
+      }
+export function useGetPhrasesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPhrasesQuery, GetPhrasesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPhrasesQuery, GetPhrasesQueryVariables>(GetPhrasesDocument, options);
+        }
+export type GetPhrasesQueryHookResult = ReturnType<typeof useGetPhrasesQuery>;
+export type GetPhrasesLazyQueryHookResult = ReturnType<typeof useGetPhrasesLazyQuery>;
+export type GetPhrasesQueryResult = Apollo.QueryResult<GetPhrasesQuery, GetPhrasesQueryVariables>;
 export const SignUpDocument = gql`
     mutation SignUp($email: String!, $password: String!, $repeatPassword: String!, $userName: String!) {
   signUp(

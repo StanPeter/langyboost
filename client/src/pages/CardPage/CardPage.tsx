@@ -17,26 +17,11 @@ import styles from './cardPage.module.scss';
 //     card?: PhraseCard[];
 // }
 
-const data = [
-    {
-        phrase: 'phrase 1',
-        translation: 'translation 1',
-    },
-    {
-        phrase: 'phrase 2',
-        translation: 'translation 2',
-    },
-    {
-        phrase: 'phrase 3',
-        translation: 'translation 3',
-    },
-];
-
 interface CardPageProps {}
 
 const CardPage: React.FC<CardPageProps> = () => {
     const { data, error, loading } = useGetPhrasesQuery({});
-    const [numberOfCards, setNumberOfCards] = useState(20);
+    const [numberOfCards, setNumberOfCards] = useState(5);
     // const [phrases, setPhrases] = useState(data?.getPhrases.slice(0, 20) || []);
     // const [noMorePhrases, setNoMorePhrases] = useState(false);
 
@@ -56,11 +41,11 @@ const CardPage: React.FC<CardPageProps> = () => {
     const { data, loading } = useHelloQuery({ fetchPolicy: "network-only" });
     */
 
-
-    // if (data.length < 1 || error) return null;
+    if ((data?.getPhrases && data.getPhrases.length < 1) || error) return null;
     if (loading) return <Spinner />;
 
-    const phrases = data?.getPhrases.slice(0, 20) || [];
+    const phrases = data?.getPhrases.slice(0, numberOfCards) || [];
+    console.log(data, phrases);
 
     return (
         <MainBody>
