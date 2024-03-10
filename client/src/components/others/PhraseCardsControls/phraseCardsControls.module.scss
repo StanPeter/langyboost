@@ -42,8 +42,8 @@
 
     & svg {
         position: absolute;
-        right: 10px;
-        top: 10px;
+        right: 25px;
+        top: 15px;
 
         color: var(--color-main);
     }
@@ -72,8 +72,8 @@
         color: var(--color-thumpsDown);
 
         position: absolute;
-        left: 10px;
-        bottom: 10px;
+        left: 25px;
+        bottom: 15px;
     }
 
     &:hover {
@@ -87,8 +87,8 @@
 }
 
 .controlContinue {
-    @extend .controlIcon;
-    // min-width: 100%;
+    // @extend .controlIcon;
+    min-width: 100%;
 
     & p {
         font-style: normal;
@@ -96,8 +96,8 @@
         color: var(--color-main);
     }
 
-    &.disabled {
-        background-color: var(--color-main-light);
-        cursor: not-allowed;
-    }
+    // &.disabled {
+    //     background-color: var(--color-main-light);
+    //     cursor: not-allowed;
+    // }
 }

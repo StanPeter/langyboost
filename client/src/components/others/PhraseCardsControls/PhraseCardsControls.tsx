@@ -24,6 +24,7 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
         else if (iconName === 'thumbsDown') {
             setHideContinue(false);
             setHidetranslation(false);
+            setBlockHovered(null);
         }
     };
 
@@ -42,6 +43,8 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
     };
 
     const blockHoveredHandler = (event: 'enter' | 'leave', type: 'leftWrong' | 'rightCorrect') => {
+        console.log('HANDLER');
+
         if (event === 'leave') setBlockHovered(null);
         else {
             if (type === 'leftWrong') setBlockHovered('leftWrong');
@@ -79,13 +82,8 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
                 </div>
             ) : null}
             {!hideContinue || noMorePhrases ? (
-                <div
-                    className={cardControlContinueClasses()}
-                    onClick={!noMorePhrases ? onContinueClickHandler : undefined}
-                >
-                    <i>
-                        <p>{!noMorePhrases ? 'Continue' : 'All phrases learned!'}</p>
-                    </i>
+                <div className={styles.controlContinue} onClick={!noMorePhrases ? onContinueClickHandler : undefined}>
+                    <p>{!noMorePhrases ? 'Continue' : 'All phrases learned!'}</p>
                 </div>
             ) : null}
             {/* </div> */}
