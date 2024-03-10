@@ -53,6 +53,7 @@ const CardPage: React.FC<CardPageProps> = () => {
     return (
         <MainBody>
             <div className={styles.cardPage} style={{ position: 'relative' }}>
+                <div className="ring-offset-red-700 size-7">Hello world</div>
                 <div>
                     <h2>
                         Card {numberOfCards ? phrases.length - numberOfCards + 1 : phrases.length} of{' '}
