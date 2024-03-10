@@ -1,14 +1,13 @@
 import { ApolloClient, ApolloLink, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
-import AppRouter from 'components/layouts/Routes';
 import jwtDecode from 'jwt-decode';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from 'store';
 import './index.css';
-import './styles/globalStyles.module.scss';
-import './styles/index.css';
+// import './styles/globalStyles.module.scss';
+// import './styles/index.css';
 
 // http link with the correct BE api url and credentials (to get cookies)
 const httpLink = new HttpLink({
@@ -93,7 +92,8 @@ const root = createRoot(container!); // createRoot(container!) if you use TypeSc
 root.render(
     <ApolloProvider client={client}>
         <Provider store={store}>
-            <AppRouter />
+            {/* <AppRouter /> */}
+            <h2 className="bg-red-400 via-red-600 size-5">hello world</h2>
         </Provider>
     </ApolloProvider>,
 );
