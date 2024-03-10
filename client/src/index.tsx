@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import store from 'store';
 import './index.css';
 import './styles/globalStyles.module.scss';
-import './styles/index.css';
 
 // http link with the correct BE api url and credentials (to get cookies)
 const httpLink = new HttpLink({

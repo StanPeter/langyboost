@@ -41,8 +41,7 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }
             {/* <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}> */}
             <div className={cardPhraseClassses.join(' ')}>
                 <div className="flex flex-col">
-                    {/* <h2 className={`${hideTranslation ? 'styles.focused' : ''} underline`}>{data?.phrase}</h2> */}
-                    <h2 className={'underline'}>{data?.phrase}</h2>
+                    <h2 className={`${hideTranslation ? 'styles.focused' : ''}`}>{data?.phrase}</h2>
                     {!hideTranslation ? (
                         <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ duration: 1 }}>
                             <hr className={styles.translationSeparator} />
