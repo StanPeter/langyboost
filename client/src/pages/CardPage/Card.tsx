@@ -5,15 +5,16 @@ import React, { useState } from 'react';
 import styles from './cardPage.module.scss';
 
 interface CardPageProps {
-    data: PhraseSchema[];
-    index: number;
+    data: PhraseSchema;
+    // index: number;
     numberOfCards: number;
     setNumberOfCards: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards, index }) => {
+const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }) => {
     const [hideTranslation, setHidetranslation] = useState(true);
     const [animationChangeCard, setAnimationChangeCard] = useState(false);
+    const [blockHovered, setBlockHovered] = useState<null | 'rightCorrect' | 'leftWrong'>(null);
 
     // const getCurrentPhrase = useMemo(() => {
     //     if (animationChangeCard && numberOfCards - 2 >= 0) return data[numberOfCards - 2].phrase;
@@ -21,7 +22,12 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards, 
     //     return data[numberOfCards - 1].phrase;
     // }, [animationChangeCard, numberOfCards]);
 
-    console.log(data[0], 'PASSED DATA');
+    console.log(data, 'PASSED DATA');
+
+    const cardPhraseClassses = [styles.cardPhrase];
+
+    if (blockHovered === 'leftWrong') cardPhraseClassses.push(styles.blockHoveredLeftWrong);
+    if (blockHovered === 'rightCorrect') cardPhraseClassses.push(styles.blockHoveredRightCorrect);
 
     return (
         <div
@@ -30,31 +36,26 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards, 
                 setNumberOfCards(numberOfCards - 1);
                 setAnimationChangeCard(false);
             }}
-            style={{
-                left: '6%',
-                top: 10 * index,
-                zIndex: -1 * index,
-                display: 'flex',
-                position: 'absolute',
-            }}
+            style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}
         >
-            <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}>
-                <div className={styles.cardPhrase}>
-                    <h2 className={`${hideTranslation ? styles.focused : ''}`}>{data[numberOfCards - 1]?.phrase}</h2>
-                    {!hideTranslation ? (
-                        <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ duration: 1 }}>
-                            <hr className={styles.translationSeparator} />
-                            <h3 className={styles.focused}>{data[numberOfCards - 1]?.translation}</h3>
-                        </motion.div>
-                    ) : null}
-                </div>
-                <hr className={styles.controlsSeparator} />
+            {/* <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}> */}
+            <div className={cardPhraseClassses.join(' ')}>
+                <h2 className={`${hideTranslation ? 'styles.focused' : ''}`}>{data?.phrase}</h2>
+                {!hideTranslation ? (
+                    <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ duration: 1 }}>
+                        <hr className={styles.translationSeparator} />
+                        <h3 className={'styles.focused'}>{data?.translation}</h3>
+                    </motion.div>
+                ) : null}
                 <PhraseCardsControls
+                    setBlockHovered={setBlockHovered}
                     setHidetranslation={setHidetranslation}
                     setAnimationChangeCard={setAnimationChangeCard}
                     noMorePhrases={false}
                 />
             </div>
+            {/* <hr className={styles.controlsSeparator} /> */}
+            {/* </div> */}
         </div>
     );
 };

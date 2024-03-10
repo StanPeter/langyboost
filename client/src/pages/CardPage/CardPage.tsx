@@ -17,11 +17,14 @@ import styles from './cardPage.module.scss';
 //     card?: PhraseCard[];
 // }
 
+const TOTAL_NUMBER_OF_CARDS = 5 as const;
+
 interface CardPageProps {}
 
 const CardPage: React.FC<CardPageProps> = () => {
     const { data, error, loading } = useGetPhrasesQuery({});
     const [numberOfCards, setNumberOfCards] = useState(5);
+    // const [currentPhrase, setCurrentPhrase] = useState<PhraseSchema>()
     // const [phrases, setPhrases] = useState(data?.getPhrases.slice(0, 20) || []);
     // const [noMorePhrases, setNoMorePhrases] = useState(false);
 
@@ -44,7 +47,7 @@ const CardPage: React.FC<CardPageProps> = () => {
     if ((data?.getPhrases && data.getPhrases.length < 1) || error) return null;
     if (loading) return <Spinner />;
 
-    const phrases = data?.getPhrases.slice(0, numberOfCards) || [];
+    const phrases = data?.getPhrases.slice(0, TOTAL_NUMBER_OF_CARDS) || [];
     console.log(data, phrases);
 
     return (
@@ -52,11 +55,12 @@ const CardPage: React.FC<CardPageProps> = () => {
             <div className={styles.cardPage} style={{ position: 'relative' }}>
                 <div>
                     <h2>
-                        Card {numberOfCards ? phrases.length - numberOfCards + 1 : phrases.length} of {phrases.length}
+                        Card {numberOfCards ? phrases.length - numberOfCards + 1 : phrases.length} of{' '}
+                        {TOTAL_NUMBER_OF_CARDS}
                     </h2>
                     <Tooltip />
                 </div>
-                <div>
+                <>
                     {numberOfCards === 0 ? (
                         <div
                             className={`${styles.cardWrapper}`}
@@ -69,7 +73,7 @@ const CardPage: React.FC<CardPageProps> = () => {
                         >
                             <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}>
                                 <div className={styles.cardPhrase}>
-                                    <h2 className={styles.focused}>NO MORE PHRASES</h2>
+                                    <h2 className={'styles.focused'}>NO MORE PHRASES</h2>
                                 </div>
                                 <hr className={styles.controlsSeparator} />
                                 <i>
@@ -78,16 +82,22 @@ const CardPage: React.FC<CardPageProps> = () => {
                             </div>
                         </div>
                     ) : (
-                        [...Array(numberOfCards)].map((_d, i) => (
-                            <Card
-                                data={phrases || []}
-                                numberOfCards={numberOfCards}
-                                setNumberOfCards={setNumberOfCards}
-                                index={i}
-                            />
-                        ))
+                        <Card
+                            data={phrases[numberOfCards - 1]}
+                            numberOfCards={numberOfCards}
+                            setNumberOfCards={setNumberOfCards}
+                            // index={i}
+                        />
+                        // [...Array(numberOfCards)].map((_d, i) => (
+                        //     <Card
+                        //         data={phrases || []}
+                        //         numberOfCards={numberOfCards}
+                        //         setNumberOfCards={setNumberOfCards}
+                        //         index={i}
+                        //     />
+                        // ))
                     )}
-                </div>
+                </>
             </div>
         </MainBody>
     );

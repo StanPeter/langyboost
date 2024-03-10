@@ -6,6 +6,7 @@ interface PhraseCardsControlsProps {
     setHidetranslation: Function;
     setAnimationChangeCard: Function;
     noMorePhrases: boolean;
+    setBlockHovered: React.Dispatch<React.SetStateAction<'rightCorrect' | 'leftWrong' | null>>;
 }
 
 type IconName = 'thumbsDown' | 'thumbsUp';
@@ -14,6 +15,7 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
     setHidetranslation,
     setAnimationChangeCard,
     noMorePhrases,
+    setBlockHovered,
 }) => {
     const [hideContinue, setHideContinue] = useState(true);
 
@@ -39,25 +41,41 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
         return out.join(' ');
     };
 
+    const blockHoveredHandler = (event: 'enter' | 'leave', type: 'leftWrong' | 'rightCorrect') => {
+        if (event === 'leave') setBlockHovered(null);
+        else {
+            if (type === 'leftWrong') setBlockHovered('leftWrong');
+            else setBlockHovered('rightCorrect');
+        }
+    };
+
     console.log('rerender');
 
     return (
-        <div className={styles.controls}>
+        // <div className={styles.controls}>
+        <>
             {hideContinue && !noMorePhrases ? (
-                <div className={styles.controlThumbsDown} onClick={(e) => onClickHandler(e, 'thumbsDown')}>
+                <div
+                    onMouseEnter={() => blockHoveredHandler('enter', 'leftWrong')}
+                    onMouseLeave={() => blockHoveredHandler('leave', 'leftWrong')}
+                    className={styles.controlThumbsDown}
+                    onClick={e => onClickHandler(e, 'thumbsDown')}
+                >
                     <i>
                         <FiThumbsDown />
                     </i>
                 </div>
             ) : null}
             {hideContinue && !noMorePhrases ? (
-                <div className={styles.controlThumbsUp} onClick={(e) => onClickHandler(e, 'thumbsUp')}>
-                    <div>
-                        <i>
-                            <FiThumbsUp />
-                        </i>
-                    </div>
-                    <div></div>
+                <div
+                    onMouseEnter={() => blockHoveredHandler('enter', 'rightCorrect')}
+                    onMouseLeave={() => blockHoveredHandler('leave', 'rightCorrect')}
+                    className={styles.controlThumbsUp}
+                    onClick={e => onClickHandler(e, 'thumbsUp')}
+                >
+                    <i>
+                        <FiThumbsUp />
+                    </i>
                 </div>
             ) : null}
             {!hideContinue || noMorePhrases ? (
@@ -70,7 +88,8 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
                     </i>
                 </div>
             ) : null}
-        </div>
+            {/* </div> */}
+        </>
     );
 };
 
