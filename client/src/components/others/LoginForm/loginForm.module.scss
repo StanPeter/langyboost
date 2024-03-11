@@ -67,12 +67,14 @@
 .btnLeft {
     &.authPage {
         border-top-left-radius: 1.8rem;
+        margin-top: 0;
     }
 }
 
 .btnRight {
     &.authPage {
         border-top-right-radius: 1.8rem;
+        margin-top: 0;
     }
 }
 

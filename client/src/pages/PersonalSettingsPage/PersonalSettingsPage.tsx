@@ -1,12 +1,12 @@
 import ProfilePicture from 'assets/images/profilePicture.jpg';
-import MainBody from 'components/layouts/MainBody/MainBody';
-import MembershipDialog from 'components/others/MembershipDialog/MembershipDialog';
 import Button from 'components/UI/Button/Button';
 import ButtonSelect from 'components/UI/ButtonSelect/ButtonSelect';
 import Header from 'components/UI/Header/Header';
 import Image from 'components/UI/Image';
 import Input from 'components/UI/Input/Input';
 import Select from 'components/UI/Select/Select';
+import MainBody from 'components/layouts/MainBody/MainBody';
+import MembershipDialog from 'components/others/MembershipDialog/MembershipDialog';
 import React, { useEffect, useState } from 'react';
 import { VscEdit } from 'react-icons/vsc';
 import styles from './personalSettingsPage.module.scss';
@@ -15,6 +15,7 @@ type ModeTypes = 'profile' | 'settings';
 
 interface PersonalSettingsPageProps {
     routeMode?: ModeTypes;
+    hey: string;
 }
 
 const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }) => {
@@ -23,8 +24,9 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        if (routeMode) setMode(routeMode);
-    }, [routeMode]);
+        console.log(routeMode, ' routeMode');
+        if (routeMode && routeMode !== mode) setMode(routeMode);
+    });
 
     let renderedSection: JSX.Element = (
         <React.Fragment>
@@ -66,7 +68,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         useCase="form"
                         data={[
                             { name: 'Turned off', value: 'off' },
-                            { name: 'Turned on', value: 'on' }
+                            { name: 'Turned on', value: 'on' },
                         ]}
                     />
                     <Select
@@ -78,7 +80,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         data={[
                             { name: 'Lingo(default)', value: 'lingo' },
                             { name: 'Dark', value: 'dark' },
-                            { name: 'Halloween', value: 'halloween' }
+                            { name: 'Halloween', value: 'halloween' },
                         ]}
                     />
                     <ButtonSelect
@@ -96,7 +98,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         data={[
                             { name: 'en', value: 'en' },
                             { name: 'ge', value: 'ge' },
-                            { name: 'es', value: 'es' }
+                            { name: 'es', value: 'es' },
                         ]}
                     />
                     <Input text="PASSWORD" type="text" />

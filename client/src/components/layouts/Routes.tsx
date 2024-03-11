@@ -32,7 +32,9 @@ const AppRouter: React.FC = () => {
                 <Route element={<ErrorBoundaryHoc />}>
                     <Route path={'*'} element={<NotFound />} />
                     {routeMapa().map((route, index: number) => {
-                        const RouteComponent = route.component;
+                        const RouteComponent:
+                            | React.FC<{ routeMode?: string }>
+                            | React.LazyExoticComponent<React.FC<{ routeMode?: string }>> = route.component;
                         // wrap components with Spinner until they load properly
                         const Component = (
                             <Suspense
@@ -47,7 +49,7 @@ const AppRouter: React.FC = () => {
                                     </div>
                                 }
                             >
-                                <RouteComponent />
+                                <RouteComponent routeMode={route.routeMode} />
                             </Suspense>
                         );
 
