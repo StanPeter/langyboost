@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from 'store';
+// css must be imported before globalStyles to not overwrite some styles
 import './index.css';
 import './styles/globalStyles.module.scss';
 

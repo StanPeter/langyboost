@@ -19,6 +19,9 @@ export type SubscriptionTypes = {
 };
 export type PaymentMethodTypes = 'visa' | 'mastercard' | 'americanExpress' | 'paypal';
 
+// Card page
+export type TCardMode = 'rightAnswerHovered' | 'leftAnswerHovered' | 'continue' | 'none' | 'finish';
+
 //UI
 export type InputTypes = 'text' | 'email' | 'date' | 'multiselect' | 'buttonSelect' | 'singleselect';
 export type TInputUsecase = 'form' | 'filter';

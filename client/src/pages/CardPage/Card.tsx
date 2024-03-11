@@ -1,7 +1,9 @@
 import PhraseCardsControls from 'components/others/PhraseCardsControls/PhraseCardsControls';
 import { motion } from 'framer-motion';
 import { PhraseSchema } from 'graphql/generated/graphql';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TCardMode } from 'ts/types';
 import styles from './cardPage.module.scss';
 
 interface CardPageProps {
@@ -12,9 +14,10 @@ interface CardPageProps {
 }
 
 const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }) => {
-    const [hideTranslation, setHidetranslation] = useState(true);
+    // const [hideTranslation, setHidetranslation] = useState(true);
     const [animationChangeCard, setAnimationChangeCard] = useState(false);
-    const [blockHovered, setBlockHovered] = useState<null | 'rightCorrect' | 'leftWrong'>(null);
+    const [cardMode, setCardMode] = useState<TCardMode>('none');
+    const navigate = useNavigate();
 
     // const getCurrentPhrase = useMemo(() => {
     //     if (animationChangeCard && numberOfCards - 2 >= 0) return data[numberOfCards - 2].phrase;
@@ -22,12 +25,28 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }
     //     return data[numberOfCards - 1].phrase;
     // }, [animationChangeCard, numberOfCards]);
 
+    useEffect(() => {
+        if (numberOfCards === 0) setCardMode('finish');
+    }, [numberOfCards]);
+
     console.log(data, 'PASSED DATA');
 
     const cardPhraseClassses = [styles.cardPhrase];
 
-    if (blockHovered === 'leftWrong') cardPhraseClassses.push(styles.blockHoveredLeftWrong);
-    if (blockHovered === 'rightCorrect') cardPhraseClassses.push(styles.blockHoveredRightCorrect);
+    if (cardMode === 'leftAnswerHovered') cardPhraseClassses.push(styles.cardModeLeftWrong);
+    if (cardMode === 'rightAnswerHovered') cardPhraseClassses.push(styles.cardModeRightCorrect);
+    if (cardMode === 'finish' || cardMode === 'continue') {
+        cardPhraseClassses.push('hover:cursor-pointer');
+        cardPhraseClassses.push(styles.cardModeContinue);
+    }
+
+    const continueHandler = () => {
+        if (numberOfCards === 0) navigate('/courses');
+        else {
+            setCardMode('none');
+            setAnimationChangeCard(true);
+        }
+    };
 
     return (
         <div
@@ -39,10 +58,14 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }
             style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}
         >
             {/* <div style={{ position: 'relative', width: '100%', display: 'flex', flexFlow: 'column' }}> */}
-            <div className={cardPhraseClassses.join(' ')}>
-                <div className="flex flex-col">
-                    <h2 className={`${hideTranslation ? 'styles.focused' : ''}`}>{data?.phrase}</h2>
-                    {!hideTranslation ? (
+            <div
+                className={`${cardPhraseClassses.join(' ')} hover:scale-105`}
+                onClick={['continue', 'finish'].includes(cardMode) ? continueHandler : undefined}
+            >
+                <div className="flex flex-col flex-1 align-middle justify-center">
+                    <h2>{numberOfCards === 0 ? 'No more phrases' : data?.phrase}</h2>
+                    {numberOfCards === 0 && <p>{'(Click to return back)'}</p>}
+                    {cardMode === 'continue' ? (
                         <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ duration: 1 }}>
                             <hr className={styles.translationSeparator} />
                             <h3 className={'styles.focused'}>{data?.translation || 'default test'}</h3>
@@ -50,9 +73,10 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }
                     ) : null}
                 </div>
                 <PhraseCardsControls
-                    setBlockHovered={setBlockHovered}
-                    setHidetranslation={setHidetranslation}
+                    setCardMode={setCardMode}
+                    // setHidetranslation={setHidetranslation}
                     setAnimationChangeCard={setAnimationChangeCard}
+                    cardMode={cardMode}
                     noMorePhrases={false}
                 />
             </div>

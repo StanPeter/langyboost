@@ -61,7 +61,7 @@ const CardPage: React.FC<CardPageProps> = () => {
                     <Tooltip />
                 </div>
                 <>
-                    {numberOfCards === 0 ? (
+                    {/* {numberOfCards === 0 ? (
                         <div
                             className={`${styles.cardWrapper}`}
                             style={{
@@ -81,22 +81,22 @@ const CardPage: React.FC<CardPageProps> = () => {
                                 </i>
                             </div>
                         </div>
-                    ) : (
+                    ) : ( */}
                         <Card
                             data={phrases[numberOfCards - 1]}
                             numberOfCards={numberOfCards}
                             setNumberOfCards={setNumberOfCards}
                             // index={i}
                         />
-                        // [...Array(numberOfCards)].map((_d, i) => (
-                        //     <Card
-                        //         data={phrases || []}
+                         {/* [...Array(numberOfCards)].map((_d, i) => (
+                             <Card */}
+                        {/* //         data={phrases || []}
                         //         numberOfCards={numberOfCards}
                         //         setNumberOfCards={setNumberOfCards}
                         //         index={i}
                         //     />
                         // ))
-                    )}
+                    // )} */}
                 </>
             </div>
         </MainBody>

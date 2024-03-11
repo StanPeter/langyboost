@@ -1,6 +1,7 @@
 export declare const animationChangeCard: string;
-export declare const blockHoveredLeftWrong: string;
-export declare const blockHoveredRightCorrect: string;
+export declare const cardModeContinue: string;
+export declare const cardModeLeftWrong: string;
+export declare const cardModeRightCorrect: string;
 export declare const cardPage: string;
 export declare const cardPhrase: string;
 export declare const cardWrapper: string;

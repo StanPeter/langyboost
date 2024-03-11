@@ -1,54 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FiThumbsDown, FiThumbsUp } from 'react-icons/fi';
+import { PiArrowBendUpRightFill } from 'react-icons/pi';
+import { TCardMode } from 'ts/types';
 import styles from './phraseCardsControls.module.scss';
 
 interface PhraseCardsControlsProps {
-    setHidetranslation: Function;
+    // setHidetranslation: Function;
     setAnimationChangeCard: Function;
     noMorePhrases: boolean;
-    setBlockHovered: React.Dispatch<React.SetStateAction<'rightCorrect' | 'leftWrong' | null>>;
+    setCardMode: React.Dispatch<React.SetStateAction<TCardMode>>;
+    cardMode: TCardMode;
 }
 
 type IconName = 'thumbsDown' | 'thumbsUp';
 
 const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
-    setHidetranslation,
+    // setHidetranslation,
     setAnimationChangeCard,
     noMorePhrases,
-    setBlockHovered,
+    setCardMode,
+    cardMode,
 }) => {
-    const [hideContinue, setHideContinue] = useState(true);
+    // const [hideContinue, setHideContinue] = useState(true);
 
     const onClickHandler = (_e: React.MouseEvent<HTMLElement>, iconName: IconName) => {
         if (iconName === 'thumbsUp') setAnimationChangeCard(true);
         else if (iconName === 'thumbsDown') {
-            setHideContinue(false);
-            setHidetranslation(false);
-            setBlockHovered(null);
+            // setHideContinue(false);
+            // setHidetranslation(false);
+            setCardMode('continue');
         }
     };
 
-    const onContinueClickHandler = (_e: React.MouseEvent<HTMLElement>) => {
-        setHideContinue(true);
-        setHidetranslation(true);
-        setAnimationChangeCard(true);
-    };
+    // const onContinueClickHandler = (_e: React.MouseEvent<HTMLElement>) => {
+    //     // setHideContinue(true);
+    //     // setHidetranslation(true);
+    //     setAnimationChangeCard(true);
+    // };
 
-    const cardControlContinueClasses = (): string => {
-        const out = [styles.controlContinue];
+    // const cardControlContinueClasses = (): string => {
+    //     const out = [styles.controlContinue];
 
-        if (noMorePhrases) out.push('disabled');
+    //     if (noMorePhrases) out.push('disabled');
 
-        return out.join(' ');
-    };
+    //     return out.join(' ');
+    // };
 
-    const blockHoveredHandler = (event: 'enter' | 'leave', type: 'leftWrong' | 'rightCorrect') => {
+    const cardModeHandler = (event: 'enter' | 'leave', type: 'leftAnswerHovered' | 'rightAnswerHovered') => {
         console.log('HANDLER');
 
-        if (event === 'leave') setBlockHovered(null);
+        if (event === 'leave') setCardMode('none');
         else {
-            if (type === 'leftWrong') setBlockHovered('leftWrong');
-            else setBlockHovered('rightCorrect');
+            if (type === 'leftAnswerHovered') setCardMode('leftAnswerHovered');
+            else setCardMode('rightAnswerHovered');
         }
     };
 
@@ -57,10 +61,10 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
     return (
         // <div className={styles.controls}>
         <>
-            {hideContinue && !noMorePhrases ? (
+            {cardMode !== 'continue' && cardMode !== 'finish' && !noMorePhrases ? (
                 <div
-                    onMouseEnter={() => blockHoveredHandler('enter', 'leftWrong')}
-                    onMouseLeave={() => blockHoveredHandler('leave', 'leftWrong')}
+                    onMouseEnter={() => cardModeHandler('enter', 'leftAnswerHovered')}
+                    onMouseLeave={() => cardModeHandler('leave', 'leftAnswerHovered')}
                     className={styles.controlThumbsDown}
                     onClick={e => onClickHandler(e, 'thumbsDown')}
                 >
@@ -69,10 +73,10 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
                     </i>
                 </div>
             ) : null}
-            {hideContinue && !noMorePhrases ? (
+            {cardMode !== 'continue' && cardMode !== 'finish' && !noMorePhrases ? (
                 <div
-                    onMouseEnter={() => blockHoveredHandler('enter', 'rightCorrect')}
-                    onMouseLeave={() => blockHoveredHandler('leave', 'rightCorrect')}
+                    onMouseEnter={() => cardModeHandler('enter', 'rightAnswerHovered')}
+                    onMouseLeave={() => cardModeHandler('leave', 'rightAnswerHovered')}
                     className={styles.controlThumbsUp}
                     onClick={e => onClickHandler(e, 'thumbsUp')}
                 >
@@ -81,11 +85,31 @@ const PhraseCardsControls: React.FC<PhraseCardsControlsProps> = ({
                     </i>
                 </div>
             ) : null}
-            {!hideContinue || noMorePhrases ? (
-                <div className={styles.controlContinue} onClick={!noMorePhrases ? onContinueClickHandler : undefined}>
+            {cardMode === 'continue' && (
+                <div
+                    className={styles.controlContinueUp}
+                    // onClick={e => onClickHandler(e, 'thumbsDown')}
+                >
+                    <i>
+                        <PiArrowBendUpRightFill />
+                    </i>
+                </div>
+            )}
+            {cardMode === 'continue' && (
+                <div
+                    className={styles.controlContinueDown}
+                    // onClick={e => onClickHandler(e, 'thumbsDown')}
+                >
+                    <i>
+                        <PiArrowBendUpRightFill />
+                    </i>
+                </div>
+            )}
+            {/* {!hideContinue || noMorePhrases ? (
+                <div className={`${styles.controlContinue} m-2`} onClick={!noMorePhrases ? onContinueClickHandler : undefined}>
                     <p>{!noMorePhrases ? 'Continue' : 'All phrases learned!'}</p>
                 </div>
-            ) : null}
+            ) : null} */}
             {/* </div> */}
         </>
     );
