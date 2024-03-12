@@ -28,14 +28,6 @@ export const createRefreshToken = (user: User) => {
 export const sendRefreshToken = (res: Response, token: string) => {
 	// secure flag -> Ensures data transmission only over encrypted channels
 	// httpOnly -> Restricts client-side access
-	// res.cookie("jid", token, { httpOnly: true, path: "/refreshToken", secure: true });
-	res.cookie('jid', token, { httpOnly: true });
-	res.cookie('test', token);
+	res.cookie('jid', token, { httpOnly: true, path: '/refreshToken', secure: true });
+	// res.cookie('jid', token, { httpOnly: true });
 };
-
-// // set access token -> name, token, opts
-// export const sendAccessToken = (res: Response, token: string) => {
-// 	// secure flag -> Ensures data transmission only over encrypted channels
-// 	// httpOnly -> Restricts client-side access
-// 	res.cookie('oad', token, { httpOnly: true });
-// };

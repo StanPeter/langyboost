@@ -30,15 +30,6 @@ export class UserResolver {
 	// 	}
 	// }
 
-	// getting data of all users
-	// @UseMiddleware(isAuth)
-	// @Query(() => [User])
-	// getUsers(@Ctx() { payload }: IContextType) {
-	// 	console.log(payload, 'payload');
-
-	// 	return User.find();
-	// }
-
 	// @Mutation(() => Boolean)
 	// async revokeRefreshTokenForUser(@Arg('userId', () => Int) userId: number) {
 	// 	await getConnection().getRepository(User).increment({ id: userId }, 'tokenVersion', 1);
@@ -55,7 +46,6 @@ export class UserResolver {
 	): Promise<LoginResponse> {
 		// for mocked use case
 		if (serverConfig.isMocked) {
-			// sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
 			return mockData.signUpMockData;
 		}
 
@@ -106,7 +96,6 @@ export class UserResolver {
 		@Arg('repeatPassword') repeatPassword: string,
 		@Ctx() { res }: IContextType
 	) {
-		// for mocked use case
 		// for mocked use case
 		if (serverConfig.isMocked) return mockData.signUpMockData;
 

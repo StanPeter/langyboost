@@ -12,43 +12,46 @@
 # 1 === Technical info ===
 
 # In short how BE app works
-1) All important is inside src/ folder, outside is only specific package settings
+1) All important is inside src/ folder, outside are only config files
 2) index.ts prepares the server with help of Appolo provider
-3) a query/mutation request is received from the client and answers through found resolver
-4) resolver then acts with/without middleware and executes the logic inside, communicates with the entity which then searches inside DB table
+3) A query/mutation request is received from the client and answers through the found resolver
+4) Resolver then acts with/without middleware and executes the logic inside, communicates with the entity which then searches inside DB table
 
 
 # Available scripts
-'npm start'     runs the app, 
-'npm run build' build is used for creating a production bundle
-'npm run dev'   run on development (not used yet)
-'npm run prod'  combination of 'npm run build' and 'start'
-
+'yarn run dev'              runs the app, 
+'yarn run genPrisma'        generates prisma and typegraphql types
+'yarn run migratePrisma'    run migrations for prisma
 
 # 2 === How to launch the app ===
 a) get to install NPM (https://www.npmjs.com/get-npm) or use Yarn if you wish
-b) execute command "npm install" -> will create folder of dependencies "node_modules" 
-c) setup database settings inside `ormconfig.json` file
-d) start server using command "npm start"
+b) execute command "yarn install" -> will create folder of dependencies "node_modules" 
+c) setup database settings inside `schema.prisma` file
+d) start server using command "yarn run dev"
 
 
 # 3 === Structure of the app ===
 node_modules            automatically generated folder for dependencies 
-temporary               contains temporary DB file which will later be converted into postgresDB
 src
-    entity              contains definitions for Tables of DB
+    constants           all the constants throughout the app, e.g. errors
+    db                  instance of db and all the mock data
+    deprecated          some old files from pothos library (replaced with typeGraphql)
+    generated           generated types for prisma and type grahpql
     middleware          contains middlewares such as authentication etc.
+    model               contains definitions for Tables of DB
+    prisma              schema for prisma
+    resolver            contains resolvers for queries (or controllers if you come from MVC background)
     migration           contains all migrations
-    resolvers           contains resolvers for queries (or controllers if you come from MVC background)
+    settings            project settings
     ts                  typescript interfaces, enums and types
     utils               contains reusable global functions, validation, ...
 
-- other files in root like .ormconfig, tsconfig.json etc. are config files, you need to change ormcongif.json to connect to your own DB!, others can be ignored more or less
+- other files in root like tsconfig.json etc. are config files, you need to change schema.prisma to connect to your own DB!, others can be ignored more or less
 
 
 # 4 === Used packages/dependencies ===
 bcryptjs                to hash password to enhance security
-typeorm                 data mapper ORM for typescript
+prisma                  data mapper ORM for typescript
 type-graphql            types for graphql
 graphql                 query language for API communication
 jsonwebtoken            JSON Web Token implementation (symmetric and asymmetric)
@@ -64,5 +67,11 @@ typescript              adding types and checks for JS development
 ts-node                 typescript for Node
 nodemon                 restarting server automatically on code change
 
+
 # 5 === Known bugs & things to improve ===
-WILL ADD LATER
+- Check out refresh token functionality
+- Check out login and sign up functionality
+- Logout feature
+- Revoking feature
+- Add more error constants
+- Check out middlewares

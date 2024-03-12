@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 
+/**
+ * Api interfaces
+ */
 export interface IContextType {
     req: Request;
     res: Response;

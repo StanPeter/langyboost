@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -23,8 +22,6 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 	//define express server
 	const app = express();
 
-	// run().catch(console.dir);
-
 	//set cors manually
 	app.use(cors(CORS_OPTIONS));
 
@@ -34,19 +31,10 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 	//loads from .env file
 	dotenv.config();
 
-	// test route, just to try out
-	app.get('/test/:id', async (req, res) => {
-		res.send('Tested ID' + req.params.id);
-	});
-
 	//refresh_token route to improve security and do this outside /graphql route
 	app.post('/refreshToken', async (req, res) => {
-		console.log(req.cookies, ' COOKIES');
-
 		//get refresh token and validate
 		const refreshToken = req.cookies.jid;
-
-		console.log(refreshToken, ' refreshToken');
 
 		if (!refreshToken) return res.send({ ok: false, accessToken: '' });
 
@@ -61,9 +49,6 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 
 		// when mocked
 		if (projectConfiq.isMocked) {
-			// let testUser = await db.user.findFirst({ where: { id: TEST_USER_DATA.id } });
-			// if (!testUser) testUser = await db.user.create({ data: TEST_USER_DATA });
-
 			sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
 			return res.send({ ok: true, accessToken: createAccessToken(TEST_USER_DATA) });
 		}
