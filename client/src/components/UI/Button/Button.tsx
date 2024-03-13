@@ -10,7 +10,7 @@ interface ButtonProps {
     active?: boolean | (() => boolean);
     disabled?: boolean | (() => boolean);
     useCase?: TButtonUseCase;
-    classes?: string;
+    classes?: React.ComponentProps<'button'>['className'];
     type?: 'button' | 'reset' | 'submit';
 }
 
@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
     disabled,
     useCase,
     classes,
-    type = 'button'
+    type = 'button',
 }) => {
     const isDisabled = typeof disabled === 'function' ? disabled() : disabled ?? false;
     const isActive = () => {

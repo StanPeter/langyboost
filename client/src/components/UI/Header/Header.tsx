@@ -7,7 +7,7 @@ interface IHeader {
     level: 1 | 2 | 3 | 4 | 5;
     whiteText?: boolean;
     shouldTranslate?: boolean;
-    classes?: string;
+    classes?: React.ComponentProps<'h1'>['className'];
 }
 
 // custom header due to text translation

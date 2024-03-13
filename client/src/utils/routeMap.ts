@@ -1,8 +1,6 @@
 import React, { LazyExoticComponent } from 'react';
 
 /* 'LazyLoading' - gets downloaded when required -> multiple smaller JS 'chunks' after the build */
-
-// const AdminHome = React.lazy(() => import('components/pages/AdminHome/AdminHome'));
 const LandingPage = React.lazy(() => import('pages/LandingPage/LandingPage'));
 const CoursesPage = React.lazy(() => import('pages/CoursesPage/CoursesPage'));
 const ArticlesPage = React.lazy(() => import('pages/ArticlesPage/ArticlesPage'));

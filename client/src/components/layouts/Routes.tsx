@@ -35,6 +35,7 @@ const AppRouter: React.FC = () => {
                         const RouteComponent:
                             | React.FC<{ routeMode?: string }>
                             | React.LazyExoticComponent<React.FC<{ routeMode?: string }>> = route.component;
+
                         // wrap components with Spinner until they load properly
                         const Component = (
                             <Suspense
@@ -52,9 +53,6 @@ const AppRouter: React.FC = () => {
                                 <RouteComponent routeMode={route.routeMode} />
                             </Suspense>
                         );
-
-                        // console.log(route);
-                        // if (route.path === '/card/:cardId' || route.path === '/card/:cardId/transactions')
 
                         return <Route path={route.path} element={Component} key={index.toString() + route.path} />;
 

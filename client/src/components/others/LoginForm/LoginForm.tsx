@@ -15,7 +15,6 @@ import globalClasses from 'styles/globalClasses.module.scss';
 import { ISingInResponse, ISingUpResponse } from 'ts/api';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
-import styles from './loginForm.module.scss';
 
 interface IFormData {
     password: string;
@@ -91,29 +90,40 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     };
 
     return (
-        <div className={styles.signForm}>
+        <section
+            className={
+                'z-10 bg-[var(--color-main-light)] border-2 border-[var(--color-dark-accent)] shadow-xl rounded-3xl w-full'
+            }
+            // className={styles.signForm}
+        >
             {useCase === 'landingPage' && (
-                <div className={styles.slider}>
-                    <FiArrowLeft className={styles.sliderArrow} />
+                <div
+                    className={
+                        'flex flex-row w-full justify-between items-center bg-[var(--color-main)] text-[var(--color-text-light)] h-40 rounded-t-3xl'
+                    }
+                >
+                    <FiArrowLeft className={'w-8 h-8'} />
                     <Header level={2} whiteText text="ULTIMATE_PLATTFORM_TEXT" />
-                    <FiArrowRight className={styles.sliderArrow} />
+                    <FiArrowRight className={'w-8 h-8'} />
                 </div>
             )}
-            <div className={styles.switcherWrapper}>
+            <div className={'w-full flex'}>
                 <Button
                     useCase="fullLine"
                     active={mode === 'singIn'}
                     text="SIGN_IN"
-                    classes={`${styles.btn} ${styles.btnLeft} ${
-                        useCase === 'authPage' ? styles.authPage : styles.landingPage
-                    }`}
+                    // classes={`${styles.btn} ${styles.btnLeft} ${
+                    //     useCase === 'authPage' ? styles.authPage : styles.landingPage
+                    // }`}
+                    classes={`w-1/2 ${useCase === 'authPage' ? 'rounded-tl-3xl mt-0' : ''}`}
                     onClick={() => setMode('singIn')}
                 />
                 <Button
                     useCase="fullLine"
-                    classes={`${styles.btn} ${styles.btnRight} ${
-                        useCase === 'authPage' ? styles.authPage : styles.landingPage
-                    }`}
+                    // classes={`${styles.btn} ${styles.btnRight} ${
+                    //     useCase === 'authPage' ? styles.authPage : styles.landingPage
+                    // }`}
+                    classes={`w-1/2 ${useCase === 'authPage' ? 'rounded-tr-3xl mt-0' : ''}`}
                     active={mode === 'signUp'}
                     text="SIGN_UP"
                     onClick={() => setMode('signUp')}
@@ -159,7 +169,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                         type="submit"
                         onClick={onSubmitHandler}
                         disabled={isBtnDisabled()}
-                        classes={styles.submitBtn}
+                        classes={'w-full'}
                     />
                 ) : (
                     <Spinner useCase="small" />
@@ -174,16 +184,16 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     />
                 )}
             </form>
-            <div className={styles.signUpText}>
-                <hr />
+            <div className={'flex w-full justify-center my-5'}>
+                <hr className="w-2/6 max-w-40 m-auto ml-10 mr-5 border-t-1 border-[var(--color-dark-accent)]" />
                 <Paragraph text={mode === 'singIn' ? 'OR_SIGN_IN' : 'OR_SIGN_UP'} />
-                <hr />
+                <hr className="w-2/6 max-w-40 m-auto ml-5 mr-10 border-t-1 border-[var(--color-dark-accent)]" />
             </div>
-            <div className={styles.formIcons}>
-                <FcGoogle className={globalClasses.iconSpin} />
-                <SiFacebook className={`${globalClasses.facebook} ${globalClasses.iconSpin}`} />
+            <div className={`flex justify-center mb-8`}>
+                <FcGoogle className={`${globalClasses.iconSpin} w-8 h-8 mx-2`} />
+                <SiFacebook className={`${globalClasses.facebook} ${globalClasses.iconSpin} w-7 h-8 mx-2`} />
             </div>
-        </div>
+        </section>
     );
 };
 

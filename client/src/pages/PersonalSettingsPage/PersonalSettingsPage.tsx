@@ -15,7 +15,6 @@ type ModeTypes = 'profile' | 'settings';
 
 interface PersonalSettingsPageProps {
     routeMode?: ModeTypes;
-    hey: string;
 }
 
 const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }) => {

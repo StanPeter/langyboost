@@ -37,7 +37,7 @@ const Input: React.FC<IInputProps> = ({
     ref,
     classes,
     validationMessage,
-    useCase = 'form'
+    useCase = 'form',
 }) => {
     const [isToutched, setIsTouched] = useState(false);
 
@@ -61,6 +61,8 @@ const Input: React.FC<IInputProps> = ({
         if (register) register.onChange(e);
         if (onChange) onChange(e.target.value);
     };
+
+    console.log(validationMessage, ' validationmessage');
 
     return (
         <InputWrapper validationMessage={validationMessage} useCase={useCase} classes={classes}>

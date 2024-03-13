@@ -6,7 +6,7 @@ interface IParagraph {
     text: string;
     shouldTranslate?: boolean;
     whiteText?: boolean;
-    classes?: string;
+    classes?: React.ComponentProps<'p'>['className'];
 }
 
 // custom header due to text translation

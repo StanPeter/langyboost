@@ -22,63 +22,64 @@
         cursor: pointer;
         background-color: var(--color-main) !important;
         box-shadow: 0px 8px 12px rgba(100, 198, 223, 0.4);
+        color: var(--color-main-light);
         // translate: -1px;
         scale: var(--transform-scale);
     }
+}
 
-    &.disabled {
-        background: var(--color-dark-accent) !important;
-        color: var(--color-text-light) !important;
-        &:hover {
-            cursor: not-allowed;
-            transform: none;
-        }
+.disabled {
+    background: var(--color-dark-accent) !important;
+    color: var(--color-text-light) !important;
+    &:hover {
+        cursor: not-allowed;
+        transform: none;
     }
+}
 
-    &.active {
-        background-color: var(--color-main) !important;
-        color: var(--color-text-light) !important;
-    }
+.active {
+    background-color: var(--color-main) !important;
+    color: var(--color-text-light) !important;
+}
 
-    &.small {
-        width: 10rem;
-        height: 2rem;
-        font-size: 1rem;
-        box-shadow: var(--box-shadow-small);
-    }
+.small {
+    width: 10rem;
+    height: 2rem;
+    font-size: 1rem;
+    box-shadow: var(--box-shadow-small);
+}
 
-    &.middle {
-        width: 15rem;
-        height: 2.5rem;
-        font-size: 1.2rem;
+.middle {
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
 
-        margin: 1rem 0;
-        letter-spacing: 0.1em;
-    }
+    margin: 1rem 0;
+    letter-spacing: 0.1em;
+}
 
-    &.big {
-        width: 20rem;
-        height: 3rem;
-        font-size: 1.5rem;
+.big {
+    width: 20rem;
+    height: 3rem;
+    font-size: 1.5rem;
 
-        margin: 2rem 0;
-        letter-spacing: 0.1em;
+    margin: 2rem 0;
+    letter-spacing: 0.1em;
 
-        box-shadow: var(--box-shadow-main);
-    }
+    box-shadow: var(--box-shadow-main);
+}
 
-    &.fullLine {
-        letter-spacing: 0.1em;
-        box-shadow: var(--box-shadow-main);
-        height: 2.5rem;
-        font-size: 1.2em;
-        padding: 0;
-        // margin: 0;
-        border-radius: 0;
+.fullLine {
+    letter-spacing: 0.1em;
+    box-shadow: var(--box-shadow-main);
+    height: 2.5rem;
+    font-size: 1.2em;
+    padding: 0;
+    // margin: 0;
+    border-radius: 0;
 
-        &:hover {
-            scale: unset;
-            transform: translateY(-3px);
-        }
+    &:hover {
+        scale: unset;
+        transform: translateY(-3px);
     }
 }
