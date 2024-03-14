@@ -17,7 +17,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     //     }, 1000);
     // }, []);
 
-    console.log('rerendering LANDING');
+    // console.log('rerendering LANDING');
 
     return (
         <div className={styles.landingPage}>

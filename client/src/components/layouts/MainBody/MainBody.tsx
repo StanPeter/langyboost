@@ -9,7 +9,7 @@ interface MainBodyProps {
 
 const MainBody: React.FC<MainBodyProps> = ({ children }) => {
     return (
-        <div className={styles.appWrapper}>
+        <div className={`${styles.appWrapper}`}>
             <Navbar />
             <main className={styles.bodyWrapper}>{children}</main>
             <Footer />

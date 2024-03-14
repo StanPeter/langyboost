@@ -2,6 +2,7 @@ import MainBody from 'components/layouts/MainBody/MainBody';
 import Select from 'components/UI/Select/Select';
 // import { useGetPhrasesQuery } from 'graphql/generated/graphql';
 import React from 'react';
+import { useSwiper } from 'swiper/react';
 import styles from './articlesPage.module.scss';
 
 interface ArticlesPageProps {}
@@ -10,21 +11,28 @@ const DATA = [
     {
         name: 'German',
         imgSrc: 'https://images.emojiterra.com/twitter/v13.0/512px/1f1e9-1f1ea.png',
-        value: 'german'
+        value: 'german',
     },
     {
         name: 'Armenian',
         imgSrc: 'https://images.emojiterra.com/twitter/v13.0/512px/1f1e6-1f1e9.png',
-        value: 'armenian'
+        value: 'armenian',
     },
     {
         name: 'aloha',
-        value: 'aloha'
-    }
+        value: 'aloha',
+    },
 ];
+
+const SwiperButtonNext = ({ children, type }) => {
+    const swiper = useSwiper();
+    if (type === 'right') return <button onClick={() => swiper.slideNext()}>{children}</button>;
+    return <button onClick={() => swiper.slidePrev()}>{children}</button>;
+};
 
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     // const { data, error } = useGetPhrasesQuery();
+    const swiper = useSwiper();
 
     // useEffect(() => {
     //   con
@@ -34,7 +42,6 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     // console.log(data, 'DATA ACCESSS');
 
     // if (error) alert(error);
-
     return (
         <MainBody>
             <div className={styles.coursesPage}>

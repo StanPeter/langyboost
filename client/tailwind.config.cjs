@@ -33,9 +33,9 @@ module.exports = {
             borderRadius: {
                 '3xl': '1.8rem',
             },
-            boxShadow: {
-                
-            }
+            translate: {
+                'full-minus': 'transform: translateX(-100%);',
+            },
         },
     },
     plugins: [],

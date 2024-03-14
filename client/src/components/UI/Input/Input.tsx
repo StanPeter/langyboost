@@ -62,7 +62,7 @@ const Input: React.FC<IInputProps> = ({
         if (onChange) onChange(e.target.value);
     };
 
-    console.log(validationMessage, ' validationmessage');
+    // console.log(validationMessage, ' validationmessage');
 
     return (
         <InputWrapper validationMessage={validationMessage} useCase={useCase} classes={classes}>

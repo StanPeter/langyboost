@@ -7,6 +7,77 @@
 //     width: 100%;
 // }
 
+$translate: 50%;
+$duration: 2s both;
+
+// left direction animation
+.swipeZeroToLeft {
+    animation: swipeZeroToLeft $duration;
+}
+
+.swipeRightToZero {
+    animation: swipeRightToZero $duration;
+}
+// right direction animation
+.swipeZeroToRight {
+    animation: swipeZeroToRight $duration;
+}
+.swipeLeftToZero {
+    animation: swipeLeftToZero $duration;
+}
+
+@keyframes swipeZeroToLeft {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-$translate);
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@keyframes swipeRightToZero {
+    0% {
+        opacity: 0;
+        transform: translateX($translate);
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes swipeZeroToRight {
+    0% {
+        transform: translate(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate($translate);
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@keyframes swipeLeftToZero {
+    0% {
+        transform: translateX(-$translate);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
 // .switcherWrapper {
 //     display: flex;
 //     // margin-bottom: 1rem;
@@ -52,7 +123,7 @@
 // }
 
 // .btn {
-//     width: 50%;  
+//     width: 50%;
 //     // margin-bottom: 0;
 
 //     &:hover {
