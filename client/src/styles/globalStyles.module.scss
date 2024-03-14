@@ -175,6 +175,88 @@ img {
     height: 2rem;
 }
 
+/* ANIMATIONS  */
+
+// LOGIN FORM ANIMATION
+$translate: 50%;
+$duration: 2s both;
+
+// left direction animation
+.slideZeroToLeft {
+    animation: slideZeroToLeft $duration;
+}
+
+.slideRightToZero {
+    animation: slideRightToZero $duration;
+}
+// right direction animation
+.slideZeroToRight {
+    animation: slideZeroToRight $duration;
+}
+.slideLeftToZero {
+    animation: slideLeftToZero $duration;
+}
+
+@keyframes slideZeroToLeft {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-$translate);
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@keyframes slideRightToZero {
+    0% {
+        opacity: 0;
+        transform: translateX($translate);
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideZeroToRight {
+    0% {
+        transform: translate(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate($translate);
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@keyframes slideLeftToZero {
+    0% {
+        transform: translateX(-$translate);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
 /* BREAKPOINTS  */
 // SCREEN PHONE
 @media screen and (min-width: 450px) {

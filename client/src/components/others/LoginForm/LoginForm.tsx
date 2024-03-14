@@ -8,14 +8,13 @@ import { useSignInMutation, useSignUpMutation } from 'graphql/generated/graphql'
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { SiFacebook } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
 import globalClasses from 'styles/globalClasses.module.scss';
 import { ISingInResponse, ISingUpResponse } from 'ts/api';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
-import styles from './loginForm.module.scss';
+import Slider from './Slider';
 
 interface IFormData {
     password: string;
@@ -34,10 +33,6 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const navigate = useNavigate();
     const usedSignHook = mode === 'signUp' ? useSignUpMutation : useSignInMutation;
     const [signMutation, { error, reset, loading }] = usedSignHook();
-    const [slideInfo, setSlideInfo] = useState<{ index: number; direction: 'none' | 'right' | 'left' }>({
-        index: 2,
-        direction: 'none',
-    }); // State to control slide visibility
 
     useEffect(() => {
         reset();
@@ -49,13 +44,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         formState: { errors },
         getValues,
         watch,
-        handleSubmit,
     } = useForm({ resolver: yupResolver(mode === 'singIn' ? SING_IN_SCHEMA : SING_UP_SCHEMA) });
 
     watch();
     const formValues: IFormData = getValues() as unknown as IFormData;
-
-    // console.log(document.cookie, ' COOOKIEEE');
 
     // submit handling, calling BE for auth access token
     const onSubmitHandler = (e: SubmitEvent) => {
@@ -94,124 +86,23 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         return false;
     };
 
-    // const handleSlideLeft = () => {
-    //     // setSlideAnimate(!slideAnimate);
-    //     setSlideInfo(state => ({ direction: 'left', index: state.index === 1 ? headers.length : state.index - 1 }));
-    //     console.log('CLICKED LEFT');
-    // };
-
-    // const handleSlideRight = () => {
-    //     // setSlideAnimate(!slideAnimate);
-    //     setSlideInfo(state => ({ direction: 'right', index: state.index === 3 ? 1 : state.index + 1 }));
-    //     console.log('CLICKED RIGHT');
-    // };
-
-    // const headers = ['ULTIMATE_PLATTFORM_TEXT', 'asafasf', 'ksafa iasifasisfi '];
-
-    // const addAnimation = (indexOfHeader: number) => {
-    //     //
-    //     console.log(slideInfo.direction, slideInfo.index, 'SLIDE INFO');
-
-    //     if (slideInfo.direction === 'left') {
-    //         if (indexOfHeader + 1 === slideInfo.index) return styles.swipeRightToZero;
-    //         else if (indexOfHeader + 1 === slideInfo.index - 1) return styles.swipeZeroToLeft;
-    //     }
-    //     // index + 1
-    //     // 2 -> 3
-    //     // 2 - zero to right
-    //     // 3 - left to zero
-    //     if (slideInfo.direction === 'right') {
-    //         if (indexOfHeader + 1 === slideInfo.index) return styles.swipeLeftToZero;
-    //         else if (indexOfHeader + 1 === slideInfo.index - 1) return styles.swipeZeroToRight;
-    //     }
-
-    //     if (slideInfo.direction === 'none' && indexOfHeader + 1 === 2) return '';
-
-    //     // do not display the element
-    //     return 'hidden';
-    // };
-    const handleSlideLeft = () => {
-        // setSlideAnimate(!slideAnimate);
-        setSlideInfo(state => ({ direction: 'left', index: state.index === 1 ? headers.length : state.index - 1 }));
-        console.log('CLICKED LEFT');
-    };
-
-    const handleSlideRight = () => {
-        // setSlideAnimate(!slideAnimate);
-        setSlideInfo(state => ({ direction: 'right', index: state.index === headers.length ? 1 : state.index + 1 }));
-        console.log('CLICKED RIGHT');
-    };
-
-    const headers = ['ULTIMATE_PLATTFORM_TEXT', 'asafasf', 'ksafa iasifasisfi', 'fffff', 'rrrr', 'wwwww ttt'];
-
-    const addAnimation = (indexOfHeader: number) => {
-        //
-        console.log(slideInfo.direction, slideInfo.index, 'SLIDE INFO');
-
-        // left direction flow of animation
-        if (slideInfo.direction === 'left') {
-            if (indexOfHeader + 1 === slideInfo.index) return styles.swipeRightToZero;
-            else if (indexOfHeader + 1 === slideInfo.index + 1) return styles.swipeZeroToLeft;
-        }
-        // index + 1
-        // 2 -> 3
-        // 2 - zero to right
-        // 3 - left to zero
-        if (slideInfo.direction === 'right') {
-            if (indexOfHeader + 1 === slideInfo.index) return styles.swipeLeftToZero;
-            else if (indexOfHeader + 1 === slideInfo.index - 1) return styles.swipeZeroToRight;
-        }
-
-        if (slideInfo.direction === 'none' && indexOfHeader + 1 === 2) return '';
-
-        // do not display the element
-        return 'hidden';
-    };
-
     return (
         <section
             className={
                 'z-10 bg-[var(--color-main-light)] border-2 border-[var(--color-dark-accent)] shadow-xl rounded-3xl w-full'
             }
-            // className={styles.signForm}
         >
-            {useCase === 'landingPage' && (
-                <div
-                    className={
-                        'flex flex-row w-full justify-between items-center bg-[var(--color-main)] text-[var(--color-text-light)] h-40 rounded-t-3xl'
-                    }
-                >
-                    <div onClick={handleSlideLeft} className="h-full items-center  flex">
-                        <FiArrowLeft className={'w-8 h-8'} />
-                    </div>
-                    <div className={`flex-1 justify-center relative items-center flex`}>
-                        {headers.map((header, i: number) => (
-                            <div key={header} className={`text-center absolute w-full  ${addAnimation(i)}`}>
-                                <Header level={2} whiteText text={header} shouldTranslate={false} />
-                            </div>
-                        ))}
-                    </div>
-                    <div onClick={handleSlideRight} className="h-full items-center  flex">
-                        <FiArrowRight className={'w-8 h-8'} />{' '}
-                    </div>
-                </div>
-            )}
+            {useCase === 'landingPage' && <Slider />}
             <div className={'w-full flex'}>
                 <Button
                     useCase="fullLine"
                     active={mode === 'singIn'}
                     text="SIGN_IN"
-                    // classes={`${styles.btn} ${styles.btnLeft} ${
-                    //     useCase === 'authPage' ? styles.authPage : styles.landingPage
-                    // }`}
                     classes={`w-1/2 ${useCase === 'authPage' ? 'rounded-tl-3xl mt-0' : ''}`}
                     onClick={() => setMode('singIn')}
                 />
                 <Button
                     useCase="fullLine"
-                    // classes={`${styles.btn} ${styles.btnRight} ${
-                    //     useCase === 'authPage' ? styles.authPage : styles.landingPage
-                    // }`}
                     classes={`w-1/2 ${useCase === 'authPage' ? 'rounded-tr-3xl mt-0' : ''}`}
                     active={mode === 'signUp'}
                     text="SIGN_UP"
