@@ -3,6 +3,7 @@ import { LOGIN_FORM_TEXT } from 'constants/constants';
 import React, { useState } from 'react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import globalStyles from 'styles/globalStyles.module.scss';
+import { useInterval } from 'usehooks-ts';
 
 interface ISliderProps {}
 
@@ -12,12 +13,25 @@ const Slider: React.FC<ISliderProps> = ({}) => {
         index: 2,
         direction: 'none',
     });
+    const [lastClickTime, setLastClickTime] = useState(new Date());
+
+    // automate aniamtion
+    const autoAnimationHandler = () => {
+        const currentTime = new Date();
+        if (Math.floor(currentTime.getSeconds() - lastClickTime.getSeconds()) > 5) {
+            slideRightHandler();
+        }
+    };
+
+    // set interval to check each second
+    useInterval(autoAnimationHandler, 1000);
 
     const slideLeftHandler = () => {
         setSlideInfo(state => ({
             direction: 'left',
             index: state.index === 1 ? LOGIN_FORM_TEXT.length : state.index - 1,
         }));
+        setLastClickTime(new Date());
     };
 
     const slideRightHandler = () => {
@@ -25,6 +39,8 @@ const Slider: React.FC<ISliderProps> = ({}) => {
             direction: 'right',
             index: state.index === LOGIN_FORM_TEXT.length ? 1 : state.index + 1,
         }));
+
+        setLastClickTime(new Date());
     };
 
     const animationHandler = (indexOfHeader: number) => {
@@ -63,7 +79,7 @@ const Slider: React.FC<ISliderProps> = ({}) => {
                 ))}
             </div>
             <div onClick={slideRightHandler} className="h-full items-center flex pl-10 cursor-pointer hover:scale-110">
-                <FiArrowRight className={'w-8 h-8'} />{' '}
+                <FiArrowRight className={'w-8 h-8'} />
             </div>
         </div>
     );
