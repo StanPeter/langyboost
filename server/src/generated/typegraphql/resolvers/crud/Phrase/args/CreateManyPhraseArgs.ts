@@ -8,4 +8,9 @@ export class CreateManyPhraseArgs {
     nullable: false
   })
   data!: PhraseCreateManyInput[];
+
+  @TypeGraphQL.Field(_type => Boolean, {
+    nullable: true
+  })
+  skipDuplicates?: boolean | undefined;
 }

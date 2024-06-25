@@ -100,23 +100,23 @@ export class UserResolver {
 		if (serverConfig.isMocked) return mockData.signUpMockData;
 
 		// check whether user exist
-		const foundUser = await db.user.findFirst({
-			where: {
-				OR: [
-					{
-						email: { equals: email },
-					},
-					{
-						userName: { equals: userName },
-					},
-				],
-			},
-		});
+		// const foundUser = await db.user.findFirst({
+		// 	where: {
+		// 		OR: [
+		// 			{
+		// 				email: { equals: email },
+		// 			},
+		// 			{
+		// 				userName: { equals: userName },
+		// 			},
+		// 		],
+		// 	},
+		// });
 
-		// validation
-		if (foundUser) {
-			throw new ApolloError('User already exists.');
-		}
+		// // validation
+		// if (foundUser) {
+		// 	throw new ApolloError('User already exists.');
+		// }
 
 		if (password !== repeatPassword) throw new ApolloError(errors.INVALID_EMAIL_PASSWORD);
 

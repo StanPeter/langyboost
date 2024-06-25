@@ -53,7 +53,7 @@ const crudResolversInfo = {
 };
 const argsInfo = {
   AggregatePhraseArgs: ["where", "orderBy", "cursor", "take", "skip"],
-  CreateManyPhraseArgs: ["data"],
+  CreateManyPhraseArgs: ["data", "skipDuplicates"],
   CreateOnePhraseArgs: ["data"],
   DeleteManyPhraseArgs: ["where"],
   DeleteOnePhraseArgs: ["where"],
@@ -67,7 +67,7 @@ const argsInfo = {
   UpdateOnePhraseArgs: ["data", "where"],
   UpsertOnePhraseArgs: ["where", "create", "update"],
   AggregateUserArgs: ["where", "orderBy", "cursor", "take", "skip"],
-  CreateManyUserArgs: ["data"],
+  CreateManyUserArgs: ["data", "skipDuplicates"],
   CreateOneUserArgs: ["data"],
   DeleteManyUserArgs: ["where"],
   DeleteOneUserArgs: ["where"],
@@ -217,7 +217,7 @@ function applyTypeClassEnhanceConfig<
 }
 
 const modelsInfo = {
-  Phrase: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
+  Phrase: ["id", "phrase", "translation", "streak", "practisedAt"],
   User: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"]
 };
 
@@ -258,15 +258,15 @@ export function applyModelsEnhanceMap(modelsEnhanceMap: ModelsEnhanceMap) {
 
 const outputsInfo = {
   AggregatePhrase: ["_count", "_avg", "_sum", "_min", "_max"],
-  PhraseGroupBy: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt", "_count", "_avg", "_sum", "_min", "_max"],
+  PhraseGroupBy: ["id", "phrase", "translation", "streak", "practisedAt", "_count", "_avg", "_sum", "_min", "_max"],
   AggregateUser: ["_count", "_avg", "_sum", "_min", "_max"],
   UserGroupBy: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken", "_count", "_avg", "_sum", "_min", "_max"],
   AffectedRowsOutput: ["count"],
-  PhraseCountAggregate: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt", "_all"],
+  PhraseCountAggregate: ["id", "phrase", "translation", "streak", "practisedAt", "_all"],
   PhraseAvgAggregate: ["streak"],
   PhraseSumAggregate: ["streak"],
-  PhraseMinAggregate: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseMaxAggregate: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
+  PhraseMinAggregate: ["id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseMaxAggregate: ["id", "phrase", "translation", "streak", "practisedAt"],
   UserCountAggregate: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken", "_all"],
   UserAvgAggregate: ["tokenVersion"],
   UserSumAggregate: ["tokenVersion"],
@@ -312,31 +312,31 @@ export function applyOutputTypesEnhanceMap(
 }
 
 const inputsInfo = {
-  PhraseWhereInput: ["AND", "OR", "NOT", "id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseOrderByWithRelationInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseWhereUniqueInput: ["id", "AND", "OR", "NOT", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseOrderByWithAggregationInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt", "_count", "_avg", "_max", "_min", "_sum"],
-  PhraseScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
+  PhraseWhereInput: ["AND", "OR", "NOT", "id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseOrderByWithRelationInput: ["id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseWhereUniqueInput: ["id", "AND", "OR", "NOT", "phrase", "translation", "streak", "practisedAt"],
+  PhraseOrderByWithAggregationInput: ["id", "phrase", "translation", "streak", "practisedAt", "_count", "_avg", "_max", "_min", "_sum"],
+  PhraseScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "phrase", "translation", "streak", "practisedAt"],
   UserWhereInput: ["AND", "OR", "NOT", "id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
   UserOrderByWithRelationInput: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
   UserWhereUniqueInput: ["id", "AND", "OR", "NOT", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
   UserOrderByWithAggregationInput: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken", "_count", "_avg", "_max", "_min", "_sum"],
   UserScalarWhereWithAggregatesInput: ["AND", "OR", "NOT", "id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
-  PhraseCreateInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseUpdateInput: ["phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseCreateManyInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseUpdateManyMutationInput: ["phrase", "translation", "targetLang", "streak", "practisedAt"],
+  PhraseCreateInput: ["id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseUpdateInput: ["id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseCreateManyInput: ["id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseUpdateManyMutationInput: ["id", "phrase", "translation", "streak", "practisedAt"],
   UserCreateInput: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
-  UserUpdateInput: ["email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
+  UserUpdateInput: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
   UserCreateManyInput: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
-  UserUpdateManyMutationInput: ["email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
+  UserUpdateManyMutationInput: ["id", "email", "firstName", "lastName", "userName", "receivePromo", "passwordHash", "tokenVersion", "birthday", "phoneNumber", "address", "nationality", "membershipExpiration", "membershipType", "avatar", "accessToken"],
   StringFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not"],
   IntFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
   DateTimeFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not"],
-  PhraseCountOrderByAggregateInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
+  PhraseCountOrderByAggregateInput: ["id", "phrase", "translation", "streak", "practisedAt"],
   PhraseAvgOrderByAggregateInput: ["streak"],
-  PhraseMaxOrderByAggregateInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
-  PhraseMinOrderByAggregateInput: ["id", "phrase", "translation", "targetLang", "streak", "practisedAt"],
+  PhraseMaxOrderByAggregateInput: ["id", "phrase", "translation", "streak", "practisedAt"],
+  PhraseMinOrderByAggregateInput: ["id", "phrase", "translation", "streak", "practisedAt"],
   PhraseSumOrderByAggregateInput: ["streak"],
   StringWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "contains", "startsWith", "endsWith", "mode", "not", "_count", "_min", "_max"],
   IntWithAggregatesFilter: ["equals", "in", "notIn", "lt", "lte", "gt", "gte", "not", "_count", "_avg", "_sum", "_min", "_max"],

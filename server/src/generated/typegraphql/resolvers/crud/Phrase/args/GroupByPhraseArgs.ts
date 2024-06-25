@@ -20,7 +20,7 @@ export class GroupByPhraseArgs {
   @TypeGraphQL.Field(_type => [PhraseScalarFieldEnum], {
     nullable: false
   })
-  by!: Array<"id" | "phrase" | "translation" | "targetLang" | "streak" | "practisedAt">;
+  by!: Array<"id" | "phrase" | "translation" | "streak" | "practisedAt">;
 
   @TypeGraphQL.Field(_type => PhraseScalarWhereWithAggregatesInput, {
     nullable: true

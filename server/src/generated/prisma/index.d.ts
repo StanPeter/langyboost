@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/library';
+import * as runtime from './runtime/library.js';
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -99,6 +99,52 @@ export class PrismaClient<
   $use(cb: Prisma.Middleware): void
 
 /**
+   * Executes a prepared raw query and returns the number of affected rows.
+   * @example
+   * ```
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Executes a raw query and returns the number of affected rows.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Performs a prepared raw query and returns the `SELECT` data.
+   * @example
+   * ```
+   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+
+  /**
+   * Performs a raw query and returns the `SELECT` data.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * ```
+   * 
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+
+  /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
    * @example
    * ```
@@ -111,24 +157,10 @@ export class PrismaClient<
    * 
    * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P]): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
-  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number }): $Utils.JsPromise<R>
+  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
-  /**
-   * Executes a raw MongoDB command and returns the result of it.
-   * @example
-   * ```
-   * const user = await prisma.$runCommandRaw({
-   *   aggregate: 'User',
-   *   pipeline: [{ $match: { name: 'Bob' } }, { $project: { email: true, _id: false } }],
-   *   explain: false,
-   * })
-   * ```
-   * 
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
-   */
-  $runCommandRaw(command: Prisma.InputJsonObject): Prisma.PrismaPromise<Prisma.JsonObject>
 
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>
 
@@ -208,8 +240,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.4.2
-   * Query Engine version: ac9d7041ed77bcc8a8dbd2ab6616b39013829574
+   * Prisma Client JS version: 5.10.2
+   * Query Engine version: 5a9203d0590c951969e85a7d07215503f4672eb9
    */
   export type PrismaVersion = {
     client: string
@@ -640,7 +672,7 @@ export namespace Prisma {
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
       modelProps: 'phrase' | 'user'
-      txIsolationLevel: never
+      txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
       Phrase: {
@@ -702,14 +734,6 @@ export namespace Prisma {
           groupBy: {
             args: Prisma.PhraseGroupByArgs<ExtArgs>,
             result: $Utils.Optional<PhraseGroupByOutputType>[]
-          }
-          findRaw: {
-            args: Prisma.PhraseFindRawArgs<ExtArgs>,
-            result: Prisma.JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.PhraseAggregateRawArgs<ExtArgs>,
-            result: Prisma.JsonObject
           }
           count: {
             args: Prisma.PhraseCountArgs<ExtArgs>,
@@ -777,14 +801,6 @@ export namespace Prisma {
             args: Prisma.UserGroupByArgs<ExtArgs>,
             result: $Utils.Optional<UserGroupByOutputType>[]
           }
-          findRaw: {
-            args: Prisma.UserFindRawArgs<ExtArgs>,
-            result: Prisma.JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.UserAggregateRawArgs<ExtArgs>,
-            result: Prisma.JsonObject
-          }
           count: {
             args: Prisma.UserCountArgs<ExtArgs>,
             result: $Utils.Optional<UserCountAggregateOutputType> | number
@@ -796,9 +812,21 @@ export namespace Prisma {
     other: {
       payload: any
       operations: {
-        $runCommandRaw: {
-          args: Prisma.InputJsonObject,
-          result: Prisma.JsonObject
+        $executeRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+        $executeRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+        $queryRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
         }
       }
     }
@@ -836,6 +864,16 @@ export namespace Prisma {
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
     log?: (LogLevel | LogDefinition)[]
+    /**
+     * The default values for transactionOptions
+     * maxWait ?= 2000
+     * timeout ?= 5000
+     */
+    transactionOptions?: {
+      maxWait?: number
+      timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
+    }
   }
 
   /* Types for Logging */
@@ -952,7 +990,6 @@ export namespace Prisma {
     id: string | null
     phrase: string | null
     translation: string | null
-    targetLang: string | null
     streak: number | null
     practisedAt: Date | null
   }
@@ -961,7 +998,6 @@ export namespace Prisma {
     id: string | null
     phrase: string | null
     translation: string | null
-    targetLang: string | null
     streak: number | null
     practisedAt: Date | null
   }
@@ -970,7 +1006,6 @@ export namespace Prisma {
     id: number
     phrase: number
     translation: number
-    targetLang: number
     streak: number
     practisedAt: number
     _all: number
@@ -989,7 +1024,6 @@ export namespace Prisma {
     id?: true
     phrase?: true
     translation?: true
-    targetLang?: true
     streak?: true
     practisedAt?: true
   }
@@ -998,7 +1032,6 @@ export namespace Prisma {
     id?: true
     phrase?: true
     translation?: true
-    targetLang?: true
     streak?: true
     practisedAt?: true
   }
@@ -1007,7 +1040,6 @@ export namespace Prisma {
     id?: true
     phrase?: true
     translation?: true
-    targetLang?: true
     streak?: true
     practisedAt?: true
     _all?: true
@@ -1103,7 +1135,6 @@ export namespace Prisma {
     id: string
     phrase: string
     translation: string
-    targetLang: string
     streak: number
     practisedAt: Date
     _count: PhraseCountAggregateOutputType | null
@@ -1131,7 +1162,6 @@ export namespace Prisma {
     id?: boolean
     phrase?: boolean
     translation?: boolean
-    targetLang?: boolean
     streak?: boolean
     practisedAt?: boolean
   }, ExtArgs["result"]["phrase"]>
@@ -1140,7 +1170,6 @@ export namespace Prisma {
     id?: boolean
     phrase?: boolean
     translation?: boolean
-    targetLang?: boolean
     streak?: boolean
     practisedAt?: boolean
   }
@@ -1153,7 +1182,6 @@ export namespace Prisma {
       id: string
       phrase: string
       translation: string
-      targetLang: string
       streak: number
       practisedAt: Date
     }, ExtArgs["result"]["phrase"]>
@@ -1164,7 +1192,7 @@ export namespace Prisma {
   type PhraseGetPayload<S extends boolean | null | undefined | PhraseDefaultArgs> = $Result.GetResult<Prisma.$PhrasePayload, S>
 
   type PhraseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<PhraseFindManyArgs, 'select' | 'include'> & {
+    Omit<PhraseFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: PhraseCountAggregateInputType | true
     }
 
@@ -1382,33 +1410,6 @@ export namespace Prisma {
     ): Prisma__PhraseClient<$Result.GetResult<Prisma.$PhrasePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Find zero or more Phrases that matches the filter.
-     * @param {PhraseFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const phrase = await prisma.phrase.findRaw({
-     *   filter: { age: { $gt: 25 } } 
-     * })
-    **/
-    findRaw(
-      args?: PhraseFindRawArgs
-    ): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a Phrase.
-     * @param {PhraseAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const phrase = await prisma.phrase.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-    **/
-    aggregateRaw(
-      args?: PhraseAggregateRawArgs
-    ): Prisma.PrismaPromise<JsonObject>
-
-    /**
      * Count the number of Phrases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
@@ -1580,7 +1581,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Phrase", 'String'>
     readonly phrase: FieldRef<"Phrase", 'String'>
     readonly translation: FieldRef<"Phrase", 'String'>
-    readonly targetLang: FieldRef<"Phrase", 'String'>
     readonly streak: FieldRef<"Phrase", 'Int'>
     readonly practisedAt: FieldRef<"Phrase", 'DateTime'>
   }
@@ -1771,6 +1771,7 @@ export namespace Prisma {
      * The data used to create many Phrases.
      */
     data: PhraseCreateManyInput | PhraseCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -1854,36 +1855,6 @@ export namespace Prisma {
      * Filter which Phrases to delete
      */
     where?: PhraseWhereInput
-  }
-
-
-  /**
-   * Phrase findRaw
-   */
-  export type PhraseFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-
-  /**
-   * Phrase aggregateRaw
-   */
-  export type PhraseAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
   }
 
 
@@ -2235,7 +2206,7 @@ export namespace Prisma {
   type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
 
   type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFindManyArgs, 'select' | 'include'> & {
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: UserCountAggregateInputType | true
     }
 
@@ -2451,33 +2422,6 @@ export namespace Prisma {
     upsert<T extends UserUpsertArgs<ExtArgs>>(
       args: SelectSubset<T, UserUpsertArgs<ExtArgs>>
     ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Users that matches the filter.
-     * @param {UserFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const user = await prisma.user.findRaw({
-     *   filter: { age: { $gt: 25 } } 
-     * })
-    **/
-    findRaw(
-      args?: UserFindRawArgs
-    ): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a User.
-     * @param {UserAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const user = await prisma.user.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-    **/
-    aggregateRaw(
-      args?: UserAggregateRawArgs
-    ): Prisma.PrismaPromise<JsonObject>
 
     /**
      * Count the number of Users.
@@ -2852,6 +2796,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
 
@@ -2939,36 +2884,6 @@ export namespace Prisma {
 
 
   /**
-   * User findRaw
-   */
-  export type UserFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-
-  /**
-   * User aggregateRaw
-   */
-  export type UserAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-
-  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2984,11 +2899,20 @@ export namespace Prisma {
    * Enums
    */
 
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
+  };
+
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
   export const PhraseScalarFieldEnum: {
     id: 'id',
     phrase: 'phrase',
     translation: 'translation',
-    targetLang: 'targetLang',
     streak: 'streak',
     practisedAt: 'practisedAt'
   };
@@ -3126,7 +3050,6 @@ export namespace Prisma {
     id?: StringFilter<"Phrase"> | string
     phrase?: StringFilter<"Phrase"> | string
     translation?: StringFilter<"Phrase"> | string
-    targetLang?: StringFilter<"Phrase"> | string
     streak?: IntFilter<"Phrase"> | number
     practisedAt?: DateTimeFilter<"Phrase"> | Date | string
   }
@@ -3135,7 +3058,6 @@ export namespace Prisma {
     id?: SortOrder
     phrase?: SortOrder
     translation?: SortOrder
-    targetLang?: SortOrder
     streak?: SortOrder
     practisedAt?: SortOrder
   }
@@ -3147,7 +3069,6 @@ export namespace Prisma {
     NOT?: PhraseWhereInput | PhraseWhereInput[]
     phrase?: StringFilter<"Phrase"> | string
     translation?: StringFilter<"Phrase"> | string
-    targetLang?: StringFilter<"Phrase"> | string
     streak?: IntFilter<"Phrase"> | number
     practisedAt?: DateTimeFilter<"Phrase"> | Date | string
   }, "id">
@@ -3156,7 +3077,6 @@ export namespace Prisma {
     id?: SortOrder
     phrase?: SortOrder
     translation?: SortOrder
-    targetLang?: SortOrder
     streak?: SortOrder
     practisedAt?: SortOrder
     _count?: PhraseCountOrderByAggregateInput
@@ -3173,7 +3093,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Phrase"> | string
     phrase?: StringWithAggregatesFilter<"Phrase"> | string
     translation?: StringWithAggregatesFilter<"Phrase"> | string
-    targetLang?: StringWithAggregatesFilter<"Phrase"> | string
     streak?: IntWithAggregatesFilter<"Phrase"> | number
     practisedAt?: DateTimeWithAggregatesFilter<"Phrase"> | Date | string
   }
@@ -3291,7 +3210,6 @@ export namespace Prisma {
     id?: string
     phrase: string
     translation: string
-    targetLang: string
     streak?: number
     practisedAt?: Date | string
   }
@@ -3300,23 +3218,22 @@ export namespace Prisma {
     id?: string
     phrase: string
     translation: string
-    targetLang: string
     streak?: number
     practisedAt?: Date | string
   }
 
   export type PhraseUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     phrase?: StringFieldUpdateOperationsInput | string
     translation?: StringFieldUpdateOperationsInput | string
-    targetLang?: StringFieldUpdateOperationsInput | string
     streak?: IntFieldUpdateOperationsInput | number
     practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PhraseUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     phrase?: StringFieldUpdateOperationsInput | string
     translation?: StringFieldUpdateOperationsInput | string
-    targetLang?: StringFieldUpdateOperationsInput | string
     streak?: IntFieldUpdateOperationsInput | number
     practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3325,23 +3242,22 @@ export namespace Prisma {
     id?: string
     phrase: string
     translation: string
-    targetLang: string
     streak?: number
     practisedAt?: Date | string
   }
 
   export type PhraseUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     phrase?: StringFieldUpdateOperationsInput | string
     translation?: StringFieldUpdateOperationsInput | string
-    targetLang?: StringFieldUpdateOperationsInput | string
     streak?: IntFieldUpdateOperationsInput | number
     practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PhraseUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     phrase?: StringFieldUpdateOperationsInput | string
     translation?: StringFieldUpdateOperationsInput | string
-    targetLang?: StringFieldUpdateOperationsInput | string
     streak?: IntFieldUpdateOperationsInput | number
     practisedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3385,6 +3301,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -3403,6 +3320,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -3440,6 +3358,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -3458,6 +3377,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -3516,7 +3436,6 @@ export namespace Prisma {
     id?: SortOrder
     phrase?: SortOrder
     translation?: SortOrder
-    targetLang?: SortOrder
     streak?: SortOrder
     practisedAt?: SortOrder
   }
@@ -3529,7 +3448,6 @@ export namespace Prisma {
     id?: SortOrder
     phrase?: SortOrder
     translation?: SortOrder
-    targetLang?: SortOrder
     streak?: SortOrder
     practisedAt?: SortOrder
   }
@@ -3538,7 +3456,6 @@ export namespace Prisma {
     id?: SortOrder
     phrase?: SortOrder
     translation?: SortOrder
-    targetLang?: SortOrder
     streak?: SortOrder
     practisedAt?: SortOrder
   }

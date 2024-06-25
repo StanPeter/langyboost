@@ -23,11 +23,6 @@ export class PhraseCountAggregate {
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
-  targetLang!: number;
-
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    nullable: false
-  })
   streak!: number;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {

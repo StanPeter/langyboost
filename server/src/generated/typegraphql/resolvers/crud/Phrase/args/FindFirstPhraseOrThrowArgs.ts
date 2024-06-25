@@ -35,5 +35,5 @@ export class FindFirstPhraseOrThrowArgs {
   @TypeGraphQL.Field(_type => [PhraseScalarFieldEnum], {
     nullable: true
   })
-  distinct?: Array<"id" | "phrase" | "translation" | "targetLang" | "streak" | "practisedAt"> | undefined;
+  distinct?: Array<"id" | "phrase" | "translation" | "streak" | "practisedAt"> | undefined;
 }

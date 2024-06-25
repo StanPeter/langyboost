@@ -1,6 +1,7 @@
 generator client {
-    provider = "prisma-client-js"
-    output   = "../generated/prisma"
+    provider      = "prisma-client-js"
+    output        = "../generated/prisma"
+    binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 generator typegraphql {
@@ -14,7 +15,7 @@ generator typegraphql {
 // }
 
 datasource db {
-    provider = "mongodb"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
@@ -25,7 +26,7 @@ enum Role {
 }
 
 model Phrase {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    id          String   @id @default(uuid()) @map("_id")
     phrase      String
     translation String
     // targetLang  String  
@@ -34,7 +35,7 @@ model Phrase {
 }
 
 model User {
-    id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+    id                   String  @id @default(uuid()) @map("_id")
     email                String
     firstName            String  @default("")
     lastName             String  @default("")

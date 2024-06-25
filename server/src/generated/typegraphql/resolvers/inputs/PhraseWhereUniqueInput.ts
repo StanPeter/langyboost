@@ -39,11 +39,6 @@ export class PhraseWhereUniqueInput {
   })
   translation?: StringFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
-    nullable: true
-  })
-  targetLang?: StringFilter | undefined;
-
   @TypeGraphQL.Field(_type => IntFilter, {
     nullable: true
   })

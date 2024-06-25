@@ -20,11 +20,6 @@ export class PhraseMinAggregate {
   })
   translation!: string | null;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true
-  })
-  targetLang!: string | null;
-
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: true
   })

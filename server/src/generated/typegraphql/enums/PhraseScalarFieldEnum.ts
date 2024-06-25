@@ -4,7 +4,6 @@ export enum PhraseScalarFieldEnum {
   id = "id",
   phrase = "phrase",
   translation = "translation",
-  targetLang = "targetLang",
   streak = "streak",
   practisedAt = "practisedAt"
 }

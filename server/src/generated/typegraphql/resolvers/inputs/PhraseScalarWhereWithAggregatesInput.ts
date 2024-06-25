@@ -38,11 +38,6 @@ export class PhraseScalarWhereWithAggregatesInput {
   })
   translation?: StringWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => StringWithAggregatesFilter, {
-    nullable: true
-  })
-  targetLang?: StringWithAggregatesFilter | undefined;
-
   @TypeGraphQL.Field(_type => IntWithAggregatesFilter, {
     nullable: true
   })

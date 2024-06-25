@@ -25,11 +25,6 @@ export class PhraseGroupBy {
   })
   translation!: string;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false
-  })
-  targetLang!: string;
-
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false
   })
