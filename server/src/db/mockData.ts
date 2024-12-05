@@ -1,3 +1,6 @@
+import { Role } from "generated/prisma";
+import { ISignInResponse } from "ts/interfaces";
+
 // USER mock data
 export const TEST_USER_DATA = {
 	id: '5f9a56b01e5b5f4f231e64c3',
@@ -12,13 +15,13 @@ export const TEST_USER_DATA = {
 	avatar: 'https://play-lh.googleusercontent.com/1UFr0tlT1ejZUxp3tiqepEbwmYCqW-0KFYkwM8XWN2-I1grk5wPuVUdqbu503YCoXisqYIZXwTdg69Z0m4A',
 	birthday: '25.02.1999',
 	membershipExpiration: 'unknown',
-	membershipType: 'ADMIN',
+	membershipType: 'ADMIN' as Role,
 	nationality: 'GE',
 	phoneNumber: '7184 8788',
-	accessToken: 'accessTokenMOCK',
+	// accessToken: 'accessTokenMOCK',
 };
 
-const signUpMockData = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' };
+const signUpMockData: ISignInResponse = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' };
 
 export default {
 	signUpMockData: signUpMockData,

@@ -25,10 +25,10 @@ model Phrase {
 
 model User {
     id                   String  @id @default(uuid()) @map("_id")
-    email                String
+    email                String  @unique
     firstName            String  @default("")
     lastName             String  @default("")
-    userName             String
+    userName             String  @unique
     receivePromo         Boolean @default(false)
     passwordHash         String
     tokenVersion         Int     @default(0)
@@ -39,5 +39,5 @@ model User {
     membershipExpiration String  @default("")
     membershipType       Role    @default(MEMBER)
     avatar               String  @default("")
-    accessToken          String  @default("") // not used in the DB but could not do it any other way due to limitations on plugin
+    // accessToken          String  @default("") // not used in the DB but could not do it any other way due to limitations on plugin
 }

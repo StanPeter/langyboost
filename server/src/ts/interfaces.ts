@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { User } from "generated/prisma";
 
 /**
  * Api interfaces
@@ -21,3 +22,15 @@ export interface IRefreshTokenPayload {
     iat: number;
     exp: number;
 }
+
+export interface ISignInResponse {
+    user: User;
+    accessToken: string;
+}
+
+export interface IErrorResponse {
+    error: {
+        message: string;
+    };
+}
+

@@ -16,6 +16,9 @@ import userRoutes from 'routes/userRoutes';
 	// define express server
 	const app = express();
 
+	// Use JSON body parser middleware
+	app.use(express.json());
+
 	// set cors manually
 	app.use(cors(CORS_OPTIONS));
 

@@ -12,3 +12,6 @@
 // 	@Field(() => UserSchema)
 // 	user!: UserSchema;
 // }
+import db from 'db';
+
+export const User = db.user;
