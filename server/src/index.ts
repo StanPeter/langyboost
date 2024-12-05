@@ -1,16 +1,10 @@
-import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import db from 'db';
-import { TEST_USER_DATA } from 'db/mockData';
 import dotenv from 'dotenv';
 import express from 'express';
-import { verify } from 'jsonwebtoken';
 // reflect metadata has to be imported before schema due to experimental decorators
 import 'reflect-metadata';
-import { schema } from 'schema';
-import projectConfiq from 'settings/serverConfig';
-import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/auth';
+import userRoutes from 'routes/userRoutes';
 
 (async () => {
 	// allowing CORS
@@ -32,56 +26,58 @@ import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/a
 	dotenv.config();
 
 	// refresh_token route to improve security and do this outside /graphql route
-	app.post('/refreshToken', async (req, res) => {
-		// get refresh token and validate
-		const refreshToken = req.cookies.jid;
+	// app.post('/refreshToken', async (req, res) => {
+	// 	// get refresh token and validate
+	// 	const refreshToken = req.cookies.jid;
 
-		if (!refreshToken) return res.send({ ok: false, accessToken: '' });
+	// 	if (!refreshToken) return res.send({ ok: false, accessToken: '' });
 
-		let payload: any;
-		try {
-			// it will automatically throw an error if verify(whether token is valid and not expired) fails
-			payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
-		} catch (error) {
-			console.log(error, 'error');
-			return res.send({ ok: false, accessToken: '' });
-		}
+	// 	let payload: any;
+	// 	try {
+	// 		// it will automatically throw an error if verify(whether token is valid and not expired) fails
+	// 		payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!);
+	// 	} catch (error) {
+	// 		console.log(error, 'error');
+	// 		return res.send({ ok: false, accessToken: '' });
+	// 	}
 
-		// when mocked
-		if (projectConfiq.isMocked) {
-			sendRefreshToken(res, createRefreshToken(TEST_USER_DATA));
-			return res.send({ ok: true, accessToken: createAccessToken(TEST_USER_DATA) });
-		}
+	// 	// when mocked
+	// 	if (projectConfiq.isMocked) {
+	// 		sendRefreshToken(res, createRefreshToken(TEST_USER_DATA as any));
+	// 		return res.send({ ok: true, accessToken: createAccessToken(TEST_USER_DATA as any) });
+	// 	}
 
-		// payload has property userId
-		const user = await db.user.findFirst({ where: { id: payload.userId } });
+	// 	// payload has property userId
+	// 	const user = await db.user.findFirst({ where: { id: payload.userId } });
 
-		if (!user) {
-			console.log('User not found');
-			return res.send({ ok: false, accessToken: '' });
-		}
+	// 	if (!user) {
+	// 		console.log('User not found');
+	// 		return res.send({ ok: false, accessToken: '' });
+	// 	}
 
-		// in case the token has been revoked before
-		if (user.tokenVersion !== payload.tokenVersion) {
-			console.log('Token version invalid');
-			return res.send({ ok: false, accessToken: '' });
-		}
+	// 	// in case the token has been revoked before
+	// 	if (user.tokenVersion !== payload.tokenVersion) {
+	// 		console.log('Token version invalid');
+	// 		return res.send({ ok: false, accessToken: '' });
+	// 	}
 
-		sendRefreshToken(res, createRefreshToken(user));
-		return res.send({ ok: true, accessToken: createAccessToken(user) });
-	});
+	// 	sendRefreshToken(res, createRefreshToken(user));
+	// 	return res.send({ ok: true, accessToken: createAccessToken(user) });
+	// });
+
+	app.use('/api/users', userRoutes);
 
 	// define apolloserver for graphql
-	const apolloServer = new ApolloServer({
-		schema: await schema,
-		context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
-	});
+	// const apolloServer = new ApolloServer({
+	// 	schema: await schema,
+	// 	context: ({ req, res }) => ({ req, res }), //to have an access for req and res inside resolvers
+	// });
 
 	// connect express server with apollo
-	apolloServer.applyMiddleware({ app, cors: CORS_OPTIONS });
+	// apolloServer.applyMiddleware({ app, cors: CORS_OPTIONS });
 
 	// run express server
 	app.listen(4000, () => {
-		console.log('Server started: http://localhost:4000/graphql');
+		console.log('Server started: http://localhost:4000');
 	});
 })();

@@ -1,7 +1,5 @@
-import { LoginResponse, UserSchema } from 'model/User';
-
 // USER mock data
-export const TEST_USER_DATA: UserSchema = {
+export const TEST_USER_DATA = {
 	id: '5f9a56b01e5b5f4f231e64c3',
 	userName: 'test user',
 	email: 'test@gmail.com',
@@ -20,7 +18,7 @@ export const TEST_USER_DATA: UserSchema = {
 	accessToken: 'accessTokenMOCK',
 };
 
-const signUpMockData = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' } as LoginResponse;
+const signUpMockData = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' };
 
 export default {
 	signUpMockData: signUpMockData,

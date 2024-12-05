@@ -4,19 +4,9 @@ generator client {
     binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
-generator typegraphql {
-    provider = "typegraphql-prisma"
-    output   = "../generated/typegraphql"
-}
-
-// generator pothos {
-//     provider = "prisma-pothos-types"
-//     output   = "../generated/pothos.ts"
-// }
-
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
 }
 
 enum Role {
@@ -29,7 +19,6 @@ model Phrase {
     id          String   @id @default(uuid()) @map("_id")
     phrase      String
     translation String
-    // targetLang  String  
     streak      Int      @default(0)
     practisedAt DateTime @default(now())
 }
