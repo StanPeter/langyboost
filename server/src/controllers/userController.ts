@@ -3,7 +3,8 @@ import { hash } from 'bcryptjs';
 import errors from 'constants/errors';
 import mockData from 'db/mockData';
 import { Request, Response } from 'express';
-import { createUser, findUserByEmail, findUserByEmailOrUserName, validatePassword } from 'services/userService';
+import { User } from 'generated/prisma';
+import { createUser, findAllUsers, findUserByEmail, findUserByEmailOrUserName, findUserById, validatePassword } from 'services/userService';
 import serverConfig from 'settings/serverConfig';
 import { IErrorResponse, ISignInResponse } from 'ts/interfaces';
 import { createAccessToken, createRefreshToken, sendRefreshToken } from 'utils/authUtils';
@@ -66,11 +67,46 @@ export const register = async (req: Request, res: Response): Promise<Response<IS
     }
 };
 
-export const testEndpoint = async (req: Request, res: Response) => {
+export const logout = async (req: Request, res: Response): Promise<Response<boolean | IErrorResponse>> => {
+    // TODO: Implement
+    sendRefreshToken(res, '');
+    return res.json(true);
+}
+
+export const revokeRefreshTokenForUser = async (req: Request, res: Response): Promise<Response<boolean | IErrorResponse>> => {
+    const {userId} = req.body;
+
+    if (serverConfig.isMocked) return res.json(true);
+
+    // TODO: Implement
+    return res.json(true);
+}
+
+export const getUser = async (req: Request, res: Response): Promise<Response<User | IErrorResponse>> => {
+    const {id} = req.params;
+
+    if (serverConfig.isMocked) return res.json(mockData.getUserMockData);
+
     try {
-        // Add any logic you need here
-        return res.json({ message: 'Test endpoint reached successfully' });
+        let foundUser: User | null = null;
+
+        if (!id) return res.status(400).json({ error: { message: 'No user data provided.' } } as IErrorResponse);
+
+        foundUser = await findUserById(id);
+
+        return res.json(foundUser);
     } catch (error) {
-        return res.status(500).json({ error: 'Internal server error' });
-    }
+        return res.status(500).json({ error: { message: (error as Error).message || 'Internal server error' } } as IErrorResponse);
+   }
+};
+
+export const getUsers = async (req: Request, res: Response): Promise<Response<User[] | IErrorResponse>> => {
+    if (serverConfig.isMocked) return res.json(mockData.getUsersMockData);
+
+    try {
+        const users = await findAllUsers();
+        return res.json(users);
+    } catch (error) {
+        return res.status(500).json({ error: { message: (error as Error).message || 'Internal server error' } } as IErrorResponse);
+   }
 };

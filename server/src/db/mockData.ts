@@ -25,4 +25,6 @@ const signUpMockData: ISignInResponse = { user: TEST_USER_DATA, accessToken: 'mo
 
 export default {
 	signUpMockData: signUpMockData,
+	getUserMockData: TEST_USER_DATA,
+	getUsersMockData: [TEST_USER_DATA],
 };

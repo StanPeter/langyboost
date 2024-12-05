@@ -10,6 +10,14 @@ export const findUserByEmailOrUserName = async (email: string, userName: string)
     return await User.findFirst({ where: { OR: [{email: email}, {userName: userName}] } });
 }
 
+export const findAllUsers = async () => {
+    return await User.findMany();
+}
+
+export const findUserById = async (id: string) => {
+    return await User.findUnique({ where: {id: id} });
+}
+
 export const createUser = async (email: string, userName: string, passwordHash: string) => {
     return await User.create({ data: { email, userName, passwordHash } });
 }
