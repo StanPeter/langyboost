@@ -39,6 +39,7 @@
 		"mongodb": "6.1",
 		"pg": "^8.6.0",
 		"reflect-metadata": "^0.2.1",
+		"swagger-typescript-api": "^13.0.23",
 		"tsconfig-paths": "^4.2.0",
 		"type-graphql": "^1.1.1",
 		"typeorm": "^0.2.32",
@@ -50,6 +51,9 @@
 		"start": "nodemon --exec \"ts-node -r tsconfig-paths/register\" src/index.ts",
 		"genPrisma": "yarn run prisma generate --schema=./src/prisma/schema.prisma --watch",
 		"migratePrisma": "yarn run prisma migrate dev --schema=./src/prisma/schema.prisma",
-		"prod": "npm run build && npm run start"
+		"prod": "yarn run build && yarn run start",
+		"genSwagger": "npx swagger-typescript-api -p ../documentation/swagger/api.yaml -o ./src/generated/swagger --name api.ts",
+		"copyApi": "cp -r ./src/generated/swagger/api.ts ../client/src/generated",
+		"generateApi": "yarn run genSwagger && yarn run copyApi"
 	}
 }
