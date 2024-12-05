@@ -1,7 +1,5 @@
-import Spinner from 'components/UI/Spinner/Spinner';
 import Tooltip from 'components/UI/Tooltip/Tooltip';
 import MainBody from 'components/layouts/MainBody/MainBody';
-import { useGetPhrasesQuery } from 'graphql/generated/graphql';
 import React, { useState } from 'react';
 import Card from './Card';
 import styles from './cardPage.module.scss';
@@ -22,7 +20,7 @@ const TOTAL_NUMBER_OF_CARDS = 5 as const;
 interface CardPageProps {}
 
 const CardPage: React.FC<CardPageProps> = () => {
-    const { data, error, loading } = useGetPhrasesQuery({});
+    // const { data, error, loading } = useGetPhrasesQuery({});
     const [numberOfCards, setNumberOfCards] = useState(5);
     // const [currentPhrase, setCurrentPhrase] = useState<PhraseSchema>()
     // const [phrases, setPhrases] = useState(data?.getPhrases.slice(0, 20) || []);
@@ -44,11 +42,14 @@ const CardPage: React.FC<CardPageProps> = () => {
     const { data, loading } = useHelloQuery({ fetchPolicy: "network-only" });
     */
 
-    if ((data?.getPhrases && data.getPhrases.length < 1) || error) return null;
-    if (loading) return <Spinner />;
+    // if ((data?.getPhrases && data.getPhrases.length < 1) || error) return null;
+    // if (loading) return <Spinner />;
 
-    const phrases = data?.getPhrases.slice(0, TOTAL_NUMBER_OF_CARDS) || [];
-    console.log(data, phrases);
+    // const phrases = data?.getPhrases.slice(0, TOTAL_NUMBER_OF_CARDS) || [];
+    // console.log(data, phrases);
+
+
+    const phrases: any[] = [];
 
     return (
         <MainBody>

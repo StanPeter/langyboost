@@ -1,17 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from 'components/UI/Button/Button';
-import Header from 'components/UI/Header/Header';
 import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
-import Spinner from 'components/UI/Spinner/Spinner';
-import { useSignInMutation, useSignUpMutation } from 'graphql/generated/graphql';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
 import globalClasses from 'styles/globalClasses.module.scss';
-import { ISingInResponse, ISingUpResponse } from 'ts/api';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import Slider from './Slider';
@@ -31,12 +27,12 @@ interface ILoginFormProps {
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
     const navigate = useNavigate();
-    const usedSignHook = mode === 'signUp' ? useSignUpMutation : useSignInMutation;
-    const [signMutation, { error, reset, loading }] = usedSignHook();
+    const usedSignHook = mode === 'signUp' ? 'TODO' : 'TODO';
+    // const [signMutation, { error, reset, loading }] = usedSignHook();
 
-    useEffect(() => {
-        reset();
-    }, [mode, reset]);
+    // useEffect(() => {
+    //     reset();
+    // }, [mode, reset]);
 
     // form handling library react-hook-form with yup validation
     const {
@@ -58,21 +54,21 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         if (mode === 'signUp' && (!formValues.userName || !formValues.repeatPassword)) return;
 
         // const variables = mode === 'signUp' ? formValues : { password: formValues.password, email: formValues.email };
-        signMutation({ variables: formValues }).then(res => {
-            const userData =
-                mode === 'signUp'
-                    ? (res as unknown as ISingUpResponse).data.signUp
-                    : (res as unknown as ISingInResponse).data.signIn;
+        // signMutation({ variables: formValues }).then(res => {
+        //     const userData =
+        //         mode === 'signUp'
+        //             ? (res as unknown as ISingUpResponse).data.signUp
+        //             : (res as unknown as ISingInResponse).data.signIn;
 
-            console.log(res, ' res');
-            console.log(userData, ' userData');
+        //     console.log(res, ' res');
+        //     console.log(userData, ' userData');
 
-            if (userData.accessToken) {
-                sessionStorage.setItem('oat', userData.accessToken);
-                navigate('/articles');
-            }
-            // if (mode === 'signUp' && res.data)
-        });
+        //     if (userData.accessToken) {
+        //         sessionStorage.setItem('oat', userData.accessToken);
+        //         navigate('/articles');
+        //     }
+        //     // if (mode === 'signUp' && res.data)
+        // });
 
         // navigate('/courses');
     };
@@ -142,7 +138,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                         placeholder="repeatPassword"
                     />
                 )}
-                {!loading ? (
+                {/* {!loading ? ( */}
                     <Button
                         text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
                         useCase="fullLine"
@@ -151,18 +147,18 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                         disabled={isBtnDisabled()}
                         classes={'w-full'}
                     />
-                ) : (
+                {/* ) : (
                     <Spinner useCase="small" />
-                )}
+                )} */}
 
-                {error && (
+                {/* {error && (
                     <Header
                         level={4}
                         text={error.message}
                         shouldTranslate={false}
                         classes={`${globalClasses.validationMessage}`}
                     />
-                )}
+                )} */}
             </form>
             <div className={'flex w-full justify-center my-5'}>
                 <hr className="w-2/6 max-w-40 m-auto ml-10 mr-5 border-t-1 border-[var(--color-dark-accent)]" />
