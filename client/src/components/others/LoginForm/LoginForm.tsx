@@ -2,11 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from 'components/UI/Button/Button';
 import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
-import {
-    LoginRequest,
-    LoginResponse,
-} from 'generated/api';
-import { useApiRequest } from 'hooks/useApiRequest';
+import { useMutation } from 'hooks/useFetch';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
@@ -34,29 +30,6 @@ interface ILoginFormProps {
     useCase: TLoginFormUseCase;
 }
 
-const login = async (formData: IFormData) => {
-    const response = await fetch(
-        '/api/users/login',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type':
-                    'application/json',
-            },
-            body: JSON.stringify({
-                email: formData.email,
-                password: formData.password,
-            }),
-        },
-    );
-
-    if (!response.ok) {
-        throw new Error('Login failed');
-    }
-
-    return response.json();
-};
-
 // form has two modes, sing in and sign up
 const LoginForm: React.FC<ILoginFormProps> = ({
     useCase,
@@ -67,30 +40,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({
     const usedSignHook =
         mode === 'signUp' ? 'TODO' : 'TODO';
     // const [signMutation, { error, reset, loading }] = usedSignHook();
-    const { mutate: callThisFucker } =
-        useApiRequest<
-            LoginResponse,
-            LoginRequest
-        >(
-            'users/login',
-            { method: 'POST' },
-            undefined, // queryOptions, not needed for POST
-            {
-                onSuccess: data => {
-                    console.log('Success:', data);
-                },
-                onError: error => {
-                    console.error(
-                        'Error:',
-                        error,
-                    );
-                },
-            },
-        );
+    const { mutate, data } = useMutation('usersLogin');
     // useEffect(() => {
     //     reset();
     // }, [mode, reset]);
-
     // form handling library react-hook-form with yup validation
     const {
         register,
@@ -125,27 +78,13 @@ const LoginForm: React.FC<ILoginFormProps> = ({
         )
             return;
 
-        // const variables = mode === 'signUp' ? formValues : { password: formValues.password, email: formValues.email };
-        // signMutation({ variables: formValues }).then(res => {
-        //     const userData =
-        //         mode === 'signUp'
-        //             ? (res as unknown as ISingUpResponse).data.signUp
-        //             : (res as unknown as ISingInResponse).data.signIn;
-
-        //     console.log(res, ' res');
-        //     console.log(userData, ' userData');
-
-        //     if (userData.accessToken) {
-        //         sessionStorage.setItem('oat', userData.accessToken);
-        //         navigate('/articles');
-        //     }
-        //     // if (mode === 'signUp' && res.data)
-        // });
         if (mode === 'singIn') {
-            callThisFucker(formValues);
+            mutate(formValues);
+        } else {
+            // mutate(formValues);
         }
 
-        // navigate('/courses');
+        navigate('/courses');
     };
 
     // control buttons disability
