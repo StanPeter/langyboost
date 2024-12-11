@@ -57,6 +57,7 @@ html {
     font-size: 12px !important;
     height: 100%;
     width: 100%;
+    overflow-y: auto;
 }
 
 /* SEMANTIC ELEMENTS */
@@ -71,11 +72,7 @@ body {
     font-weight: 400;
     line-height: 1.43;
     letter-spacing: 0.05em;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
+    overflow-y: auto;
     font-family: 'Roboto', sans-serif;
 }
 
