@@ -17,7 +17,7 @@ const routes = {
     AUTH_PAGE: '/auth',
     CARD_PAGE: '/cards/:courseName',
     COURSES_PAGE: '/courses',
-    COURSE_DETAIL_PAGE: '/course/:id',
+    COURSE_DETAIL_PAGE: '/courses/:id',
     ARTICLES_PAGE: '/articles',
     ARTICLE_DETAIL_PAGE: '/articles/:id',
     RESOURCES_PAGE: '/resources',
