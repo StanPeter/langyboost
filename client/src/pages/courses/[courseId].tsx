@@ -1,4 +1,4 @@
-import MainBody from 'components/layouts/MainBody/MainBody';
+import MainBody from 'components/layouts/MainBody';
 import Separator from 'components/UI/Separator/Separator';
 import VerticalCarousel from 'components/UI/VerticalCarousel/VerticalCarousel';
 import React from 'react';

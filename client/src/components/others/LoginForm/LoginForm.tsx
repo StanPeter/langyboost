@@ -1,14 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import Button from 'components/UI/Button';
-import Input from 'components/UI/Input/Input';
+import Input from 'components/UI/Input';
 import Paragraph from 'components/UI/Paragraph';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
-import styled, { css } from 'styled-components';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import Slider from './Slider';
@@ -25,31 +24,14 @@ const StyledIconSiFacebook = styled(SiFacebook)`
     margin: 0.5rem;
 `;
 
-const StyledWrapper = styled(Box)`
-  z-index: 10;
-  background-color: #fafbff;
-  border: 2px solid #85cdca;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 1.5rem;
-  width: 100%;
-`;
-
-const StyledSignInButton = styled(Button)`
-    width: 50% !important;
-    background-color: red;
-    font-size: 50px;
-`;
-
-const StyledSignUpButton = styled(Button)<{ $mode: TLoginFormMode }>`
-    width: 50%;
-
-    ${({ $mode }) =>
-        $mode === 'singIn' &&
-        css`
-            border-top-left-radius: var(--border-radius-large);
-            margin-top: 0;
-        `}
-`;
+const StyledWrapper = styled(Box)(({ theme }) => ({
+    zIndex: 10,
+    backgroundColor: theme.palette.text.secondary,
+    border: `2px solid ${theme.palette.secondary.main}`,
+    boxShadow: theme.shadows[10],
+    borderRadius: '1.5rem',
+    width: '100%',
+}));
 
 const StyledHr = styled('hr')`
     margin: auto;
@@ -125,29 +107,22 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         <StyledWrapper as="section">
             {useCase === 'landingPage' && <Slider />}
             <Box width={'100%'} display={'flex'}>
-                <StyledSignInButton
-                    $mode={mode}
+                <Button
+                    style={{ width: '50% !important' }}
                     useCase="fullLine"
                     active={mode === 'singIn'}
                     text="SIGN_IN"
                     onClick={() => setMode('singIn')}
                 />
-                <StyledSignUpButton
-                    $mode={mode}
+                <Button
                     useCase="fullLine"
+                    style={{ width: '50% !important' }}
                     active={mode === 'signUp'}
                     text="SIGN_UP"
                     onClick={() => setMode('signUp')}
                 />
             </Box>
             <form autoComplete="off">
-                <Input
-                    withoutLabel
-                    type="text"
-                    register={register('email')}
-                    placeholder="email"
-                    validationMessage={errors.email?.message?.toString()}
-                />
                 <Input
                     withoutLabel
                     type="text"
@@ -171,11 +146,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 {/* {!loading ? ( */}
                 <Button
                     text={mode === 'singIn' ? 'SIGN_IN' : 'SIGN_UP'}
-                    useCase="fullLine"
+                    useCase="middle"
                     type="submit"
                     onClick={onSubmitHandler}
                     disabled={isBtnDisabled()}
-                    classes={'w-full'}
                 />
                 {/* ) : (
                     <Spinner useCase="small" />
@@ -190,12 +164,12 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                     />
                 )} */}
             </form>
-            <Box display={'flex'} flexDirection={'row'} justifyContent={'center'} width={'100%'} margin={'0 1rem'} >
+            <Box display={'flex'} flexDirection={'row'} justifyContent={'center'} width={'100%'} margin={'0 1rem'}>
                 <StyledHr />
                 <Paragraph text={mode === 'singIn' ? 'OR_SIGN_IN' : 'OR_SIGN_UP'} />
                 <StyledHr />
             </Box>
-            <Box display={'flex'} flexDirection={'row'} justifyContent={'center'} width={'100%'} margin={'0 1rem'} >
+            <Box display={'flex'} flexDirection={'row'} justifyContent={'center'} width={'100%'} margin={'0 1rem'}>
                 <StyledIconFcGoogle className={`iconSpin`} />
                 <StyledIconSiFacebook className={`facebook iconSpin`} />
             </Box>

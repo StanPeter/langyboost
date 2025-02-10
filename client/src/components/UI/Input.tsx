@@ -1,11 +1,19 @@
-import { Input as MuiInput } from '@mui/material';
+import { Input as MuiInput, styled } from '@mui/material';
 import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { TInputType, TInputUsecase } from 'ts/types';
-import styles from './input.module.scss';
 
+const StyledMuiInput = styled(MuiInput)<{ isTouched: boolean; isInvalid: boolean }>`
+    width: 100%;
+    border-right-width: 0;
+    border: 2px solid ${({ isInvalid }) => (isInvalid ? 'var(--color-invalid-dark)' : 'var(--color-dark-accent)')};
+    background-color: ${({ isTouched, isInvalid }) =>
+        isInvalid ? (isTouched ? 'var(--color-invalid-light)' : 'unset') : 'var(--color-light-accent)'};
+    font-style: normal;
+    outline: none;
+`;
 
 interface IInputProps {
     name?: string;
@@ -15,13 +23,11 @@ interface IInputProps {
     classes?: string;
     value?: any;
     type: TInputType;
-    onChange?: (d: any) => SetStateAction<any>;
+    onChange?: (d: any) => void;
     placeholder?: string;
     withoutLabel?: boolean;
     register?: UseFormRegisterReturn;
-    ref?: HTMLInputElement;
     validationMessage?: string;
-    whiteText?: boolean;
     useCase?: TInputUsecase;
 }
 
@@ -35,35 +41,26 @@ const Input: React.FC<IInputProps> = ({
     placeholder,
     withoutLabel = false,
     register,
-    ref,
     classes,
     validationMessage,
     useCase = 'form',
 }) => {
-    const [isToutched, setIsTouched] = useState(false);
+    const [isTouched, setIsTouched] = useState(false);
 
-    // whether its been filled/clicked on
     useEffect(() => {
-        if (!isToutched && (validationMessage || value)) setIsTouched(true);
-    }, [validationMessage, value, isToutched]);
+        if (!isTouched && (validationMessage || value)) setIsTouched(true);
+    }, [validationMessage, value, isTouched]);
 
-    // handlers
-    const onFocus = () => {
-        setIsTouched(true);
-    };
+    const onFocus = () => setIsTouched(true);
+
     const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-        if (register) register.onBlur(e);
-    };
-    const onRef = (el: HTMLInputElement) => {
-        if (register) register.ref(el);
-        if (ref) ref = el;
-    };
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (register) register.onChange(e);
-        if (onChange) onChange(e.target.value);
+        register?.onBlur(e);
     };
 
-    // console.log(validationMessage, ' validationmessage');
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        register?.onChange(e);
+        onChange?.(e.target.value);
+    };
 
     return (
         <InputWrapper validationMessage={validationMessage} useCase={useCase} classes={classes}>
@@ -75,14 +72,12 @@ const Input: React.FC<IInputProps> = ({
                 </div>
             )}
 
-            <MuiInput
-                ref={onRef}
+            <StyledMuiInput
                 onFocus={onFocus}
                 placeholder={placeholder}
                 onBlur={onBlur}
-                className={`${withoutLabel ? styles.withoutLabel : ''} ${
-                    validationMessage ? styles.invalidInput : ''
-                } ${isToutched ? styles.touched : ''} `}
+                isTouched={isTouched}
+                isInvalid={!!validationMessage}
                 type={type}
                 value={value}
                 onChange={onChangeHandler}

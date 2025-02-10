@@ -1,4 +1,4 @@
-import MainBody from 'components/layouts/MainBody/MainBody';
+import MainBody from 'components/layouts/MainBody';
 import LoginForm from 'components/others/LoginForm/LoginForm';
 import React from 'react';
 

@@ -1,7 +1,7 @@
-import MainBody from 'components/layouts/MainBody/MainBody';
+import MainBody from 'components/layouts/MainBody';
 import Button from 'components/UI/Button';
 import Carousel from 'components/UI/Carousel/Carousel';
-import Header from 'components/UI/Header/Header';
+import Header from 'components/UI/Header';
 import Select from 'components/UI/Select/Select';
 import Separator from 'components/UI/Separator/Separator';
 import React, { useEffect, useState } from 'react';

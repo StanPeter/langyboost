@@ -1,4 +1,4 @@
-import MainBody from 'components/layouts/MainBody/MainBody';
+import MainBody from 'components/layouts/MainBody';
 import Select from 'components/UI/Select/Select';
 // import { useGetPhrasesQuery } from 'graphql/generated/graphql';
 import React from 'react';

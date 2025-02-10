@@ -1,5 +1,5 @@
-import MainBody from 'components/layouts/MainBody/MainBody';
-import Header from 'components/UI/Header/Header';
+import MainBody from 'components/layouts/MainBody';
+import Header from 'components/UI/Header';
 import React from 'react';
 
 interface NotFoundProps {}

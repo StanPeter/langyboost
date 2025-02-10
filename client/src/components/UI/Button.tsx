@@ -1,7 +1,6 @@
-import { Button as MUIButton } from '@mui/material';
+import { Button as MUIButton, styled } from '@mui/material';
 import TranslateText from 'components/hoc/TranslateText';
 import React from 'react';
-import styled from 'styled-components';
 import { TButtonUseCase } from 'ts/types';
 
 const StyledMuiButton = styled(MUIButton)`

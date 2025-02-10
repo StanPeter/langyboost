@@ -1,11 +1,11 @@
 import ProfilePicture from 'assets/images/profilePicture.jpg';
 import Button from 'components/UI/Button';
 import ButtonSelect from 'components/UI/ButtonSelect/ButtonSelect';
-import Header from 'components/UI/Header/Header';
+import Header from 'components/UI/Header';
 import Image from 'components/UI/Image';
-import Input from 'components/UI/Input/Input';
+import Input from 'components/UI/Input';
 import Select from 'components/UI/Select/Select';
-import MainBody from 'components/layouts/MainBody/MainBody';
+import MainBody from 'components/layouts/MainBody';
 import MembershipDialog from 'components/others/MembershipDialog/MembershipDialog';
 import React, { useEffect, useState } from 'react';
 import { VscEdit } from 'react-icons/vsc';

@@ -1,7 +1,7 @@
 import Tooltip from 'components/UI/Tooltip/Tooltip';
-import MainBody from 'components/layouts/MainBody/MainBody';
+import MainBody from 'components/layouts/MainBody';
 import React, { useState } from 'react';
-import Card from './Card';
+import Card from '../../components/others/Card';
 import styles from './cardPage.module.scss';
 // import { useGetPhrasesQuery } from "graphql/generated/graphql";
 // import Spinner from "./Spinner";
