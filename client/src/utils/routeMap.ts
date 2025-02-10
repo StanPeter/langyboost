@@ -5,25 +5,26 @@ const LandingPage = React.lazy(() => import('pages/LandingPage/LandingPage'));
 const CoursesPage = React.lazy(() => import('pages/CoursesPage/CoursesPage'));
 const ArticlesPage = React.lazy(() => import('pages/ArticlesPage/ArticlesPage'));
 const ResourcesPage = React.lazy(() => import('pages/ResourcesPage/ResourcesPage'));
-const PersonalSettingsPage = React.lazy(() => import('pages/PersonalSettingsPage/PersonalSettingsPage'));
+const PersonalSettingsPage = React.lazy(() => import('pages/profile'));
 const CourseDetailPage = React.lazy(() => import('pages/CourseDetailPage/CourseDetailPage'));
 const ArticleDetailPage = React.lazy(() => import('pages/ArticleDetailPage/ArticleDetailPage'));
-const CardPage = React.lazy(() => import('pages/CardPage/CardPage'));
-const AuthPage = React.lazy(() => import('pages/AuthPage/AuthPage'));
-const TermsConditionsPage = React.lazy(() => import('pages/TermsConditionsPage/TermsConditionsPage'));
+const CardPage = React.lazy(() => import('pages/cards'));
+const AuthPage = React.lazy(() => import('pages/auth'));
+const TermsConditionsPage = React.lazy(() => import('pages/policy'));
 
-const routes = {
+export const ROUTES = {
     LANDING_PAGE: '/',
     AUTH_PAGE: '/auth',
-    CARD_PAGE: '/cards/:courseName',
+    CARD_PAGE: '/cards',
     COURSES_PAGE: '/courses',
     COURSE_DETAIL_PAGE: '/courses/:id',
     ARTICLES_PAGE: '/articles',
     ARTICLE_DETAIL_PAGE: '/articles/:id',
     RESOURCES_PAGE: '/resources',
-    SETTINGS_PAGE: '/settings',
+    SETTINGS_PAGE: '/profile',
     PROFILE_PAGE: '/profile',
-    TERMS_CONDITIONS_PAGE: '/termsConditions',
+    TERMS_CONDITIONS_PAGE: '/policy',
+
 };
 
 interface IRouteMapa<T> {
@@ -38,59 +39,60 @@ function routeMapa<T>(): IRouteMapa<T>[] {
     return [
         {
             component: LandingPage,
-            path: routes.LANDING_PAGE,
+            path: ROUTES.LANDING_PAGE,
             private: false,
+
         },
         {
             component: AuthPage,
-            path: routes.AUTH_PAGE,
+            path: ROUTES.AUTH_PAGE,
             private: false,
         },
         {
             component: CardPage,
-            path: routes.CARD_PAGE,
+            path: ROUTES.CARD_PAGE,
             private: false,
         },
         {
             component: CoursesPage,
-            path: routes.COURSES_PAGE,
+            path: ROUTES.COURSES_PAGE,
             private: false,
         },
         {
             component: CourseDetailPage,
-            path: routes.COURSE_DETAIL_PAGE,
+            path: ROUTES.COURSE_DETAIL_PAGE,
             private: false,
         },
         {
             component: ArticlesPage,
-            path: routes.ARTICLES_PAGE,
+            path: ROUTES.ARTICLES_PAGE,
             private: false,
         },
         {
             component: ArticleDetailPage,
-            path: routes.ARTICLE_DETAIL_PAGE,
+            path: ROUTES.ARTICLE_DETAIL_PAGE,
             private: false,
         },
         {
             component: ResourcesPage,
-            path: routes.RESOURCES_PAGE,
+            path: ROUTES.RESOURCES_PAGE,
             private: false,
         },
         {
             component: PersonalSettingsPage,
-            path: routes.SETTINGS_PAGE,
+            path: ROUTES.SETTINGS_PAGE,
             private: false,
             routeMode: 'settings',
         },
         {
             component: PersonalSettingsPage,
-            path: routes.PROFILE_PAGE,
+            path: ROUTES.PROFILE_PAGE,
             private: false,
             routeMode: 'profile',
         },
         {
             component: TermsConditionsPage,
-            path: routes.TERMS_CONDITIONS_PAGE,
+            path: ROUTES.TERMS_CONDITIONS_PAGE,
             private: false,
         },
     ];

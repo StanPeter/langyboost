@@ -18,11 +18,12 @@ const HAMBURGER_MENU = [
     { text: 'COURSES', url: '/courses' },
     { text: 'ARTICLES', url: '/articles' },
     { text: 'RESOURCES', url: '/resources' },
-    { text: 'CURRENT_LESSON', url: '/cards/current' },
-    { text: 'CURRENT_COURSE', url: '/course/current' },
+    { text: 'CURRENT_LESSON', url: '/cards' },
+    { text: 'CURRENT_COURSE', url: '/courses' },
     { text: 'PROFILE', url: '/profile' },
     { text: 'SETTINGS', url: '/profile' },
     { text: 'SIGN_IN', url: '/auth' },
+
 ];
 interface NavbarProps {}
 
@@ -136,12 +137,12 @@ const Navbar: React.FC<NavbarProps> = () => {
             <ul className={`${styles.navbarLinks} ${styles.right} `}>
                 <Link>
                     <Paragraph text="5" whiteText shouldTranslate={false} />
-                    <Image src={FireIcon} alt="fireIcon" onClick={() => router.push('/cards/current')} />
+                    <Image src={FireIcon} alt="fireIcon" onClick={() => router.push('/cards')} />
                 </Link>
                 <Link>
 
                     <Paragraph text="5" whiteText shouldTranslate={false} />
-                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => router.push('/course/current')} />
+                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => router.push('/courses')} />
                 </Link>
                 <Link>
 

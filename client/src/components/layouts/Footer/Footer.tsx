@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = () => {
             </ul>
             <div className={styles.copyright}>
                 <Paragraph text="COPYRIGHT" />
-                <a onClick={() => router.push('/termsConditions')} href="">
+                <a onClick={() => router.push('/policy')} href="">
                     {new Date().getFullYear().toString()}
                 </a>
 
