@@ -1,9 +1,11 @@
+import { Input as MuiInput } from '@mui/material';
 import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { TInputType, TInputUsecase } from 'ts/types';
 import styles from './input.module.scss';
+
 
 interface IInputProps {
     name?: string;
@@ -73,7 +75,7 @@ const Input: React.FC<IInputProps> = ({
                 </div>
             )}
 
-            <input
+            <MuiInput
                 ref={onRef}
                 onFocus={onFocus}
                 placeholder={placeholder}

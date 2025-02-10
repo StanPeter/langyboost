@@ -1,6 +1,16 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
+    "paths": {
+      "@/*": ["src/*"],
+      "@styles/*": ["src/styles/*"],
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@types/*": ["src/types/*"],
+    },
+    "typeRoots": ["./node_modules/@types", "./src/styles"],
     "target": "ES2021",
     "useDefineForClassFields": true,
     "lib": [

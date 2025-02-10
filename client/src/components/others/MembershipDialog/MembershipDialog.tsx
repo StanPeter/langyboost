@@ -4,18 +4,18 @@ import mastercard from 'assets/images/mastercard.png';
 import paypal from 'assets/images/paypal.png';
 import peonPoint from 'assets/images/peonPoint.png';
 import visa from 'assets/images/visa.png';
-import Button from 'components/UI/Button/Button';
+import Button from 'components/UI/Button';
 import Dialog from 'components/UI/Modal/Dialog';
 import Select from 'components/UI/Select/Select';
 import React, { FormEvent, MouseEvent, useEffect, useState } from 'react';
 import { SectionStyles } from 'ts/interfaces';
 import {
-    MembershipDialogSectionTypes,
-    MembershipTypes,
-    PaymentDetailsTypes,
-    paymentMethodTypes,
-    PaymentMethodTypes,
-    SubscriptionTypes,
+  MembershipDialogSectionTypes,
+  MembershipTypes,
+  PaymentDetailsTypes,
+  paymentMethodTypes,
+  PaymentMethodTypes,
+  SubscriptionTypes,
 } from 'ts/types';
 import styles from './membershipDialog.module.scss';
 

@@ -1,5 +1,5 @@
 import ProfilePicture from 'assets/images/profilePicture.jpg';
-import Button from 'components/UI/Button/Button';
+import Button from 'components/UI/Button';
 import ButtonSelect from 'components/UI/ButtonSelect/ButtonSelect';
 import Header from 'components/UI/Header/Header';
 import Image from 'components/UI/Image';

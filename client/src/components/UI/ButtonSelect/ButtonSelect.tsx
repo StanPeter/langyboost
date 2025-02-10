@@ -2,7 +2,7 @@ import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
 import React, { FormEvent } from 'react';
 import { TInputUsecase } from 'ts/types';
-import Button from '../Button/Button';
+import Button from '../Button';
 import styles from './buttonSelect.module.scss';
 
 interface ButtonSelectProps {

@@ -1,5 +1,5 @@
 import MainBody from 'components/layouts/MainBody/MainBody';
-import Button from 'components/UI/Button/Button';
+import Button from 'components/UI/Button';
 import Carousel from 'components/UI/Carousel/Carousel';
 import Header from 'components/UI/Header/Header';
 import Select from 'components/UI/Select/Select';

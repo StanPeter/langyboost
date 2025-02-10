@@ -1,6 +1,22 @@
+import { Box, styled } from '@mui/material';
 import LoginForm from 'components/others/LoginForm/LoginForm';
 import ParticleBackground from 'components/others/ParticleBackground/ParticleBackground';
 import React from 'react';
+
+const StyledWrapper = styled(Box)({
+    position: 'relative',
+    height: '100vh',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+});
+
+const StyledFormWrapper = styled(Box)({
+    position: 'relative',
+    zIndex: 10,
+    width: '800px',
+});
 
 interface LandingPageProps {}
 
@@ -18,16 +34,12 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     // console.log('rerendering LANDING');
 
     return (
-        <div className="relative h-screen w-full flex items-center justify-center">
+        <StyledWrapper>
             <ParticleBackground />
-            <div className="absolute inset-0 opacity-45"></div>
-            <div className="relative z-10 w-[800px]">
+            <StyledFormWrapper>
                 <LoginForm useCase="landingPage" />
-            </div>
-        </div>
-
-
-
+            </StyledFormWrapper>
+        </StyledWrapper>
     );
 };
 
