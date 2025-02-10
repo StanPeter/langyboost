@@ -11,23 +11,29 @@ import styles from './cousesPage.module.scss';
 interface CoursesPageProps {}
 
 const CoursesPage: React.FC<CoursesPageProps> = () => {
-    /* HOOKS */
     const [iSpeak, setISpeak] = useState<string>('');
     const [wantToLearn, setWantToLearn] = useState<string>('');
     const [chosenCourse, setChosenCourse] = useState<string>('');
-    const [_windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [_windowWidth, setWindowWidth] = useState<number | null>(null);
+
 
     useEffect(() => {
-        window.addEventListener('resize', handleWindowResize);
+        const handleWindowResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        if (typeof window !== 'undefined') {
+            setWindowWidth(window.innerWidth);
+            window.addEventListener('resize', handleWindowResize);
+        }
 
         return () => {
-            window.removeEventListener('resize', handleWindowResize);
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', handleWindowResize);
+            }
         };
     }, []);
 
-    const handleWindowResize = () => {
-        setWindowWidth(window.innerWidth);
-    };
 
     // const btnDisabled = () => (iSpeak && wantToLearn && chosenCourse ? false : true);
 

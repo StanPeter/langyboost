@@ -1,5 +1,4 @@
 import { particleConfig } from 'components/others/ParticleBackground/particleConfig';
-import landingPageStyles from 'pages/LandingPage/landingPage.module.scss';
 import React from 'react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
@@ -26,7 +25,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = () => {
             init={particlesInit}
             loaded={particlesLoaded}
             options={particleConfig}
-            className={landingPageStyles.particles}
+            className="absolute top-0 left-0"
         />
     );
 };

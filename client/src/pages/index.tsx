@@ -1,8 +1,6 @@
-import mainBodyStyles from 'components/layouts/MainBody/mainBody.module.scss';
 import LoginForm from 'components/others/LoginForm/LoginForm';
 import ParticleBackground from 'components/others/ParticleBackground/ParticleBackground';
 import React from 'react';
-import styles from './landingPage.module.scss';
 
 interface LandingPageProps {}
 
@@ -20,12 +18,16 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     // console.log('rerendering LANDING');
 
     return (
-        <div className={styles.landingPage}>
+        <div className="relative h-screen w-full flex items-center justify-center">
             <ParticleBackground />
-            <div className={mainBodyStyles.bodyWrapper}>
-                <LoginForm useCase={'landingPage'} />
+            <div className="absolute inset-0 opacity-45"></div>
+            <div className="relative z-10 w-[800px]">
+                <LoginForm useCase="landingPage" />
             </div>
         </div>
+
+
+
     );
 };
 

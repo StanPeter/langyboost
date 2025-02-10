@@ -21,7 +21,7 @@ const HAMBURGER_MENU = [
     { text: 'CURRENT_LESSON', url: '/cards/current' },
     { text: 'CURRENT_COURSE', url: '/course/current' },
     { text: 'PROFILE', url: '/profile' },
-    { text: 'SETTINGS', url: '/settings' },
+    { text: 'SETTINGS', url: '/profile' },
     { text: 'SIGN_IN', url: '/auth' },
 ];
 interface NavbarProps {}
@@ -75,10 +75,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     classes={hide ? styles.authIcon : ''}
                     onClick={() => {
                         //if open then close hamburger
-                        navigate('/auth');
+                        router.push('/auth');
                     }}
                 >
                     <BiLogIn className={`${styles.loginIcon}`} />
+
                 </Link>
             );
         return null;
@@ -92,10 +93,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     text={el.text}
                     onClick={async () => {
                         await hamburgerClickHandler();
-                        navigate(el.url);
+                        router.push(el.url);
                     }}
                     classes={expandedHelper ? styles.transition : ''}
                     whiteText
+
                 />
             ))}
         </ul>
@@ -103,10 +105,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     return (
         <nav className={`${styles.navbar} ${expanded ? styles.expandedNavBar : ''}`}>
-            <div className={styles.logo} onClick={() => navigate('/')}>
+            <div className={styles.logo} onClick={() => router.push('/')}>
                 <CgCrown />
                 <Span text="LANGYBOOST" />
             </div>
+
             <ul className={`${styles.navbarLinks} ${styles.left}`}>
                 <Link
                     text="COURSES"
