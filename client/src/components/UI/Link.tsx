@@ -1,6 +1,5 @@
 import TranslateText from 'components/hoc/TranslateText';
 import React from 'react';
-import globalClasses from 'styles/globalClasses.module.scss';
 
 interface ILink {
     text?: string;
@@ -27,15 +26,16 @@ const Link: React.FC<ILink> = ({
 }) => {
     if (children)
         return (
-            <li className={`${classes} ${whiteText ? globalClasses.whiteText : ''}`}>
+            <li className={`${classes} ${whiteText ? 'whiteText' : ''}`}>
                 <a onClick={onClick} style={style} className={hyperlinkClasses}>
                     {children}
                 </a>
             </li>
         );
 
+
     return (
-        <li onClick={onClick} className={`${classes} ${whiteText ? globalClasses.whiteText : ''}`}>
+        <li onClick={onClick} className={`${classes} ${whiteText ? 'whiteText' : ''}`}>
             <a onClick={onClick} className={hyperlinkClasses}>
                 <TranslateText>{text}</TranslateText>
             </a>

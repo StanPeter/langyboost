@@ -21,11 +21,6 @@
     height: 75%;
 }
 
-/* BREAKPOINTS  */
-// SCREEN PHONE
-@media screen and (min-width: 450px) {
-}
-
 // SMALLER SCREEN TABLET
 @media screen and (min-width: 600px) {
     .filtersWrapper {
@@ -40,20 +35,4 @@
         align-items: flex-end;
         width: 20%;
     }
-}
-
-// BIGGER SCREEN TABLET
-@media screen and (min-width: 750px) {
-}
-
-// SMALL SCREEN DESKTOP
-@media screen and (min-width: 1200px) {
-}
-
-// MIDDLE SCREEN DESKTOP
-@media screen and (min-width: 1500px) {
-}
-
-// LARGE SCREEN DESKTOP
-@media screen and (min-width: 1800px) {
 }

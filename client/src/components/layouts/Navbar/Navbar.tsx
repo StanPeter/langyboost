@@ -5,23 +5,25 @@ import Image from 'components/UI/Image';
 import Link from 'components/UI/Link';
 import Paragraph from 'components/UI/Paragraph';
 import Span from 'components/UI/Span';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { BiLogIn } from 'react-icons/bi';
 import { CgCrown } from 'react-icons/cg';
 import { FiSettings } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
 // import { setAccessToken } from "utils/getToken";
 import styles from './navbar.module.scss';
+
 
 const HAMBURGER_MENU = [
     { text: 'COURSES', url: '/courses' },
     { text: 'ARTICLES', url: '/articles' },
     { text: 'RESOURCES', url: '/resources' },
-    { text: 'CURRENT_LESSON', url: '/cards/current' },
-    { text: 'CURRENT_COURSE', url: '/course/current' },
+    { text: 'CURRENT_LESSON', url: '/cards' },
+    { text: 'CURRENT_COURSE', url: '/courses' },
     { text: 'PROFILE', url: '/profile' },
-    { text: 'SETTINGS', url: '/settings' },
+    { text: 'SETTINGS', url: '/profile' },
     { text: 'SIGN_IN', url: '/auth' },
+
 ];
 interface NavbarProps {}
 
@@ -30,11 +32,12 @@ const Navbar: React.FC<NavbarProps> = () => {
     const [expanded, setExpanded] = useState<boolean>(false);
     const [expandedHelper, setExpandedHelper] = useState<boolean>(false);
 
-    const navigate = useNavigate();
+    const router = useRouter();
     // const { data, loading } = useGetUserQuery();
     // const [logout, { client }] = useLogoutMutation();
     const data = { getUser: '' };
     const loading = false;
+
 
     // on click handler
     const hamburgerClickHandler = () =>
@@ -73,10 +76,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     classes={hide ? styles.authIcon : ''}
                     onClick={() => {
                         //if open then close hamburger
-                        navigate('/auth');
+                        router.push('/auth');
                     }}
                 >
                     <BiLogIn className={`${styles.loginIcon}`} />
+
                 </Link>
             );
         return null;
@@ -90,10 +94,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     text={el.text}
                     onClick={async () => {
                         await hamburgerClickHandler();
-                        navigate(el.url);
+                        router.push(el.url);
                     }}
                     classes={expandedHelper ? styles.transition : ''}
                     whiteText
+
                 />
             ))}
         </ul>
@@ -101,49 +106,57 @@ const Navbar: React.FC<NavbarProps> = () => {
 
     return (
         <nav className={`${styles.navbar} ${expanded ? styles.expandedNavBar : ''}`}>
-            <div className={styles.logo} onClick={() => navigate('/')}>
+            <div className={styles.logo} onClick={() => router.push('/')}>
                 <CgCrown />
                 <Span text="LANGYBOOST" />
             </div>
+
             <ul className={`${styles.navbarLinks} ${styles.left}`}>
                 <Link
                     text="COURSES"
                     onClick={() => {
-                        navigate('/courses');
+                        router.push('/courses');
                     }}
                 />
+
                 <Link
                     text="ARTICLES"
                     onClick={() => {
-                        navigate('/articles');
+                        router.push('/articles');
                     }}
                 />
+
                 <Link
                     text="RESOURCES"
                     onClick={() => {
-                        navigate('/resources');
+                        router.push('/resources');
                     }}
                 />
+
             </ul>
             <ul className={`${styles.navbarLinks} ${styles.right} `}>
                 <Link>
                     <Paragraph text="5" whiteText shouldTranslate={false} />
-                    <Image src={FireIcon} alt="fireIcon" onClick={() => navigate('/cards/current')} />
+                    <Image src={FireIcon} alt="fireIcon" onClick={() => router.push('/cards')} />
                 </Link>
                 <Link>
+
                     <Paragraph text="5" whiteText shouldTranslate={false} />
-                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => navigate('/course/current')} />
+                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => router.push('/courses')} />
                 </Link>
                 <Link>
+
                     <Paragraph text="Jill" whiteText shouldTranslate={false} />
-                    <Image src={ProfilePicture} alt="profilePicture" onClick={() => navigate('/profile')} />
+                    <Image src={ProfilePicture} alt="profilePicture" onClick={() => router.push('/profile')} />
                 </Link>
                 <hr className={styles.separator} />
                 <Link>
-                    <FiSettings onClick={() => navigate('/settings')} className={`${styles.settingsIcon}`} />
+
+                    <FiSettings onClick={() => router.push('/settings')} className={`${styles.settingsIcon}`} />
                 </Link>
                 <hr className={styles.separator} />
                 {authButtons(false)}
+
             </ul>
             <div className={styles.hamburger} onClick={hamburgerClickHandler}>
                 <div></div>

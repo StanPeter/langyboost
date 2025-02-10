@@ -2,7 +2,6 @@ import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
-import globalClasses from 'styles/globalClasses.module.scss';
 import { MultiselectItem } from 'ts/interfaces';
 import { TInputUsecase } from 'ts/types';
 import styles from './select.module.scss';
@@ -94,10 +93,11 @@ const Select: React.FC<MultiselectProps> = ({
                         <label
                             style={styleInput}
                             className={`${
-                                useCase === 'filter' ? globalClasses.filterLabel : globalClasses.formLabel
+                                useCase === 'filter' ? 'filterLabel' : 'formLabel'
                             } ${addTypeClass('')}`}
                             htmlFor=""
                         >
+
                             <TranslateText>{text}</TranslateText>
                         </label>
                     )}

@@ -2,13 +2,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from 'components/UI/Button/Button';
 import Input from 'components/UI/Input/Input';
 import Paragraph from 'components/UI/Paragraph';
-import { useMutation } from 'hooks/useFetch';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
-import { useNavigate } from 'react-router-dom';
-import globalClasses from 'styles/globalClasses.module.scss';
 import {
     TLoginFormMode,
     TLoginFormUseCase,
@@ -36,11 +34,12 @@ const LoginForm: React.FC<ILoginFormProps> = ({
 }) => {
     const [mode, setMode] =
         useState<TLoginFormMode>('singIn');
-    const navigate = useNavigate();
+    const router = useRouter();
     const usedSignHook =
         mode === 'signUp' ? 'TODO' : 'TODO';
     // const [signMutation, { error, reset, loading }] = usedSignHook();
-    const { mutate, data } = useMutation('usersLogin');
+
+    // const { mutate, data } = useMutation('usersLogin');
     // useEffect(() => {
     //     reset();
     // }, [mode, reset]);
@@ -79,15 +78,17 @@ const LoginForm: React.FC<ILoginFormProps> = ({
             return;
 
         if (mode === 'singIn') {
-            mutate(formValues);
+            // mutate(formValues);
         } else {
             // mutate(formValues);
         }
 
-        navigate('/courses');
+
+        router.push('/courses');
     };
 
     // control buttons disability
+
     const isBtnDisabled = () => {
         if (
             !formValues.email ||
@@ -226,10 +227,11 @@ const LoginForm: React.FC<ILoginFormProps> = ({
                 className={`flex justify-center mb-8`}
             >
                 <FcGoogle
-                    className={`${globalClasses.iconSpin} w-8 h-8 mx-2`}
+                    className={`iconSpin w-8 h-8 mx-2`}
                 />
                 <SiFacebook
-                    className={`${globalClasses.facebook} ${globalClasses.iconSpin} w-7 h-8 mx-2`}
+                    className={`facebook iconSpin w-7 h-8 mx-2`}
+
                 />
             </div>
         </section>

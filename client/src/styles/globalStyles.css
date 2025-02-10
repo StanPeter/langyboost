@@ -14,37 +14,48 @@
 
 /* GLOBAL VARIABLES */
 :root {
-    // MAIN COLOR PALLETE
+    /* // MAIN COLOR PALLETE */
 
-    // MAIN COLORS
-    --color-main: #41b3a3; // This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.
-    --color-main-light: #fafbff; // main color light, used for backgrounds and as white font color when dark background
-    --color-light-accent: #daffe9; // used as light accent of main color, mostly in forms as valid input
-    --color-dark-accent: #85cdca; // most of borders in boxes, elements
+    /* // MAIN COLORS */
+    --color-main: #41b3a3; /* This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity. */
 
-    // TEXT COLORS
-    --color-text-dark: #203a4f; // mostly font color when white background
-    --color-text-light: #fafbff; // main color light, used for backgrounds and as white font color when dark background
 
-    // OTHER COLORS
-    --color-invalid-light: #ffeae8; // color for invalid inputs
-    --color-invalid-dark: #bf4a1c; // color for invalid inputs
+    --color-main-light: #fafbff; /* main color light, used for backgrounds and as white font color when dark background */
+    --color-light-accent: #daffe9; /* used as light accent of main color, mostly in forms as valid input */
+    --color-dark-accent: #85cdca; /* most of borders in boxes, elements */
+
+
+    /* // TEXT COLORS       */
+    --color-text-dark: #203a4f; 
+    /* // mostly font color when white background */
+    --color-text-light: #fafbff; 
+    /* // main color light, used for backgrounds and as white font color when dark background */
+
+
+    /* // OTHER COLORS */
+    --color-invalid-light: #ffeae8; /* color for invalid inputs */
+    --color-invalid-dark: #bf4a1c; /* color for invalid inputs */
+
 
     --color-facebook: #45619d;
     --color-thumpsDown: #c5a094;
 
-    // these colors find out
-    // #4f555a
+    /* // these colors find out later */
+    /* // #4f555a */
 
-    // BOX SHADOW
+
+    /* // BOX SHADOW */
     --box-shadow-main: 0px 6px 6px rgb(0 0 0 / 30%);
     --box-shadow-small: 0px 4px 4px rgb(0 0 0 / 30%);
 
-    // MARGIN
+
+    /* // MARGIN */
     --margin-input: 0.5rem;
 
-    // TRANSFORM
+
+    /* // TRANSFO  RM */
     --transform-scale: 1.03;
+
 }
 
 * {
@@ -62,9 +73,10 @@ html {
 
 /* SEMANTIC ELEMENTS */
 iframe {
-    // disable anoyning pop up errors created by create-react-scripts
+    /* // disable anoyning pop up errors created by create-react-scripts */
     display: none;
 }
+
 
 body {
     min-height: 100%;
@@ -98,19 +110,20 @@ input {
     background: var(--color-main-light);
     border-left-width: 0;
     height: 2.5rem;
-    // min-width: 78%;
+    /* // min-width: 78%;
     // max-width: 78%;
-    width: 78%;
+    width: 78%; */
     text-align: center;
     font-style: italic;
+
 }
 
 label {
-    // align-items: center;
+    /* // align-items: center;
     // display: flex;
     // justify-content: flex-start;
     // height: 2.5rem;
-    // padding-right: 0.5rem;
+    // padding-right: 0.5rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,12 +140,12 @@ p {
     color: var(--color-text-dark);
 }
 
-// 16px 1rem
+/* // 16px 1rem
 // 32px 2rem
 // 8px 0.5rem
 // 4px 0.25rem
 
-// as base for calculations used 16px which is 1rem for +1200px size
+// as base for calculations used 16px which is 1rem for +1200px size */
 h1 {
     font-weight: 500;
     font-size: 1.75rem;
@@ -162,10 +175,11 @@ input {
 }
 
 svg {
-    // width: 1.5rem;
+    /* // width: 1.5rem;
     // height: 1.5rem;
-    // margin: 0 0.8rem;
+    // margin: 0 0.8rem; */
 }
+
 
 img {
     width: 2rem;
@@ -174,24 +188,26 @@ img {
 
 /* ANIMATIONS  */
 
-// LOGIN FORM ANIMATION
-$translate: 50%;
-$duration: 2s both;
+/* // LOGIN FORM ANIMATION */
 
-// left direction animation
+/* // left direction animation */
 .slideZeroToLeft {
-    animation: slideZeroToLeft $duration;
+    animation: slideZeroToLeft 2s both;
 }
+
 
 .slideRightToZero {
-    animation: slideRightToZero $duration;
+    animation: slideRightToZero 2s both;
 }
-// right direction animation
+
+/* // right direction animation */
 .slideZeroToRight {
-    animation: slideZeroToRight $duration;
+    animation: slideZeroToRight 2s both;
 }
+
+
 .slideLeftToZero {
-    animation: slideLeftToZero $duration;
+    animation: slideLeftToZero 2s both;
 }
 
 @keyframes slideZeroToLeft {
@@ -201,18 +217,20 @@ $duration: 2s both;
     }
 
     100% {
-        transform: translateX(-$translate);
+        transform: translateX(-50%);
         opacity: 0;
         display: none;
         visibility: hidden;
     }
 }
 
+
 @keyframes slideRightToZero {
     0% {
         opacity: 0;
-        transform: translateX($translate);
+        transform: translateX(50%);
     }
+
 
     50% {
         opacity: 0;
@@ -231,18 +249,20 @@ $duration: 2s both;
     }
 
     100% {
-        transform: translate($translate);
+        transform: translateX(50%);
         opacity: 0;
         display: none;
         visibility: hidden;
     }
+
 }
 
 @keyframes slideLeftToZero {
     0% {
-        transform: translateX(-$translate);
+        transform: translateX(-50%);
         opacity: 0;
     }
+
 
     50% {
         opacity: 0;
@@ -255,41 +275,46 @@ $duration: 2s both;
 }
 
 /* BREAKPOINTS  */
-// SCREEN PHONE
-@media screen and (min-width: 450px) {
-}
+/* // SCREEN PHONE */
+@media screen and (min-width: 450px) {}
 
-// SMALLER SCREEN TABLET
+
+/* // SMALLER SCREEN TABLET */
 @media screen and (min-width: 600px) {
-    // html {
+    /* // html {
     //     font-size: 12px !important;
-    // }
+    // } */
 }
 
-// BIGGER SCREEN TABLET
+
+/* // BIGGER SCREEN TABLET */
 @media screen and (min-width: 750px) {
     html {
+
         font-size: 14px !important;
     }
-    // p,
+
+    /* // p,
     // a,
     // input {
     //     font-size: 1.12rem;
-    // }
+    // } */
+
 }
 
-// SMALL SCREEN DESKTOP
+/* // SMALL SCREEN DESKTOP */
 @media screen and (min-width: 1200px) {
     html {
         font-size: 16px !important;
     }
 }
 
-// MIDDLE SCREEN DESKTOP
-@media screen and (min-width: 1500px) {
-}
 
-// LARGE SCREEN DESKTOP
+/* // MIDDLE SCREEN DESKTOP */
+@media screen and (min-width: 1500px) {}
+
+
+/* // LARGE SCREEN DESKTOP */
 @media screen and (min-width: 1800px) {
     html {
         font-size: 18px !important;

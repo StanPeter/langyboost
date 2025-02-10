@@ -1,8 +1,8 @@
 import PhraseCardsControls from 'components/others/PhraseCardsControls/PhraseCardsControls';
 import { motion } from 'framer-motion';
 import { PhraseSchema } from 'graphql/generated/graphql';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { TCardMode } from 'ts/types';
 import styles from './cardPage.module.scss';
 
@@ -13,11 +13,13 @@ interface CardPageProps {
     setNumberOfCards: React.Dispatch<React.SetStateAction<number>>;
 }
 
+
 const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }) => {
     // const [hideTranslation, setHidetranslation] = useState(true);
     const [animationChangeCard, setAnimationChangeCard] = useState(false);
     const [cardMode, setCardMode] = useState<TCardMode>('none');
-    const navigate = useNavigate();
+    const router = useRouter();
+
 
     // const getCurrentPhrase = useMemo(() => {
     //     if (animationChangeCard && numberOfCards - 2 >= 0) return data[numberOfCards - 2].phrase;
@@ -41,12 +43,13 @@ const Card: React.FC<CardPageProps> = ({ data, setNumberOfCards, numberOfCards }
     }
 
     const continueHandler = () => {
-        if (numberOfCards === 0) navigate('/courses');
+        if (numberOfCards === 0) router.push('/courses');
         else {
             setCardMode('none');
             setAnimationChangeCard(true);
         }
     };
+
 
     return (
         <div
