@@ -1,8 +1,6 @@
 import { ERRORS } from 'constants/errors';
 import english from 'constants/languages/english.json';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { TRootState } from 'ts/types';
 
 interface ILanguageObject {
     [key: string]: string;
@@ -26,7 +24,8 @@ interface ITranslateText {
 
 // Translates text into desired target language
 export const TranslateText: React.FC<ITranslateText> = ({ children, uppercase }) => {
-    const language = useSelector((state: TRootState) => state.settings.language);
+    // const language = useSelector((state: TRootState) => state.settings.language);
+    const language = 'en';
 
     let translatedText: string = getLanguageObject(language)[children];
 

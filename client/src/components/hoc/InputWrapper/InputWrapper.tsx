@@ -1,7 +1,7 @@
 import React from 'react';
-import globalClasses from 'styles/globalClasses.module.scss';
 import { TInputUsecase } from 'ts/types';
 import styles from './inputWrapper.module.scss';
+
 
 interface IInputWrapper {
     children: React.ReactNode;
@@ -14,7 +14,7 @@ const InputWrapper: React.FC<IInputWrapper> = ({ children, validationMessage, cl
     return (
         <div className={`${styles.wrapper} ${validationMessage ? styles.invalid : ''}`}>
             <div className={`${classes} ${useCase === 'form' ? styles.formItem : styles.filterItem}`}>{children}</div>
-            {validationMessage ? <p className={globalClasses.validationMessage}>{validationMessage}</p> : null}
+            {validationMessage ? <p className={'validationMessage'}>{validationMessage}</p> : null}
         </div>
     );
 };

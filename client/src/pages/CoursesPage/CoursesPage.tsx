@@ -6,7 +6,6 @@ import Select from 'components/UI/Select/Select';
 import Separator from 'components/UI/Separator/Separator';
 import React, { useEffect, useState } from 'react';
 import { betaCourses, customCourses, mainCourses } from 'services/mockData';
-import globalClasses from 'styles/globalClasses.module.scss';
 import styles from './cousesPage.module.scss';
 
 interface CoursesPageProps {}
@@ -37,10 +36,11 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
     return (
         <MainBody>
             <header>
-                <Header level={1} classes={globalClasses.labelMargin} text="COURSES" />
+                <Header level={1} classes="labelMargin" text="COURSES" />
             </header>
             <form className={styles.wrapper}>
                 <div className={styles.filtersWrapper}>
+
                     <Select
                         text="I_SPEAK"
                         type="singleselect"
@@ -75,17 +75,19 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                 <Separator useCase="fullHorizontal" />
             </form>
             <section>
-                <Header level={2} classes={globalClasses.labelMargin} text="SUPPORTED_COURSES" />
+                <Header level={2} classes="labelMargin" text="SUPPORTED_COURSES" />
                 <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
             </section>
+
             <section>
-                <Header level={2} classes={globalClasses.labelMargin} text="CUSTOM_GERMAN_COURSES" />
+                <Header level={2} classes="labelMargin" text="CUSTOM_GERMAN_COURSES" />
                 <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
+
             </section>
             <section>
-                <Header level={2} classes={globalClasses.labelMargin} text="BETA_COURSES" />
+                <Header level={2} classes="labelMargin" text="BETA_COURSES" />
                 <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
             </section>

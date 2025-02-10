@@ -2,7 +2,6 @@ import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import globalClasses from 'styles/globalClasses.module.scss';
 import { TInputType, TInputUsecase } from 'ts/types';
 import styles from './input.module.scss';
 
@@ -67,12 +66,13 @@ const Input: React.FC<IInputProps> = ({
     return (
         <InputWrapper validationMessage={validationMessage} useCase={useCase} classes={classes}>
             {!withoutLabel && (
-                <div className={`${useCase === 'form' ? globalClasses.formLabel : globalClasses.filterLabel}`}>
+                <div className={`${useCase === 'form' ? 'formLabel' : 'filterLabel'}`}>
                     <label style={styleInput} htmlFor={register?.name || name}>
                         <TranslateText>{text || ''}</TranslateText>
                     </label>
                 </div>
             )}
+
             <input
                 ref={onRef}
                 onFocus={onFocus}

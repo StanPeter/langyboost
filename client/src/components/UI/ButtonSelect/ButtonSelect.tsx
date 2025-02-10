@@ -1,6 +1,5 @@
 import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
-import globalClasses from 'styles/globalClasses.module.scss';
 import React, { FormEvent } from 'react';
 import { TInputUsecase } from 'ts/types';
 import Button from '../Button/Button';
@@ -44,10 +43,11 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
     return (
         <InputWrapper classes={styles.wrapper} useCase={useCase}>
             {!withoutLabel && (
-                <label className={globalClasses.formLabel} htmlFor="">
+                <label className="formLabel" htmlFor="">
                     <TranslateText>{text}</TranslateText>
                 </label>
             )}
+
             <div className={`${styles.multiselectInput} ${styles.formType} ${styles.valueWrapper}`}>{finalValue}</div>
         </InputWrapper>
     );

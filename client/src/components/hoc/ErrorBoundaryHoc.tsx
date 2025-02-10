@@ -1,8 +1,9 @@
 import Dialog from 'components/UI/Modal/Dialog';
 import Paragraph from 'components/UI/Paragraph';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Outlet, RouteProps, useNavigate } from 'react-router-dom';
+
 
 interface IErrorFallback {
     resetErrorBoundary: (...args: unknown[]) => void;
@@ -12,7 +13,8 @@ interface IErrorFallback {
 
 // fallback on error
 const ErrorFallback: React.FC<IErrorFallback> = ({ error, resetErrorBoundary, showDialog }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
+
 
     const content = <Paragraph shouldTranslate={false} text={error.message} />;
 
@@ -23,15 +25,18 @@ const ErrorFallback: React.FC<IErrorFallback> = ({ error, resetErrorBoundary, sh
             hideFunction={() => {
                 resetErrorBoundary();
             }}
-            submitBtn={{ text: 'OK', useCase: 'middle', onSubmit: () => navigate(0) }}
+            submitBtn={{ text: 'OK', useCase: 'middle', onSubmit: () => router.reload() }}
         />
     ) : null;
 };
 
-interface IErrorBoundary extends RouteProps {}
+interface IErrorBoundary {
+    element: React.ReactNode;
+}
 
 const ErrorBoundaryHoc: React.FC<IErrorBoundary> = ({ element }) => {
     const [showDialog, setShowDialog] = useState(true);
+
 
     return (
         <ErrorBoundary
@@ -43,8 +48,9 @@ const ErrorBoundaryHoc: React.FC<IErrorBoundary> = ({ element }) => {
             onError={() => setShowDialog(true)}
             // resetKeys={[showDialog]}
         >
-            <Outlet />
+            {element}
         </ErrorBoundary>
+
     );
 };
 

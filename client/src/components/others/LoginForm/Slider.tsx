@@ -2,7 +2,6 @@ import Header from 'components/UI/Header/Header';
 import { LOGIN_FORM_TEXT } from 'constants/constants';
 import React, { useState } from 'react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import globalStyles from 'styles/globalStyles.module.scss';
 import { useInterval } from 'usehooks-ts';
 
 interface ISliderProps {}
@@ -46,14 +45,16 @@ const Slider: React.FC<ISliderProps> = ({}) => {
     const animationHandler = (indexOfHeader: number) => {
         // left direction flow of animation
         if (slideInfo.direction === 'left') {
-            if (indexOfHeader + 1 === slideInfo.index) return globalStyles.slideRightToZero;
-            else if (indexOfHeader + 1 === slideInfo.index + 1) return globalStyles.slideZeroToLeft;
+            if (indexOfHeader + 1 === slideInfo.index) return 'slideRightToZero';
+            else if (indexOfHeader + 1 === slideInfo.index + 1) return 'slideZeroToLeft';
         }
         // right direction flow of animation
+
         if (slideInfo.direction === 'right') {
-            if (indexOfHeader + 1 === slideInfo.index) return globalStyles.slideLeftToZero;
-            else if (indexOfHeader + 1 === slideInfo.index - 1) return globalStyles.slideZeroToRight;
+            if (indexOfHeader + 1 === slideInfo.index) return 'slideLeftToZero';
+            else if (indexOfHeader + 1 === slideInfo.index - 1) return 'slideZeroToRight';
         }
+
 
         // initial state for animation
         if (slideInfo.direction === 'none' && indexOfHeader + 1 === 2) return '';
