@@ -3,6 +3,7 @@ import { Box, styled } from '@mui/material';
 import Button from 'components/UI/Button';
 import Input from 'components/UI/Input';
 import Paragraph from 'components/UI/Paragraph';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -78,30 +79,45 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const formValues: IFormData = getValues() as unknown as IFormData;
 
     // submit handling, calling BE for auth access token
-    const onSubmitHandler = (e: any) => {
+    const onSubmitHandler = async (e: any) => {
         e.preventDefault();
         console.log('CLICKED');
-
-        trpc.getAllUsers.query().then(users => {
-            console.log(users);
-        });
 
         if (!formValues.password || !formValues.email) return;
         if (mode === 'signUp' && (!formValues.userName || !formValues.repeatPassword)) return;
 
         if (mode === 'singIn') {
-            // mutate(formValues);
+            const res = await trpc.user.login.mutate({
+                email: formValues.email,
+                password: formValues.password,
+            });
+
+            if (res.error) {
+                console.log(res.error);
+            }
         } else {
-            // mutate(formValues);
+            try {
+                const res = await trpc.user.register.mutate({
+                    email: formValues.email,
+                    password: formValues.password,
+                    userName: formValues.userName,
+                    repeatPassword: formValues.repeatPassword,
+                });
+
+                if (res.error) {
+                    console.log(res.error);
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
 
-        router.push('/courses');
+        // router.push('/courses');
     };
 
     // control buttons disability
 
     const isBtnDisabled = () => {
-        return false;
         if (!formValues.email || !formValues.password) return true;
 
         if (mode === 'signUp' && (!formValues.repeatPassword || !formValues.userName)) return true;
@@ -110,6 +126,12 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     };
 
     console.log('test');
+    console.log(formValues, ' formValues');
+
+    const { data: session } = useSession();
+    if (session) {
+        alert('signed in as ' + session.user?.email);
+    }
 
     return (
         <StyledWrapper as="section">
@@ -178,8 +200,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 <StyledHr />
             </Box>
             <Box display={'flex'} flexDirection={'row'} justifyContent={'center'} width={'100%'} margin={'0 1rem'}>
-                <StyledIconFcGoogle className={`iconSpin`} />
-                <StyledIconSiFacebook className={`facebook iconSpin`} />
+                <StyledIconFcGoogle className={`iconSpin`} onClick={() => signIn('google')} />
+                <StyledIconSiFacebook className={`facebook iconSpin`} onClick={() => signIn('facebook')} />
             </Box>
         </StyledWrapper>
     );

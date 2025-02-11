@@ -73,13 +73,14 @@ const Input: React.FC<IInputProps> = ({
             )}
 
             <StyledMuiInput
+                {...register}
                 onFocus={onFocus}
                 placeholder={placeholder}
                 onBlur={onBlur}
                 isTouched={isTouched}
                 isInvalid={!!validationMessage}
                 type={type}
-                value={value}
+                // value={value}
                 onChange={onChangeHandler}
                 name={register?.name || name}
             />

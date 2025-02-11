@@ -21,6 +21,7 @@ const StyledFormWrapper = styled(Box)({
 interface LandingPageProps {}
 
 const LandingPage: React.FC<LandingPageProps> = () => {
+    
     // useEffect(() => {
     //     console.log("effected");
 

@@ -37,7 +37,6 @@ interface IErrorBoundary {
 const ErrorBoundaryHoc: React.FC<IErrorBoundary> = ({ element }) => {
     const [showDialog, setShowDialog] = useState(true);
 
-
     return (
         <ErrorBoundary
             FallbackComponent={props => ErrorFallback({ ...props, showDialog: showDialog })}
