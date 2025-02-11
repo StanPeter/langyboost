@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
+import trpc from 'trpc';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import Slider from './Slider';
@@ -43,7 +44,6 @@ const StyledHr = styled('hr')`
 
 interface IFormData {
     password: string;
-
     userName: string;
     email: string;
     repeatPassword: string;
@@ -58,6 +58,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
     const router = useRouter();
     const usedSignHook = mode === 'signUp' ? 'TODO' : 'TODO';
+    // const { data: users, error } = trpc.getAllUsers.query();
     // const [signMutation, { error, reset, loading }] = usedSignHook();
 
     // const { mutate, data } = useMutation('usersLogin');
@@ -81,6 +82,10 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         e.preventDefault();
         console.log('CLICKED');
 
+        trpc.getAllUsers.query().then(users => {
+            console.log(users);
+        });
+
         if (!formValues.password || !formValues.email) return;
         if (mode === 'signUp' && (!formValues.userName || !formValues.repeatPassword)) return;
 
@@ -96,12 +101,15 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     // control buttons disability
 
     const isBtnDisabled = () => {
+        return false;
         if (!formValues.email || !formValues.password) return true;
 
         if (mode === 'signUp' && (!formValues.repeatPassword || !formValues.userName)) return true;
 
         return false;
     };
+
+    console.log('test');
 
     return (
         <StyledWrapper as="section">
