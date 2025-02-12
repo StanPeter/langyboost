@@ -5,3 +5,6 @@ export declare const courseInfo: string;
 export declare const courseWrapper: string;
 export declare const sliderArrow: string;
 export declare const switchAnimation: string;
+export declare const image: string;
+export declare const imageContainer: string;
+export declare const courseTitle: string;

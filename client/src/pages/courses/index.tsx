@@ -5,7 +5,7 @@ import Header from 'components/UI/Header';
 import Select from 'components/UI/Select/Select';
 import Separator from 'components/UI/Separator/Separator';
 import React, { useEffect, useState } from 'react';
-import { betaCourses, customCourses, mainCourses } from 'services/mockData';
+import { mainCourses } from 'services/mockData';
 import styles from './cousesPage.module.scss';
 
 interface CoursesPageProps {}
@@ -15,7 +15,6 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
     const [wantToLearn, setWantToLearn] = useState<string>('');
     const [chosenCourse, setChosenCourse] = useState<string>('');
     const [_windowWidth, setWindowWidth] = useState<number | null>(null);
-
 
     useEffect(() => {
         const handleWindowResize = () => {
@@ -34,7 +33,6 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
         };
     }, []);
 
-
     // const btnDisabled = () => (iSpeak && wantToLearn && chosenCourse ? false : true);
 
     console.log('rerendering');
@@ -46,7 +44,6 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             </header>
             <form className={styles.wrapper}>
                 <div className={styles.filtersWrapper}>
-
                     <Select
                         text="I_SPEAK"
                         type="singleselect"
@@ -86,7 +83,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                 <Separator useCase="fullHorizontal" />
             </section>
 
-            <section>
+            {/* <section>
                 <Header level={2} classes="labelMargin" text="CUSTOM_GERMAN_COURSES" />
                 <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
@@ -96,7 +93,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                 <Header level={2} classes="labelMargin" text="BETA_COURSES" />
                 <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
-            </section>
+            </section> */}
             <Button text="START_NOW" useCase="big" onClick={() => {}} />
         </MainBody>
     );

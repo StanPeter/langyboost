@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@mui/material/styles';
+import 'components/UI/Carousel/carousel.css';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import 'styles/globalClasses.css';

@@ -130,7 +130,8 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
 
     const { data: session } = useSession();
     if (session) {
-        alert('signed in as ' + session.user?.email);
+        router.push('/courses');
+        console.log(session, ' session');
     }
 
     return (
