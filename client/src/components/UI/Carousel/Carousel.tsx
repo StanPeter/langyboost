@@ -1,126 +1,5 @@
-// import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-// import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-// import { Course } from 'ts/interfaces';
-// import { Direction } from 'ts/types';
-// import styles from './carousel.module.scss';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import { Mousewheel, Navigation } from 'swiper/modules';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-
-// interface CarouselProps {
-//     data: Course[];
-//     onChange: Dispatch<SetStateAction<string>>;
-//     value: string;
-// }
-
-// const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
-//     const [animate, setAnimate] = useState(false);
-//     const [values, setValues] = useState<Course[]>(data.slice(0, 5));
-//     const [chosenValue, setChosenValue] = useState<Course | null>(null);
-
-//     useEffect(() => {
-//         if (value !== chosenValue?.value) {
-//             const possibleValues = data.map(d => d.value);
-//             if (possibleValues.includes(value)) onSwitchHandler(null, value);
-//             else setChosenValue(null);
-//         }
-//     }, [value]);
-
-//     const getItemIndex = (mainIdx: number, step: 1 | 2, direction: Direction) => {
-//         const lastIndex = data.length - 1;
-//         const firstIndex = 0;
-
-//         let result = direction === 'left' ? mainIdx - step : mainIdx + step;
-
-//         //for direction left, if it overflows then set to one of two last items, same for opposite direction
-//         if (result < firstIndex) result = result === -1 ? lastIndex : lastIndex - 1;
-//         else if (result > lastIndex) result = result === lastIndex + 1 ? firstIndex : firstIndex + 1;
-
-//         return result;
-//     };
-
-//     const onSwitchHandler = (direction?: Direction | null, clickedVal?: string) => {
-//         //for arrow handling there is direction filled, for click handling there is index clicked number
-//         if (!direction && !clickedVal) {
-//             console.log('NOT FILLED PARAMS FOR THE FUNCTION');
-//             return;
-//         } else if (clickedVal && values[2].value === clickedVal) {
-//             const newChosenValue = chosenValue ? null : values[2];
-//             onChange(newChosenValue?.value || '');
-//             setChosenValue(newChosenValue);
-//             return;
-//         }
-
-//         let chosenIndex;
-
-//         if (direction) {
-//             chosenIndex = getItemIndex(
-//                 data.findIndex((course: Course) => course.value === chosenValue?.value),
-//                 1,
-//                 direction,
-//             );
-//         } else if (clickedVal) {
-//             chosenIndex = data.findIndex((course: Course) => course.value === clickedVal);
-//         }
-
-//         //@ts-ignore
-//         setNewCourses(chosenIndex);
-//     };
-
-//     const setNewCourses = async (chosenIndex: number) => {
-//         if (animate) return;
-
-//         const newValues = [
-//             data[getItemIndex(chosenIndex, 2, 'left')],
-//             data[getItemIndex(chosenIndex, 1, 'left')],
-//             data[chosenIndex],
-//             data[getItemIndex(chosenIndex, 1, 'right')],
-//             data[getItemIndex(chosenIndex, 2, 'right')],
-//         ];
-
-//         setAnimate(true);
-//         setValues(newValues);
-//         setChosenValue(newValues[2]);
-//     };
-
-//     console.log('rerender');
-
-//     return (
-//         <React.Fragment>
-//             <div className={styles.courseWrapper}>
-//                 {values.length > 0 ? (
-//                     <React.Fragment>
-//                         <FiArrowLeft onClick={() => onSwitchHandler('left')} className={styles.sliderArrow} />
-//                         {values.map((val, idx) => (
-//                             <div
-//                                 className={`${styles.course} ${animate ? styles.animate : ''} ${
-//                                     chosenValue?.value === val.value ? styles.chosen : ''
-//                                 } `}
-//                                 key={idx}
-//                                 style={{ backgroundImage: `url(${val.imgSrc})` }}
-//                                 onClick={() => onSwitchHandler(null, val.value)}
-//                                 onAnimationEnd={() => {
-//                                     setAnimate(false);
-//                                     if (chosenValue && chosenValue?.value !== value) onChange(chosenValue.value);
-//                                 }}
-//                             >
-//                                 <p>{val.name}</p>
-//                             </div>
-//                         ))}
-//                         <FiArrowRight onClick={() => onSwitchHandler('right')} className={styles.sliderArrow} />
-//                     </React.Fragment>
-//                 ) : (
-//                     <p>No available courses</p>
-//                 )}
-//             </div>
-//             {chosenValue ? <p className={styles.courseInfo}>{chosenValue.text}</p> : null}
-//         </React.Fragment>
-//     );
-// };
-
-// export default Carousel;
-
+import { Box } from '@mui/material';
+import styled from '@mui/material/styles/styled';
 import Image from 'next/image';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import 'swiper/css';
@@ -128,7 +7,52 @@ import 'swiper/css/navigation';
 import { Mousewheel, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Course } from 'ts/interfaces';
-import styles from './carousel.module.scss';
+
+const StyledImage = styled(Image)`
+    position: unset !important;
+    height: 75px !important;
+    width: 100% !important;
+    border-radius: 100%;
+`;
+
+const StyledImageContainer = styled('div')`
+    position: relative;
+    width: 100%;
+    height: 100%;
+`;
+
+const StyledCourseInfo = styled('p')`
+    border: 1.5px solid var(--color-dark-accent);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 45px 15px;
+    width: 72%;
+    height: 150px;
+    overflow: hidden;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+`;
+
+const StyledCourseBox = styled(Box)<{ $isChosen: boolean }>`
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    & p {
+        text-shadow:
+            -1px 0 var(--color-text-dark),
+            0 1px var(--color-text-dark),
+            1px 0 var(--color-text-dark),
+            0 -1px var(--color-text-dark);
+        color: var(--color-text-light);
+    }
+
+    scale: ${({ $isChosen }) => ($isChosen ? '1.1' : '0.9')};
+`;
 
 interface CarouselProps {
     data: Course[];
@@ -162,42 +86,45 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
     };
 
     return (
-        <Swiper
-            modules={[Navigation, Mousewheel]}
-            mousewheel={{ forceToAxis: true, sensitivity: 0.5 }}
-            spaceBetween={20}
-            slidesPerView={5}
-            onSlideChange={handleSlideChange}
-            speed={600}
-            centeredSlides={true}
-            navigation
-            loop={true}
-            loopAdditionalSlides={2}
-            slideToClickedSlide={true}
-            initialSlide={data.findIndex(course => course.value === value)}
-            breakpoints={{
-                320: { slidesPerView: 3, spaceBetween: 10 },
-                768: { slidesPerView: 4, spaceBetween: 15 },
-                1024: { slidesPerView: 5, spaceBetween: 20 },
-            }}
-        >
-            {data.map((val, idx) => (
-                <SwiperSlide key={val.value} virtualIndex={idx}>
-                    <div className={`${styles.course} ${chosenValue?.value === val.value ? styles.chosen : ''}`}>
-                        <div className={styles.imageContainer}>
-                            <Image
-                                src={val.imgSrc}
-                                alt={val.name}
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                className={styles.image}
-                            />
-                        </div>
-                        <p className={styles.courseTitle}>{val.name}</p>
-                    </div>
-                </SwiperSlide>
-            ))}
-        </Swiper>
+        <>
+            <Swiper
+                modules={[Navigation, Mousewheel]}
+                mousewheel={{ forceToAxis: true, sensitivity: 0.5 }}
+                spaceBetween={20}
+                slidesPerView={5}
+                onSlideChange={handleSlideChange}
+                speed={600}
+                style={{ width: '100%' }}
+                centeredSlides={true}
+                navigation
+                loop={true}
+                loopAdditionalSlides={2}
+                slideToClickedSlide={true}
+                initialSlide={data.findIndex(course => course.value === value)}
+                breakpoints={{
+                    320: { slidesPerView: 3, spaceBetween: 10 },
+                    768: { slidesPerView: 4, spaceBetween: 15 },
+                    1024: { slidesPerView: 5, spaceBetween: 20 },
+                }}
+            >
+                {data.map((val, idx) => (
+                    <SwiperSlide key={val.value} virtualIndex={idx}>
+                        <StyledCourseBox $isChosen={chosenValue?.value === val.value}>
+                            <StyledImageContainer>
+                                <StyledImage
+                                    src={val.imgSrc}
+                                    alt={val.name}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                            </StyledImageContainer>
+                            <p style={{ position: 'absolute' }}>{val.name}</p>
+                        </StyledCourseBox>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            {chosenValue ? <StyledCourseInfo>{chosenValue.text}</StyledCourseInfo> : null}
+        </>
     );
 };
 
