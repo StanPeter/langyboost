@@ -4,6 +4,7 @@ import Carousel from 'components/UI/Carousel/Carousel';
 import Header from 'components/UI/Header';
 import Select from 'components/UI/Select/Select';
 import Separator from 'components/UI/Separator/Separator';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { mainCourses } from 'services/mockData';
 import styles from './cousesPage.module.scss';
@@ -15,6 +16,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
     const [wantToLearn, setWantToLearn] = useState<string>('');
     const [chosenCourse, setChosenCourse] = useState<string>('');
     const [_windowWidth, setWindowWidth] = useState<number | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const handleWindowResize = () => {
@@ -94,7 +96,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                 <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
             </section> */}
-            <Button text="START_NOW" useCase="big" onClick={() => {}} />
+            <Button text="START_NOW" useCase="big" onClick={() => router.push('/courses/1')} />
         </MainBody>
     );
 };

@@ -5,7 +5,7 @@ import Input from 'components/UI/Input';
 import Paragraph from 'components/UI/Paragraph';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
@@ -57,6 +57,7 @@ interface ILoginFormProps {
 // form has two modes, sing in and sign up
 const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
     const [mode, setMode] = useState<TLoginFormMode>('singIn');
+    const [isTouched, setIsTouched] = useState(false);
     const router = useRouter();
     const usedSignHook = mode === 'signUp' ? 'TODO' : 'TODO';
     // const { data: users, error } = trpc.getAllUsers.query();
@@ -125,14 +126,13 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         return false;
     };
 
-    console.log('test');
-    console.log(formValues, ' formValues');
-
     const { data: session } = useSession();
-    if (session) {
-        router.push('/courses');
-        console.log(session, ' session');
-    }
+
+    useEffect(() => {
+        if (session) {
+            router.push('/courses');
+        }
+    }, [session]);
 
     return (
         <StyledWrapper as="section">
@@ -201,8 +201,20 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
                 <StyledHr />
             </Box>
             <Box display={'flex'} flexDirection={'row'} justifyContent={'center'} width={'100%'} margin={'0 1rem'}>
-                <StyledIconFcGoogle className={`iconSpin`} onClick={() => signIn('google')} />
-                <StyledIconSiFacebook className={`facebook iconSpin`} onClick={() => signIn('facebook')} />
+                <StyledIconFcGoogle
+                    className={`iconSpin`}
+                    onClick={async () => {
+                        setIsTouched(true);
+                        await signIn('google');
+                    }}
+                />
+                <StyledIconSiFacebook
+                    className={`facebook iconSpin`}
+                    onClick={async () => {
+                        setIsTouched(true);
+                        await signIn('facebook');
+                    }}
+                />
             </Box>
         </StyledWrapper>
     );
