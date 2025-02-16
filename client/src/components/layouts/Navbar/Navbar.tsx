@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { BiLogIn } from 'react-icons/bi';
 import { CgCrown } from 'react-icons/cg';
-import { FiSettings } from 'react-icons/fi';
 // import { setAccessToken } from "utils/getToken";
 import styles from './navbar.module.scss';
 
@@ -137,12 +136,12 @@ const Navbar: React.FC<NavbarProps> = () => {
             <ul className={`${styles.navbarLinks} ${styles.right} `}>
                 <Link>
                     <Paragraph text="5" whiteText shouldTranslate={false} />
-                    <Image src={FireIcon} alt="fireIcon" onClick={() => router.push('/cards')} />
+                    <Image src={FireIcon} alt="fireIcon" onClick={() => router.push('/courses/level/1')} />
                 </Link>
                 <Link>
 
                     <Paragraph text="5" whiteText shouldTranslate={false} />
-                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => router.push('/courses')} />
+                    <Image src={SwedenFlag} alt="swedenIcon" onClick={() => router.push('/courses/1')} />
                 </Link>
                 <Link>
 
@@ -150,11 +149,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <Image src={ProfilePicture} alt="profilePicture" onClick={() => router.push('/profile')} />
                 </Link>
                 <hr className={styles.separator} />
-                <Link>
+                {/* <Link>
 
                     <FiSettings onClick={() => router.push('/settings')} className={`${styles.settingsIcon}`} />
-                </Link>
-                <hr className={styles.separator} />
+                </Link> */}
+                {/* <hr className={styles.separator} /> */}
                 {authButtons(false)}
 
             </ul>

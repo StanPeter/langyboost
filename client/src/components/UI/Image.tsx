@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import React from 'react';
 
 interface IImage {
@@ -9,7 +10,7 @@ interface IImage {
 
 // custom header due to text translation
 const Image: React.FC<IImage> = ({ alt, classes, onClick, src }) => {
-    return <img className={`${classes}`} alt={alt} onClick={onClick} src={src} />;
+    return <NextImage className={`${classes}`} alt={alt} onClick={onClick} src={src} />;
 };
 
 export default Image;

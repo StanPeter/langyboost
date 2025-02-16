@@ -1,4 +1,4 @@
-import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
+import InputWrapper from 'components/hoc/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
 import React, { FormEvent } from 'react';
 import { TInputUsecase } from 'ts/types';

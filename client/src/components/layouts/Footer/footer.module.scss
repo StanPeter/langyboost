@@ -1,41 +1,4 @@
-.footer {
-    width: 100%;
-    color: var(--color-main-light);
-    background-color: var(--color-main);
-    padding: 1.5rem 0;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    border-radius: 20rem 20rem 0 0;
-    padding: 1rem 0;
-    position: absolute;
-    bottom: 0;
-}
 
-.copyright {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5rem 0;
-    font-style: italic;
-
-    p {
-        &:last-child {
-            display: none;
-        }
-    }
-
-    a {
-        padding: 0 0.3rem;
-        color: var(--color-text-dark);
-        text-decoration: none;
-
-        &:hover {
-            scale: var(--transform-scale);
-            color: var(--color-text-light);
-        }
-    }
-}
 
 .socialNetwork {
     li {
@@ -131,11 +94,6 @@
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
-}
-
-/* BREAKPOINTS  */
-// SCREEN PHONE
-@media screen and (min-width: 450px) {
 }
 
 // SMALLER SCREEN TABLET

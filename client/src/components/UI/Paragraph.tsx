@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import TranslateText from 'components/hoc/TranslateText';
 import React from 'react';
 
@@ -12,10 +13,13 @@ interface IParagraph {
 const Paragraph: React.FC<IParagraph> = ({ text, whiteText, shouldTranslate = true, classes }) => {
     const defaultClasses = whiteText ? `whiteText` : '';
 
-
     const translatedText = shouldTranslate ? <TranslateText>{text}</TranslateText> : text;
 
-    return <p className={`${classes} ${defaultClasses}`}>{translatedText}</p>;
+    return (
+        <Typography variant="body1" className={`${classes} ${defaultClasses}`}>
+            {translatedText}
+        </Typography>
+    );
 };
 
 export default Paragraph;

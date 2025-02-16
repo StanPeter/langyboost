@@ -1,5 +1,5 @@
 import { Input as MuiInput, styled } from '@mui/material';
-import InputWrapper from 'components/hoc/InputWrapper/InputWrapper';
+import InputWrapper from 'components/hoc/InputWrapper';
 import TranslateText from 'components/hoc/TranslateText';
 import React, { useEffect, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
