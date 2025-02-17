@@ -1,3 +1,4 @@
+import { styled } from '@mui/system';
 import MainBody from 'components/layouts/MainBody';
 import Button from 'components/UI/Button';
 import Carousel from 'components/UI/Carousel/Carousel';
@@ -7,7 +8,21 @@ import Separator from 'components/UI/Separator/Separator';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { mainCourses } from 'services/mockData';
-import styles from './cousesPage.module.scss';
+
+const StyledFiltersWrapper = styled('div')(() => ({
+    width: '100%',
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    '@media (min-width: 600px)': {
+        width: 'calc(80% - 1rem)',
+        marginRight: '1rem',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
+}));
 
 interface CoursesPageProps {}
 
@@ -44,8 +59,8 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             <header>
                 <Header level={1} classes="labelMargin" text="COURSES" />
             </header>
-            <form className={styles.wrapper}>
-                <div className={styles.filtersWrapper}>
+            <form style={{ width: '100%', display: 'flex' }}>
+                <StyledFiltersWrapper>
                     <Select
                         text="I_SPEAK"
                         type="singleselect"
@@ -70,8 +85,8 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
                         value={[chosenCourse]}
                         onChange={val => setChosenCourse(val)}
                     />
-                </div>
-                {/* <div className={styles.btnWrapper}>
+                </StyledFiltersWrapper>
+                {/* <div style={{ display: 'none' }}>
                     <Button disabled={btnDisabled} useCase="small" text="START_NOW" onClick={() => {}} />
                 </div>
                 {windowWidth < 400 && (

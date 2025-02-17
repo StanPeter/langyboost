@@ -1,9 +1,84 @@
+import { styled } from '@mui/material/styles';
 import MainBody from 'components/layouts/MainBody';
 import Select from 'components/UI/Select/Select';
-// import { useGetPhrasesQuery } from 'graphql/generated/graphql';
-import React from 'react';
-import { useSwiper } from 'swiper/react';
-import styles from './articlesPage.module.scss';
+
+// Main container
+const StyledCoursesPage = styled('div')({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+});
+
+// Select component
+const StyledSelect = styled('select')(({ theme }) => ({
+    outline: 'none',
+    backgroundColor: 'var(--color-light-accent)',
+    border: '2px solid var(--color-dark-accent)',
+    boxShadow: 'var(--box-shadow-small)',
+    borderRadius: '5px',
+    width: '180px',
+    height: '35px',
+    fontSize: '20px',
+    textAlign: 'left',
+    margin: '1rem',
+    paddingLeft: '12px',
+
+    '& option': {
+        backgroundColor: 'var(--color-light-accent)',
+        border: '2px solid var(--color-dark-accent)',
+    },
+}));
+
+// Filter container
+const StyledFilter = styled('div')({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+});
+
+// Separator
+const StyledSeparator = styled('hr')({
+    width: '755.01px',
+    margin: '2rem 0',
+    border: '1px solid var(--color-dark-accent)',
+});
+
+// Button container
+const StyledButtonContainer = styled('div')({
+    position: 'absolute',
+});
+
+// Button styles
+const StyledButton = styled('button')({
+    background: 'var(--color-main)',
+    boxShadow: 'var(--box-shadow-small)',
+    borderRadius: '15px',
+    fontFamily: 'Roboto',
+    fontSize: '16px',
+    lineHeight: '40px',
+    width: '177px',
+    height: '31px',
+    border: 'none',
+    letterSpacing: '0.1em',
+    color: 'var(--color-text-light)',
+    position: 'relative',
+    left: '200px',
+    top: '1px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+});
+
+// Filter label
+const StyledFilterLabel = styled('label')({
+    fontSize: '20px',
+    lineHeight: '40px',
+    textAlign: 'center',
+    letterSpacing: '0.05em',
+    color: 'var(--color-text-dark)',
+    display: 'flex',
+    flexDirection: 'column',
+});
 
 interface ArticlesPageProps {}
 
@@ -24,29 +99,14 @@ const DATA = [
     },
 ];
 
-const SwiperButtonNext = ({ children, type }) => {
-    const swiper = useSwiper();
-    if (type === 'right') return <button onClick={() => swiper.slideNext()}>{children}</button>;
-    return <button onClick={() => swiper.slidePrev()}>{children}</button>;
-};
 
+// Usage in component
 const ArticlesPage: React.FC<ArticlesPageProps> = () => {
-    // const { data, error } = useGetPhrasesQuery();
-    const swiper = useSwiper();
-
-    // useEffect(() => {
-    //   con
-
-    // }, [])
-
-    // console.log(data, 'DATA ACCESSS');
-
-    // if (error) alert(error);
     return (
         <MainBody>
-            <div className={styles.coursesPage}>
+            <StyledCoursesPage>
                 <h2>Articles</h2>
-                <div className={styles.coursesFilters}>
+                <div >
                     <Select
                         type="multiselect"
                         useCase="filter"
@@ -55,17 +115,19 @@ const ArticlesPage: React.FC<ArticlesPageProps> = () => {
                         value={['german']}
                         onChange={() => {}}
                     />
-                    <div className={styles.coursesFilter}>
-                        <label htmlFor="">Sort by</label>
-                        <select name="sourceLanguage" id="" className={styles.coursesSelect}>
-                            <option value="en">Newest</option>
-                            <option value="ge">Most popular</option>
-                            <option value="ge">Most viewed</option>
-                        </select>
-                    </div>
+                    <StyledFilter>
+                        <StyledFilterLabel htmlFor="">
+                            Sort by
+                            <StyledSelect name="sourceLanguage">
+                                <option value="en">Newest</option>
+                                <option value="ge">Most popular</option>
+                                <option value="ge">Most viewed</option>
+                            </StyledSelect>
+                        </StyledFilterLabel>
+                    </StyledFilter>
                 </div>
-                <hr className={styles.coursesSeparator} />
-            </div>
+                <StyledSeparator />
+            </StyledCoursesPage>
         </MainBody>
     );
 };

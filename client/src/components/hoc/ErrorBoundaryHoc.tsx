@@ -1,4 +1,4 @@
-import Dialog from 'components/UI/Modal/Dialog';
+import Dialog from 'components/UI/Dialog';
 import Paragraph from 'components/UI/Paragraph';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
