@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import MainBody from 'components/layouts/MainBody';
-import Select from 'components/UI/Select/Select';
+import Select from 'components/UI/Select';
 
 // Main container
 const StyledCoursesPage = styled('div')({

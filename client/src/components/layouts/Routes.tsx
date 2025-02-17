@@ -1,5 +1,5 @@
 // Componenty
-import Spinner from 'components/UI/Spinner/Spinner';
+import Spinner from 'components/UI/Spinner';
 import ErrorBoundaryHoc from 'components/hoc/ErrorBoundaryHoc';
 import NotFound from 'pages/NotFound/NotFound';
 import React, { Suspense } from 'react';

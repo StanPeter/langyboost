@@ -1,10 +1,11 @@
 import { styled } from '@mui/system';
 import MainBody from 'components/layouts/MainBody';
 import Button from 'components/UI/Button';
-import Carousel from 'components/UI/Carousel/Carousel';
+import Carousel from 'components/UI/Carousel';
 import Header from 'components/UI/Header';
-import Select from 'components/UI/Select/Select';
-import Separator from 'components/UI/Separator/Separator';
+import Select from 'components/UI/Select';
+import Separator from 'components/UI/Separator';
+import Spinner from 'components/UI/Spinner';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { mainCourses } from 'services/mockData';
@@ -56,6 +57,7 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
 
     return (
         <MainBody>
+            <Spinner useCase="fullPage" />
             <header>
                 <Header level={1} classes="labelMargin" text="COURSES" />
             </header>

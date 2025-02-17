@@ -1,6 +1,6 @@
 import MainBody from 'components/layouts/MainBody';
 import CourseLevelGraph from 'components/UI/CourseLevelGraph';
-import Separator from 'components/UI/Separator/Separator';
+import Separator from 'components/UI/Separator';
 import React from 'react';
 
 interface CourseDetailPageProps {}
