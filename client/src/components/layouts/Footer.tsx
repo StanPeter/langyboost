@@ -1,5 +1,4 @@
-import { Box, styled } from '@mui/material';
-import Link from 'components/UI/Link';
+import { Box, Link, styled } from '@mui/material';
 import Paragraph from 'components/UI/Paragraph';
 import React from 'react';
 import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
@@ -30,10 +29,10 @@ const StyledSocialNetwork = styled('ul')({
 });
 
 // .socialNetwork li
-const StyledSocialItem = styled('li')({
-    display: 'inline-flex',
-    margin: '0 1rem',
-});
+// const StyledSocialItem = styled('li')({
+//     display: 'inline-flex',
+//     margin: '0 1rem',
+// });
 
 const hoverBackground = (network: string) => {
     switch (network) {
@@ -61,7 +60,7 @@ const hoverBackground = (network: string) => {
     }
 };
 
-const StyledSocialLink = styled(Link)<{ network: string }>(({ theme, network }) => ({
+const StyledLink = styled(Link)<{ $icon: string }>(({ theme, $icon }) => ({
     backgroundColor: 'var(--color-main-light)',
     display: 'flex',
     justifyContent: 'center',
@@ -73,7 +72,7 @@ const StyledSocialLink = styled(Link)<{ network: string }>(({ theme, network }) 
     transition: 'all 0.3s ease',
     textDecoration: 'none',
     '&:hover': {
-        background: hoverBackground(network),
+        background: hoverBackground($icon),
         '& i': {
             color: '#e7eff6',
             transform: 'rotate(360deg)',
@@ -127,41 +126,31 @@ const Footer: React.FC = () => {
     return (
         <StyledFooter>
             <StyledSocialNetwork>
-                <StyledSocialItem key="linkedin">
-                    <StyledSocialLink network="linkedin" href="#">
-                        <SocialIcon>
-                            <FaLinkedinIn />
-                        </SocialIcon>
-                    </StyledSocialLink>
-                </StyledSocialItem>
-                <StyledSocialItem key="twitter">
-                    <StyledSocialLink network="twitter" href="#">
-                        <SocialIcon>
-                            <FaTwitter />
-                        </SocialIcon>
-                    </StyledSocialLink>
-                </StyledSocialItem>
-                <StyledSocialItem key="github">
-                    <StyledSocialLink network="github" href="#">
-                        <SocialIcon>
-                            <FaGithub />
-                        </SocialIcon>
-                    </StyledSocialLink>
-                </StyledSocialItem>
-                <StyledSocialItem key="facebook">
-                    <StyledSocialLink network="facebook" href="#">
-                        <SocialIcon>
-                            <FaFacebookF />
-                        </SocialIcon>
-                    </StyledSocialLink>
-                </StyledSocialItem>
-                <StyledSocialItem key="instagram">
-                    <StyledSocialLink network="instagram" href="#">
-                        <SocialIcon>
-                            <FaInstagram />
-                        </SocialIcon>
-                    </StyledSocialLink>
-                </StyledSocialItem>
+                <StyledLink $icon="linkedin" href="#">
+                    <SocialIcon>
+                        <FaLinkedinIn />
+                    </SocialIcon>
+                </StyledLink>
+                <StyledLink $icon="twitter" href="#">
+                    <SocialIcon>
+                        <FaTwitter />
+                    </SocialIcon>
+                </StyledLink>
+                <StyledLink $icon="github" href="#">
+                    <SocialIcon>
+                        <FaGithub />
+                    </SocialIcon>
+                </StyledLink>
+                <StyledLink $icon="facebook" href="#">
+                    <SocialIcon>
+                        <FaFacebookF />
+                    </SocialIcon>
+                </StyledLink>
+                <StyledLink $icon="instagram" href="#">
+                    <SocialIcon>
+                        <FaInstagram />
+                    </SocialIcon>
+                </StyledLink>
             </StyledSocialNetwork>
 
             <StyledCopyright>
