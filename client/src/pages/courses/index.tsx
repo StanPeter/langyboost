@@ -5,7 +5,6 @@ import Carousel from 'components/UI/Carousel';
 import Header from 'components/UI/Header';
 import Select from 'components/UI/Select';
 import Separator from 'components/UI/Separator';
-import Spinner from 'components/UI/Spinner';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { mainCourses } from 'services/mockData';
@@ -53,11 +52,8 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
 
     // const btnDisabled = () => (iSpeak && wantToLearn && chosenCourse ? false : true);
 
-    console.log('rerendering');
-
     return (
         <MainBody>
-            <Spinner useCase="fullPage" />
             <header>
                 <Header level={1} classes="labelMargin" text="COURSES" />
             </header>
