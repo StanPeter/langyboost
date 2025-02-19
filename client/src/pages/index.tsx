@@ -1,5 +1,4 @@
 import { Box, styled } from '@mui/material';
-import ErrorBoundaryHoc from 'components/hoc/ErrorBoundaryHoc';
 import LoginForm from 'components/pages/auth/LoginForm';
 import ParticleBackground from 'components/pages/home/ParticleBackground';
 import React from 'react';
@@ -35,16 +34,12 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     // console.log('rerendering LANDING');
 
     return (
-        <ErrorBoundaryHoc
-            element={
-                <StyledWrapper>
-                    <ParticleBackground />
-                    <StyledFormWrapper>
-                        <LoginForm useCase="landingPage" />
-                    </StyledFormWrapper>
-                </StyledWrapper>
-            }
-        />
+        <StyledWrapper>
+            <ParticleBackground />
+            <StyledFormWrapper>
+                <LoginForm useCase="landingPage" />
+            </StyledFormWrapper>
+        </StyledWrapper>
     );
 };
 

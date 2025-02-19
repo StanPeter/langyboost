@@ -1582,6 +1582,47 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@logtail/core@^0.5.2":
+  version "0.5.2"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@logtail/core/-/core-0.5.2.tgz#a5fb36731848fbb47a3b1176c643a405e40d674d"
+  integrity sha512-mkQqGFwtZ06x2xsj6kOiEZeLSlPeTDArNOEeB9Q1VHxduRHJFInG7soix8+P8xeaoJx+7itvbUySB0XBlnmLSA==
+  dependencies:
+    "@logtail/tools" "^0.5.2"
+    "@logtail/types" "^0.5.2"
+    serialize-error "8.1.0"
+
+"@logtail/node@^0.5.2":
+  version "0.5.2"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@logtail/node/-/node-0.5.2.tgz#f0d2462b6c43f6d7334858cb8769bf23162fe2e9"
+  integrity sha512-pSleAsbq61WdaMzYkmW+kdCfptIWmjhSvNoyAtFFuaIGNXFS2UEmnHPrvzrPxsFgBswePSGl/m1teHTeBxA+qg==
+  dependencies:
+    "@logtail/core" "^0.5.2"
+    "@logtail/types" "^0.5.2"
+    "@msgpack/msgpack" "^2.5.1"
+    "@types/stack-trace" "^0.0.33"
+    cross-fetch "^4.0.0"
+    minimatch "^9.0.5"
+    serialize-error "8.1.0"
+    stack-trace "0.0.10"
+
+"@logtail/tools@^0.5.2":
+  version "0.5.2"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@logtail/tools/-/tools-0.5.2.tgz#b24f96f2bc65f86a928f915aa841f1ec15da2ff9"
+  integrity sha512-1Vg0rznoDYXWYDkz8orjKNTjK5f2eUubHN6tfJ2hHKCRRHy7y+TJpIlCQg3BilVcOvMIfiy4RbrcaFTHvDQWTQ==
+  dependencies:
+    "@logtail/types" "^0.5.2"
+    cross-fetch "^4.0.0"
+
+"@logtail/types@^0.5.2":
+  version "0.5.2"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@logtail/types/-/types-0.5.2.tgz#f5a53963df56a0dbed3e665f39ac1c2a092071d3"
+  integrity sha512-G3C3XjJPW/LJS0+sanzsNLLqXHAJkhdBR8h4zFUylOtUOevtlneenGNZFjEil+h/GOb3tUySvBuP2wl51gvf0A==
+
+"@msgpack/msgpack@^2.5.1":
+  version "2.8.0"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@msgpack/msgpack/-/msgpack-2.8.0.tgz#4210deb771ee3912964f14a15ddfb5ff877e70b9"
+  integrity sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ==
+
 "@mui/core-downloads-tracker@^6.4.3":
   version "6.4.3"
   resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@mui/core-downloads-tracker/-/core-downloads-tracker-6.4.3.tgz#aa9506e4d43e02d61fb82e23de9741fd24b22b61"
@@ -2612,6 +2653,11 @@
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.0.tgz#591c1ce3a702c45ee15f47a42ade72c2fd78978a"
   integrity sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==
+
+"@types/stack-trace@^0.0.33":
+  version "0.0.33"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/@types/stack-trace/-/stack-trace-0.0.33.tgz#979a3fde9e721e78603b781e468ef30f0df0f049"
+  integrity sha512-O7in6531Bbvlb2KEsJ0dq0CHZvc3iWSR5ZYMtvGgnHA56VgriAN/AU2LorfmcvAl2xc9N5fbCTRyMRRl8nd74g==
 
 "@types/use-sync-external-store@^0.0.3":
   version "0.0.3"
@@ -3985,6 +4031,13 @@ cross-fetch@^3.1.5:
   integrity sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==
   dependencies:
     node-fetch "^2.6.12"
+
+cross-fetch@^4.0.0:
+  version "4.1.0"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/cross-fetch/-/cross-fetch-4.1.0.tgz#8f69355007ee182e47fa692ecbaa37a52e43c3d2"
+  integrity sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==
+  dependencies:
+    node-fetch "^2.7.0"
 
 cross-spawn@^7.0.0, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -6959,7 +7012,7 @@ minimatch@^9.0.0, minimatch@^9.0.1, minimatch@^9.0.3:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimatch@^9.0.4:
+minimatch@^9.0.4, minimatch@^9.0.5:
   version "9.0.5"
   resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/minimatch/-/minimatch-9.0.5.tgz#d74f9dd6b57d83d8e98cfb82133b03978bc929e5"
   integrity sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==
@@ -7139,7 +7192,7 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-node-fetch@^2.6.1, node-fetch@^2.6.12:
+node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
@@ -8521,6 +8574,13 @@ sentence-case@^3.0.4:
     tslib "^2.0.3"
     upper-case-first "^2.0.2"
 
+serialize-error@8.1.0:
+  version "8.1.0"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/serialize-error/-/serialize-error-8.1.0.tgz#3a069970c712f78634942ddd50fbbc0eaebe2f67"
+  integrity sha512-3NnuWfM6vBYoy5gZFvHiYsVbafvI9vZv/+jlIigFn4oP4zjNPK3LhcY0xSCgeb1a5L8jO71Mit9LlNoi2UfDDQ==
+  dependencies:
+    type-fest "^0.20.2"
+
 set-blocking@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
@@ -8822,6 +8882,11 @@ stable-hash@^0.0.4:
   version "0.0.4"
   resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/stable-hash/-/stable-hash-0.0.4.tgz#55ae7dadc13e4b3faed13601587cec41859b42f7"
   integrity sha512-LjdcbuBeLcdETCrPn9i8AYAZ1eCtu4ECAWtP7UleOiZ9LzVxRzzUZEoZ8zB24nhkQnDWyET0I+3sWokSDS3E7g==
+
+stack-trace@0.0.10:
+  version "0.0.10"
+  resolved "https://artifactory.alteryx.com/artifactory/api/npm/npm/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
+  integrity sha512-KGzahc7puUKkzyMt+IqAep+TVNbKP+k2Lmwhub39m1AsTSkaDutx56aDCo+HLDzf/D26BIHTJWNiTG1KAJiQCg==
 
 streamsearch@^1.1.0:
   version "1.1.0"
