@@ -4,28 +4,6 @@ import React from 'react';
 
 interface NotFoundProps {}
 
-/*
-
-“A different language is a different vision of life.”
-
-— Federico Fellini
-
-
-
-“One language sets you in a corridor for life. Two languages open every door along the way.”
-
-— Frank Smith
-
-
-
-“He who knows no foreign languages knows nothing of his own.”
-
-— Johann Wolfgang von Goethe
-
-
-
-*/
-
 const NotFound: React.FC<NotFoundProps> = () => {
     return (
         <MainBody>
