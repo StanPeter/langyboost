@@ -1,6 +1,7 @@
 import { Box, styled } from '@mui/material';
-import LoginForm from 'components/others/LoginForm/LoginForm';
-import ParticleBackground from 'components/others/ParticleBackground/ParticleBackground';
+import ErrorBoundaryHoc from 'components/hoc/ErrorBoundaryHoc';
+import LoginForm from 'components/pages/auth/LoginForm';
+import ParticleBackground from 'components/pages/home/ParticleBackground';
 import React from 'react';
 
 const StyledWrapper = styled(Box)({
@@ -21,7 +22,6 @@ const StyledFormWrapper = styled(Box)({
 interface LandingPageProps {}
 
 const LandingPage: React.FC<LandingPageProps> = () => {
-    
     // useEffect(() => {
     //     console.log("effected");
 
@@ -35,12 +35,16 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     // console.log('rerendering LANDING');
 
     return (
-        <StyledWrapper>
-            <ParticleBackground />
-            <StyledFormWrapper>
-                <LoginForm useCase="landingPage" />
-            </StyledFormWrapper>
-        </StyledWrapper>
+        <ErrorBoundaryHoc
+            element={
+                <StyledWrapper>
+                    <ParticleBackground />
+                    <StyledFormWrapper>
+                        <LoginForm useCase="landingPage" />
+                    </StyledFormWrapper>
+                </StyledWrapper>
+            }
+        />
     );
 };
 
