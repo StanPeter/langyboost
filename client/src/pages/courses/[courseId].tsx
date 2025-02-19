@@ -1,5 +1,5 @@
 import MainBody from 'components/layouts/MainBody';
-import CourseLevelGraph from 'components/UI/CourseLevelGraph';
+import CourseLevelDetailGraph from 'components/pages/courses/CourseLevelDetailGraph';
 import Separator from 'components/UI/Separator';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const CourseDetailPage: React.FC<CourseDetailPageProps> = () => {
         <MainBody>
             <div className="">courses detail page</div>
             <Separator useCase="fullHorizontal" />
-            <CourseLevelGraph />
+            <CourseLevelDetailGraph />
         </MainBody>
     );
 };

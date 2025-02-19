@@ -83,7 +83,7 @@ const nodeTypes = {
     course: CourseNode,
 };
 
-const CourseLevelGraph: React.FC = () => {
+const CourseLevelDetailGraph: React.FC = () => {
     const router = useRouter();
     
     useEffect(() => {
@@ -116,4 +116,4 @@ const CourseLevelGraph: React.FC = () => {
     );
 };
 
-export default CourseLevelGraph;
+export default CourseLevelDetailGraph;

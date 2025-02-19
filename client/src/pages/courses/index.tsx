@@ -1,7 +1,7 @@
 import { styled } from '@mui/system';
 import MainBody from 'components/layouts/MainBody';
+import CourseCarousel from 'components/pages/courses/CourseCarousel';
 import Button from 'components/UI/Button';
-import Carousel from 'components/UI/Carousel';
 import Header from 'components/UI/Header';
 import Select from 'components/UI/Select';
 import Separator from 'components/UI/Separator';
@@ -94,19 +94,19 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
             </form>
             <section>
                 <Header level={2} classes="labelMargin" text="SUPPORTED_COURSES" />
-                <Carousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
+                <CourseCarousel data={mainCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
             </section>
 
             {/* <section>
                 <Header level={2} classes="labelMargin" text="CUSTOM_GERMAN_COURSES" />
-                <Carousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
+                <CourseCarousel data={customCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
 
             </section>
             <section>
                 <Header level={2} classes="labelMargin" text="BETA_COURSES" />
-                <Carousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
+                <CourseCarousel data={betaCourses} value={chosenCourse} onChange={setChosenCourse} />
                 <Separator useCase="fullHorizontal" />
             </section> */}
             <Button text="START_NOW" useCase="big" onClick={() => router.push('/courses/1')} />

@@ -54,13 +54,13 @@ const StyledCourseBox = styled(Box)<{ $isChosen: boolean }>`
     scale: ${({ $isChosen }) => ($isChosen ? '1.1' : '0.9')};
 `;
 
-interface CarouselProps {
+interface ICourseCarouselProps {
     data: Course[];
     onChange: Dispatch<SetStateAction<string>>;
     value: string;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
+const CourseCarousel: React.FC<ICourseCarouselProps> = ({ data, onChange, value }) => {
     const [chosenValue, setChosenValue] = useState<Course | null>(data.find(course => course.value === value) || null);
 
     // Sync local state with external value changes
@@ -128,4 +128,4 @@ const Carousel: React.FC<CarouselProps> = ({ data, onChange, value }) => {
     );
 };
 
-export default Carousel;
+export default CourseCarousel;

@@ -6,7 +6,7 @@ import Image from 'components/UI/Image';
 import Input from 'components/UI/Input';
 import Select from 'components/UI/Select';
 import MainBody from 'components/layouts/MainBody';
-import MembershipDialog from 'components/others/MembershipDialog';
+import MembershipDialog from 'components/pages/profile/MembershipDialog';
 import React, { useEffect, useState } from 'react';
 import { VscEdit } from 'react-icons/vsc';
 

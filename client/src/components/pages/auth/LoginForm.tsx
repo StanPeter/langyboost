@@ -12,7 +12,7 @@ import { SiFacebook } from 'react-icons/si';
 import trpc from 'trpc';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
-import Slider from './Slider';
+import LoginFormSlider from './LoginFormSlider';
 
 const StyledIconFcGoogle = styled(FcGoogle)`
     width: 20px;
@@ -136,7 +136,7 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
 
     return (
         <StyledWrapper as="section">
-            {useCase === 'landingPage' && <Slider />}
+            {useCase === 'landingPage' && <LoginFormSlider />}
             <Box width={'100%'} display={'flex'}>
                 <Button
                     style={{ width: '50% !important' }}

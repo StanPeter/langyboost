@@ -1,4 +1,4 @@
-import { particleConfig } from 'components/others/ParticleBackground/particleConfig';
+import { particleConfig } from 'components/pages/home/particleConfig';
 import React from 'react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';

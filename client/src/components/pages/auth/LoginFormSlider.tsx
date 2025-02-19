@@ -146,7 +146,7 @@ const StyledWrapper = styled(Box)`
     border-top-right-radius: 1.5rem;
 `;
 
-const Slider: React.FC = () => {
+const LoginFormSlider: React.FC = () => {
     return (
         <StyledWrapper>
             <Swiper modules={[Navigation]} navigation spaceBetween={50} slidesPerView={1}>
@@ -160,4 +160,4 @@ const Slider: React.FC = () => {
     );
 };
 
-export default Slider;
+export default LoginFormSlider;
