@@ -37,6 +37,7 @@
     "@reduxjs/toolkit": "^1.9.2",
     "@tanstack/react-query": "^5.62.2",
     "@trpc/client": "^10.45.2",
+    "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
     "@xyflow/react": "^12.4.3",
     "apollo-link-token-refresh": "^0.4.0",

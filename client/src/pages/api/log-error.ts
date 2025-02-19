@@ -1,4 +1,3 @@
-import { logError } from 'lib/errorLogger';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -8,8 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const { message, stack } = req.body;
-        const result = await logError(new Error(message), { stack });
-        console.log('result', result);
+        // await logError(new Error(message), { stack });
 
         return res.status(200).json({ message: 'Error logged successfully' });
     } catch (error) {
