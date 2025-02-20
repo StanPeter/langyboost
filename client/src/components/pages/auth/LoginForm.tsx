@@ -9,7 +9,6 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { SiFacebook } from 'react-icons/si';
-import trpc from 'trpc';
 import { TLoginFormMode, TLoginFormUseCase } from 'ts/types';
 import { SING_IN_SCHEMA, SING_UP_SCHEMA } from 'utils/validationSchema';
 import LoginFormSlider from './LoginFormSlider';
@@ -88,26 +87,26 @@ const LoginForm: React.FC<ILoginFormProps> = ({ useCase }) => {
         if (mode === 'signUp' && (!formValues.userName || !formValues.repeatPassword)) return;
 
         if (mode === 'singIn') {
-            const res = await trpc.user.login.mutate({
-                email: formValues.email,
-                password: formValues.password,
-            });
+            // const res = await trpc.user.login.mutate({
+            //     email: formValues.email,
+            //     password: formValues.password,
+            // });
 
-            if (res.error) {
-                console.log(res.error);
-            }
+            // if (res.error) {
+            //     console.log(res.error);
+            // }
         } else {
             try {
-                const res = await trpc.user.register.mutate({
-                    email: formValues.email,
-                    password: formValues.password,
-                    userName: formValues.userName,
-                    repeatPassword: formValues.repeatPassword,
-                });
+                // const res = await trpc.user.register.useMutation({
+                //     email: formValues.email,
+                //     password: formValues.password,
+                //     userName: formValues.userName,
+                //     repeatPassword: formValues.repeatPassword,
+                // });
 
-                if (res.error) {
-                    console.log(res.error);
-                }
+                // if (res.error) {
+                //     console.log(res.error);
+                // }
             } catch (error) {
                 console.log(error);
             }

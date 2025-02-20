@@ -41,3 +41,13 @@ export type Direction = 'left' | 'right';
 // Redux types
 export type TRootState = ReturnType<typeof store.getState>;
 export type TDispatch = typeof store.dispatch;
+
+// BACKEND
+// TODO: remove types for backend
+
+import { Prisma, PrismaClient } from '@prisma/client';
+import { DefaultArgs } from '@prisma/client/runtime/library';
+import e from 'express';
+
+export type TDatabase = PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>;
+export type TResponse = e.Response<any, Record<string, any>>;

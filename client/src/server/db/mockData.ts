@@ -1,5 +1,4 @@
-import { Role } from "generated/prisma";
-import { ISignInResponse } from "ts/interfaces";
+import { Role, User } from "@prisma/client";
 
 // USER mock data
 export const TEST_USER_DATA = {
@@ -19,6 +18,11 @@ export const TEST_USER_DATA = {
 	nationality: 'GE',
 	phoneNumber: '7184 8788',
 	// accessToken: 'accessTokenMOCK',
+};
+
+type ISignInResponse = {
+    user: User;
+    accessToken: string;
 };
 
 const signUpMockData: ISignInResponse = { user: TEST_USER_DATA, accessToken: 'mockAccessToken' };

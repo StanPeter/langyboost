@@ -5,6 +5,7 @@ import Button from 'components/UI/Button';
 import Header from 'components/UI/Header';
 import Select from 'components/UI/Select';
 import Separator from 'components/UI/Separator';
+import { trpc } from 'lib/trpcClient';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { mainCourses } from 'services/mockData';
@@ -32,6 +33,9 @@ const CoursesPage: React.FC<CoursesPageProps> = () => {
     const [chosenCourse, setChosenCourse] = useState<string>('');
     const [_windowWidth, setWindowWidth] = useState<number | null>(null);
     const router = useRouter();
+    const { data: users } = trpc.user.getAllUsers.useQuery();
+
+    console.log('users', users);
 
     useEffect(() => {
         const handleWindowResize = () => {

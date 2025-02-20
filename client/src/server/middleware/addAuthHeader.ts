@@ -1,9 +1,7 @@
 // import { verify } from "jsonwebtoken";
-import { IContextType } from "ts/interfaces";
-import { MiddlewareFn } from "type-graphql";
 
 // adds bearer token header to each request
-export const addAccessTokenHeader: MiddlewareFn<IContextType> = ({}, next) => {
+export const addAccessTokenHeader: any = ({}, next: any) => {
     // console.log(context.req.headers, " Context headers");
     // console.log("addAccessTokenHeader addAccessTokenHeader MIDDLEWAREREEEE");
     // const accessToken = context.req.cookies.oad; // accessToken is stores as 'oad', for enhanced security

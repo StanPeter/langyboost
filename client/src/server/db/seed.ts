@@ -1,4 +1,4 @@
-import db from "db";
+import db from "server/db";
 
 // import existing phrases from a xslx DB file -> replacing local Postgres downloaded data with Atlas MongoDB cloud 
 export const seedPhrases = async () => {

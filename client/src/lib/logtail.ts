@@ -1,7 +1,5 @@
 import { Logtail } from '@logtail/node';
 
-console.log('LOGTAIL_TOKEN', process.env.LOGTAIL_TOKEN);
-
 if (!process.env.LOGTAIL_TOKEN) {
     throw new Error('Logtail source token is missing!');
 }

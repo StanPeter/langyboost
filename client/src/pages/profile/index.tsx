@@ -101,6 +101,7 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                 <Image
                     src={ProfilePicture}
                     alt=""
+                    // @ts-ignore
                     sx={{ borderRadius: '50%', width: '20rem', height: '20rem', opacity: 0.8 }}
                 />
                 <SettingsEditIcon
@@ -182,12 +183,14 @@ const PersonalSettingsPage: React.FC<PersonalSettingsPageProps> = ({ routeMode }
                         <Button
                             text="MY_PROFILE"
                             active={mode === 'profile'}
+                            // @ts-ignore
                             classes={BtnMenuLeft}
                             useCase="fullLine"
                             onClick={() => setMode('profile')}
                         />
                         <Button
                             text="MY_SETTINGS"
+                            // @ts-ignore
                             classes={BtnMenuRight}
                             active={mode === 'settings'}
                             useCase="fullLine"

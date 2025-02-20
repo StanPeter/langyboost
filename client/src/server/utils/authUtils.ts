@@ -1,5 +1,5 @@
+import { User } from "@prisma/client";
 import { Response } from "express";
-import { User } from "generated/prisma";
 import { sign } from "jsonwebtoken";
 
 // if a request is sent and the tokens lifetime is < commented time, create a new one
