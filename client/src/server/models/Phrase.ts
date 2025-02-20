@@ -1,3 +1,3 @@
-import db from 'server/db';
+import { prisma } from 'server/db';
 
-export const Phrase = db.phrase;
+export const Phrase = prisma.phrase;

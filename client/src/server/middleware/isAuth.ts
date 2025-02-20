@@ -1,6 +1,6 @@
 import { User } from '@prisma/client';
 import { JsonWebTokenError, TokenExpiredError, decode, verify } from 'jsonwebtoken';
-import db from 'server/db';
+import { prisma } from 'server/db';
 import {
 	ACCESS_TOKEN_EXPIRATION_LIMIT,
 	REFRESH_TOKEN_EXPIRATION_LIMIT,
@@ -38,7 +38,7 @@ const verifyAccessToken = async (accessToken: string, context: IContextType) => 
 
         console.log(payload, ' PAYLOAD VERIFIED');
 
-        const foundUser = await db.user.findFirst({ where: { id: payload.userId } });
+        const foundUser = await prisma.user.findFirst({ where: { id: payload.userId } });
 
         console.log(foundUser?.id, ' USER FOUND ID');
 
@@ -72,7 +72,7 @@ const verifyRefreshToken = async (refreshToken: string, context: IContextType) =
         console.log('VERIFYING REFRESH TOKEN');
 
         const payload = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!) as IRefreshTokenPayload;
-        const foundUser = await db.user.findFirst({ where: { id: payload.userId } });
+        const foundUser = await prisma.user.findFirst({ where: { id: payload.userId } });
 
         console.log(foundUser?.id, 'FOUND USER ID');
 

@@ -4,13 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --port=3000",
     "startNext": "next start",
     "devNext": "next dev",
     "buildNext": "next build",
     "lintNext": "next lint",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
     "lintCheck": "npx eslint src/**",
     "lintFix": "npx eslint --fix src/**",
     "prettierCheck": "npx prettier --check .",
@@ -19,9 +16,7 @@
     "updatesCheck": "npx npm-check-updates",
     "unusedCheck": "npx depcheck",
     "outdatedCheck": "npm outdated",
-    "formatCode": "prettier --write \"**/*.{js,jsx,ts,tsx,scss,less}\"",
-    "genScssTypes": "npx typed-scss-modules src --watch",
-    "genGraphqlTypes": "graphql-codegen --config codegen.yml"
+    "formatCode": "prettier --write \"**/*.{js,jsx,ts,tsx,scss,less}\""
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -33,7 +28,7 @@
     "@mui/styled-engine-sc": "^6.4.3",
     "@prisma/client": "^6.4.0",
     "@reduxjs/toolkit": "^2.5.1",
-    "@tanstack/react-query": "^5.66.8",
+    "@tanstack/react-query": "^4.18.0",
     "@trpc/client": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
@@ -72,7 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.56.0",
+    "eslint": "^9.20.1",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-next": "15.1.7",

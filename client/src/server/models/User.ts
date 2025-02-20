@@ -1,3 +1,3 @@
-import db from 'server/db';
+import { prisma } from 'server/db';
 
-export const User = db.user;
+export const User = prisma.user;
