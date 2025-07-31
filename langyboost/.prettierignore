@@ -1,5 +1,3 @@
-craco.config.js
 custom.d.ts
 *.json
 **/generated/**
-swagger/**

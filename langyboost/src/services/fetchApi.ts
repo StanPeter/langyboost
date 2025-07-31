@@ -68,7 +68,7 @@ export const fetchApi = async ({
 
     const axios = _axios.create();
 
-    let response: AxiosResponse;
+    let response: AxiosResponse
 
     // just to test where is the CORS problem
     // testApis(method, url, params, headers, body);

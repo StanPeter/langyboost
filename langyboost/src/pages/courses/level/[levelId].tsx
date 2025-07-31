@@ -21,10 +21,10 @@ const CardContainer = styled('div')({
 });
 
 // A single card with a set height, background color, and centered content
-const Card = styled('div')<{ bgColor: string }>(({ bgColor }) => ({
+const Card = styled('div')<{ $bgColor: string }>(({ $bgColor }) => ({
     width: '100%',
     height: '500px',
-    backgroundColor: bgColor,
+    backgroundColor: $bgColor,
     borderRadius: '10px',
     boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
     display: 'flex',
@@ -103,7 +103,7 @@ const ReactTinderCardsDemo: React.FC<CardPageProps> = ({ data, setNumberOfCards,
                             swipeRequirementType="position"
                             swipeThreshold={100}
                         >
-                            <Card bgColor={card.bgColor}>
+                            <Card $bgColor={card.bgColor}>
                                 <div>
                                     <strong>{card.name}</strong>, {card.age}
                                 </div>

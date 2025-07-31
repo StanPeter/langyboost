@@ -5,12 +5,12 @@ import React, { useEffect, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import { TInputType, TInputUsecase } from 'ts/types';
 
-const StyledMuiInput = styled(MuiInput)<{ isTouched: boolean; isInvalid: boolean }>`
+const StyledMuiInput = styled(MuiInput)<{ $isTouched: boolean; $isInvalid: boolean }>`
     width: 100%;
     border-right-width: 0;
-    border: 2px solid ${({ isInvalid }) => (isInvalid ? 'var(--color-invalid-dark)' : 'var(--color-dark-accent)')};
-    background-color: ${({ isTouched, isInvalid }) =>
-        isInvalid ? (isTouched ? 'var(--color-invalid-light)' : 'unset') : 'var(--color-light-accent)'};
+    border: 2px solid ${({ $isInvalid }) => ($isInvalid ? 'var(--color-invalid-dark)' : 'var(--color-dark-accent)')};
+    background-color: ${({ $isTouched, $isInvalid }) =>
+        $isInvalid ? ($isTouched ? 'var(--color-invalid-light)' : 'unset') : 'var(--color-light-accent)'};
     font-style: normal;
     outline: none;
 `;
@@ -77,8 +77,8 @@ const Input: React.FC<IInputProps> = ({
                 onFocus={onFocus}
                 placeholder={placeholder}
                 onBlur={onBlur}
-                isTouched={isTouched}
-                isInvalid={!!validationMessage}
+                $isTouched={isTouched}
+                $isInvalid={!!validationMessage}
                 type={type}
                 // value={value}
                 onChange={onChangeHandler}

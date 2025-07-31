@@ -5,16 +5,18 @@ import { Request, Response } from 'express';
 import errors from 'server/constants/errors';
 import mockData from 'server/db/mockData';
 import {
-  createUser,
-  findAllUsers,
-  findUserByEmail,
-  findUserByEmailOrUserName,
-  findUserById,
-  validatePassword,
+    createUser,
+    findAllUsers,
+    findUserByEmail,
+    findUserByEmailOrUserName,
+    findUserById,
+    validatePassword,
 } from 'server/services/userService';
 import { createAccessToken, createRefreshToken, sendRefreshToken } from 'server/utils/authUtils';
 import { Validator } from 'server/utils/validator';
 import clientConfig from 'settings/clientConfig';
+
+// q: What is the purpose of this code?
 
 type LoginResponse = {
     user: User;

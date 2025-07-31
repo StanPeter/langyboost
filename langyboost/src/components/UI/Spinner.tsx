@@ -93,9 +93,9 @@ const load5 = keyframes`
   }
 `;
 
-const StyledSpinner = styled('div')<{ useCase?: 'fullPage' | 'small' }>`
-    margin: ${({ useCase }) => (useCase === 'small' ? '1rem' : '25% auto')};
-    font-size: ${({ useCase }) => (useCase === 'small' ? '0.3rem' : '25px')};
+const StyledSpinner = styled('div')<{ $useCase?: 'fullPage' | 'small' }>`
+    margin: ${({ $useCase }) => ($useCase === 'small' ? '1rem' : '25% auto')};
+    font-size: ${({ $useCase }) => ($useCase === 'small' ? '0.3rem' : '25px')};
     width: 1em;
     height: 1em;
     border-radius: 50%;
@@ -110,7 +110,7 @@ interface SpinnerProps {
 }
 
 const Spinner: React.FC<SpinnerProps> = ({ useCase }) => {
-    return <StyledSpinner useCase={useCase}>Loading...</StyledSpinner>;
+    return <StyledSpinner $useCase={useCase}>Loading...</StyledSpinner>;
 };
 
 export default Spinner;
